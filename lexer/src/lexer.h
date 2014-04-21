@@ -5,8 +5,16 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Sat Apr  5 15:42:30 2014 Nicolas Charvoz
-** Last update Sat Apr 19 16:06:54 2014 Nicolas Charvoz
+** Last update Mon Apr 21 15:52:05 2014 Nicolas Charvoz
 */
+
+#ifndef _LEXER_H_
+#define _LEXER_H_
+
+#include <unistd.h>
+#include <string.h>
+#include <stdlib.h>
+#include <stdio.h>
 
 typedef	enum	s_token
   {
@@ -21,7 +29,7 @@ typedef	enum	s_token
     TOKEN_OR,
     TOKEN_NONE,
     TOKEN_UNK,
-    TOKEN_END,
+    TOKEN_END
   }		e_token;
 
 typedef	struct	s_char
@@ -29,3 +37,15 @@ typedef	struct	s_char
   int	token;
   char	*cmd;
 }		t_char;
+
+/* USELESS.C */
+void	lexer_test(char*);
+/* CHECK1.C */
+int	check_letter(char c);
+int	red_r(char*, int);
+int	red_l(char*, int);
+int	comma_check(char*, int);
+int	pipe_check(char*, int);
+/*  CHECK2.C */
+int	check_and(char*, int);
+#endif
