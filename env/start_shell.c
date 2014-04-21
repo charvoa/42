@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 ** 
 ** Started on  Mon Apr  7 16:15:48 2014 garcia antoine
-** Last update Sat Apr 19 16:55:28 2014 garcia antoine
+** Last update Mon Apr 21 15:58:18 2014 garcia antoine
 */
 
 #include <sys/types.h>
@@ -13,7 +13,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "42sh.h"
-#include "lexer.h"
+#include "listok.h"
 
 char	*read_line()
 {
@@ -34,18 +34,12 @@ char	*read_line()
   return (cmd);
 }
 
-void	init_my_token(t_tokenlist *token)
-{
-  token->first = NULL;
-}
-
 int	start_shell(t_42sh *shell)
 {
-  t_tokenlist	token;
+  t_token	*token;
 
-  init_my_token(&token),
+  token = NULL;
   prompt(shell);
   shell->cmd = read_line();
-  insert(&token, TOK_WORD, "ls");
   return (0);
 }

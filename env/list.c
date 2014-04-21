@@ -5,31 +5,43 @@
 ** Login   <garcia_t@epitech.net>
 ** 
 ** Started on  Sat Apr 19 16:12:18 2014 garcia antoine
-** Last update Sat Apr 19 16:57:21 2014 garcia antoine
+** Last update Mon Apr 21 15:59:17 2014 garcia antoine
 */
 
 #include <stdlib.h>
 #include <stdio.h>
-#include "lexer.h"
+#include "listok.h"
 
-int	insert(t_tokenlist *token, int  type, char *value)
+t_token	*insert(t_token *token, int type, char *value)
 {
   t_token	*tok;
+  t_token	*tmp;
 
-  tok = malloc(sizeof(*tok));
-  if (token == NULL || tok == NULL)
-    return (0);
+  tok = malloc(sizeof(t_token));
   tok->type = type;
   tok->value = value;
+  tok->next = NULL;
+  if (token == NULL)
+    return (tok);
+  else
+    {
+      tmp = token;
+      while (tmp->next != NULL)
+	{
+	  tmp = tmp->next;
+	}
+      tmp->next = tok;
+      return (token);
+    }
 }
 
-int	show_token(t_tokenlist *token)
+int	show_token(t_token *token)
 {
   t_token	*tok;
 
   if (token == NULL)
     exit(EXIT_FAILURE);
-  tok = token->first;
+  tok = token;
   while (tok != NULL)
     {
       printf("value : %s type: %d\n", tok->value, tok->type);

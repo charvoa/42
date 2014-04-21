@@ -5,12 +5,12 @@
 ** Login   <garcia_t@epitech.net>
 ** 
 ** Started on  Fri Apr  4 12:20:14 2014 garcia antoine
-** Last update Sat Apr 19 16:22:08 2014 garcia antoine
+** Last update Mon Apr 21 14:43:51 2014 garcia antoine
 */
 
 #include <stdlib.h>
 #include "42sh.h"
-#include "lexer.h"
+#include "listok.h"
 
 void	free_tab(char **tab)
 {

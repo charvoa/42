@@ -5,12 +5,11 @@
 ** Login   <garcia_t@epitech.net>
 ** 
 ** Started on  Fri Apr  4 12:34:07 2014 garcia antoine
-** Last update Sat Apr 19 15:53:09 2014 garcia antoine
+** Last update Mon Apr 21 14:43:42 2014 garcia antoine
 */
 
 #include <stdlib.h>
 #include "42sh.h"
-#include "lexer.h"
 
 int	create_my_env(t_42sh *shell, char **environ)
 {

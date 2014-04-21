@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 ** 
 ** Started on  Sat Apr 19 15:15:18 2014 garcia antoine
-** Last update Sat Apr 19 17:01:56 2014 garcia antoine
+** Last update Mon Apr 21 15:54:18 2014 garcia antoine
 */
 
 #ifndef LEXER_H_
@@ -34,13 +34,5 @@ typedef struct s_token
   struct s_token *next;
 }		t_token;
 
-typedef struct s_tokenlist
-{
-  t_token	*first;
-}		t_tokenlist;
-
-t_tokenlist	*create_tok();
-int	insert(t_tokenlist *, int , char *);
-int	show_token(t_tokenlist *);
-
+t_token	*insert(t_token *, int, char *);
 #endif /* LEXER_H_ */
