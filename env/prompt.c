@@ -5,28 +5,28 @@
 ** Login   <garcia_t@epitech.net>
 ** 
 ** Started on  Fri Apr  4 15:59:36 2014 garcia antoine
-** Last update Mon Apr  7 16:34:16 2014 garcia antoine
+** Last update Tue Apr 22 14:23:02 2014 garcia antoine
 */
 
 #include <stdlib.h>
 #include <stdio.h>
 #include "42sh.h"
 
-char	*get_pwd_from_env(t_dlist *env)
+static char	*get_pwd_from_env(t_dlist *env)
 {
   if (get_env("PWD", env) == NULL)
     return (" ");
   return (get_env("PWD", env));
 }
 
-char	*get_user_from_env(t_dlist *env)
+static char	*get_user_from_env(t_dlist *env)
 {
   if (get_env("USER", env) == NULL)
     return ("user");
   return (get_env("USER", env));
 }
 
-char    *get_host_from_env(t_dlist *env)
+static char    *get_host_from_env(t_dlist *env)
 {
   if (get_env("HOSTNAME", env) == NULL)
     return ("localhost");

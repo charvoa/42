@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 ** 
 ** Started on  Fri Apr  4 12:20:14 2014 garcia antoine
-** Last update Mon Apr 21 14:43:51 2014 garcia antoine
+** Last update Tue Apr 22 14:21:27 2014 garcia antoine
 */
 
 #include <stdlib.h>
@@ -36,6 +36,8 @@ void	free_struct_shell(t_42sh *shell)
 int	main(int ac, char **av, char **env)
 {
   t_42sh	shell;
+  (void)	ac;
+  (void)	av;
 
   init_my_shell(&shell, env);
   start_shell(&shell);
