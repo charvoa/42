@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Sat Apr  5 15:42:30 2014 Nicolas Charvoz
-** Last update Mon Apr 21 16:57:25 2014 Nicolas Charvoz
+** Last update Tue Apr 22 15:28:02 2014 Nicolas Charvoz
 */
 
 #ifndef _LEXER_H_
@@ -32,12 +32,6 @@ typedef	enum	s_tok
     TOKEN_UNK,
     TOKEN_END
   }		e_token;
-
-typedef	struct	s_char
-{
-  int	token;
-  char	*cmd;
-}		t_char;
 
 /* LEXER.C */
 int	word_check(char*, int, t_token**);
