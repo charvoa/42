@@ -5,7 +5,7 @@
 ## Login   <charvo_a@epitech.net>
 ## 
 ## Started on  Mon Apr 21 15:01:55 2014 Nicolas Charvoz
-## Last update Tue Apr 22 14:08:29 2014 Nicolas Charvoz
+## Last update Tue Apr 22 14:18:19 2014 Nicolas Charvoz
 ##
 
 CC	= 	gcc
@@ -13,7 +13,7 @@ CC	= 	gcc
 RM	= 	rm -f
 
 CFLAGS  += 	-Wextra -Wall
-CFLAGS  += 	-ansi -pedantic
+CFLAGS  += 	-pedantic
 CFLAGS  += 	-I.
 
 LMY	=	-L ../env/libsources/ -lmy
