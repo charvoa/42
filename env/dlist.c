@@ -5,13 +5,14 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Fri Apr  4 11:55:23 2014 garcia antoine
-** Last update Tue Apr 22 14:09:36 2014 Nicolas Charvoz
+** Last update Tue Apr 22 14:14:36 2014 garcia antoine
 */
 
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 #include "list.h"
+_BSD_SOURCE
 
 void		show_list(t_dlist *list)
 {
