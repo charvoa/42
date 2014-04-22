@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Fri Apr  4 13:56:53 2014 Nicolas Charvoz
-** Last update Tue Apr 22 13:48:26 2014 Nicolas Charvoz
+** Last update Tue Apr 22 14:47:42 2014 Nicolas Charvoz
 */
 
 #include "lexer.h"
@@ -24,9 +24,7 @@ int	word_check(char *str, int i, t_token **token)
       j++;
       i++;
     }
-  printf("before\n");
   *token = insert(*token, TOKEN_WORD, word);
-  printf("after\n");
   return (i);
 }
 
@@ -44,7 +42,6 @@ void	lex(char *str, t_token **token)
       i = red_l(str, i, token);
       i = check_and(str, i, token);
     }
-  printf("str => %s\n", str);
 }
 
 int		lexer(char *cmd, t_token **token)
