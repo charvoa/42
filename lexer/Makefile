@@ -5,20 +5,20 @@
 ## Login   <charvo_a@epitech.net>
 ## 
 ## Started on  Mon Apr 21 15:01:55 2014 Nicolas Charvoz
-## Last update Tue Apr 22 13:53:48 2014 Nicolas Charvoz
+## Last update Tue Apr 22 14:08:29 2014 Nicolas Charvoz
 ##
 
-CC	= gcc
+CC	= 	gcc
 
-RM	= rm -f
+RM	= 	rm -f
 
-CFLAGS  += -Wextra -Wall
-CFLAGS  += -ansi -pedantic
-CFLAGS  += -I.
+CFLAGS  += 	-Wextra -Wall
+CFLAGS  += 	-ansi -pedantic
+CFLAGS  += 	-I.
 
-LMY	= -L ./sources/ -lmy
+LMY	=	-L ../env/libsources/ -lmy
 
-NAME	= lexer
+NAME	=	lexer
 
 SRCS	=	./src/lexer.c \
 		./src/check1.c \
@@ -32,12 +32,12 @@ SRCS	=	./src/lexer.c \
 		../env/start_shell.c \
 		../env/util_env.c
 
-OBJS	= $(SRCS:.c=.o)
+OBJS	= 	$(SRCS:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(OBJS) -o $(NAME) $(LDFLAGS)
+	 $(CC) $(OBJS) -o $(NAME) $(LMY) $(LDFLAGS)
 
 clean:
 	$(RM) $(OBJS)
