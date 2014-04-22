@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Mon Apr 21 14:55:27 2014 Nicolas Charvoz
-** Last update Tue Apr 22 15:13:44 2014 Nicolas Charvoz
+** Last update Tue Apr 22 15:23:04 2014 garcia antoine
 */
 
 #include "lexer.h"
@@ -77,7 +77,10 @@ int      pipe_check(char *str, int i, t_token **token)
   while (str[i] == '|')
     {
       if (str[j + 1] == '|')
-	*token = insert(*token, TOKEN_OR, "||");
+	{
+	  *token = insert(*token, TOKEN_OR, "||");
+	  i++;
+	}
       else
         *token = insert(*token, TOKEN_PIPE, "|");
       i++;
