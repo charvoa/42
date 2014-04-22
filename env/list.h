@@ -1,17 +1,16 @@
 /*
 ** list.h for list in /home/garcia_t/rendu/42sh
-** 
+**
 ** Made by garcia antoine
 ** Login   <garcia_t@epitech.net>
-** 
+**
 ** Started on  Fri Apr  4 11:40:28 2014 garcia antoine
-** Last update Sat Apr 19 16:26:12 2014 garcia antoine
+** Last update Tue Apr 22 13:56:46 2014 Nicolas Charvoz
 */
 
 #ifndef LIST_H_
 # define LIST_H_
 
-//DOUBLE LIST ENV
 typedef struct s_node
 {
   char	*name;

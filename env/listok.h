@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Mon Apr 21 16:32:17 2014 Nicolas Charvoz
-** Last update Mon Apr 21 16:36:28 2014 Nicolas Charvoz
+** Last update Tue Apr 22 13:50:19 2014 Nicolas Charvoz
 */
 
 #ifndef LISTOK_H_

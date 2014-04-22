@@ -5,14 +5,14 @@
 ## Login   <charvo_a@epitech.net>
 ## 
 ## Started on  Mon Apr 21 15:01:55 2014 Nicolas Charvoz
-## Last update Mon Apr 21 16:47:39 2014 Nicolas Charvoz
+## Last update Tue Apr 22 13:53:48 2014 Nicolas Charvoz
 ##
 
 CC	= gcc
 
 RM	= rm -f
 
-CFLAGS  += -Wextra -Wall -Werror
+CFLAGS  += -Wextra -Wall
 CFLAGS  += -ansi -pedantic
 CFLAGS  += -I.
 
@@ -24,7 +24,13 @@ SRCS	=	./src/lexer.c \
 		./src/check1.c \
 		./src/check2.c \
 		./src/useless.c \
-		../env/*.c
+		../env/dlist.c \
+		../env/init.c \
+		../env/list.c \
+		../env/main.c \
+		../env/prompt.c \
+		../env/start_shell.c \
+		../env/util_env.c
 
 OBJS	= $(SRCS:.c=.o)
 

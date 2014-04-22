@@ -1,11 +1,11 @@
 /*
 ** list.c for list in /home/garcia_t/rendu/42sh
-** 
+**
 ** Made by garcia antoine
 ** Login   <garcia_t@epitech.net>
-** 
+**
 ** Started on  Fri Apr  4 11:55:23 2014 garcia antoine
-** Last update Fri Apr 18 13:31:24 2014 garcia antoine
+** Last update Tue Apr 22 13:54:34 2014 Nicolas Charvoz
 */
 
 #include <stdlib.h>
@@ -13,7 +13,7 @@
 #include <string.h>
 #include "list.h"
 
-void	show_list(t_dlist *list)
+void		show_list(t_dlist *list)
 {
   t_node	*tmp;
 
@@ -25,9 +25,9 @@ void	show_list(t_dlist *list)
     }
 }
 
-t_dlist *create_list()
+t_dlist		*create_list()
 {
-  t_dlist *list;
+  t_dlist	*list;
 
   list = malloc(sizeof(*list));
   if (list != NULL)
@@ -35,7 +35,6 @@ t_dlist *create_list()
       list->lenght = 0;
       list->start = NULL;
       list->end = NULL;
-      
     }
   return (list);
 }
