@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Mon Apr  7 16:15:48 2014 garcia antoine
-** Last update Mon Apr 21 16:52:42 2014 Nicolas Charvoz
+** Last update Tue Apr 22 14:38:15 2014 garcia antoine
 */
 
 #include <sys/types.h>
@@ -14,6 +14,7 @@
 #include <string.h>
 #include "42sh.h"
 #include "listok.h"
+#include "../lexer/src/lexer.h"
 
 char	*read_line()
 {

@@ -5,12 +5,13 @@
 ** Login   <garcia_t@epitech.net>
 ** 
 ** Started on  Fri Apr  4 15:59:36 2014 garcia antoine
-** Last update Tue Apr 22 14:23:02 2014 garcia antoine
+** Last update Tue Apr 22 14:36:32 2014 garcia antoine
 */
 
 #include <stdlib.h>
 #include <stdio.h>
 #include "42sh.h"
+#include "./libsources/my.h"
 
 static char	*get_pwd_from_env(t_dlist *env)
 {
