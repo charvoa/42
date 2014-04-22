@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Mon Apr 21 14:55:27 2014 Nicolas Charvoz
-** Last update Mon Apr 21 17:04:44 2014 Nicolas Charvoz
+** Last update Tue Apr 22 14:44:42 2014 Nicolas Charvoz
 */
 
 #include "lexer.h"
@@ -29,15 +29,14 @@ int     check_letter(char c)
 int      red_l(char *str, int i, t_token **token)
 {
   int   j;
-  (void) token;
 
   j = i;
   while (str[i] == '<')
     {
       if (str[j + 1] == '<')
-	token = insert(*token, TOKEN_DBL_L, "<<");
+	*token = insert(*token, TOKEN_DBL_L, "<<");
       else
-	token = insert(*token, TOKEN_RED_L, "<");
+	*token = insert(*token, TOKEN_RED_L, "<");
       i++;
     }
   return (i);
@@ -46,15 +45,14 @@ int      red_l(char *str, int i, t_token **token)
 int      red_r(char *str, int i, t_token **token)
 {
   int   j;
-  (void) token;
 
   j = i;
   while (str[i] == '>')
     {
       if (str[ j + 1] == '>')
-      	token = insert(*token, TOKEN_DBL_R, ">>");
+      	*token = insert(*token, TOKEN_DBL_R, ">>");
       else
-	token = insert(*token, TOKEN_RED_R, ">");
+	*token = insert(*token, TOKEN_RED_R, ">");
       i++;
     }
   return (i);
@@ -62,11 +60,10 @@ int      red_r(char *str, int i, t_token **token)
 
 int      comma_check(char *str, int i, t_token **token)
 {
-  (void) token;
 
   while (str[i] == ';')
     {
-      token = insert(*token, TOKEN_COMMA, ";");
+      *token = insert(*token, TOKEN_COMMA, ";");
       i++;
     }
   return (i);
@@ -75,15 +72,14 @@ int      comma_check(char *str, int i, t_token **token)
 int      pipe_check(char *str, int i, t_token **token)
 {
   int   j;
-  (void) token;
 
   j = i;
   while (str[i] == '|')
     {
       if (str[j + 1] == '|')
-	token = insert(*token, TOKEN_OR, "||");
+	*token = insert(*token, TOKEN_OR, "||");
       else
-        token = insert(*token, TOKEN_PIPE, "|");
+        *token = insert(*token, TOKEN_PIPE, "|");
       i++;
     }
   return (i);
