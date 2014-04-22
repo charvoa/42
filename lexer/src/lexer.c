@@ -5,9 +5,10 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Fri Apr  4 13:56:53 2014 Nicolas Charvoz
-** Last update Tue Apr 22 14:54:11 2014 Nicolas Charvoz
+** Last update Tue Apr 22 15:04:42 2014 garcia antoine
 */
 
+#include <string.h>
 #include "lexer.h"
 
 int	word_check(char *str, int i, t_token **token)
@@ -25,7 +26,6 @@ int	word_check(char *str, int i, t_token **token)
       i++;
     }
   *token = insert(*token, TOKEN_WORD, word);
-  free(word);
   return (i);
 }
 
