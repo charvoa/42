@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Fri Apr  4 13:56:53 2014 Nicolas Charvoz
-** Last update Tue Apr 22 15:04:42 2014 garcia antoine
+** Last update Tue Apr 22 15:12:25 2014 Nicolas Charvoz
 */
 
 #include <string.h>
@@ -19,7 +19,7 @@ int	word_check(char *str, int i, t_token **token)
   j = 0;
   word = malloc((strlen(str) + 1) * sizeof(char*));
   word = memset(word, 0, (strlen(str) + 1));
-  while ((check_letter(str[i]) != -1) && str[i])
+  while (((check_letter(str[i]) != -1) || str[i] == '\t' ) && (str[i] != '\0'))
     {
       word[j] = str[i];
       j++;
