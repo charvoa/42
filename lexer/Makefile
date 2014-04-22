@@ -5,7 +5,7 @@
 ## Login   <charvo_a@epitech.net>
 ## 
 ## Started on  Mon Apr 21 15:01:55 2014 Nicolas Charvoz
-## Last update Mon Apr 21 15:50:44 2014 Nicolas Charvoz
+## Last update Mon Apr 21 16:47:39 2014 Nicolas Charvoz
 ##
 
 CC	= gcc
@@ -24,6 +24,7 @@ SRCS	=	./src/lexer.c \
 		./src/check1.c \
 		./src/check2.c \
 		./src/useless.c \
+		../env/*.c
 
 OBJS	= $(SRCS:.c=.o)
 

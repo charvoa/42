@@ -1,11 +1,11 @@
 /*
 ** start_shell.c for start_shell in /home/garcia_t/rendu/42sh
-** 
+**
 ** Made by garcia antoine
 ** Login   <garcia_t@epitech.net>
-** 
+**
 ** Started on  Mon Apr  7 16:15:48 2014 garcia antoine
-** Last update Mon Apr 21 15:58:18 2014 garcia antoine
+** Last update Mon Apr 21 16:52:42 2014 Nicolas Charvoz
 */
 
 #include <sys/types.h>
@@ -41,5 +41,7 @@ int	start_shell(t_42sh *shell)
   token = NULL;
   prompt(shell);
   shell->cmd = read_line();
+  lexer(shell->cmd, &token);
+  show_token(token);
   return (0);
 }

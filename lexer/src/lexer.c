@@ -5,53 +5,51 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Fri Apr  4 13:56:53 2014 Nicolas Charvoz
-** Last update Mon Apr 21 15:51:43 2014 Nicolas Charvoz
+** Last update Mon Apr 21 16:57:52 2014 Nicolas Charvoz
 */
 
-#include <unistd.h>
-#include <string.h>
-#include <stdlib.h>
-#include <stdio.h>
 #include "lexer.h"
 
-static int	word_check(char *str, int i)
+int	word_check(char *str, int i, t_token **token)
 {
+  char	*word;
+  int	j;
+
+  j = 0;
+  word = malloc((strlen(str) + 1) * sizeof(char*));
+  word = memset(word, 0, (strlen(str) + 1));
   while ((check_letter(str[i]) != -1) && str[i])
     {
-      printf("TOKEN_WORD => %c[%d]\n", str[i], i);
+      word[j] = str[i];
+      j++;
       i++;
     }
+  printf("before\n");
+  *token = insert(*token, TOKEN_WORD, word);
+  printf("after\n");
   return (i);
 }
 
-void	lex(char *str)
+void	lex(char *str, t_token **token)
 {
   int	i;
 
   i = 0;
   while (str[i])
     {
-      i = word_check(str, i);
-      i = comma_check(str, i);
-      i = pipe_check(str, i);
-      i = red_r(str, i);
-      i = red_l(str, i);
-      i = check_and(str, i);
+      i = word_check(str, i, token);
+      i = comma_check(str, i, token);
+      i = pipe_check(str, i, token);
+      i = red_r(str, i, token);
+      i = red_l(str, i, token);
+      i = check_and(str, i, token);
     }
   printf("str => %s\n", str);
 }
 
-int		main(int ac, char **av)
+int		lexer(char *cmd, t_token **token)
 {
-  char		*buffer;
-  int		ret;
-  (void)	av;
-  (void)	ac;
-
-  buffer = malloc(4096 * sizeof(char));
-  ret = read(0, buffer, 4096);
-  buffer[ret - 1] = '\0';
-  lex(buffer);
-  free(buffer);
+  lex(cmd, token);
+  free(cmd);
   return (0);
 }
