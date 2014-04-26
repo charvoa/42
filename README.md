@@ -2,6 +2,6 @@
 ***
 ##EPITECH NICE 2018##
 
-Project developed by Nicolas_Charvoz, Serge_Heitzler, Antoine_Garcia, Louis_Audibert and Nicolas_Girardot
+_Project developed by Nicolas Charvoz, Serge Heitzler, Antoine Garcia, Louis Audibert and Nicolas Girardot_
 
 ***
