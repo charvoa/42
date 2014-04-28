@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Mon Apr 21 16:32:17 2014 Nicolas Charvoz
-** Last update Tue Apr 22 14:56:54 2014 garcia antoine
+** Last update Mon Apr 28 10:01:23 2014 Nicolas Charvoz
 */
 
 #ifndef LISTOK_H_
@@ -15,10 +15,11 @@ typedef struct s_token
 {
   int           type;
   char          *value;
+  int		pos;
   struct s_token *next;
 }               t_token;
 
-t_token *insert(t_token *, int, char *);
+t_token *insert(t_token *, int, char *, int);
 t_token	*free_my_tok(t_token *token);
 int	show_token(t_token *token);
 

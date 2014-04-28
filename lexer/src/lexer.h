@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Sat Apr  5 15:42:30 2014 Nicolas Charvoz
-** Last update Tue Apr 22 15:28:02 2014 Nicolas Charvoz
+** Last update Wed Apr 23 19:40:10 2014 Nicolas Charvoz
 */
 
 #ifndef _LEXER_H_

@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Mon Apr 21 14:55:27 2014 Nicolas Charvoz
-** Last update Tue Apr 22 15:23:04 2014 garcia antoine
+** Last update Mon Apr 28 10:00:23 2014 Nicolas Charvoz
 */
 
 #include "lexer.h"
@@ -15,7 +15,7 @@ int     check_letter(char c)
   int   i;
   char  *str;
 
-  str = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_0123456789 ";
+  str = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_0123456789 -";
   i = 0;
   while (str[i])
     {
@@ -34,9 +34,9 @@ int      red_l(char *str, int i, t_token **token)
   while (str[i] == '<')
     {
       if (str[j + 1] == '<')
-	*token = insert(*token, TOKEN_DBL_L, "<<");
+	*token = insert(*token, TOKEN_DBL_L, "<<", i);
       else
-	*token = insert(*token, TOKEN_RED_L, "<");
+	*token = insert(*token, TOKEN_RED_L, "<", i);
       i++;
     }
   return (i);
@@ -49,10 +49,10 @@ int      red_r(char *str, int i, t_token **token)
   j = i;
   while (str[i] == '>')
     {
-      if (str[ j + 1] == '>')
-      	*token = insert(*token, TOKEN_DBL_R, ">>");
+      if (str[j + 1] == '>')
+      	*token = insert(*token, TOKEN_DBL_R, ">>", i);
       else
-	*token = insert(*token, TOKEN_RED_R, ">");
+	*token = insert(*token, TOKEN_RED_R, ">", i);
       i++;
     }
   return (i);
@@ -63,7 +63,7 @@ int      comma_check(char *str, int i, t_token **token)
 
   while (str[i] == ';')
     {
-      *token = insert(*token, TOKEN_COMMA, ";");
+      *token = insert(*token, TOKEN_COMMA, ";", i);
       i++;
     }
   return (i);
@@ -78,11 +78,11 @@ int      pipe_check(char *str, int i, t_token **token)
     {
       if (str[j + 1] == '|')
 	{
-	  *token = insert(*token, TOKEN_OR, "||");
+	  *token = insert(*token, TOKEN_OR, "||", i);
 	  i++;
 	}
       else
-        *token = insert(*token, TOKEN_PIPE, "|");
+        *token = insert(*token, TOKEN_PIPE, "|", i);
       i++;
     }
   return (i);

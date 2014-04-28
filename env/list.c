@@ -1,18 +1,18 @@
 /*
 ** list.c for list in /home/garcia_t/rendu/42sh
-** 
+**
 ** Made by garcia antoine
 ** Login   <garcia_t@epitech.net>
-** 
+**
 ** Started on  Sat Apr 19 16:12:18 2014 garcia antoine
-** Last update Tue Apr 22 14:51:44 2014 garcia antoine
+** Last update Mon Apr 28 10:06:28 2014 Nicolas Charvoz
 */
 
 #include <stdlib.h>
 #include <stdio.h>
 #include "listok.h"
 
-t_token	*insert(t_token *token, int type, char *value)
+t_token	*insert(t_token *token, int type, char *value, int pos)
 {
   t_token	*tok;
   t_token	*tmp;
@@ -20,6 +20,7 @@ t_token	*insert(t_token *token, int type, char *value)
   tok = malloc(sizeof(t_token));
   tok->type = type;
   tok->value = value;
+  tok->pos = pos;
   tok->next = NULL;
   if (token == NULL)
     return (tok);
@@ -59,7 +60,7 @@ int	show_token(t_token *token)
   tok = token;
   while (tok != NULL)
     {
-      printf("value : %s type: %d\n", tok->value, tok->type);
+      printf("value : %s type: %d position : %d\n", tok->value, tok->type, tok->pos);
       tok = tok->next;
     }
   return (0);

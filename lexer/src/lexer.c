@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Fri Apr  4 13:56:53 2014 Nicolas Charvoz
-** Last update Tue Apr 22 15:12:25 2014 Nicolas Charvoz
+** Last update Mon Apr 28 10:01:47 2014 Nicolas Charvoz
 */
 
 #include <string.h>
@@ -25,7 +25,8 @@ int	word_check(char *str, int i, t_token **token)
       j++;
       i++;
     }
-  *token = insert(*token, TOKEN_WORD, word);
+  *token = insert(*token, TOKEN_WORD, strdup(word), i);
+  free(word);
   return (i);
 }
 
