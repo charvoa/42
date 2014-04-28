@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Mon Apr 28 10:10:40 2014 Nicolas Charvoz
-** Last update Mon Apr 28 10:21:55 2014 Nicolas Charvoz
+** Last update Mon Apr 28 12:50:41 2014 Nicolas Charvoz
 */
 
 #include "lexer.h"
@@ -44,6 +44,5 @@ char	*epur_str(char *str)
 	}
       i++;
     }
-  printf("cmd => %s\n", str2);
   return (str2);
 }

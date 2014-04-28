@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Fri Apr  4 13:56:53 2014 Nicolas Charvoz
-** Last update Mon Apr 28 11:15:02 2014 Nicolas Charvoz
+** Last update Mon Apr 28 13:17:48 2014 Nicolas Charvoz
 */
 
 #include "lexer.h"
@@ -24,7 +24,9 @@ int	word_check(char *str, int i, t_token **token)
       j++;
       i++;
     }
-  *token = insert(*token, TOKEN_WORD, strdup(word), i);
+  word[i] = '\0';
+  if (word[0] != '\0')
+    *token = insert(*token, TOKEN_WORD, strdup(word), i);
   free(word);
   return (i);
 }
@@ -45,11 +47,11 @@ void	lex(char *str, t_token **token)
     }
 }
 
-int		lexer(char *cmd, t_token *token)
+int		lexer(char *cmd, t_token **token)
 {
   cmd = epur_str(cmd);
-  lex(cmd, &token);
+  lex(cmd, token);
   if ((check_token(token)) == -1)
-    printf("bite \n");
+    printf("erreur token\n");
   return (0);
 }
