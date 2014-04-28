@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Fri Apr  4 13:56:53 2014 Nicolas Charvoz
-** Last update Mon Apr 28 10:01:47 2014 Nicolas Charvoz
+** Last update Mon Apr 28 10:21:32 2014 Nicolas Charvoz
 */
 
 #include <string.h>
@@ -48,6 +48,7 @@ void	lex(char *str, t_token **token)
 
 int		lexer(char *cmd, t_token **token)
 {
+  cmd = epur_str(cmd);
   lex(cmd, token);
   return (0);
 }

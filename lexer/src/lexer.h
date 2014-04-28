@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Sat Apr  5 15:42:30 2014 Nicolas Charvoz
-** Last update Wed Apr 23 19:40:10 2014 Nicolas Charvoz
+** Last update Mon Apr 28 10:22:15 2014 Nicolas Charvoz
 */
 
 #ifndef _LEXER_H_
@@ -47,5 +47,7 @@ int	comma_check(char*, int, t_token**);
 int	pipe_check(char*, int, t_token**);
 /*  CHECK2.C */
 int	check_and(char*, int, t_token**);
+/* EPUR_STR.C */
+char	*epur_str(char*);
 
 #endif

@@ -5,7 +5,7 @@
 ## Login   <charvo_a@epitech.net>
 ## 
 ## Started on  Mon Apr 21 15:01:55 2014 Nicolas Charvoz
-## Last update Tue Apr 22 14:35:07 2014 garcia antoine
+## Last update Mon Apr 28 10:18:09 2014 Nicolas Charvoz
 ##
 
 CC	= 	gcc
@@ -22,6 +22,7 @@ NAME	=	lexer
 SRCS	=	./src/lexer.c \
 		./src/check1.c \
 		./src/check2.c \
+		./src/epur_str.c \
 		./src/useless.c \
 		../env/dlist.c \
 		../env/init.c \
