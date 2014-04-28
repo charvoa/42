@@ -5,7 +5,7 @@
 ## Login   <charvo_a@epitech.net>
 ## 
 ## Started on  Mon Apr 21 15:01:55 2014 Nicolas Charvoz
-## Last update Mon Apr 28 10:18:09 2014 Nicolas Charvoz
+## Last update Mon Apr 28 10:54:34 2014 Nicolas Charvoz
 ##
 
 CC	= 	gcc
@@ -30,7 +30,8 @@ SRCS	=	./src/lexer.c \
 		../env/main.c \
 		../env/prompt.c \
 		../env/start_shell.c \
-		../env/util_env.c
+		../env/util_env.c \
+		../parser/parser.c
 
 OBJS	= 	$(SRCS:.c=.o)
 

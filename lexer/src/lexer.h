@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Sat Apr  5 15:42:30 2014 Nicolas Charvoz
-** Last update Mon Apr 28 10:22:15 2014 Nicolas Charvoz
+** Last update Mon Apr 28 11:14:25 2014 Nicolas Charvoz
 */
 
 #ifndef _LEXER_H_
@@ -16,6 +16,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "../../env/listok.h"
+#include "../../parser/parser.h"
 
 typedef	enum	s_tok
   {
@@ -36,7 +37,7 @@ typedef	enum	s_tok
 /* LEXER.C */
 int	word_check(char*, int, t_token**);
 void	lex(char*, t_token**);
-int	lexer(char*, t_token**);
+int	lexer(char*, t_token*);
 /* USELESS.C */
 void	lexer_test(char*);
 /* CHECK1.C */

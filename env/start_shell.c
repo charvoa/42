@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Mon Apr  7 16:15:48 2014 garcia antoine
-** Last update Tue Apr 22 14:52:02 2014 garcia antoine
+** Last update Mon Apr 28 11:14:09 2014 Nicolas Charvoz
 */
 
 #include <sys/types.h>
@@ -42,7 +42,7 @@ int	start_shell(t_42sh *shell)
   token = NULL;
   prompt(shell);
   shell->cmd = read_line();
-  lexer(shell->cmd, &token);
+  lexer(shell->cmd, token);
   show_token(token);
   free_my_tok(token);
   return (0);
