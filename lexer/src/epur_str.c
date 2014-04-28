@@ -5,28 +5,16 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Mon Apr 28 10:10:40 2014 Nicolas Charvoz
-** Last update Mon Apr 28 12:50:41 2014 Nicolas Charvoz
+** Last update Mon Apr 28 14:34:30 2014 Nicolas Charvoz
 */
 
 #include "lexer.h"
 
-char	*epur_str(char *str)
+char	*epur_str2(char *str, char *str2, int mabool, int i)
 {
-  int	i;
-  int	mabool;
-  char	*str2;
   int	j;
 
-  str2 = malloc(4096 * sizeof(char));
-  memset(str2, 0, 4096);
   j = 0;
-  i = 0;
-  mabool = 0;
-  if (str[0] == ' ' || str[0] == '\t')
-    mabool = 1;
-  while ((str[i] == ' ' || str[i] == '\t') && mabool == 1)
-    i++;
-  mabool = 1;
   while (str[i])
     {
       if (str[i] == ' ' || str[i] == '\t')
@@ -36,6 +24,8 @@ char	*epur_str(char *str)
 	    i++;
 	  if (str[i] == '\0')
 	    mabool = 0;
+	  str2[j] = ' ';
+	  j++;
 	}
       if (mabool != 0)
 	{
@@ -44,5 +34,24 @@ char	*epur_str(char *str)
 	}
       i++;
     }
+  return (str2);
+}
+
+char	*epur_str(char *str)
+{
+  int	i;
+  int	mabool;
+  char	*str2;
+
+  str2 = malloc(4096 * sizeof(char));
+  memset(str2, 0, 4096);
+  i = 0;
+  mabool = 0;
+  if (str[0] == ' ' || str[0] == '\t')
+    mabool = 1;
+  while ((str[i] == ' ' || str[i] == '\t') && mabool == 1)
+    i++;
+  mabool = 1;
+  str2 = epur_str2(str, str2, mabool, i);
   return (str2);
 }

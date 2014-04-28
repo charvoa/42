@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Fri Apr  4 13:56:53 2014 Nicolas Charvoz
-** Last update Mon Apr 28 13:17:48 2014 Nicolas Charvoz
+** Last update Mon Apr 28 14:23:14 2014 Nicolas Charvoz
 */
 
 #include "lexer.h"
@@ -49,9 +49,11 @@ void	lex(char *str, t_token **token)
 
 int		lexer(char *cmd, t_token **token)
 {
+  printf("cmd non => %s\n", cmd);
   cmd = epur_str(cmd);
+  printf("cmd => %s\n", cmd);
   lex(cmd, token);
   if ((check_token(token)) == -1)
-    printf("erreur token\n");
+    printf("\n");
   return (0);
 }
