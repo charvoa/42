@@ -5,10 +5,31 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Fri Apr  4 13:56:53 2014 Nicolas Charvoz
-** Last update Mon Apr 28 14:23:14 2014 Nicolas Charvoz
+** Last update Tue Apr 29 16:50:59 2014 Nicolas Charvoz
 */
 
 #include "lexer.h"
+
+int	check_unk(char *str, int i, t_token **token)
+{
+  char	*unk;
+  int	j;
+
+  j = 0;
+  unk = malloc((strlen(str) + 1) * sizeof(char*));
+  unk = memset(unk, 0, (strlen(str) + 1));
+  while (((check_letter2(str[i]) == -1) && str[i] != '\t' ) && (str[i] != '\0'))
+    {
+      unk[j] = str[i];
+      j++;
+      i++;
+    }
+  unk[i] = '\0';
+  if (unk[0] != '\0')
+    *token = insert(*token, TOKEN_UNK, strdup(unk), i);
+  free(unk);
+  return (i);
+}
 
 int	word_check(char *str, int i, t_token **token)
 {
@@ -38,22 +59,31 @@ void	lex(char *str, t_token **token)
   i = 0;
   while (str[i])
     {
-      i = word_check(str, i, token);
       i = comma_check(str, i, token);
       i = pipe_check(str, i, token);
       i = red_r(str, i, token);
       i = red_l(str, i, token);
       i = check_and(str, i, token);
+      i = word_check(str, i, token);
+      i = check_unk(str, i, token);
     }
 }
 
 int		lexer(char *cmd, t_token **token)
 {
-  printf("cmd non => %s\n", cmd);
+  int	i;
+  char	*error;
+
+  i = 0;
   cmd = epur_str(cmd);
-  printf("cmd => %s\n", cmd);
+  if (!(cmd[i]))
+    {
+      printf("ligne vide, affichage prompt\n");
+      return (0);
+    }
   lex(cmd, token);
-  if ((check_token(token)) == -1)
-    printf("\n");
+  if ((error = check_token(token)) != NULL)
+    printf("bash : Syntax error near unexpected token `%s`\n", error);
+  free(cmd);
   return (0);
 }

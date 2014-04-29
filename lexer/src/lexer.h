@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Sat Apr  5 15:42:30 2014 Nicolas Charvoz
-** Last update Mon Apr 28 13:05:35 2014 Nicolas Charvoz
+** Last update Tue Apr 29 14:55:59 2014 Nicolas Charvoz
 */
 
 #ifndef _LEXER_H_
@@ -35,6 +35,7 @@ typedef	enum	s_tok
   }		e_token;
 
 /* LEXER.C */
+int	unk_check(char*, int, t_token**);
 int	word_check(char*, int, t_token**);
 void	lex(char*, t_token**);
 int	lexer(char*, t_token**);
@@ -48,6 +49,7 @@ int	comma_check(char*, int, t_token**);
 int	pipe_check(char*, int, t_token**);
 /*  CHECK2.C */
 int	check_and(char*, int, t_token**);
+int	check_letter2(char);
 /* EPUR_STR.C */
 char	*epur_str(char*);
 

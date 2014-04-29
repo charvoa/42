@@ -5,7 +5,7 @@
 ## Login   <charvo_a@epitech.net>
 ## 
 ## Started on  Mon Apr 21 15:01:55 2014 Nicolas Charvoz
-## Last update Mon Apr 28 15:22:09 2014 Nicolas Charvoz
+## Last update Tue Apr 29 11:47:22 2014 Nicolas Charvoz
 ##
 
 CC	= 	gcc
@@ -13,6 +13,8 @@ CC	= 	gcc
 RM	= 	rm -f
 
 LEXER	=	./lexer/src
+
+USELESS	=	-g3
 
 PARSER	=	./parser
 
@@ -44,10 +46,12 @@ OBJS	= 	$(SRCS:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	 $(CC) $(OBJS) -o $(NAME) $(LMY) $(LDFLAGS)
+	 $(CC) $(OBJS) -o $(NAME) $(LMY) $(LDFLAGS) $(USELESS)
+	 $(RM) $(OBJS)
 
 clean:
 	$(RM) $(OBJS)
+
 
 fclean: clean
 	$(RM) $(NAME)
@@ -55,3 +59,19 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
+
+charvo_a:
+	@(cat .txt/charvo_a.txt)
+
+heitzl_s:
+	@(cat .txt/heitzl_s.txt)
+
+girard_s:
+	@(cat .txt/girard_s.txt)
+
+audibe_l:
+	@(cat .txt/audibe_l.txt)
+
+garcia_t:
+	@(cat .txt/garcia_t.txt)
+group:	charvo_a heitzl_s girard_s audibe_l garcia_t

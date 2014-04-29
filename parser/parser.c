@@ -5,32 +5,30 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Mon Apr 28 10:34:31 2014 Nicolas Charvoz
-** Last update Mon Apr 28 15:35:46 2014 Nicolas Charvoz
+** Last update Tue Apr 29 16:49:25 2014 Nicolas Charvoz
 */
 
 #include "parser.h"
 
-int     check_token(t_token **token)
+char	*check_token(t_token **token)
 {
   t_token       *tok;
 
   if (token == NULL)
     exit(EXIT_FAILURE);
   tok = *token;
-  if (tok->type != 0 && tok->type != NULL)
-    {
-      printf("bash : Syntax error near unexpected token `%s`\n", tok->value);
-      return (-1);
-    }
-  if (tok->type != NULL)
+  if ((tok->type != TOKEN_WORD || tok->type == TOKEN_UNK) && (tok))
+    return (tok->value);
+  if (tok->next)
     tok = tok->next;
-  if (tok->type > 0 && tok->type != NULL)
+  if (tok->type == TOKEN_UNK)
+    return (tok->value);
+  if (tok->type != TOKEN_WORD && tok->next)
     {
-      tok = tok->next;
-      if (tok->type != 0 && tok->type != NULL)
-	{
-	  printf("bash : Syntax error near unexpected token `%s`\n", tok->value);
-	}
+      if (tok->next)
+	tok = tok->next;
+      if (tok->type != TOKEN_WORD || tok->type == TOKEN_UNK)
+	return (tok->value);
     }
-  return (0);
+  return (NULL);
 }
