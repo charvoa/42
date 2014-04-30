@@ -5,12 +5,12 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Mon Apr 28 10:34:31 2014 Nicolas Charvoz
-** Last update Tue Apr 29 16:49:25 2014 Nicolas Charvoz
+** Last update Wed Apr 30 12:12:48 2014 Nicolas Charvoz
 */
 
 #include "parser.h"
 
-char	*check_token(t_token **token)
+char		*check_token(t_token **token)
 {
   t_token       *tok;
 

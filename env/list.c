@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Sat Apr 19 16:12:18 2014 garcia antoine
-** Last update Mon Apr 28 12:56:32 2014 Nicolas Charvoz
+** Last update Wed Apr 30 13:44:09 2014 Nicolas Charvoz
 */
 
 #include <stdlib.h>
@@ -60,7 +60,7 @@ int	show_token(t_token *token)
   tok = token;
   while (tok != NULL)
     {
-      printf("value : %s type: %d position : %d, adresse : %p\n", tok->value, tok->type, tok->pos, tok);
+      printf("value : %s type: %d position : %d\n", tok->value, tok->type, tok->pos);
       tok = tok->next;
     }
   return (0);

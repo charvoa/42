@@ -5,7 +5,7 @@
 ## Login   <charvo_a@epitech.net>
 ## 
 ## Started on  Mon Apr 21 15:01:55 2014 Nicolas Charvoz
-## Last update Tue Apr 29 11:47:22 2014 Nicolas Charvoz
+## Last update Wed Apr 30 11:26:09 2014 Nicolas Charvoz
 ##
 
 CC	= 	gcc
@@ -20,8 +20,8 @@ PARSER	=	./parser
 
 ENV	=	./env
 
-CFLAGS  += 	-Wextra -Wall
-CFLAGS  += 	-I.
+CFLAGS  += 	-Wextra -Wall -W
+CFLAGS	+=	-Wbad-function-cast -Wcast-align
 
 LMY	=	-L $(ENV)/libsources/ -lmy
 
