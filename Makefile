@@ -5,12 +5,14 @@
 ## Login   <charvo_a@epitech.net>
 ## 
 ## Started on  Mon Apr 21 15:01:55 2014 Nicolas Charvoz
-## Last update Wed Apr 30 11:26:09 2014 Nicolas Charvoz
+## Last update Wed Apr 30 14:33:24 2014 Nicolas Charvoz
 ##
 
 CC	= 	gcc
 
 RM	= 	rm -f
+
+TERM	=	./termcaps
 
 LEXER	=	./lexer/src
 
@@ -25,9 +27,12 @@ CFLAGS	+=	-Wbad-function-cast -Wcast-align
 
 LMY	=	-L $(ENV)/libsources/ -lmy
 
+LIBTERM	=	-lncurses
+
 NAME	=	mysh
 
-SRCS	=	$(LEXER)/lexer.c \
+SRCS	=	$(TERM)/termcaps.c \
+		$(LEXER)/lexer.c \
 		$(LEXER)/check1.c \
 		$(LEXER)/check2.c \
 		$(LEXER)/epur_str.c \
@@ -39,14 +44,14 @@ SRCS	=	$(LEXER)/lexer.c \
 		$(ENV)/prompt.c \
 		$(ENV)/start_shell.c \
 		$(ENV)/util_env.c \
-		$(PARSER)/parser.c
+		$(PARSER)/parser.c \
 
 OBJS	= 	$(SRCS:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	 $(CC) $(OBJS) -o $(NAME) $(LMY) $(LDFLAGS) $(USELESS)
+	 $(CC) $(OBJS) -o $(NAME) $(LMY) $(LIBTERM) $(LDFLAGS) $(USELESS)
 	 $(RM) $(OBJS)
 
 clean:

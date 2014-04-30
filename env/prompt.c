@@ -5,12 +5,13 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Fri Apr  4 15:59:36 2014 garcia antoine
-** Last update Mon Apr 28 11:22:52 2014 Nicolas Charvoz
+** Last update Wed Apr 30 14:24:08 2014 Nicolas Charvoz
 */
 
 #include <stdlib.h>
 #include <stdio.h>
 #include "42sh.h"
+#include "../termcaps/termcaps.h"
 #include "./libsources/my.h"
 
 static char	*get_pwd_from_env(t_dlist *env)
@@ -43,5 +44,6 @@ void	prompt(t_42sh *shell)
   pwd = get_pwd_from_env(shell->env);
   user = get_user_from_env(shell->env);
   host = get_host_from_env(shell->env);
+  my_clear();
   my_printf("\033[36m%s\033[0m@\033[35m%s\033[0m: %s: ", user, host, pwd);
 }
