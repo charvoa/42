@@ -5,10 +5,11 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Fri Apr  4 13:56:53 2014 Nicolas Charvoz
-** Last update Tue Apr 29 16:50:59 2014 Nicolas Charvoz
+** Last update Fri May  2 14:26:52 2014 Nicolas Charvoz
 */
 
 #include "lexer.h"
+#include "../../parser/parser.h"
 
 int	check_unk(char *str, int i, t_token **token)
 {
@@ -69,21 +70,26 @@ void	lex(char *str, t_token **token)
     }
 }
 
-int		lexer(char *cmd, t_token **token)
+int	lexer(char *cmd, t_token **token)
 {
   int	i;
   char	*error;
+  t_lex	*lexi;
 
   i = 0;
-  cmd = epur_str(cmd);
-  if (!(cmd[i]))
+  lexi = malloc(sizeof(*lexi));
+  lexi->cmd = strdup(cmd);
+  lexi->cmd = epur_str(lexi->cmd);
+  if (!(lexi->cmd[i]))
     {
       printf("ligne vide, affichage prompt\n");
       return (0);
     }
-  lex(cmd, token);
-  if ((error = check_token(token)) != NULL)
+  lex(lexi->cmd, token);
+  if ((error = check_token(token, lexi)) != NULL)
     printf("bash : Syntax error near unexpected token `%s`\n", error);
-  free(cmd);
+  printf("lexi->cmd error => %s|\n", lexi->cmd);
+  free(lexi->cmd);
+  free(lexi);
   return (0);
 }

@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Sat Apr  5 15:42:30 2014 Nicolas Charvoz
-** Last update Tue Apr 29 14:55:59 2014 Nicolas Charvoz
+** Last update Fri May  2 11:21:57 2014 Nicolas Charvoz
 */
 
 #ifndef _LEXER_H_
@@ -16,7 +16,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "../../env/listok.h"
-#include "../../parser/parser.h"
 
 typedef	enum	s_tok
   {
@@ -33,6 +32,11 @@ typedef	enum	s_tok
     TOKEN_UNK,
     TOKEN_END
   }		e_token;
+
+typedef	struct s_lex
+{
+  char		*cmd;
+}		t_lex;
 
 /* LEXER.C */
 int	unk_check(char*, int, t_token**);
