@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Sat Apr  5 15:42:30 2014 Nicolas Charvoz
-** Last update Fri May  2 11:21:57 2014 Nicolas Charvoz
+** Last update Mon May  5 14:41:58 2014 Nicolas Charvoz
 */
 
 #ifndef _LEXER_H_
@@ -24,7 +24,6 @@ typedef	enum	s_tok
     TOKEN_COMMA,
     TOKEN_RED_L,
     TOKEN_RED_R,
-    TOKEN_DBL_L,
     TOKEN_DBL_R,
     TOKEN_AND,
     TOKEN_OR,
@@ -56,5 +55,5 @@ int	check_and(char*, int, t_token**);
 int	check_letter2(char);
 /* EPUR_STR.C */
 char	*epur_str(char*);
-
+char	*epur_str2(char*, char*, int, int);
 #endif

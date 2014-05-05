@@ -1,0 +1,20 @@
+/*
+** strtotab.c for  in /home/charvo_a/42/env
+**
+** Made by Nicolas Charvoz
+** Login   <charvo_a@epitech.net>
+**
+** Started on  Mon May  5 15:12:20 2014 Nicolas Charvoz
+** Last update Mon May  5 15:12:27 2014 Nicolas Charvoz
+*/
+
+int     count_char(char *str)
+{
+  int   c;
+
+  c = 0;
+  while ((str[c] != ' ') && (str[c] != '\0') && (str[c] != '\n'))
+    c++;
+  c += 1;
+  return (c);
+}

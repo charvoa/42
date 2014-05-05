@@ -5,18 +5,20 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Fri Apr  4 12:16:42 2014 garcia antoine
-** Last update Wed Apr 30 14:22:14 2014 Nicolas Charvoz
+** Last update Mon May  5 15:17:47 2014 Nicolas Charvoz
 */
 
 #ifndef SHELL_H_
 # define SHELL_H_
 
 # include "list.h"
+# include <stdio.h>
 
 typedef struct s_42sh
 {
   t_dlist	*env;
   char		*cmd;
+  char		**path;
 }		t_42sh;
 
 int	isolate_name_and_value_from_env(char *env);
@@ -28,5 +30,8 @@ void    prompt(t_42sh *shell);
 int	start_shell(t_42sh *shell);
 void	init_my_shell(t_42sh *shell, char **env);
 void	my_clear();
+char	**strtotab(char*);
+int	count_word(char*);
+int	count_char(char*);
 
 #endif /*SHELL_H_ */

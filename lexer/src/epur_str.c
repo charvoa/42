@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Mon Apr 28 10:10:40 2014 Nicolas Charvoz
-** Last update Tue Apr 29 11:38:29 2014 Nicolas Charvoz
+** Last update Mon May  5 13:41:15 2014 Nicolas Charvoz
 */
 
 #include "lexer.h"
@@ -34,6 +34,7 @@ char	*epur_str2(char *str, char *str2, int mabool, int i)
 	}
       i++;
     }
+  str2[j] = '\0';
   return (str2);
 }
 
@@ -43,8 +44,8 @@ char	*epur_str(char *str)
   int	mabool;
   char	*str2;
 
-  str2 = malloc(4096 * sizeof(char));
-  memset(str2, 0, 4096);
+  str2 = malloc((strlen(str) + 1) * sizeof(char));
+  memset(str2, 0, (strlen(str) + 1));
   i = 0;
   mabool = 0;
   if (str[0] == ' ' || str[0] == '\t')

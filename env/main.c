@@ -5,12 +5,14 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Fri Apr  4 12:20:14 2014 garcia antoine
-** Last update Sat May  3 14:51:39 2014 Nicolas Charvoz
+** Last update Mon May  5 15:13:27 2014 Nicolas Charvoz
 */
 
 #include <stdlib.h>
 #include "42sh.h"
 #include "listok.h"
+
+
 
 void	free_tab(char **tab)
 {
@@ -40,6 +42,7 @@ int	main(int ac, char **av, char **env)
   (void)	av;
 
   init_my_shell(&shell, env);
+  shell.path = strtotab(get_env("PATH", shell.env));
   start_shell(&shell);
   free_struct_shell(&shell);
   return (0);

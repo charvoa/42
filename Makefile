@@ -5,7 +5,7 @@
 ## Login   <charvo_a@epitech.net>
 ## 
 ## Started on  Mon Apr 21 15:01:55 2014 Nicolas Charvoz
-## Last update Mon May  5 12:44:53 2014 Nicolas Charvoz
+## Last update Mon May  5 15:16:23 2014 Nicolas Charvoz
 ##
 
 CC	= 	gcc
@@ -22,7 +22,7 @@ PARSER	=	./parser
 
 ENV	=	./env
 
-CFLAGS  += 	-Wextra -Wall -W -Werror
+CFLAGS  += 	-Wextra -Wall -W 
 CFLAGS	+=	-Wbad-function-cast -Wcast-align
 
 LMY	=	-L $(ENV)/libsources/ -lmy
@@ -44,6 +44,7 @@ SRCS	=	$(TERM)/termcaps.c \
 		$(ENV)/prompt.c \
 		$(ENV)/start_shell.c \
 		$(ENV)/util_env.c \
+		$(ENV)/strtotab.c \
 		$(PARSER)/parser.c \
 		$(PARSER)/useless.c \
 

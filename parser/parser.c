@@ -5,10 +5,51 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Mon Apr 28 10:34:31 2014 Nicolas Charvoz
-** Last update Mon May  5 12:43:55 2014 Nicolas Charvoz
+** Last update Mon May  5 15:10:08 2014 Nicolas Charvoz
 */
 
 #include "parser.h"
+
+/* int     do_cmd(t_mini *mini) */
+/* { */
+/*   int   i; */
+/*   int   status; */
+/*   pid_t pid; */
+/*   char  *pass; */
+
+/*   if (check_builtin(mini) == 0) */
+/*     return(0); */
+/*   i = -1; */
+/*   if ((pid = fork()) == -1) */
+/*     exit(-1); */
+/*   else if (pid == 0) */
+/*     { */
+/*       while (mini->tab[++i]) */
+/*         { */
+/*           pass = my_strcat(mini->tab[i], mini->current[0]); */
+/*           if (execve(pass, mini->current, mini->env) != -1) */
+/*             return(0); */
+/*         } */
+/*       my_printf("%s: Command not found\n", mini->current[0]); */
+/*       exit(0); */
+/*     } */
+/*   else */
+/*     wait(&status); */
+/*   return (0); */
+/* } */
+
+/* void	send(char **tab) */
+/* { */
+/*   int	i; */
+
+/*   i = 0; */
+/*   while (tab[i]) */
+/*     { */
+/*       if (strcmp(tab[i], ";")) */
+/* 	exec_comma(tab[i], tab[i + 1]); */
+/*       i++; */
+/*     } */
+/* } */
 
 char		*check_token(t_token **token, t_lex *lexi)
 {
@@ -80,4 +121,5 @@ void		parser(t_token **token)
   pars->tab[a] = strdup(epur_str(tok->value));
   a++;
   pars->tab[a] = NULL;
+  //send(pars->tab);
 }

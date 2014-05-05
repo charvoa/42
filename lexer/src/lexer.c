@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Fri Apr  4 13:56:53 2014 Nicolas Charvoz
-** Last update Mon May  5 11:02:44 2014 Nicolas Charvoz
+** Last update Mon May  5 14:51:19 2014 Nicolas Charvoz
 */
 
 #include "lexer.h"
@@ -82,7 +82,6 @@ int	lexer(char *cmd, t_token **token)
   lexi->cmd = epur_str(lexi->cmd);
   if (!(lexi->cmd[i]))
     {
-      printf("ligne vide, affichage prompt\n");
       return (0);
     }
   lex(lexi->cmd, token);
@@ -92,11 +91,7 @@ int	lexer(char *cmd, t_token **token)
       return (0);
     }
   else
-    {
-      printf("########\n");
-      parser(token);
-    }
-  printf("lexi->cmd error => %s|\n", lexi->cmd);
+    parser(token);
   free(lexi->cmd);
   free(lexi);
   return (0);
