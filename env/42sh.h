@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Fri Apr  4 12:16:42 2014 garcia antoine
-** Last update Mon May  5 15:17:47 2014 Nicolas Charvoz
+** Last update Mon May  5 16:03:54 2014 Nicolas Charvoz
 */
 
 #ifndef SHELL_H_
@@ -19,6 +19,7 @@ typedef struct s_42sh
   t_dlist	*env;
   char		*cmd;
   char		**path;
+  char		**envtab;
 }		t_42sh;
 
 int	isolate_name_and_value_from_env(char *env);

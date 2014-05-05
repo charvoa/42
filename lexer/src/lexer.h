@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Sat Apr  5 15:42:30 2014 Nicolas Charvoz
-** Last update Mon May  5 14:41:58 2014 Nicolas Charvoz
+** Last update Mon May  5 17:37:35 2014 Nicolas Charvoz
 */
 
 #ifndef _LEXER_H_
@@ -15,6 +15,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include "../../env/42sh.h"
 #include "../../env/listok.h"
 
 typedef	enum	s_tok
@@ -24,6 +25,7 @@ typedef	enum	s_tok
     TOKEN_COMMA,
     TOKEN_RED_L,
     TOKEN_RED_R,
+    TOKEN_DBL_L,
     TOKEN_DBL_R,
     TOKEN_AND,
     TOKEN_OR,
@@ -41,7 +43,7 @@ typedef	struct s_lex
 int	unk_check(char*, int, t_token**);
 int	word_check(char*, int, t_token**);
 void	lex(char*, t_token**);
-int	lexer(char*, t_token**);
+int	lexer(char*, t_token**, t_42sh *shell);
 /* USELESS.C */
 void	lexer_test(char*);
 /* CHECK1.C */

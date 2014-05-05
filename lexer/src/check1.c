@@ -5,19 +5,19 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Mon Apr 21 14:55:27 2014 Nicolas Charvoz
-** Last update Mon May  5 14:42:38 2014 Nicolas Charvoz
+** Last update Mon May  5 17:38:07 2014 Nicolas Charvoz
 */
 
 #include "lexer.h"
 
-# define CHECK_LETTER "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_0123456789 -./$?*[]"
+# define CHECK_LETTER "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_0123456789 -./$?*[]="
 
 int     check_letter(char c)
 {
   int   i;
   char  *str;
 
-  str = CHECK_LETTER;;
+  str = CHECK_LETTER;
   i = 0;
   while (str[i])
     {
@@ -30,9 +30,18 @@ int     check_letter(char c)
 
 int      red_l(char *str, int i, t_token **token)
 {
+  int   j;
+
+  j = i;
   while (str[i] == '<')
     {
-      *token = insert(*token, TOKEN_PIPE, "<", i);
+      if (str[j + 1] == '<')
+	{
+	  *token = insert(*token, TOKEN_DBL_R, "<<", i);
+	  i++;
+	}
+      else
+        *token = insert(*token, TOKEN_RED_R, "<", i);
       i++;
     }
   return (i);
@@ -47,11 +56,11 @@ int      red_r(char *str, int i, t_token **token)
     {
       if (str[j + 1] == '>')
 	{
-	  *token = insert(*token, TOKEN_OR, ">>", i);
+	  *token = insert(*token, TOKEN_DBL_R, ">>", i);
 	  i++;
 	}
       else
-        *token = insert(*token, TOKEN_PIPE, ">", i);
+        *token = insert(*token, TOKEN_RED_R, ">", i);
       i++;
     }
   return (i);

@@ -5,7 +5,7 @@
 ## Login   <charvo_a@epitech.net>
 ## 
 ## Started on  Mon Apr 21 15:01:55 2014 Nicolas Charvoz
-## Last update Mon May  5 15:16:23 2014 Nicolas Charvoz
+## Last update Mon May  5 17:40:22 2014 Nicolas Charvoz
 ##
 
 CC	= 	gcc
@@ -20,16 +20,18 @@ USELESS	=	-g3
 
 PARSER	=	./parser
 
+EXEC	=	./execution
+
 ENV	=	./env
 
-CFLAGS  += 	-Wextra -Wall -W 
+CFLAGS  += 	-Wextra -Wall -W
 CFLAGS	+=	-Wbad-function-cast -Wcast-align
 
 LMY	=	-L $(ENV)/libsources/ -lmy
 
 LIBTERM	=	-lncurses
 
-NAME	=	mysh
+NAME	=	pintade
 
 SRCS	=	$(TERM)/termcaps.c \
 		$(LEXER)/lexer.c \
@@ -47,6 +49,7 @@ SRCS	=	$(TERM)/termcaps.c \
 		$(ENV)/strtotab.c \
 		$(PARSER)/parser.c \
 		$(PARSER)/useless.c \
+		$(EXEC)/exec.c \
 
 OBJS	= 	$(SRCS:.c=.o)
 

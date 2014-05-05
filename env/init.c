@@ -1,11 +1,11 @@
 /*
 ** init.c for init in /home/garcia_t/rendu/42sh
-** 
+**
 ** Made by garcia antoine
 ** Login   <garcia_t@epitech.net>
-** 
+**
 ** Started on  Fri Apr  4 12:34:07 2014 garcia antoine
-** Last update Mon Apr 21 14:43:42 2014 garcia antoine
+** Last update Mon May  5 17:00:50 2014 Nicolas Charvoz
 */
 
 #include <stdlib.h>
@@ -33,4 +33,5 @@ int	create_my_env(t_42sh *shell, char **environ)
 void	init_my_shell(t_42sh *shell, char **env)
 {
   create_my_env(shell, env);
+  shell->envtab = list_to_tab(shell->env);
 }

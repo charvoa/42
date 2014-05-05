@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Mon May  5 15:20:22 2014 Nicolas Charvoz
-** Last update Mon May  5 15:26:30 2014 Nicolas Charvoz
+** Last update Mon May  5 17:30:48 2014 Nicolas Charvoz
 */
 
 #include <string.h>
@@ -54,7 +54,7 @@ char	**strtotab(char *str)
     {
       if (str[i] == ':' || str[i] == '\n')
         {
-          while (str[i++] == ':');
+          while (str[++i] == ':');
           a = a + 1;
           b = 0;
         }
