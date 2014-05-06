@@ -5,7 +5,11 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Mon Apr 28 10:43:54 2014 Nicolas Charvoz
+<<<<<<< Updated upstream
 ** Last update Tue May  6 13:55:28 2014 Nicolas Charvoz
+=======
+** Last update Mon May  5 13:54:59 2014 garcia antoine
+>>>>>>> Stashed changes
 */
 
 #ifndef PARSER_H_
@@ -17,6 +21,7 @@
 # include "../execution/exec.h"
 
 typedef	struct	s_pars	t_pars;
+
 struct	s_pars
 {
   char	**tab;

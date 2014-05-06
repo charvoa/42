@@ -5,7 +5,11 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Fri Apr  4 12:34:07 2014 garcia antoine
+<<<<<<< Updated upstream
 ** Last update Mon May  5 17:00:50 2014 Nicolas Charvoz
+=======
+** Last update Mon May  5 17:00:21 2014 garcia antoine
+>>>>>>> Stashed changes
 */
 
 #include <stdlib.h>

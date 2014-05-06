@@ -5,7 +5,11 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Mon Apr  7 16:15:48 2014 garcia antoine
+<<<<<<< Updated upstream
 ** Last update Tue May  6 13:54:38 2014 Nicolas Charvoz
+=======
+** Last update Mon May  5 17:00:34 2014 garcia antoine
+>>>>>>> Stashed changes
 */
 
 #include <sys/types.h>
