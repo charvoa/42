@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Mon Apr  7 16:15:48 2014 garcia antoine
-** Last update Mon May  5 17:02:49 2014 Nicolas Charvoz
+** Last update Tue May  6 13:54:38 2014 Nicolas Charvoz
 */
 
 #include <sys/types.h>
@@ -30,6 +30,8 @@ char	*read_line()
   if (nb == - 1)
     return (0);
   buffer[nb - 1] = '\0';
+  if (strcmp(buffer, "exit") == 0)
+    exit(0);
   cmd = strdup(buffer);
   free(buffer);
   return (cmd);

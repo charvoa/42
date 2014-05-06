@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Mon May  5 15:28:59 2014 Nicolas Charvoz
-** Last update Mon May  5 17:32:43 2014 Nicolas Charvoz
+** Last update Tue May  6 13:53:26 2014 Nicolas Charvoz
 */
 
 #include "exec.h"
@@ -41,7 +41,7 @@ int	exec_simple(char **cmd, char **path, char **env)
             return(0);
         }
       printf("%s: Command not found\n", cmd[0]);
-      return (0);
+      exit(0);
     }
   else
     wait(&status);
@@ -55,7 +55,7 @@ void	send(char **tab, char **path, char **env)
 
   i = 0;
   size = size_of_tab(tab);
-   while (tab[i])
+  while (tab[i])
     {
       if (size == 1)
 	{
@@ -64,7 +64,6 @@ void	send(char **tab, char **path, char **env)
       else
 	{
 	  printf("command too long\n");
-	  return ;
 	}
       i++;
     }
