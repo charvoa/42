@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 ** 
 ** Started on  Tue May  6 13:36:11 2014 garcia antoine
-** Last update Tue May  6 16:21:45 2014 garcia antoine
+** Last update Tue May  6 16:57:49 2014 garcia antoine
 */
 
 #include <stdlib.h>
@@ -98,9 +98,4 @@ int	redir_right(char **av, char **env)
     }
   else
     wait(&status);
-}
-
-int	main(int ac, char **av, char **env)
-{
-  redir_left(av);
 }
