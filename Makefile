@@ -5,7 +5,7 @@
 ## Login   <charvo_a@epitech.net>
 ## 
 ## Started on  Mon Apr 21 15:01:55 2014 Nicolas Charvoz
-## Last update Mon May  5 17:40:22 2014 Nicolas Charvoz
+## Last update Tue May  6 15:09:36 2014 Nicolas Charvoz
 ##
 
 CC	= 	gcc
@@ -50,6 +50,7 @@ SRCS	=	$(TERM)/termcaps.c \
 		$(PARSER)/parser.c \
 		$(PARSER)/useless.c \
 		$(EXEC)/exec.c \
+		$(EXEC)/pars.c \
 
 OBJS	= 	$(SRCS:.c=.o)
 
