@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Mon May  5 15:28:59 2014 Nicolas Charvoz
-** Last update Tue May  6 15:14:09 2014 Nicolas Charvoz
+** Last update Tue May  6 16:16:38 2014 Nicolas Charvoz
 */
 
 #include "exec.h"
@@ -27,7 +27,6 @@ int	exec_simple(char **cmd, char **path, char **env)
   pid_t	pid;
   char	*pass;
 
-  printf("%s\n", cmd[0]);
    /* if (check_builtin(mini) == 0) */
   /*   return(0); */
   i = -1;

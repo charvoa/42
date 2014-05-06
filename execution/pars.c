@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Tue May  6 15:05:52 2014 Nicolas Charvoz
-** Last update Tue May  6 15:38:59 2014 Nicolas Charvoz
+** Last update Tue May  6 16:17:07 2014 Nicolas Charvoz
 */
 
 #include "exec.h"
@@ -44,7 +44,6 @@ void    parser2(char *str, t_cmd* cmd)
   b = 0;
   i = 0;
   a = 0;
-  printf("tab[0] received : %s\n", str);
   cmd->args = malloc(sizeof(char*) * ((count_word2(str) + 1)));
   while (str[i] != '\n' && str[i] != '\0')
     {
