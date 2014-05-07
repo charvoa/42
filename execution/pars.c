@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Tue May  6 15:05:52 2014 Nicolas Charvoz
-** Last update Tue May  6 16:17:07 2014 Nicolas Charvoz
+** Last update Wed May  7 12:40:44 2014 Nicolas Charvoz
 */
 
 #include "exec.h"
@@ -13,8 +13,10 @@
 int     countchar2(char *str)
 {
   int   c;
-  c = -1;
-  while ((str[++c] != ' ') && (str[++c] != '\0') && (str[++c] != '\n'));
+
+  c = 0;
+  while ((str[c] != ' ') && (str[c] != '\0') && (str[c] != '\n'))
+    c++;
   c++;
   return (c);
 }

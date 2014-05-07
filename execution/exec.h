@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Mon May  5 15:33:03 2014 Nicolas Charvoz
-** Last update Tue May  6 15:11:33 2014 Nicolas Charvoz
+** Last update Wed May  7 12:27:39 2014 Nicolas Charvoz
 */
 
 #ifndef EXEC_H_
@@ -25,7 +25,7 @@ typedef	struct s_cmd
 
 /* EXEC.C */
 int	size_fo_tab(char**);
-void	send(char**, char**, char**);
+int	send(char**, char**, char**);
 int	exec_simple(char**, char**, char**);
 /* PARS.C */
 int	countchar2(char*);
