@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Tue May  6 15:05:52 2014 Nicolas Charvoz
-** Last update Thu May  8 16:46:11 2014 Nicolas Charvoz
+** Last update Thu May  8 16:54:15 2014 Nicolas Charvoz
 */
 
 #include "parser.h"
@@ -46,19 +46,15 @@ void    parser2(char *str, t_cmd *cmd)
   b = 0;
   i = 0;
   a = 0;
-  printf("malloc1\n");
   cmd->args = malloc((count_word2(str) + 1) * sizeof(char*));
-  printf("malloc2\n");
-  while (str[i] != '\n' && str[i] != '\0')
+   while (str[i] != '\n' && str[i] != '\0')
     {
       if (str[i] == ' ' || str[i] == '\n')
         while (str[i] == ' ')
           i++;
       if (str[i] != '\0')
         {
-	  printf("malloc3\n");
           cmd->args[a] = malloc(((countchar2(str + i) + 1)) * sizeof(char));
-	  printf("malloc4\n");
 	  cmd->args[a] = memset(cmd->args[a], 0, ((countchar2(str + i) + 1)));
           while ((str[i] != ' ')  && (str[i] != '\n') && (str[i] != '\0'))
             cmd->args[a][b++] = str[i++];
