@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Thu May  8 12:50:49 2014 Nicolas Charvoz
-** Last update Thu May  8 15:26:39 2014 garcia antoine
+** Last update Thu May  8 15:39:47 2014 garcia antoine
 */
 
 #include "parser.h"
@@ -27,7 +27,6 @@ void	fill_it(t_cmd cmd, char *str, char *sep)
     cmd.token = strdup(sep);
   else if (sep == NULL)
     cmd.token = NULL;
-   free(str);
    if (sep != NULL)
      free(sep);
 }
@@ -62,7 +61,8 @@ void		struct_fill(char **tab, t_token **token, t_42sh *shell)
       if (tab[i + 1] == NULL)
 	 {
 	   fill_it(cmd[j], tab[i], NULL);
-	   global_exec(cmd, shell);
+	   printf("%s\n", cmd[0].args[0]);
+	   // global_exec(cmd, shell);
 	   return ;
 	 }
        else
@@ -72,6 +72,6 @@ void		struct_fill(char **tab, t_token **token, t_42sh *shell)
 	   j += 1;
 	 }
     }
-  global_exec(cmd, shell);
+  //global_exec(cmd, shell);
   return ;
 }
