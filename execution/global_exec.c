@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 ** 
 ** Started on  Thu May  8 16:21:37 2014 garcia antoine
-** Last update Thu May  8 17:26:59 2014 garcia antoine
+** Last update Thu May  8 17:39:31 2014 garcia antoine
 */
 
 #include <unistd.h>
@@ -54,10 +54,14 @@ int	exec_cmd_simple(t_cmd *cmd, t_42sh *shell)
 
 void	global_exec(t_cmd *cmd, t_42sh *shell, int tok)
 {
+  int	i;
+
+  i = 0;
   while (tok != 0)
     {
       if (cmd->token == NULL || strcmp(cmd->token, ";") == 0)
-  	exec_cmd_simple(cmd, shell);
+  	exec_cmd_simple(&cmd[i], shell);
+      i++;
       tok--;
   }
 }
