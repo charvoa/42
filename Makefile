@@ -5,7 +5,7 @@
 ## Login   <charvo_a@epitech.net>
 ##
 ## Started on  Mon Apr 21 15:01:55 2014 Nicolas Charvoz
-## Last update Wed May  7 12:31:49 2014 Nicolas Charvoz
+## Last update Thu May  8 14:06:47 2014 Nicolas Charvoz
 ## Last update Mon May  5 16:59:08 2014 garcia antoine
 ##
 
@@ -49,9 +49,9 @@ SRCS	=	$(TERM)/termcaps.c	\
 		$(ENV)/util_env.c	\
 		$(ENV)/strtotab.c	\
 		$(PARSER)/parser.c	\
+		$(PARSER)/struct_fill.c	\
+		$(PARSER)/pars.c	\
 		$(PARSER)/useless.c	\
-		$(EXEC)/exec.c		\
-		$(EXEC)/pars.c		\
 
 OBJS	= 	$(SRCS:.c=.o)
 

@@ -5,11 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Mon Apr 28 10:34:31 2014 Nicolas Charvoz
-<<<<<<< Updated upstream
-** Last update Wed May  7 12:59:51 2014 Nicolas Charvoz
-=======
-** Last update Mon May  5 14:45:34 2014 garcia antoine
->>>>>>> Stashed changes
+** Last update Thu May  8 14:57:05 2014 Nicolas Charvoz
 */
 
 #include "parser.h"
@@ -58,7 +54,7 @@ int		size_of_list(t_token **token)
   return (i);
 }
 
-void		parser(t_token **token, t_42sh *shell)
+void		parser(t_token **token)
 {
   t_token	*tok;
   int		a;
@@ -69,7 +65,7 @@ void		parser(t_token **token, t_42sh *shell)
   pars = malloc(sizeof(*pars));
   pars->tab = malloc((size_of_list(token) + 2) * sizeof(char*));
   pars->tab = memset(pars->tab, '\0', (size_of_list(token) + 2));
-  while (tok->next)
+  while (tok->next != NULL)
     {
       pars->tab[a] = malloc((strlen(tok->value) + 2) * sizeof(char));
       pars->tab[a] = memset(pars->tab[a], '\0', (strlen(tok->value) + 2));
@@ -80,5 +76,5 @@ void		parser(t_token **token, t_42sh *shell)
   pars->tab[a] = strdup(epur_str(tok->value));
   a++;
   pars->tab[a] = NULL;
-  send(pars->tab, shell->path, shell->envtab);
+  struct_fill(pars->tab, token);
 }
