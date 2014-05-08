@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Thu May  8 12:50:49 2014 Nicolas Charvoz
-** Last update Thu May  8 15:39:47 2014 garcia antoine
+** Last update Thu May  8 15:54:42 2014 Nicolas Charvoz
 */
 
 #include "parser.h"
@@ -18,15 +18,15 @@ void	init_struct(t_cmd *cmd)
   cmd->fdout = 0;
 }
 
-void	fill_it(t_cmd cmd, char *str, char *sep)
+void	fill_it(t_cmd *cmd, char *str, char *sep)
 {
-  parser2(str, &cmd);
-  printf("cmd => %s\n", cmd.args[0]);
-  printf("args => %s\n", cmd.args[1]);
+  parser2(str, cmd);
+  printf("cmd => %s\n", cmd->args[0]);
+  printf("args => %s\n", cmd->args[1]);
   if (sep != NULL)
-    cmd.token = strdup(sep);
+    cmd->token = strdup(sep);
   else if (sep == NULL)
-    cmd.token = NULL;
+    cmd->token = NULL;
    if (sep != NULL)
      free(sep);
 }
@@ -60,14 +60,15 @@ void		struct_fill(char **tab, t_token **token, t_42sh *shell)
     {
       if (tab[i + 1] == NULL)
 	 {
-	   fill_it(cmd[j], tab[i], NULL);
-	   printf("%s\n", cmd[0].args[0]);
+	   fill_it(&cmd[j], tab[i], NULL);
+	   printf("%s\n", cmd[j].args[0]);
 	   // global_exec(cmd, shell);
 	   return ;
 	 }
        else
 	 {
-	   fill_it(cmd[j], tab[i], tab[i + 1]);
+	   fill_it(&cmd[j], tab[i], tab[i + 1]);
+	   printf("%s\n", cmd[j].args[0]);
 	   i += 2;
 	   j += 1;
 	 }
