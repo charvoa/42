@@ -6,7 +6,7 @@
 **
 ** Started on  Fri Apr  4 12:34:07 2014 garcia antoine
 <<<<<<< Updated upstream
-** Last update Mon May  5 17:00:50 2014 Nicolas Charvoz
+** Last update Thu May  8 17:00:08 2014 garcia antoine
 =======
 ** Last update Mon May  5 17:00:21 2014 garcia antoine
 >>>>>>> Stashed changes
@@ -36,6 +36,12 @@ int	create_my_env(t_42sh *shell, char **environ)
 
 void	init_my_shell(t_42sh *shell, char **env)
 {
+  char	*path;
+
   create_my_env(shell, env);
+  path  = get_env("PATH", shell->env);
+  if (path == NULL)
+    return (0);
+  shell->path = strtotab(path);
   shell->envtab = list_to_tab(shell->env);
 }
