@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Thu May  8 12:50:49 2014 Nicolas Charvoz
-** Last update Thu May  8 17:24:22 2014 Nicolas Charvoz
+** Last update Thu May  8 17:25:12 2014 Nicolas Charvoz
 */
 
 #include "parser.h"
@@ -42,8 +42,7 @@ int             nbr_of_token(t_token **token)
         i++;
       tok = tok->next;
     }
-  printf("i => %d\n", i);
-  return (i);
+   return (i);
 }
 
 void		struct_fill(char **tab, t_token **token, t_42sh *shell)
