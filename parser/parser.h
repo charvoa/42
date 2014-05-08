@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Mon Apr 28 10:43:54 2014 Nicolas Charvoz
-** Last update Thu May  8 15:04:36 2014 Nicolas Charvoz
+** Last update Thu May  8 15:18:14 2014 Nicolas Charvoz
 */
 
 #ifndef PARSER_H_
@@ -34,7 +34,7 @@ typedef	struct	s_cmd
 /* PARSER.C */
 
 char	*check_token(t_token**, t_lex*);
-void	parser(t_token**);
+void	parser(t_token**, t42sh*);
 int	size_of_list(t_token**);
 
 /* PARS.C */

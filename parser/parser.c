@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Mon Apr 28 10:34:31 2014 Nicolas Charvoz
-** Last update Thu May  8 15:04:26 2014 Nicolas Charvoz
+** Last update Thu May  8 15:17:07 2014 Nicolas Charvoz
 */
 
 #include "parser.h"
@@ -54,7 +54,7 @@ int		size_of_list(t_token **token)
   return (i);
 }
 
-void		parser(t_token **token)
+void		parser(t_token **token, t42sh *shell)
 {
   t_token	*tok;
   int		a;
@@ -76,5 +76,5 @@ void		parser(t_token **token)
   pars->tab[a] = strdup(epur_str(tok->value));
   a++;
   pars->tab[a] = NULL;
-  struct_fill(pars->tab, token);
+  struct_fill(pars->tab, token, shell);
 }
