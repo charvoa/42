@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Mon Apr 28 10:34:31 2014 Nicolas Charvoz
-** Last update Thu May  8 15:17:07 2014 Nicolas Charvoz
+** Last update Thu May  8 15:23:36 2014 garcia antoine
 */
 
 #include "parser.h"
@@ -54,7 +54,7 @@ int		size_of_list(t_token **token)
   return (i);
 }
 
-void		parser(t_token **token, t42sh *shell)
+void		parser(t_token **token, t_42sh *shell)
 {
   t_token	*tok;
   int		a;
