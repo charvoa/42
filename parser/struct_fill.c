@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Thu May  8 12:50:49 2014 Nicolas Charvoz
-** Last update Thu May  8 17:27:28 2014 garcia antoine
+** Last update Thu May  8 17:35:40 2014 Nicolas Charvoz
 */
 
 #include "parser.h"
@@ -36,13 +36,13 @@ int             nbr_of_token(t_token **token)
 
   i = 0;
   tok = *token;
-  while (tok->next != NULL)
+  while (tok)
     {
-      if (tok->next != TOKEN_WORD)
-        i++;
+      if (tok->type > 0)
+	i = i + 1;
       tok = tok->next;
     }
-   return (i);
+  return (i);
 }
 
 void		struct_fill(char **tab, t_token **token, t_42sh *shell)
@@ -50,16 +50,18 @@ void		struct_fill(char **tab, t_token **token, t_42sh *shell)
   t_cmd		*cmd;
   int		i;
   int		j;
+  int		count;
 
   j = 0;
   i = 0;
-  cmd = malloc((nbr_of_token(token) + 1) * sizeof(*cmd));
+  count = nbr_of_token(token);
+  cmd = malloc((count + 1) * sizeof(*cmd));
   while (tab[i])
     {
       if (tab[i + 1] == NULL)
 	 {
 	   fill_it(&cmd[j], tab[i], NULL);
-	   global_exec(cmd, shell, nbr_of_token(token) + 1);
+	   global_exec(cmd, shell, count + 1);
 	   return ;
 	 }
        else
@@ -69,6 +71,6 @@ void		struct_fill(char **tab, t_token **token, t_42sh *shell)
 	   j += 1;
 	 }
     }
-  global_exec(cmd, shell, nbr_of_token(token) + 1);
+  global_exec(cmd, shell, count + 1);
   return ;
 }
