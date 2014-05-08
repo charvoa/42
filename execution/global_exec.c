@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 ** 
 ** Started on  Thu May  8 16:21:37 2014 garcia antoine
-** Last update Thu May  8 16:50:08 2014 garcia antoine
+** Last update Thu May  8 17:06:36 2014 garcia antoine
 */
 
 #include <unistd.h>
@@ -29,7 +29,9 @@ void	check_cmd(t_cmd *cmd, t_42sh *shell)
 {
   int	check;
 
-  check =  access(cmd->args[0], X_OK);
+  check = access(cmd->args[0], X_OK);
+  if (check == 0)
+    execve(cmd->args[0], cmd->args, shell->envtab);
 }
 
 int	exec_cmd_simple(t_cmd *cmd, t_42sh *shell)
