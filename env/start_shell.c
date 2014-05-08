@@ -6,7 +6,7 @@
 **
 ** Started on  Mon Apr  7 16:15:48 2014 garcia antoine
 <<<<<<< Updated upstream
-** Last update Wed May  7 13:00:43 2014 Nicolas Charvoz
+** Last update Thu May  8 15:05:28 2014 Nicolas Charvoz
 =======
 ** Last update Mon May  5 17:00:34 2014 garcia antoine
 >>>>>>> Stashed changes
@@ -51,7 +51,7 @@ int	start_shell(t_42sh *shell)
       token = NULL;
       prompt(shell);
       shell->cmd = read_line();
-      lexer(shell->cmd, &token, shell);
+      lexer(shell->cmd, &token);
       free_my_tok(token);
     }
   return (0);

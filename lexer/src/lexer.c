@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Fri Apr  4 13:56:53 2014 Nicolas Charvoz
-** Last update Wed May  7 13:00:03 2014 Nicolas Charvoz
+** Last update Thu May  8 15:05:04 2014 Nicolas Charvoz
 */
 
 #include "lexer.h"
@@ -70,7 +70,7 @@ void	lex(char *str, t_token **token)
     }
 }
 
-int	lexer(char *cmd, t_token **token, t_42sh *shell)
+int	lexer(char *cmd, t_token **token)
 {
   int	i;
   char	*error;
@@ -91,7 +91,7 @@ int	lexer(char *cmd, t_token **token, t_42sh *shell)
       return (0);
     }
   else
-    parser(token, shell);
+    parser(token);
   free(lexi->cmd);
   free(lexi);
   return (0);
