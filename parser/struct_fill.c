@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Thu May  8 12:50:49 2014 Nicolas Charvoz
-** Last update Thu May  8 16:02:22 2014 Nicolas Charvoz
+** Last update Thu May  8 16:49:30 2014 Nicolas Charvoz
 */
 
 #include "parser.h"
@@ -55,7 +55,7 @@ void		struct_fill(char **tab, t_token **token, t_42sh *shell)
 
   j = 0;
   i = 0;
-  cmd = malloc(nbr_of_token(token) * sizeof(*cmd));
+  cmd = malloc((nbr_of_token(token) + 1) * sizeof(*cmd));
   while (tab[i])
     {
       if (tab[i + 1] == NULL)
