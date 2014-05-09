@@ -5,27 +5,13 @@
 ** Login   <garcia_t@epitech.net>
 ** 
 ** Started on  Fri May  9 10:27:51 2014 garcia antoine
-** Last update Fri May  9 12:51:43 2014 garcia antoine
+** Last update Fri May  9 13:27:20 2014 garcia antoine
 */
 
 #include <sys/types.h> 
 #include <sys/wait.h>
 #include <unistd.h>
 #include "../parser/parser.h"
-
-void    exec_cmd(t_cmd *cmd, t_42sh *shell)
-{
-  int   i;
-  char  *path;
-
-  i = 0;
-  while(shell->path[i])
-    {
-      path = strcat(shell->path[i], cmd->args[0]);
-      execve(path, cmd->args, shell->envtab);
-      i++;
-    }
-}
 
 int    check_cmd(t_cmd *cmd, t_42sh *shell)
 {
@@ -39,6 +25,21 @@ int    check_cmd(t_cmd *cmd, t_42sh *shell)
   return (0);
 }
 
+void    exec_cmd(t_cmd *cmd, t_42sh *shell)
+{
+  int   i;
+  char  *path;
+
+  i = 0;
+  check_cmd(cmd, shell);
+  while(shell->path[i])
+    {
+      path = strcat(shell->path[i], cmd->args[0]);
+      execve(path, cmd->args, shell->envtab);
+      i++;
+    }
+}
+
 int     exec_cmd_simple(t_cmd *cmd, t_42sh *shell)
 {
   int   pid;
@@ -49,7 +50,6 @@ int     exec_cmd_simple(t_cmd *cmd, t_42sh *shell)
     return (0);
   if (pid == 0)
     {
-      check_cmd(cmd, shell);
       exec_cmd(cmd, shell);
       exit(1);
     }

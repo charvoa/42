@@ -5,7 +5,7 @@
 ## Login   <charvo_a@epitech.net>
 ##
 ## Started on  Mon Apr 21 15:01:55 2014 Nicolas Charvoz
-## Last update Fri May  9 10:28:39 2014 garcia antoine
+## Last update Fri May  9 13:07:36 2014 garcia antoine
 ## Last update Mon May  5 16:59:08 2014 garcia antoine
 ##
 
@@ -54,6 +54,7 @@ SRCS	=	$(TERM)/termcaps.c	\
 		$(PARSER)/useless.c	\
 		$(EXEC)/global_exec.c	\
 		$(EXEC)/exec_simple_cmd.c \
+		$(EXEC)/redirections.c	\
 
 OBJS	= 	$(SRCS:.c=.o)
 
