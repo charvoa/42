@@ -5,10 +5,11 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Thu May  8 12:50:49 2014 Nicolas Charvoz
-** Last update Thu May  8 17:35:40 2014 Nicolas Charvoz
+** Last update Fri May  9 12:49:32 2014 Nicolas Charvoz
 */
 
 #include "parser.h"
+#include "../execution/execution.h"
 
 void	init_struct(t_cmd *cmd)
 {
