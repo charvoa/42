@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 ** 
 ** Started on  Tue May  6 13:36:11 2014 garcia antoine
-** Last update Fri May  9 13:29:13 2014 garcia antoine
+** Last update Fri May  9 17:23:14 2014 garcia antoine
 */
 
 #include <stdlib.h>
@@ -37,7 +37,7 @@ int	double_redir_left(char *av)
   return (0);
 }
 
-int	redir_left(char **av)
+int	redir_left(t_cmd *cmd, t_cmd *cmd2, t_42sh *shell)
 {
   int	pid;
   int	fd;
@@ -48,14 +48,14 @@ int	redir_left(char **av)
     return (0);
   if (pid == 0)
     {
-      fd = open(av[1], O_RDONLY);
+      fd = open(cmd2->args[0], O_RDONLY);
       if (fd == -1)
 	{
 	  printf("file doesn't exist\n");
 	  exit(0);
 	}
       dup2(fd, 0);
-      execlp("sort", "sort", NULL);
+      exec_cmd(cmd, shell);
       exit(1);
     }
   else
@@ -105,4 +105,14 @@ int	redir_right(t_cmd *cmd, t_cmd *cmd2, t_42sh *shell)
   else
     wait(&status);
   return (0);
+}
+
+int	redirections(t_cmd *cmd, t_cmd *cmd2, t_42sh *shell)
+{
+  if (!strcmp(cmd->token, ">"))
+      redir_right(cmd, cmd2, shell);
+  else if (!strcmp(cmd->token, ">>"))
+    double_redir_right(cmd, cmd2, shell);
+  else if (!strcmp(cmd->token, "<"))
+    redir_left(cmd, cmd2, shell);
 }
