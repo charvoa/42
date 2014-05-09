@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Thu May  8 12:50:49 2014 Nicolas Charvoz
-** Last update Thu May  8 15:54:42 2014 Nicolas Charvoz
+** Last update Thu May  8 17:35:40 2014 Nicolas Charvoz
 */
 
 #include "parser.h"
@@ -21,8 +21,6 @@ void	init_struct(t_cmd *cmd)
 void	fill_it(t_cmd *cmd, char *str, char *sep)
 {
   parser2(str, cmd);
-  printf("cmd => %s\n", cmd->args[0]);
-  printf("args => %s\n", cmd->args[1]);
   if (sep != NULL)
     cmd->token = strdup(sep);
   else if (sep == NULL)
@@ -38,10 +36,10 @@ int             nbr_of_token(t_token **token)
 
   i = 0;
   tok = *token;
-  while (tok->next != NULL)
+  while (tok)
     {
-      if (tok->next != TOKEN_WORD)
-        i++;
+      if (tok->type > 0)
+	i = i + 1;
       tok = tok->next;
     }
   return (i);
@@ -52,27 +50,27 @@ void		struct_fill(char **tab, t_token **token, t_42sh *shell)
   t_cmd		*cmd;
   int		i;
   int		j;
+  int		count;
 
   j = 0;
   i = 0;
-  cmd = malloc(nbr_of_token(token) * sizeof(*cmd));
+  count = nbr_of_token(token);
+  cmd = malloc((count + 1) * sizeof(*cmd));
   while (tab[i])
     {
       if (tab[i + 1] == NULL)
 	 {
 	   fill_it(&cmd[j], tab[i], NULL);
-	   printf("%s\n", cmd[j].args[0]);
-	   // global_exec(cmd, shell);
+	   global_exec(cmd, shell, count + 1);
 	   return ;
 	 }
        else
 	 {
 	   fill_it(&cmd[j], tab[i], tab[i + 1]);
-	   printf("%s\n", cmd[j].args[0]);
 	   i += 2;
 	   j += 1;
 	 }
     }
-  //global_exec(cmd, shell);
+  global_exec(cmd, shell, count + 1);
   return ;
 }

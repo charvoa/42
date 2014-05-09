@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Fri Apr  4 12:20:14 2014 garcia antoine
-** Last update Wed May  7 13:01:07 2014 Nicolas Charvoz
+** Last update Thu May  8 16:58:52 2014 garcia antoine
 */
 
 #include <stdlib.h>
@@ -42,7 +42,6 @@ int	main(int ac, char **av, char **env)
   (void)	ac;
   (void)	av;
   init_my_shell(&shell, env);
-  shell.path = strtotab(get_env("PATH", shell.env));
   start_shell(&shell);
   free_struct_shell(&shell);
   return (0);
