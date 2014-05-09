@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 ** 
 ** Started on  Fri May  9 10:27:51 2014 garcia antoine
-** Last update Fri May  9 10:27:56 2014 garcia antoine
+** Last update Fri May  9 11:21:05 2014 garcia antoine
 */
 
 #include <unistd.h>
@@ -25,7 +25,7 @@ void    exec_cmd(t_cmd *cmd, t_42sh *shell)
     }
 }
 
-void    check_cmd(t_cmd *cmd, t_42sh *shell)
+int    check_cmd(t_cmd *cmd, t_42sh *shell)
 {
   int   check;
 
@@ -34,6 +34,7 @@ void    check_cmd(t_cmd *cmd, t_42sh *shell)
     return (0);
   if (check == 0)
     execve(cmd->args[0], cmd->args, shell->envtab);
+  return (0);
 }
 
 int     exec_cmd_simple(t_cmd *cmd, t_42sh *shell)
@@ -52,4 +53,5 @@ int     exec_cmd_simple(t_cmd *cmd, t_42sh *shell)
     }
   else
     wait(&status);
+  return (0);
 }
