@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Fri Apr  4 12:16:42 2014 garcia antoine
-** Last update Mon May  5 16:03:54 2014 Nicolas Charvoz
+** Last update Fri May  9 11:17:18 2014 garcia antoine
 */
 
 #ifndef SHELL_H_
@@ -29,7 +29,7 @@ char	*get_env(char *name, t_dlist *env);
 char	**list_to_tab(t_dlist *env);
 void    prompt(t_42sh *shell);
 int	start_shell(t_42sh *shell);
-void	init_my_shell(t_42sh *shell, char **env);
+int	init_my_shell(t_42sh *shell, char **env);
 void	my_clear();
 char	**strtotab(char*);
 int	count_word(char*);

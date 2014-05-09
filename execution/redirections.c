@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 ** 
 ** Started on  Tue May  6 13:36:11 2014 garcia antoine
-** Last update Tue May  6 16:57:49 2014 garcia antoine
+** Last update Fri May  9 13:29:13 2014 garcia antoine
 */
 
 #include <stdlib.h>
@@ -13,7 +13,10 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/stat.h>
+#include <sys/wait.h>
 #include <fcntl.h>
+#include "../parser/parser.h"
+#include "execution.h"
 
 int	double_redir_left(char *av)
 {
@@ -31,6 +34,7 @@ int	double_redir_left(char *av)
     }
   else
     wait(&status);
+  return (0);
 }
 
 int	redir_left(char **av)
@@ -56,9 +60,10 @@ int	redir_left(char **av)
     }
   else
     wait(&status);
+  return (0);
 }
 
-int	double_redir_right(char **av)
+int	double_redir_right(t_cmd *cmd, t_cmd *cmd2, t_42sh *shell)
 {
   int	pid;
   int	fd;
@@ -69,17 +74,18 @@ int	double_redir_right(char **av)
     return (0);
   if (pid == 0)
     {
-      fd = open (av[1], O_WRONLY | O_CREAT | O_APPEND, 0666); 
+      fd = open(cmd2->args[0], O_WRONLY | O_CREAT | O_APPEND, 0666); 
       dup2(fd, 1);
       close(fd);
-      execlp("ls", "ls", NULL);
+      exec_cmd(cmd, shell);
       exit(1);
     }
   else
     wait(&status);
+  return (0);
 }
 
-int	redir_right(char **av, char **env)
+int	redir_right(t_cmd *cmd, t_cmd *cmd2, t_42sh *shell)
 {
   int	pid;
   int	fd;
@@ -90,12 +96,13 @@ int	redir_right(char **av, char **env)
     return (0);
   if (pid == 0)
     {
-      fd = creat(av[1], 0644);
+      fd = creat(cmd2->args[0], 0644);
       dup2(fd, 1);
       close(fd);
-      execlp("ls", "ls",  NULL);
+      exec_cmd(cmd, shell);
       exit(1);
     }
   else
     wait(&status);
+  return (0);
 }
