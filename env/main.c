@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Fri Apr  4 12:20:14 2014 garcia antoine
-** Last update Thu May  8 16:58:52 2014 garcia antoine
+** Last update Fri May  9 10:26:18 2014 garcia antoine
 */
 
 #include <stdlib.h>
@@ -33,6 +33,8 @@ void	free_struct_shell(t_42sh *shell)
     free_my_list(shell->env);
   if (shell->cmd != NULL)
     free(shell->cmd);
+  if (shell->path != NULL)
+    free_tab(shell->path);
 }
 
 int	main(int ac, char **av, char **env)
