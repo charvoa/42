@@ -5,9 +5,11 @@
 ** Login   <garcia_t@epitech.net>
 ** 
 ** Started on  Fri May  9 10:27:51 2014 garcia antoine
-** Last update Fri May  9 11:21:05 2014 garcia antoine
+** Last update Fri May  9 12:51:43 2014 garcia antoine
 */
 
+#include <sys/types.h> 
+#include <sys/wait.h>
 #include <unistd.h>
 #include "../parser/parser.h"
 
