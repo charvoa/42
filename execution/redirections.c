@@ -1,11 +1,11 @@
 /*
 ** test.c for test in /home/garcia_t
-** 
+**
 ** Made by garcia antoine
 ** Login   <garcia_t@epitech.net>
-** 
+**
 ** Started on  Tue May  6 13:36:11 2014 garcia antoine
-** Last update Fri May  9 17:23:14 2014 garcia antoine
+** Last update Mon May 12 17:32:38 2014 Nicolas Charvoz
 */
 
 #include <stdlib.h>
@@ -18,24 +18,24 @@
 #include "../parser/parser.h"
 #include "execution.h"
 
-int	double_redir_left(char *av)
-{
-  int	pid;
-  int	status;
-  char	*buffer;
+/* int	double_redir_left(char *av) */
+/* { */
+/*   int	pid; */
+/*   int	status; */
+/*   char	*buffer; */
 
-  buffer = malloc(4096 * sizeof(char));
-  pid = fork();
-  if (pid == - 1)
-    return (0);
-  if (pid == 0)
-    {
-      
-    }
-  else
-    wait(&status);
-  return (0);
-}
+/*   buffer = malloc(4096 * sizeof(char)); */
+/*   pid = fork(); */
+/*   if (pid == - 1) */
+/*     return (0); */
+/*   if (pid == 0) */
+/*     { */
+
+/*     } */
+/*   else */
+/*     wait(&status); */
+/*   return (0); */
+/* } */
 
 int	redir_left(t_cmd *cmd, t_cmd *cmd2, t_42sh *shell)
 {
@@ -74,7 +74,7 @@ int	double_redir_right(t_cmd *cmd, t_cmd *cmd2, t_42sh *shell)
     return (0);
   if (pid == 0)
     {
-      fd = open(cmd2->args[0], O_WRONLY | O_CREAT | O_APPEND, 0666); 
+      fd = open(cmd2->args[0], O_WRONLY | O_CREAT | O_APPEND, 0666);
       dup2(fd, 1);
       close(fd);
       exec_cmd(cmd, shell);
@@ -115,4 +115,5 @@ int	redirections(t_cmd *cmd, t_cmd *cmd2, t_42sh *shell)
     double_redir_right(cmd, cmd2, shell);
   else if (!strcmp(cmd->token, "<"))
     redir_left(cmd, cmd2, shell);
+  return (0);
 }

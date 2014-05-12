@@ -1,23 +1,18 @@
 /*
 ** error_gest.c for 4deush in /home/girard_s/rendu/42/execution/pipes
-** 
+**
 ** Made by Nicolas Girardot
 ** Login   <girard_s@epitech.net>
-** 
+**
 ** Started on  Wed May  7 13:31:59 2014 Nicolas Girardot
-** Last update Fri May  9 17:33:55 2014 Nicolas Girardot
+** Last update Mon May 12 17:36:58 2014 Nicolas Charvoz
 */
 
-#include "pipes.h"
 #include <stdio.h>
 #include <string.h>
+#include "pipe.h"
 
-void	my_putchar(char a)
-{
-  write (1, &a, 1);
-}
-
-char	*prompt()
+char	*prompt_2()
 {
   char	*buffer;
   char	*final;
@@ -59,5 +54,5 @@ char	*prompt()
 
 int	main()
 {
-  prompt();
+  prompt_2();
 }

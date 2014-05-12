@@ -5,11 +5,12 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Wed Apr  2 11:26:34 2014 Nicolas Charvoz
-** Last update Thu May  1 22:54:52 2014 Serge Heitzler
+** Last update Mon May 12 17:36:17 2014 Nicolas Charvoz
 */
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "pipe.h"
 
 void	*xmalloc(int size)
 {
