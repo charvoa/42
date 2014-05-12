@@ -5,7 +5,7 @@
 ## Login   <charvo_a@epitech.net>
 ##
 ## Started on  Mon Apr 21 15:01:55 2014 Nicolas Charvoz
-## Last update Fri May  9 13:07:36 2014 garcia antoine
+## Last update Mon May 12 13:28:06 2014 Nicolas Girardot
 ## Last update Mon May  5 16:59:08 2014 garcia antoine
 ##
 
@@ -21,6 +21,8 @@ USELESS	=	-g3
 
 PARSER	=	./parser
 
+PIPE	=	./pipe
+
 EXEC	=	./execution
 
 ENV	=	./env
@@ -34,27 +36,28 @@ LIBTERM	=	-lncurses
 
 NAME	=	42sh
 
-SRCS	=	$(TERM)/termcaps.c	\
-		$(LEXER)/lexer.c	\
-		$(LEXER)/check1.c	\
-		$(LEXER)/check2.c	\
-		$(LEXER)/epur_str.c	\
-		$(LEXER)/useless.c	\
-		$(ENV)/dlist.c		\
-		$(ENV)/init.c		\
-		$(ENV)/list.c		\
-		$(ENV)/main.c		\
-		$(ENV)/prompt.c		\
-		$(ENV)/start_shell.c	\
-		$(ENV)/util_env.c	\
-		$(ENV)/strtotab.c	\
-		$(PARSER)/parser.c	\
-		$(PARSER)/struct_fill.c	\
-		$(PARSER)/pars.c	\
-		$(PARSER)/useless.c	\
-		$(EXEC)/global_exec.c	\
-		$(EXEC)/exec_simple_cmd.c \
-		$(EXEC)/redirections.c	\
+SRCS	=	$(TERM)/termcaps.c		\
+		$(LEXER)/lexer.c		\
+		$(LEXER)/check1.c		\
+		$(LEXER)/check2.c		\
+		$(LEXER)/epur_str.c		\
+		$(LEXER)/useless.c		\
+		$(ENV)/dlist.c			\
+		$(ENV)/init.c			\
+		$(ENV)/list.c			\
+		$(ENV)/main.c			\
+		$(ENV)/prompt.c			\
+		$(ENV)/start_shell.c		\
+		$(ENV)/util_env.c		\
+		$(ENV)/strtotab.c		\
+		$(PARSER)/parser.c		\
+		$(PARSER)/struct_fill.c		\
+		$(PARSER)/pars.c		\
+		$(PARSER)/useless.c		\
+		$(EXEC)/global_exec.c		\
+		$(EXEC)/exec_simple_cmd.c	\
+		$(EXEC)/redirections.c		\
+		$(PIPE)/pipes.c			\
 
 OBJS	= 	$(SRCS:.c=.o)
 
