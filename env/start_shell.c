@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Mon Apr  7 16:15:48 2014 garcia antoine
-** Last update Mon May 12 13:35:55 2014 Nicolas Charvoz
+** Last update Mon May 12 16:17:32 2014 Nicolas Charvoz
 */
 
 #include <sys/types.h>
@@ -17,7 +17,7 @@
 #include "listok.h"
 #include "../lexer/src/lexer.h"
 
-char	*read_line()
+char	*read_line(int fd)
 {
   int	nb;
   char	*buffer;
@@ -32,9 +32,15 @@ char	*read_line()
     return (0);
   buffer[nb - 1] = '\0';
   if (strcmp(buffer, "exit") == 0)
-    exit(0);
+    {
+      remove(".hist42sh");
+      exit(0);
+    }
   cmd = strdup(buffer);
   free(buffer);
+  cmd = epur_str(cmd);
+  write(fd, cmd, strlen(cmd));
+  write(fd, "\n", 1);
   return (cmd);
 }
 
@@ -43,14 +49,13 @@ int	start_shell(t_42sh *shell)
   t_token	*token;
   int		fd;
 
-  fd = open(".history", O_CREAT);
+  fd = creat(".hist42sh", 0644);
   my_clear();
-  printf("fd du file history => %d\n", fd);
   while (1)
     {
       token = NULL;
       prompt(shell);
-      shell->cmd = read_line();
+      shell->cmd = read_line(fd);
       lexer(shell->cmd, &token, shell);
       free_my_tok(token);
     }
