@@ -5,16 +5,13 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Mon Apr  7 16:15:48 2014 garcia antoine
-<<<<<<< Updated upstream
-** Last update Thu May  8 15:19:08 2014 Nicolas Charvoz
-=======
-** Last update Mon May  5 17:00:34 2014 garcia antoine
->>>>>>> Stashed changes
+** Last update Mon May 12 13:35:55 2014 Nicolas Charvoz
 */
 
 #include <sys/types.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <fcntl.h>
 #include <string.h>
 #include "42sh.h"
 #include "listok.h"
@@ -31,7 +28,7 @@ char	*read_line()
   if (buffer == NULL)
     return (0);
   nb = read(0, buffer, 4095);
-  if (nb == - 1)
+  if (nb == -1)
     return (0);
   buffer[nb - 1] = '\0';
   if (strcmp(buffer, "exit") == 0)
@@ -44,8 +41,11 @@ char	*read_line()
 int	start_shell(t_42sh *shell)
 {
   t_token	*token;
+  int		fd;
 
+  fd = open(".history", O_CREAT);
   my_clear();
+  printf("fd du file history => %d\n", fd);
   while (1)
     {
       token = NULL;
