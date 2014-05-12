@@ -1,14 +1,14 @@
 /*
 ** exec_simple_cmd.c for exec_simple_cmd in /home/garcia_t/42/execution
-** 
+**
 ** Made by garcia antoine
 ** Login   <garcia_t@epitech.net>
-** 
+**
 ** Started on  Fri May  9 10:27:51 2014 garcia antoine
-** Last update Fri May  9 14:43:37 2014 Nicolas Girardot
+** Last update Mon May 12 16:35:07 2014 Nicolas Girardot
 */
 
-#include <sys/types.h> 
+#include <sys/types.h>
 #include <sys/wait.h>
 #include <unistd.h>
 #include "../parser/parser.h"
@@ -56,6 +56,6 @@ int     exec_cmd_simple(t_cmd *cmd, t_42sh *shell)
   else
     wait(&status);
   if(status == 11)
-    printf("Segmentation Fault\n");
+    printf("Segmentation_Fault\n");
   return (0);
 }
