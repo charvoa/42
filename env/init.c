@@ -6,7 +6,7 @@
 **
 ** Started on  Fri Apr  4 12:34:07 2014 garcia antoine
 <<<<<<< Updated upstream
-** Last update Fri May  9 11:18:02 2014 garcia antoine
+** Last update Tue May 13 14:01:39 2014 garcia antoine
 =======
 ** Last update Mon May  5 17:00:21 2014 garcia antoine
 >>>>>>> Stashed changes
@@ -15,30 +15,30 @@
 #include <stdlib.h>
 #include "42sh.h"
 
-int	create_my_env(t_42sh *shell, char **environ)
+t_dlist	*create_my_env(t_dlist *shell, char **environ)
 {
   int	i;
   char	*name;
   char	*value;
 
   i = 0;
-  if((shell->env = create_list()) == NULL)
+  if((shell = create_list()) == NULL)
     return (EXIT_FAILURE);
   while (environ[i])
     {
       name = get_name_from_env(environ[i]);
       value = get_value_from_env(environ[i]);
-      put_in_list(shell->env, name, value);
+      put_in_list(shell, name, value);
       i++;
     }
-  return (0);
+  return (shell);
 }
 
 int	init_my_shell(t_42sh *shell, char **env)
 {
   char	*path;
 
-  create_my_env(shell, env);
+  shell->env = create_my_env(shell->env, env);
   path  = get_env("PATH", shell->env);
   if (path == NULL)
     return (0);
