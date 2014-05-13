@@ -5,7 +5,11 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Fri May  9 10:27:51 2014 garcia antoine
+<<<<<<< Updated upstream
 ** Last update Mon May 12 16:35:07 2014 Nicolas Girardot
+=======
+** Last update Tue May 13 10:26:01 2014 garcia antoine
+>>>>>>> Stashed changes
 */
 
 #include <sys/types.h>
@@ -25,7 +29,7 @@ int    check_cmd(t_cmd *cmd, t_42sh *shell)
   return (0);
 }
 
-void    exec_cmd(t_cmd *cmd, t_42sh *shell)
+int    exec_cmd(t_cmd *cmd, t_42sh *shell)
 {
   int   i;
   char  *path;
@@ -38,6 +42,7 @@ void    exec_cmd(t_cmd *cmd, t_42sh *shell)
       execve(path, cmd->args, shell->envtab);
       i++;
     }
+  return (-1);
 }
 
 int     exec_cmd_simple(t_cmd *cmd, t_42sh *shell)
@@ -50,12 +55,17 @@ int     exec_cmd_simple(t_cmd *cmd, t_42sh *shell)
     return (0);
   if (pid == 0)
     {
-      exec_cmd(cmd, shell);
+      if(exec_cmd(cmd, shell) == - 1)
+	printf("Command not found\n");
       exit(1);
     }
   else
     wait(&status);
   if(status == 11)
+<<<<<<< Updated upstream
     printf("Segmentation_Fault\n");
+=======
+     printf("Segmentation Fault\n");
+>>>>>>> Stashed changes
   return (0);
 }

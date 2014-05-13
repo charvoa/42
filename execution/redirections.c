@@ -5,7 +5,11 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Tue May  6 13:36:11 2014 garcia antoine
+<<<<<<< Updated upstream
 ** Last update Mon May 12 17:32:38 2014 Nicolas Charvoz
+=======
+** Last update Fri May  9 18:32:33 2014 garcia antoine
+>>>>>>> Stashed changes
 */
 
 #include <stdlib.h>
@@ -97,6 +101,13 @@ int	redir_right(t_cmd *cmd, t_cmd *cmd2, t_42sh *shell)
   if (pid == 0)
     {
       fd = creat(cmd2->args[0], 0644);
+      if (fd == -1)
+	exit(1);
+      if(cmd2->args[0] == NULL)
+	{
+	  printf("erreur\n");
+	  exit(1);
+	}
       dup2(fd, 1);
       close(fd);
       exec_cmd(cmd, shell);
