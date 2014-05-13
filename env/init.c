@@ -6,7 +6,7 @@
 **
 ** Started on  Fri Apr  4 12:34:07 2014 garcia antoine
 <<<<<<< Updated upstream
-** Last update Tue May 13 14:01:39 2014 garcia antoine
+** Last update Tue May 13 14:39:02 2014 garcia antoine
 =======
 ** Last update Mon May  5 17:00:21 2014 garcia antoine
 >>>>>>> Stashed changes
@@ -23,7 +23,7 @@ t_dlist	*create_my_env(t_dlist *shell, char **environ)
 
   i = 0;
   if((shell = create_list()) == NULL)
-    return (EXIT_FAILURE);
+    return (NULL);
   while (environ[i])
     {
       name = get_name_from_env(environ[i]);
