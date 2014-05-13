@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 ** 
 ** Started on  Thu May  8 16:21:37 2014 garcia antoine
-** Last update Tue May 13 10:18:47 2014 garcia antoine
+** Last update Tue May 13 11:00:44 2014 garcia antoine
 */
 
 #include <unistd.h>
@@ -26,6 +26,7 @@ int	global_exec(t_cmd *cmd, t_42sh *shell, int tok)
       else if (!strcmp(cmd[i].token, ">") || !strcmp(cmd[i].token, ">>") || !strcmp(cmd[i].token, "<"))
 	{
 	  redirections(&cmd[i], &cmd[j + 1], shell);
+	  cmd->token++;
 	  j++;
 	}
       tok--;
