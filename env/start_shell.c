@@ -5,22 +5,19 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Mon Apr  7 16:15:48 2014 garcia antoine
-<<<<<<< Updated upstream
-** Last update Thu May  8 15:19:08 2014 Nicolas Charvoz
-=======
-** Last update Mon May  5 17:00:34 2014 garcia antoine
->>>>>>> Stashed changes
+** Last update Mon May 12 16:17:32 2014 Nicolas Charvoz
 */
 
 #include <sys/types.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <fcntl.h>
 #include <string.h>
 #include "42sh.h"
 #include "listok.h"
 #include "../lexer/src/lexer.h"
 
-char	*read_line()
+char	*read_line(int fd)
 {
   int	nb;
   char	*buffer;
@@ -31,26 +28,34 @@ char	*read_line()
   if (buffer == NULL)
     return (0);
   nb = read(0, buffer, 4095);
-  if (nb == - 1)
+  if (nb == -1)
     return (0);
   buffer[nb - 1] = '\0';
   if (strcmp(buffer, "exit") == 0)
-    exit(0);
+    {
+      remove(".hist42sh");
+      exit(0);
+    }
   cmd = strdup(buffer);
   free(buffer);
+  cmd = epur_str(cmd);
+  write(fd, cmd, strlen(cmd));
+  write(fd, "\n", 1);
   return (cmd);
 }
 
 int	start_shell(t_42sh *shell)
 {
   t_token	*token;
+  int		fd;
 
+  fd = creat(".hist42sh", 0644);
   my_clear();
   while (1)
     {
       token = NULL;
       prompt(shell);
-      shell->cmd = read_line();
+      shell->cmd = read_line(fd);
       lexer(shell->cmd, &token, shell);
       free_my_tok(token);
     }
