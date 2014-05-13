@@ -5,14 +5,12 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Fri Apr  4 12:20:14 2014 garcia antoine
-** Last update Fri May  9 12:57:33 2014 garcia antoine
+** Last update Tue May 13 14:33:46 2014 Nicolas Charvoz
 */
 
 #include <stdlib.h>
 #include "42sh.h"
 #include "listok.h"
-
-
 
 void	free_tab(char **tab)
 {
@@ -39,8 +37,6 @@ void	free_struct_shell(t_42sh *shell)
 
 int	main(int ac, char **av, char **env)
 {
-  t_42sh	shell;
-
   (void)	ac;
   (void)	av;
   init_my_shell(&shell, env);

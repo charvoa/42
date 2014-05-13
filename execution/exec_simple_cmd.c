@@ -6,7 +6,7 @@
 **
 ** Started on  Fri May  9 10:27:51 2014 garcia antoine
 <<<<<<< Updated upstream
-** Last update Tue May 13 10:44:57 2014 garcia antoine
+** Last update Tue May 13 15:10:23 2014 garcia antoine
 =======
 ** Last update Tue May 13 10:26:01 2014 garcia antoine
 >>>>>>> Stashed changes
@@ -36,6 +36,11 @@ int    exec_cmd(t_cmd *cmd, t_42sh *shell)
 
   i = 0;
   check_cmd(cmd, shell);
+  if (shell->path == NULL)
+    {
+      printf("Command not found\n");
+      return (0);
+    }
   while(shell->path[i])
     {
       path = strcat(shell->path[i], cmd->args[0]);
