@@ -6,7 +6,7 @@
 **
 ** Started on  Tue May  6 13:36:11 2014 garcia antoine
 <<<<<<< Updated upstream
-** Last update Tue May 13 12:06:04 2014 garcia antoine
+** Last update Tue May 13 14:51:40 2014 garcia antoine
 =======
 ** Last update Fri May  9 18:32:33 2014 garcia antoine
 >>>>>>> Stashed changes
@@ -120,7 +120,7 @@ int	redir_right(t_cmd *cmd, t_cmd *cmd2, t_42sh *shell)
 
 int	redirections(t_cmd *cmd, t_cmd *cmd2, t_42sh *shell)
 {
-  cmd->type = 1;
+  cmd2->type = 1;
   if (!strcmp(cmd->token, ">"))
     redir_right(cmd, cmd2, shell);
   else if (!strcmp(cmd->token, ">>"))

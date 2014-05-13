@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Fri Apr  4 12:16:42 2014 garcia antoine
-** Last update Fri May  9 11:17:18 2014 garcia antoine
+** Last update Tue May 13 14:38:40 2014 garcia antoine
 */
 
 #ifndef SHELL_H_
@@ -22,17 +22,19 @@ typedef struct s_42sh
   char		**envtab;
 }		t_42sh;
 
+extern	t_42sh	shell;
 int	isolate_name_and_value_from_env(char *env);
 char	*get_name_from_env(char *env);
 char	*get_value_from_env(char *env);
 char	*get_env(char *name, t_dlist *env);
 char	**list_to_tab(t_dlist *env);
-void    prompt(t_42sh *shell);
+void    prompt(t_42sh*);
 int	start_shell(t_42sh *shell);
 int	init_my_shell(t_42sh *shell, char **env);
 void	my_clear();
 char	**strtotab(char*);
 int	count_word(char*);
 int	count_char(char*);
+t_dlist *create_my_env(t_dlist *, char **);
 
 #endif /*SHELL_H_ */
