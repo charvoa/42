@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Mon Apr  7 16:15:48 2014 garcia antoine
-** Last update Tue May 13 14:35:49 2014 Nicolas Charvoz
+** Last update Tue May 13 15:28:29 2014 Nicolas Charvoz
 */
 
 #include <sys/types.h>
@@ -26,7 +26,6 @@ void	get_sigint(int sig)
   printf("\n");
   prompt(&shell);
 }
-
 
 char	*read_line(int fd)
 {
