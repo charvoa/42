@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Fri Apr  4 13:56:53 2014 Nicolas Charvoz
-** Last update Wed May 14 15:59:04 2014 Nicolas Charvoz
+** Last update Wed May 14 16:31:46 2014 Nicolas Charvoz
 */
 
 #include "lexer.h"
@@ -68,7 +68,6 @@ void	lex(char *str, t_token **token)
       i = word_check(str, i, token);
       i = check_unk(str, i, token);
     }
-  *token = insert(*token, TOKEN_END, "\0");
 }
 
 int	lexer(char *cmd, t_token **token, t_42sh *shell)

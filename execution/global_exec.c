@@ -5,11 +5,8 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Thu May  8 16:21:37 2014 garcia antoine
-<<<<<<< HEAD
-** Last update Wed May 14 15:58:12 2014 garcia antoine
-=======
-** Last update Wed May 14 14:32:41 2014 Nicolas Girardot
->>>>>>> c59b120f6e2be93a02bf453db16bcc9b31c4fadf
+** Last update Wed May 14 16:53:04 2014 Nicolas Charvoz
+
 */
 
 #include <unistd.h>
@@ -23,9 +20,10 @@ int	global_exec(t_cmd *cmd, t_42sh *shell, int tok)
   i = 0;
   while (tok != 0)
     {
-      if (cmd[i].token == NULL || !(strcmp(cmd[i].token, ";")) && cmd[i].type == 0)
+      if ((cmd[i].token == NULL || !(strcmp(cmd[i].token, ";"))) && (cmd[i].type == 0))
 	exec_cmd_simple(&cmd[i], shell);
-      else if (!strcmp(cmd[i].token, ">") || !strcmp(cmd[i].token, ">>") || !strcmp(cmd[i].token, "<"))
+      else if (cmd[i].token && (!strncmp(cmd[i].token, ">", 1)
+				|| !strncmp(cmd[i].token, ">>", 2) || !strncmp(cmd[i].token, "<", 1)))
 	redirections(&cmd[i], &cmd[i + 1], shell);
       i++;
       tok--;
