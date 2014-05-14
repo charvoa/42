@@ -6,7 +6,7 @@
 **
 ** Started on  Fri May  9 10:27:51 2014 garcia antoine
 <<<<<<< Updated upstream
-** Last update Wed May 14 17:36:08 2014 garcia antoine
+** Last update Wed May 14 19:40:25 2014 garcia antoine
 =======
 ** Last update Tue May 13 10:26:01 2014 garcia antoine
 >>>>>>> Stashed changes
@@ -16,6 +16,16 @@
 #include <sys/wait.h>
 #include <unistd.h>
 #include "../parser/parser.h"
+
+int	my_segfault(int status)
+{
+  if (WIFSIGNALED(status))
+    {
+      if (WTERMSIG(status) == SIGSEGV)
+	printf("my_segfault\n");
+    }
+  return (0);
+}
 
 int    check_cmd(t_cmd *cmd, t_42sh *shell)
 {
@@ -65,7 +75,6 @@ int     exec_cmd_simple(t_cmd *cmd, t_42sh *shell)
     }
   else
     wait(&cmd->status);
-  if(cmd->status == 11)
-    printf("Segmentation_Fault\n");
+  my_segfault(cmd->status);
   return (0);
 }
