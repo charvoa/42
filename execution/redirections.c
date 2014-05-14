@@ -6,7 +6,7 @@
 **
 ** Started on  Tue May  6 13:36:11 2014 garcia antoine
 <<<<<<< Updated upstream
-** Last update Wed May 14 17:11:01 2014 garcia antoine
+** Last update Wed May 14 17:37:49 2014 garcia antoine
 =======
 ** Last update Fri May  9 18:32:33 2014 garcia antoine
 >>>>>>> Stashed changes
@@ -45,7 +45,6 @@ int	redir_left(t_cmd *cmd, t_cmd *cmd2, t_42sh *shell)
 {
   int	pid;
   int	fd;
-  int	status;
 
   pid = fork();
   if (pid == -1)
@@ -63,7 +62,7 @@ int	redir_left(t_cmd *cmd, t_cmd *cmd2, t_42sh *shell)
       exit(1);
     }
   else
-    wait(&status);
+    wait(&cmd->status);
   return (0);
 }
 
@@ -71,7 +70,6 @@ int	double_redir_right(t_cmd *cmd, t_cmd *cmd2, t_42sh *shell)
 {
   int	pid;
   int	fd;
-  int	status;
 
   pid = fork();
   if (pid == -1)
@@ -85,7 +83,7 @@ int	double_redir_right(t_cmd *cmd, t_cmd *cmd2, t_42sh *shell)
       exit(1);
     }
   else
-    wait(&status);
+    wait(&cmd->status);
   return (0);
 }
 
@@ -93,7 +91,6 @@ int	redir_right(t_cmd *cmd, t_cmd *cmd2, t_42sh *shell)
 {
   int	pid;
   int	fd;
-  int	status;
 
   pid = fork();
   if (pid == -1)
@@ -114,7 +111,7 @@ int	redir_right(t_cmd *cmd, t_cmd *cmd2, t_42sh *shell)
       exit(1);
     }
   else
-    wait(&status);
+    wait(&cmd->status);
   return (0);
 }
 

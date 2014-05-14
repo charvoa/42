@@ -6,7 +6,7 @@
 **
 ** Started on  Fri May  9 10:27:51 2014 garcia antoine
 <<<<<<< Updated upstream
-** Last update Wed May 14 10:09:27 2014 garcia antoine
+** Last update Wed May 14 17:36:08 2014 garcia antoine
 =======
 ** Last update Tue May 13 10:26:01 2014 garcia antoine
 >>>>>>> Stashed changes
@@ -53,7 +53,6 @@ int    exec_cmd(t_cmd *cmd, t_42sh *shell)
 int     exec_cmd_simple(t_cmd *cmd, t_42sh *shell)
 {
   int   pid;
-  int   status;
 
   pid = fork();
   if (pid == -1)
@@ -65,8 +64,8 @@ int     exec_cmd_simple(t_cmd *cmd, t_42sh *shell)
       exit(1);
     }
   else
-    wait(&status);
-  if(status == 11)
+    wait(&cmd->status);
+  if(cmd->status == 11)
     printf("Segmentation_Fault\n");
   return (0);
 }
