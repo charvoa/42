@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Thu May  8 16:21:37 2014 garcia antoine
-** Last update Wed May 14 17:10:20 2014 garcia antoine
+** Last update Thu May 15 11:06:13 2014 heitzl_s
 
 */
 
@@ -25,6 +25,8 @@ int	global_exec(t_cmd *cmd, t_42sh *shell, int tok)
       else if (cmd[i].token && (!strncmp(cmd[i].token, ">", 1)
 				|| !strncmp(cmd[i].token, ">>", 2) || !strncmp(cmd[i].token, "<", 1)))
 	redirections(&cmd[i], &cmd[i + 1], shell);
+      else if (cmd[i].token && (!strcmp(cmd[i].token, "|")))
+	init_pipes(&cmd[i], &cmd[i + 1], shell);
       i++;
       tok--;
     }

@@ -1,12 +1,11 @@
 /*
-** pipes.c for 42sh in /home/girard_s/rendu/42/execution/pipes
+** pipes.c for pipes in /home/heitzl_s/test_zone/42/pipe
 **
-** Made by Nicolas Girardot
-** Login   <girard_s@epitech.net>
+** Made by heitzl_s
+** Login   <heitzl_s@epitech.net>
 **
-** Started on  Tue May  6 14:01:38 2014 Nicolas Girardot
-** Last update Wed May 14 14:37:13 2014 Nicolas Girardot
-** Last update Tue May 13 15:47:22 2014 heitzl_s
+** Started on  Wed May 14 15:05:12 2014 heitzl_s
+** Last update Thu May 15 11:06:59 2014 heitzl_s
 */
 
 #include <unistd.h>
@@ -16,40 +15,34 @@
 #include "../env/42sh.h"
 #include "pipe.h"
 
-int		init_pipes(t_cmd *cmd_1, t_cmd *cmd_2, t_42sh *shell)
+int             init_pipes(t_cmd *cmd_1, t_cmd *cmd_2, t_42sh *shell)
 {
-  pid_t		pid;
-  pid_t		pid2;
-  int		fd[2];
-  int		status;
+  pid_t         pid;
+  pid_t         pid2;
+  int           fd[2];
+  int           status;
 
   pipe(fd);
+  cmd_2->type = 1;
+  test(cmd_1, 0, fd[1], shell, fd[0]);
+  test(cmd_2, fd[0], 1, shell, fd[1]);
+  close(fd[0]);
+  close(fd[1]);
+  wait(&status);
+  wait(&status);
+}
+
+int	test(t_cmd *cmd, int fdi, int fdo, t_42sh *shell, int close_fd)
+{
+  pid_t	pid;
+
   pid = fork();
   if (pid == 0)
     {
-      printf("fils\n");
-      close(fd[0]);
-      dup2(fd[1], 1);
-      exec_cmd(cmd_1, shell);
+      dup2(fdo, 1);
+      dup2(fdi, 0);
+      close(close_fd);
+      exec_cmd(cmd, shell);
     }
-  else
-    {
-      printf("père\n");
-      wait(&status);
-      pid2 = fork();
-      close(fd[1]);
-      if (pid2 == 0)
-	{
-	  printf("fils du père\n");
-	  close(fd[1]);
-	  dup2(fd[0], 0);
-	  exec_cmd(cmd_2, shell);
-	}
-      else
-	{
-	  close(fd[0]);
-	  printf("père du père\n");
-	}
-    }
-  return (0);
+  return (pid);
 }
