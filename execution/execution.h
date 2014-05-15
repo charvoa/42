@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Fri May  9 11:18:26 2014 garcia antoine
-** Last update Mon May 12 17:31:39 2014 Nicolas Charvoz
+** Last update Thu May 15 15:49:42 2014 garcia antoine
 */
 
 #ifndef EXECUTION_H_
@@ -22,7 +22,7 @@ int	global_exec(t_cmd*, t_42sh*, int);
 
 /* exec_simple_cmd.c */
 int	check_cmd(t_cmd*, t_42sh*);
-void	exec_cmd(t_cmd*, t_42sh*);
+int	exec_cmd(t_cmd*, t_42sh*);
 int	exec_cmd_simple(t_cmd*, t_42sh*);
 
 #endif
