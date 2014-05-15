@@ -6,7 +6,7 @@
 **
 ** Started on  Fri May  9 10:27:51 2014 garcia antoine
 <<<<<<< Updated upstream
-** Last update Wed May 14 19:40:25 2014 garcia antoine
+** Last update Thu May 15 15:33:46 2014 garcia antoine
 =======
 ** Last update Tue May 13 10:26:01 2014 garcia antoine
 >>>>>>> Stashed changes
@@ -70,7 +70,7 @@ int     exec_cmd_simple(t_cmd *cmd, t_42sh *shell)
   if (pid == 0)
     {
       if(exec_cmd(cmd, shell) == - 1)
-	printf("Command not found\n");
+	printf("%s Command not found\n", cmd->args[0]);
       exit(1);
     }
   else
