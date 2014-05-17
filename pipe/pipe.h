@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Mon May 12 17:32:59 2014 Nicolas Charvoz
-** Last update Mon May 12 17:41:48 2014 Nicolas Charvoz
+** Last update Sat May 17 16:43:43 2014 heitzl_s
 */
 
 #ifndef PIPE_H_
@@ -17,7 +17,7 @@
 void	*xmalloc(int);
 
 /* pipes.c */
-int	init_pipes(t_cmd*, t_cmd*, t_42sh*);
+int	init_pipes(t_cmd*, t_cmd*, t_42sh*, int);
 void	exec_pipe(t_cmd*, int, t_42sh*);
 
 /* error_gest.c */
