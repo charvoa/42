@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Thu May  8 12:50:49 2014 Nicolas Charvoz
-** Last update Wed May 14 16:32:09 2014 Nicolas Charvoz
+** Last update Sat May 17 13:18:28 2014 Nicolas Charvoz
 */
 
 #include "parser.h"
@@ -35,6 +35,7 @@ int             nbr_of_token(t_token **token)
   t_token       *tok;
   int           i;
 
+  tok = malloc(sizeof(*tok));
   i = 0;
   tok = *token;
   while (tok)
@@ -56,7 +57,7 @@ void		struct_fill(char **tab, t_token **token, t_42sh *shell)
   j = 0;
   i = 0;
   count = nbr_of_token(token);
-  cmd = malloc((count + 1) * sizeof(*cmd));
+  cmd = calloc((count + 1), sizeof(*cmd));
   while (tab[i])
     {
       if (tab[i + 1] == NULL)
