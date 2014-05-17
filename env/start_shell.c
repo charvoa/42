@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Mon Apr  7 16:15:48 2014 garcia antoine
-** Last update Fri May 16 16:48:23 2014 Nicolas Charvoz
+** Last update Sat May 17 10:39:08 2014 Nicolas Charvoz
 */
 
 #include <sys/types.h>
@@ -25,6 +25,15 @@ void	get_sigint(int sig)
   sig = sig;
   printf("\n");
   prompt(&shell);
+}
+
+void	check_fork(char *cmd)
+{
+  if (strcmp(cmd, ":(){ :|: & };:") == 0)
+    {
+      printf("Fork bomb not availaible, please don't try to mess with The Pintade\n");
+      prompt(&shell);
+    }
 }
 
 char	*read_line(int fd)
@@ -51,6 +60,7 @@ char	*read_line(int fd)
   cmd = epur_str(cmd);
   write(fd, cmd, strlen(cmd));
   write(fd, "\n", 1);
+  check_fork(cmd);
   return (cmd);
 }
 
