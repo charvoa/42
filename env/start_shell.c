@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Mon Apr  7 16:15:48 2014 garcia antoine
-** Last update Sat May 17 10:39:08 2014 Nicolas Charvoz
+** Last update Sat May 17 10:53:30 2014 Nicolas Charvoz
 */
 
 #include <sys/types.h>
@@ -27,15 +27,6 @@ void	get_sigint(int sig)
   prompt(&shell);
 }
 
-void	check_fork(char *cmd)
-{
-  if (strcmp(cmd, ":(){ :|: & };:") == 0)
-    {
-      printf("Fork bomb not availaible, please don't try to mess with The Pintade\n");
-      prompt(&shell);
-    }
-}
-
 char	*read_line(int fd)
 {
   int	nb;
@@ -50,17 +41,11 @@ char	*read_line(int fd)
   if (nb == -1)
     return (0);
   buffer[nb - 1] = '\0';
-  if (strcmp(buffer, "exit") == 0)
-    {
-      remove(".hist42sh");
-      exit(0);
-    }
   cmd = strdup(buffer);
   free(buffer);
   cmd = epur_str(cmd);
   write(fd, cmd, strlen(cmd));
   write(fd, "\n", 1);
-  check_fork(cmd);
   return (cmd);
 }
 
