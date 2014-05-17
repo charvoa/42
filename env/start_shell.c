@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Mon Apr  7 16:15:48 2014 garcia antoine
-** Last update Sat May 17 15:49:54 2014 garcia antoine
+** Last update Sat May 17 15:51:45 2014 garcia antoine
 */
 
 #include <sys/types.h>
@@ -33,7 +33,7 @@ char	*cat_if_pipe(char *cmd)
   int	ret;
 
   buffer = calloc(4096, sizeof(char));
-  putchar('>');
+  my_putchar('>');
   ret = read(0, buffer, 4096);
   buffer[ret - 1] = '\0';
   cmd = strcat(cmd, buffer);
