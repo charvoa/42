@@ -6,7 +6,7 @@
 **
 ** Started on  Fri May  9 10:27:51 2014 garcia antoine
 <<<<<<< Updated upstream
-** Last update Thu May 15 15:33:46 2014 garcia antoine
+** Last update Sat May 17 15:29:21 2014 garcia antoine
 =======
 ** Last update Tue May 13 10:26:01 2014 garcia antoine
 >>>>>>> Stashed changes
@@ -75,6 +75,5 @@ int     exec_cmd_simple(t_cmd *cmd, t_42sh *shell)
     }
   else
     wait(&cmd->status);
-  my_segfault(cmd->status);
   return (0);
 }
