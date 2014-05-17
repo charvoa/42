@@ -1,58 +1,63 @@
 /*
-** epur_str.c for  in /home/charvo_a/42/lexer/src
+** epur_str.c for 42sh in /home/heitzl_s/42/lexer/src
 **
-** Made by Nicolas Charvoz
-** Login   <charvo_a@epitech.net>
+** Made by heitzl_s
+** Login   <heitzl_s@epitech.net>
 **
-** Started on  Mon Apr 28 10:10:40 2014 Nicolas Charvoz
-** Last update Wed May  7 11:05:27 2014 Nicolas Charvoz
+** Started on  Sat May 17 09:56:13 2014 heitzl_s
+** Last update Sat May 17 09:56:16 2014 heitzl_s
 */
 
-#include "lexer.h"
+#include <stdlib.h>
 
-char	*epur_str2(char *str, char *str2, int mabool, int i)
-{
-  int	j;
-
-  j = 0;
-  while (str[i])
-    {
-      if (str[i] == ' ' || str[i] == '\t')
-	{
-	  mabool = 1;
-	  while (str[i] == ' ' || str[i] == '\t')
-	    i++;
-	  if (str[i] == '\0')
-	    mabool = 0;
-	  str2[j] = ' ';
-	  j++;
-	}
-      if (mabool != 0)
-	{
-	  str2[j] = str[i];
-	  j++;
-	}
-      i++;
-    }
-  str2[j] = '\0';
-  return (str2);
-}
-
-char	*epur_str(char *str)
+int	malloc_epured(char *str)
 {
   int	i;
-  int	mabool;
-  char	*str2;
+  int	cpt;
 
-  str2 = malloc((strlen(str) + 1) * sizeof(char));
-  memset(str2, 0, (strlen(str) + 1));
+  cpt = 0;
   i = 0;
-  mabool = 0;
-  if (str[0] == ' ' || str[0] == '\t')
-    mabool = 1;
-  while ((str[i] == ' ' || str[i] == '\t') && mabool == 1)
+  while (str[i] == ' ')
     i++;
-  mabool = 1;
-  str2 = epur_str2(str, str2, mabool, i);
-  return (str2);
+  while (str[i] != '\0')
+    {
+      if ((str[i] == ' ' || str[i] == '\t') && str[i + 1] != '\0')
+	{
+	  cpt++;
+	  while (str[i] == ' ' || str[i] == '\t')
+	    i++;
+	}
+	if (str[i] != ' ' && str[i] != '\t')
+	  cpt++;
+      i++;
+    }
+  return (cpt);
+}
+
+char	*epur_str(char	*s)
+{
+  int	i;
+  int	x;
+  char	*new;
+
+  i = 0;
+  x = 0;
+  new = malloc((malloc_epured(s)) * sizeof(char));
+  while (s[i] == ' ')
+    i++;
+  while (s[i] != '\0')
+    {
+      if ((s[i] == ' ' || s[i] == '\t') && s[i + 1] != '\0')
+	{
+	  while (s[i] == ' ' || s[i] == '\t')
+	    i++;
+	  if (s[i] != '\0')
+	      new[x++] = ' ';
+	}
+      if (s[i] != ' ' && s[i] != '\t')
+	  new[x++] = s[i];
+      i++;
+    }
+  new[x] = '\0';
+  return (new);
 }
