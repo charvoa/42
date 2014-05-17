@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Mon Apr  7 16:15:48 2014 garcia antoine
-** Last update Sat May 17 10:53:30 2014 Nicolas Charvoz
+** Last update Sat May 17 15:00:46 2014 Nicolas Girardot
 */
 
 #include <sys/types.h>
@@ -27,6 +27,21 @@ void	get_sigint(int sig)
   prompt(&shell);
 }
 
+char	*cat_if_pipe(char *cmd)
+{
+  char	*buffer;
+  int	ret;
+
+  buffer = calloc(4096, sizeof(char));
+  my_putchar('>');
+  ret = read(0, buffer, 4096);
+  buffer[ret - 1] = '\0';
+  cmd = strcat(cmd, buffer);
+  if (cmd[strlen(cmd) - 1] == '|')
+    cmd = cat_if_pipe(cmd);
+  return (cmd);
+}
+
 char	*read_line(int fd)
 {
   int	nb;
@@ -44,6 +59,8 @@ char	*read_line(int fd)
   cmd = strdup(buffer);
   free(buffer);
   cmd = epur_str(cmd);
+  if (cmd[nb - 2] == '|')
+    cmd = cat_if_pipe(cmd);
   write(fd, cmd, strlen(cmd));
   write(fd, "\n", 1);
   return (cmd);
