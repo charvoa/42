@@ -5,7 +5,7 @@
 ## Login   <charvo_a@epitech.net>
 ##
 ## Started on  Mon Apr 21 15:01:55 2014 Nicolas Charvoz
-## Last update Thu May 15 11:09:45 2014 heitzl_s
+## Last update Sat May 17 16:20:42 2014 Nicolas Charvoz
 ## Last update Mon May  5 16:59:08 2014 garcia antoine
 ##
 
@@ -68,6 +68,7 @@ all:		$(NAME)
 
 $(NAME):	$(OBJS)
 		$(CC) $(OBJS) -o $(NAME) $(LMY) $(LIBTERM) $(LDFLAGS)
+		@(cat .txt/42sh.txt)
 
 clean:
 		$(RM) $(OBJS)
