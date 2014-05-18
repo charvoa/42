@@ -6,7 +6,7 @@
 **
 ** Started on  Tue May  6 13:36:11 2014 garcia antoine
 <<<<<<< Updated upstream
-** Last update Sun May 18 13:03:08 2014 garcia antoine
+** Last update Sun May 18 13:20:41 2014 garcia antoine
 =======
 ** Last update Fri May  9 18:32:33 2014 garcia antoine
 >>>>>>> Stashed changes
@@ -29,7 +29,7 @@ static int	open_my_file(char *name)
   if (access(name, F_OK) == -1 || access(name, R_OK) == -1)
     {
       if (access(name, F_OK) == -1)
-	fprintf(stderr, "42sh : %s : no such file or directory.\n", name);
+	fprintf(stderr, "42sh: %s: no such file or directory.\n", name);
       else
 	fprintf(stderr, "42sh: %s: don't have the permission to read the file.\n", name);
       return (-1);
