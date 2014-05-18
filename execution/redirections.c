@@ -6,7 +6,7 @@
 **
 ** Started on  Tue May  6 13:36:11 2014 garcia antoine
 <<<<<<< Updated upstream
-** Last update Wed May 14 17:37:49 2014 garcia antoine
+** Last update Sun May 18 13:00:06 2014 garcia antoine
 =======
 ** Last update Fri May  9 18:32:33 2014 garcia antoine
 >>>>>>> Stashed changes
@@ -22,24 +22,50 @@
 #include "../parser/parser.h"
 #include "execution.h"
 
-/* int	double_redir_left(char *av) */
-/* { */
-/*   int	pid; */
-/*   int	status; */
-/*   char	*buffer; */
+static int	open_my_file(char *name)
+{
+  int	fd;
 
-/*   buffer = malloc(4096 * sizeof(char)); */
-/*   pid = fork(); */
-/*   if (pid == - 1) */
-/*     return (0); */
-/*   if (pid == 0) */
-/*     { */
+  if (access(name, F_OK) == -1 || access(name, R_OK) == -1)
+    {
+      if (access(name, F_OK) == -1)
+	printf("%s : no such file or directory.\n", name);
+      else
+	printf("%s: don't have the permission to read the file.\n", name);
+      return (-1);
+    }
+  fd = open(name, O_RDONLY);
+  if (fd == - 1)
+    printf("open error.\n");
+  return (fd);
+}
 
-/*     } */
-/*   else */
-/*     wait(&status); */
-/*   return (0); */
-/* } */
+int	double_redir_left(t_cmd *cmd, t_cmd  *cmd2)
+{
+  int	pid;
+  int	status;
+  char	*buffer;
+  int	bool;
+  char	*final;
+
+  bool = 0;
+  buffer = malloc(4096 * sizeof(char));
+  pid = fork();
+  if (pid == - 1)
+    return (0);
+  if (pid == 0)
+    {
+      while (bool == 0)
+	{
+	  read(0, buffer, 4096);
+	  if (!strcmp(buffer, "coucou"))
+	    bool = 1;
+	}
+    }
+  else
+    wait(&status);
+  return (0);
+} 
 
 int	redir_left(t_cmd *cmd, t_cmd *cmd2, t_42sh *shell)
 {
@@ -51,12 +77,8 @@ int	redir_left(t_cmd *cmd, t_cmd *cmd2, t_42sh *shell)
     return (0);
   if (pid == 0)
     {
-      fd = open(cmd2->args[0], O_RDONLY);
-      if (fd == -1)
-	{
-	  printf("file doesn't exist\n");
-	  exit(0);
-	}
+      if (fd = open_my_file(cmd2->args[0]) == -1)
+	exit(-1);
       dup2(fd, 0);
       exec_cmd(cmd, shell);
       exit(1);
@@ -122,6 +144,8 @@ int	redirections(t_cmd *cmd, t_cmd *cmd2, t_42sh *shell)
     double_redir_right(cmd, cmd2, shell);
   else if (!strcmp(cmd->token, ">"))
     redir_right(cmd, cmd2, shell);
+  else if (!strcmp(cmd->token, "<<"))
+    double_redir_left(cmd, cmd2);
   else if (!strcmp(cmd->token, "<"))
     redir_left(cmd, cmd2, shell);
   return (0);
