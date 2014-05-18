@@ -5,7 +5,7 @@
 ## Login   <charvo_a@epitech.net>
 ##
 ## Started on  Mon Apr 21 15:01:55 2014 Nicolas Charvoz
-## Last update Sun May 18 15:40:40 2014 Nicolas Charvoz
+## Last update Sun May 18 15:48:32 2014 Nicolas Charvoz
 ## Last update Mon May  5 16:59:08 2014 garcia antoine
 ##
 
@@ -57,7 +57,7 @@ SRCS	=	$(TERM)/termcaps.c		\
 		$(EXEC)/global_exec.c		\
 		$(EXEC)/exec_simple_cmd.c	\
 		$(EXEC)/redirections.c		\
-		$(PIPE)/pipes.c			\
+		$(PIPE)/pipes.c
 
 
 OBJS	= 	$(SRCS:.c=.o)
@@ -98,3 +98,24 @@ garcia_t:
 group:		charvo_a heitzl_s girard_s audibe_l garcia_t
 
 .PHONY:		all clean fclean re charvo_a heitzl_s girard_s audibe_l garcia_t group
+
+.PRECIOUS:	$(TERM)/termcaps.c		\
+                $(LEXER)/lexer.c		\
+                $(LEXER)/check1.c		\
+		$(LEXER)/check2.c		\
+		$(LEXER)/epur_str.c		\
+                $(ENV)/dlist.c			\
+                $(ENV)/init.c			\
+		$(ENV)/list.c			\
+                $(ENV)/main.c			\
+		$(ENV)/prompt.c			\
+                $(ENV)/start_shell.c		\
+                $(ENV)/util_env.c		\
+		$(ENV)/strtotab.c		\
+                $(PARSER)/parser.c		\
+                $(PARSER)/struct_fill.c		\
+                $(PARSER)/pars.c		\
+                $(EXEC)/global_exec.c		\
+                $(EXEC)/exec_simple_cmd.c	\
+                $(EXEC)/redirections.c		\
+                $(PIPE)/pipes.c
