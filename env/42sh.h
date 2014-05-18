@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Fri Apr  4 12:16:42 2014 garcia antoine
-** Last update Tue May 13 14:38:40 2014 garcia antoine
+** Last update Sun May 18 13:05:10 2014 garcia antoine
 */
 
 #ifndef SHELL_H_
@@ -36,5 +36,6 @@ char	**strtotab(char*);
 int	count_word(char*);
 int	count_char(char*);
 t_dlist *create_my_env(t_dlist *, char **);
+void	my_putchar(char c);
 
 #endif /*SHELL_H_ */
