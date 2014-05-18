@@ -5,7 +5,7 @@
 ## Login   <charvo_a@epitech.net>
 ##
 ## Started on  Mon Apr 21 15:01:55 2014 Nicolas Charvoz
-## Last update Sun May 18 15:38:28 2014 Nicolas Charvoz
+## Last update Sun May 18 15:40:40 2014 Nicolas Charvoz
 ## Last update Mon May  5 16:59:08 2014 garcia antoine
 ##
 
@@ -69,7 +69,7 @@ all:		$(NAME)
 $(NAME):	$(OBJS)
 		$(CC) $(OBJS) -o $(NAME) $(LMY) $(LIBTERM) $(LDFLAGS)
 		echo $(CLEAR)
-		@(cat .txt/42sh.txt)
+		@(cat txt/42sh.txt)
 
 clean:
 		$(RM) $(OBJS)
@@ -81,19 +81,19 @@ fclean:		clean
 re:		fclean all
 
 charvo_a:
-		@(cat .txt/charvo_a.txt)
+		@(cat txt/charvo_a.txt)
 
 heitzl_s:
-		@(cat .txt/heitzl_s.txt)
+		@(cat txt/heitzl_s.txt)
 
 girard_s:
-		@(cat .txt/girard_s.txt)
+		@(cat txt/girard_s.txt)
 
 audibe_l:
-		@(cat .txt/audibe_l.txt)
+		@(cat txt/audibe_l.txt)
 
 garcia_t:
-		@(cat .txt/garcia_t.txt)
+		@(cat txt/garcia_t.txt)
 
 group:		charvo_a heitzl_s girard_s audibe_l garcia_t
 
