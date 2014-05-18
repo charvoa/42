@@ -5,7 +5,7 @@
 ## Login   <charvo_a@epitech.net>
 ##
 ## Started on  Mon Apr 21 15:01:55 2014 Nicolas Charvoz
-## Last update Sun May 18 15:34:49 2014 Nicolas Charvoz
+## Last update Sun May 18 15:38:28 2014 Nicolas Charvoz
 ## Last update Mon May  5 16:59:08 2014 garcia antoine
 ##
 
@@ -43,7 +43,6 @@ SRCS	=	$(TERM)/termcaps.c		\
 		$(LEXER)/check1.c		\
 		$(LEXER)/check2.c		\
 		$(LEXER)/epur_str.c		\
-		$(LEXER)/useless.c		\
 		$(ENV)/dlist.c			\
 		$(ENV)/init.c			\
 		$(ENV)/list.c			\
