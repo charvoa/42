@@ -5,7 +5,7 @@
 ** Login   <heitzl_s@epitech.net>
 **
 ** Started on  Wed May 14 15:05:12 2014 heitzl_s
-** Last update Mon May 19 10:41:59 2014 Nicolas Girardot
+** Last update Mon May 19 10:58:25 2014 Nicolas Girardot
 */
 
 #include <unistd.h>
@@ -56,7 +56,7 @@ int	exec_first_cmd(t_cmd *cmd, int *fd, t_42sh *shell)
       dup2(0, 0);
       close(close_fd);
       exec_cmd(cmd, shell);
-      exit (-1);
+      exit (pid);
     }
   return (pid);
 }
