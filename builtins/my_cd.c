@@ -5,14 +5,15 @@
 ** Login   <audibe_l@epitech.net>
 ** 
 ** Started on  Tue May  6 16:42:02 2014 louis audibert
-** Last update Tue May 13 15:16:21 2014 louis audibert
+** Last update Mon May 19 15:57:32 2014 louis audibert
 */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
-#include "./42sh.h"
+#include "../env/42sh.h"
+#include "../env/list.h"
 
 char	*get_old_pwd(t_dlist *env)
 {
@@ -20,7 +21,7 @@ char	*get_old_pwd(t_dlist *env)
 
   old_pwd = get_env("OLDPWD", env);
   if (old_pwd == NULL)
-    my_putstre("42sh: cd: OLDPWD not set\n");
+    printf("42sh: cd: OLDPWD not set\n");
   return (old_pwd);
 }
 
@@ -30,11 +31,11 @@ char	*get_my_home(t_dlist *env)
 
   home = get_env("HOME", env);
   if (home == NULL)
-    chdir("/");
+    home = "/";
   return (home);
 }
 
-char	*get_path_from_opt(char *opt)
+char	*get_path_from_opt(char *arg)
 {
   char	*path;
   int	i;
@@ -42,44 +43,32 @@ char	*get_path_from_opt(char *opt)
 
   j = 0;
   i = 1;
-  path = malloc(strlen(opt) * sizeof(char));
-  memset(path, 0, strlen(opt));
-  while (opt[i])
+  path = malloc(strlen(arg) * sizeof(char));
+  memset(path, 0, strlen(arg));
+  while (arg[i])
     {
-      path[j] = opt[i];
+      path[j] = arg[i];
       j++;
       i++;
     }
   return (path);
 }
 
-void    my_cd(char **opt, t_dlist *env)
+int    my_cd(t_42sh *shell, char **args, t_dlist *env)
 {
   char	*path;
 
-  path = get_path_from_opt(opt[0]);
-  if (opt[0] == NULL || opt[0][0] == '~')
+  if (args[1] == NULL)
+    chdir(get_my_home(env));
+  else if (args[1][0] == '~')
     {
+      path = get_path_from_opt(args[1]);
       chdir(get_my_home(env));
-      if (opt[0][0] == '~')
-	{
-	  printf("%s\n", path);
-	  chdir(path);
-	}
-      printf("chdir(home)\n");
+      chdir(path);
     }
-  else if (opt[0][0] == '-')
-    {
-      chdir(get_old_pwd(env));
-      printf("chdir(oldpwd)\n");
-    }
-  else if (chdir(opt[0]) == -1)
-    {
-      my_putstre("42sh: cd: No such file or directory\n");
-    }
-  else
-    {
-      chdir(opt[0]);
-      printf("chdir(opt[0])\n");
-    }
+  else if (args[1][0] == '-')
+    chdir(get_old_pwd(env));
+  else if (chdir(args[1]) == -1)
+    printf("42sh: cd: No such file or directory\n");
+  return (0);
 }

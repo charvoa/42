@@ -5,15 +5,15 @@
 ** Login   <audibe_l@epitech.net>
 ** 
 ** Started on  Mon May 12 12:59:09 2014 louis audibert
-** Last update Tue May 13 15:18:38 2014 louis audibert
+** Last update Mon May 19 15:31:19 2014 louis audibert
 */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
-#include "./42sh.h"
-#include "./list.h"
+#include "../env/42sh.h"
+#include "../env/list.h"
 
 int	find_cmd(char *cmd)
 {
@@ -32,28 +32,30 @@ int	find_cmd(char *cmd)
 	return (i);
       i++;
     }
-  free_tab(find);
-  return (0);
+  return (-1);
 }
 
-void	fill_builtins(int (**builtins)(char **opt, t_dlist *env))
+void	fill_builtins(int (**builtins)(t_42sh *shell, char **args, t_dlist *env))
 {
   builtins[0] = &my_cd;
   builtins[1] = &my_env;
   builtins[2] = &my_echo;
 }
 
-int     check_builtin(char *cmd, char **opt, t_dlist *env)
+int     check_builtins(t_42sh *shell, char **args, t_dlist *env)
 {
-  int   (*builtins[3])(char **opt, t_dlist *env);
+  int   (*builtins[3])(t_42sh *shell, char **args, t_dlist *env);
   int	i;
 
   fill_builtins(builtins);
   i = 0;
-  while (i <= 3)
+  while (i < 4)
     {
-      if (find_cmd(cmd) == i)
-	builtins[i](opt, env);
+      if (find_cmd(args[0]) == i)
+	{
+	  builtins[i](shell, args, env);
+	  return (1);
+	}
       i++;
     }  
   return (0);

@@ -5,15 +5,15 @@
 ** Login   <audibe_l@epitech.net>
 ** 
 ** Started on  Thu May  8 11:33:49 2014 louis audibert
-** Last update Tue May 13 15:16:30 2014 louis audibert
+** Last update Mon May 19 15:41:30 2014 louis audibert
 */
 
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
 #include <string.h>
-#include "./42sh.h"
-#include "./list.h"
+#include "../env/42sh.h"
+#include "../env/list.h"
 
 void	echo_from_var_env(char *opt, t_dlist *env)
 {
@@ -32,20 +32,26 @@ void	echo_from_var_env(char *opt, t_dlist *env)
       i++;
     }
   path = get_env(path, env);
-  printf("%s\n", path);
+  my_putstr(path);
 }
 
-void	my_echo(char **opt, t_dlist *env)
+int	my_echo(t_42sh *shell, char **args, t_dlist *env)
 {
   int	i;
 
-  i = 0;
-  while (opt[i])
+  i = 1;
+  while (args[i])
     {
-      if (opt[i][0] == '$')
-	echo_from_var_env(opt[i], env);
+      if (args[i][0] == '$')
+	echo_from_var_env(args[i], env);
       else
-	printf("%s\n", opt[i]);
+	{
+	  my_putstr(args[i]);
+	  if (args[i + 1] != NULL)
+	    my_putchar(' ');
+	}
       i++;
     }
+  printf("\n");
+  return (0);
 }
