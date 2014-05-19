@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Mon Apr  7 16:15:48 2014 garcia antoine
-** Last update Sat May 17 15:51:45 2014 garcia antoine
+** Last update Mon May 19 19:04:35 2014 Nicolas Girardot
 */
 
 #include <sys/types.h>
@@ -14,6 +14,8 @@
 #include <signal.h>
 #include <fcntl.h>
 #include <string.h>
+#include <term.h>
+#include <curses.h>
 #include "42sh.h"
 #include "listok.h"
 #include "../lexer/src/lexer.h"
@@ -42,20 +44,38 @@ char	*cat_if_pipe(char *cmd)
   return (cmd);
 }
 
+char	*read_canon()
+{
+  char		buffer[4096];
+  struct	termios	*t;
+  int		nb;
+
+  t = malloc(sizeof(*t));
+  if (tcgetattr(0, t) == -1)
+    {
+      printf("Error\n");
+      exit(-1);
+    }
+  t->c_lflag &= ~ICANON;
+  t->c_cc[VMIN] = 1;
+  t->c_cc[VTIME] = 0;
+  if(tcsetattr(0, TCSANOW, t) == - 1)
+    {
+      printf("Error\n");
+      exit(-1);
+    }
+  nb = read(0, buffer, 4096);
+  buffer[nb - 1] = '\0';
+  return (buffer);
+}
+
 char	*read_line(int fd)
 {
   int	nb;
   char	*buffer;
   char	*cmd;
 
-  buffer = malloc(4096 * sizeof(char));
-  memset(buffer, '\0', 4096);
-  if (buffer == NULL)
-    return (0);
-  nb = read(0, buffer, 4095);
-  if (nb == -1)
-    return (0);
-  buffer[nb - 1] = '\0';
+  buffer= read_canon();
   cmd = strdup(buffer);
   free(buffer);
   cmd = epur_str(cmd);
