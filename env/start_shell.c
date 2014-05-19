@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Mon Apr  7 16:15:48 2014 garcia antoine
-** Last update Mon May 19 19:04:35 2014 Nicolas Girardot
+** Last update Mon May 19 21:12:02 2014 Nicolas Charvoz
 */
 
 #include <sys/types.h>
@@ -35,7 +35,7 @@ char	*cat_if_pipe(char *cmd)
   int	ret;
 
   buffer = calloc(4096, sizeof(char));
-  my_putchar('>');
+  my_putchar('pipe >');
   ret = read(0, buffer, 4096);
   buffer[ret - 1] = '\0';
   cmd = strcat(cmd, buffer);
@@ -44,38 +44,15 @@ char	*cat_if_pipe(char *cmd)
   return (cmd);
 }
 
-char	*read_canon()
-{
-  char		buffer[4096];
-  struct	termios	*t;
-  int		nb;
-
-  t = malloc(sizeof(*t));
-  if (tcgetattr(0, t) == -1)
-    {
-      printf("Error\n");
-      exit(-1);
-    }
-  t->c_lflag &= ~ICANON;
-  t->c_cc[VMIN] = 1;
-  t->c_cc[VTIME] = 0;
-  if(tcsetattr(0, TCSANOW, t) == - 1)
-    {
-      printf("Error\n");
-      exit(-1);
-    }
-  nb = read(0, buffer, 4096);
-  buffer[nb - 1] = '\0';
-  return (buffer);
-}
-
 char	*read_line(int fd)
 {
   int	nb;
-  char	*buffer;
   char	*cmd;
+  char	*buffer;
 
-  buffer= read_canon();
+  buffer = calloc(4096, sizeof(char));
+  nb = read(0, buffer, 4096);
+  buffer[nb - 1] = '\0';
   cmd = strdup(buffer);
   free(buffer);
   cmd = epur_str(cmd);
