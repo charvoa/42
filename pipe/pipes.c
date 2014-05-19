@@ -5,7 +5,7 @@
 ** Login   <heitzl_s@epitech.net>
 **
 ** Started on  Wed May 14 15:05:12 2014 heitzl_s
-** Last update Sat May 17 16:37:15 2014 heitzl_s
+** Last update Mon May 19 10:41:59 2014 Nicolas Girardot
 */
 
 #include <unistd.h>
@@ -21,13 +21,8 @@ int    check_pipe_cmd(t_cmd *cmd, t_42sh *shell)
   char  *path;
 
   i = 0;
-  if (check_cmd(cmd, shell) == 0)
+  if (access(cmd->args[0], X_OK) == - 1)
     {
-      if (shell->path == NULL)
-	{
-	  printf("NEW Command not found\n");
-	  return (0);
-	}
       while(shell->path[i])
 	{
 	  path = strcat(shell->path[i], cmd->args[0]);
@@ -35,8 +30,12 @@ int    check_pipe_cmd(t_cmd *cmd, t_42sh *shell)
 	    return (0);
 	  i++;
 	}
+      return (-1);
     }
-  return (-1);
+  else
+    {
+      return (0);
+    }
 }
 
 int	exec_first_cmd(t_cmd *cmd, int *fd, t_42sh *shell)
@@ -48,11 +47,16 @@ int	exec_first_cmd(t_cmd *cmd, int *fd, t_42sh *shell)
   pid = fork();
   if (pid == 0)
     {
+      if (check_pipe_cmd(cmd, shell) == -1)
+	{
+	  printf("Command not found : %s\n", cmd->args[0]);
+	  exit (-1);
+	}
       dup2(fd[1], 1);
       dup2(0, 0);
       close(close_fd);
-      if (exec_cmd(cmd, shell) == -1)
-	printf("Command not found : %s\n", cmd->args[0]);
+      exec_cmd(cmd, shell);
+      exit (-1);
     }
   return (pid);
 }
@@ -66,11 +70,17 @@ int	exec_second_cmd(t_cmd *cmd, int *fd, t_42sh *shell)
   pid = fork();
   if (pid == 0)
     {
+      if (check_pipe_cmd(cmd, shell) == -1)
+	{
+	  printf("Command not found : %s\n", cmd->args[0]);
+	  exit (-1);
+	}
       dup2(1, 1);
       dup2(fd[0], 0);
       close(close_fd);
       if (exec_cmd(cmd, shell) == -1)
 	printf("Command not found : %s\n", cmd->args[0]);
+      exit (-1);
     }
   return (pid);
 }
@@ -82,6 +92,7 @@ int		init_pipes(t_cmd *cmd_1, t_cmd *cmd_2, t_42sh *shell, int i)
   int           fd[2];
   int           status;
 
+  pid_2 = -1;
   pipe(fd);
   cmd_2->type = 1;
   pid_1 = exec_first_cmd(cmd_1, fd, shell);
