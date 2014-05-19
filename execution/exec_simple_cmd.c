@@ -6,7 +6,7 @@
 **
 ** Started on  Fri May  9 10:27:51 2014 garcia antoine
 <<<<<<< Updated upstream
-** Last update Mon May 19 14:55:15 2014 garcia antoine
+** Last update Mon May 19 15:38:29 2014 garcia antoine
 =======
 ** Last update Tue May 13 10:26:01 2014 garcia antoine
 >>>>>>> Stashed changes
@@ -29,6 +29,23 @@ int    check_cmd(t_cmd *cmd, t_42sh *shell)
   return (0);
 }
 
+char	*real_path(t_cmd *cmd, t_42sh *shell)
+{
+  char	*path;
+  int	i;
+
+  i = 0;
+  path = malloc(4096 * sizeof(char));
+  while (shell->path[i])
+    {
+      path = strcat(shell->path[i], cmd->args[0]);
+      if (access(path, X_OK) == 0)
+	return (path);
+      i++;
+    }
+  return (NULL);
+}
+
 int    exec_cmd(t_cmd *cmd, t_42sh *shell)
 {
   int   i;
@@ -41,9 +58,9 @@ int    exec_cmd(t_cmd *cmd, t_42sh *shell)
       fprintf(stderr, "%s Command not found\n", cmd->args[0]);
       return (0);
     }
-  while(shell->path[i])
+  else
     {
-      path = strcat(shell->path[i], cmd->args[0]);
+      path = real_path(cmd, shell);
       execve(path, cmd->args, shell->envtab);
       i++;
     }
@@ -53,6 +70,7 @@ int    exec_cmd(t_cmd *cmd, t_42sh *shell)
 int     exec_cmd_simple(t_cmd *cmd, t_42sh *shell)
 {
   int   pid;
+  char	*path;
 
   pid = fork();
   if (pid == -1)
