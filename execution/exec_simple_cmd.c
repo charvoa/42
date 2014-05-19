@@ -6,7 +6,7 @@
 **
 ** Started on  Fri May  9 10:27:51 2014 garcia antoine
 <<<<<<< Updated upstream
-** Last update Mon May 19 15:38:29 2014 garcia antoine
+** Last update Mon May 19 15:40:37 2014 garcia antoine
 =======
 ** Last update Tue May 13 10:26:01 2014 garcia antoine
 >>>>>>> Stashed changes
@@ -38,7 +38,7 @@ char	*real_path(t_cmd *cmd, t_42sh *shell)
   path = malloc(4096 * sizeof(char));
   while (shell->path[i])
     {
-      path = strcat(shell->path[i], cmd->args[0]);
+      path = strcat(strdup(shell->path[i]), cmd->args[0]);
       if (access(path, X_OK) == 0)
 	return (path);
       i++;
