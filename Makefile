@@ -5,7 +5,7 @@
 ## Login   <charvo_a@epitech.net>
 ##
 ## Started on  Mon Apr 21 15:01:55 2014 Nicolas Charvoz
-## Last update Mon May 19 11:36:52 2014 garcia antoine
+## Last update Mon May 19 16:11:54 2014 garcia antoine
 ## Last update Mon May  5 16:59:08 2014 garcia antoine
 ##
 
@@ -28,6 +28,8 @@ EXEC	=	./execution
 ENV	=	./env
 
 PIPE	=	./pipe
+
+BUILTINS=	./builtins
 
 CFLAGS  += 	-Wextra -Wall -W -g3
 CFLAGS	+=	-Wbad-function-cast -Wcast-align
@@ -58,8 +60,11 @@ SRCS	=	$(TERM)/termcaps.c		\
 		$(EXEC)/exec_simple_cmd.c	\
 		$(EXEC)/redirections.c		\
 		$(EXEC)/signal.c		\
-		$(PIPE)/pipes.c
-
+		$(PIPE)/pipes.c			\
+		$(BUILTINS)/check_builtins.c	\
+		$(BUILTINS)/my_cd.c		\
+		$(BUILTINS)/my_echo.c		\
+		$(BUILTINS)/my_env.c
 
 OBJS	= 	$(SRCS:.c=.o)
 

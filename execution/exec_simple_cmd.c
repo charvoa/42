@@ -6,7 +6,7 @@
 **
 ** Started on  Fri May  9 10:27:51 2014 garcia antoine
 <<<<<<< Updated upstream
-** Last update Mon May 19 15:49:44 2014 garcia antoine
+** Last update Mon May 19 16:05:52 2014 garcia antoine
 =======
 ** Last update Tue May 13 10:26:01 2014 garcia antoine
 >>>>>>> Stashed changes
@@ -73,11 +73,13 @@ int     exec_cmd_simple(t_cmd *cmd, t_42sh *shell)
 {
   int   pid;
   char	*path;
+  int	check;
 
+  check = check_builtins(shell, cmd->args, shell->env);
   pid = fork();
   if (pid == -1)
     return (0);
-  if (pid == 0)
+  if (pid == 0 && check == 0)
     {
       if(exec_cmd(cmd, shell) == - 1)
 	fprintf(stderr, "%s Command not found\n", cmd->args[0]);

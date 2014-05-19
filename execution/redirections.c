@@ -6,7 +6,7 @@
 **
 ** Started on  Tue May  6 13:36:11 2014 garcia antoine
 <<<<<<< Updated upstream
-** Last update Sun May 18 13:20:41 2014 garcia antoine
+** Last update Mon May 19 13:29:01 2014 garcia antoine
 =======
 ** Last update Fri May  9 18:32:33 2014 garcia antoine
 >>>>>>> Stashed changes
@@ -58,7 +58,7 @@ int	double_redir_left(t_cmd *cmd, t_cmd  *cmd2)
       while (bool == 0)
 	{
 	  read(0, buffer, 4096);
-	  if (!strcmp(buffer, "coucou"))
+	  if (!strcmp(buffer, "coucou\n"))
 	    bool = 1;
 	}
     }
