@@ -6,7 +6,7 @@
 **
 ** Started on  Fri May  9 10:27:51 2014 garcia antoine
 <<<<<<< Updated upstream
-** Last update Mon May 19 15:45:10 2014 garcia antoine
+** Last update Mon May 19 15:49:44 2014 garcia antoine
 =======
 ** Last update Tue May 13 10:26:01 2014 garcia antoine
 >>>>>>> Stashed changes
@@ -61,6 +61,8 @@ int    exec_cmd(t_cmd *cmd, t_42sh *shell)
   else
     {
       path = real_path(cmd, shell);
+      if (path == NULL)
+	return (-1);
       execve(path, cmd->args, shell->envtab);
       i++;
     }
