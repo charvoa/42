@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 ** 
 ** Started on  Mon May 19 11:27:27 2014 garcia antoine
-** Last update Mon May 19 11:32:23 2014 garcia antoine
+** Last update Mon May 19 11:39:35 2014 garcia antoine
 */
 
 #include <stdlib.h>
@@ -29,7 +29,7 @@ int	check_signal(int status)
   while (l_signal[i].nb)
     {
       if (status == l_signal[i].nb)
-	fprintf("%s\n", l_signal[i].msg);
+	fprintf(stderr, "%s\n", l_signal[i].msg);
       i++;
     }
   return (-1);
