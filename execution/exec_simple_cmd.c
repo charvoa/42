@@ -6,7 +6,7 @@
 **
 ** Started on  Fri May  9 10:27:51 2014 garcia antoine
 <<<<<<< Updated upstream
-** Last update Sat May 17 15:29:21 2014 garcia antoine
+** Last update Mon May 19 10:19:43 2014 garcia antoine
 =======
 ** Last update Tue May 13 10:26:01 2014 garcia antoine
 >>>>>>> Stashed changes
@@ -48,7 +48,7 @@ int    exec_cmd(t_cmd *cmd, t_42sh *shell)
   check_cmd(cmd, shell);
   if (shell->path == NULL)
     {
-      printf("Command not found\n");
+      fprintf(stderr, "%s Command not found\n", cmd->args[0]);
       return (0);
     }
   while(shell->path[i])
@@ -70,7 +70,7 @@ int     exec_cmd_simple(t_cmd *cmd, t_42sh *shell)
   if (pid == 0)
     {
       if(exec_cmd(cmd, shell) == - 1)
-	printf("%s Command not found\n", cmd->args[0]);
+	fprintf(stderr, "%s Command not found\n", cmd->args[0]);
       exit(1);
     }
   else
