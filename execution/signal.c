@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 ** 
 ** Started on  Mon May 19 11:27:27 2014 garcia antoine
-** Last update Mon May 19 11:39:35 2014 garcia antoine
+** Last update Mon May 19 12:29:37 2014 garcia antoine
 */
 
 #include <stdlib.h>
@@ -16,7 +16,9 @@
 
 t_signal	l_signal[] =
   {
-    {SIGSEGV, "my_segfault2"}
+    {SIGSEGV, "Segmentation fault"},
+    {SIGBUS, "Bus error"},
+    {SIGABRT, "Abort"}
   };
 
 int	check_signal(int status)
