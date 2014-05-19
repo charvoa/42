@@ -1,11 +1,11 @@
-B1;2802;0c/*
+/*
 ** check1.c for  in /home/charvo_a/42/lexer
 **
 ** Made by Nicolas Charvoz
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Mon Apr 21 14:55:27 2014 Nicolas Charvoz
-** Last update Mon May 19 16:24:05 2014 Nicolas Charvoz
+** Last update Mon May 19 16:25:06 2014 Nicolas Charvoz
 */
 
 #include "lexer.h"
