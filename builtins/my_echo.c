@@ -5,7 +5,7 @@
 ** Login   <audibe_l@epitech.net>
 ** 
 ** Started on  Thu May  8 11:33:49 2014 louis audibert
-** Last update Mon May 19 15:41:30 2014 louis audibert
+** Last update Mon May 19 16:33:45 2014 garcia antoine
 */
 
 #include <stdlib.h>
@@ -15,7 +15,7 @@
 #include "../env/42sh.h"
 #include "../env/list.h"
 
-void	echo_from_var_env(char *opt, t_dlist *env)
+static int	echo_from_var_env(char *opt, t_dlist *env)
 {
   char	*path;
   int	i;
@@ -32,7 +32,10 @@ void	echo_from_var_env(char *opt, t_dlist *env)
       i++;
     }
   path = get_env(path, env);
+  if (path == NULL)
+    return (-1);
   my_putstr(path);
+  return (0);
 }
 
 int	my_echo(t_42sh *shell, char **args, t_dlist *env)
