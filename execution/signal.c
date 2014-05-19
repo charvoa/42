@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 ** 
 ** Started on  Mon May 19 11:27:27 2014 garcia antoine
-** Last update Mon May 19 12:45:42 2014 garcia antoine
+** Last update Mon May 19 14:16:39 2014 garcia antoine
 */
 
 #include <stdlib.h>
@@ -24,6 +24,7 @@ t_signal	l_signal[] =
     {SIGKILL, "Killed"},
     {SIGPIPE, "Broken pipe"},
     {SIGCHLD, "Child stop"},
+    {SIGTERM, "Terminated"},
     {SIGUSR1, "User signal 1"},
     {SIGUSR2, "User signal 2"}
   };
