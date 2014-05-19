@@ -1,16 +1,16 @@
-/*
+B1;2802;0c/*
 ** check1.c for  in /home/charvo_a/42/lexer
 **
 ** Made by Nicolas Charvoz
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Mon Apr 21 14:55:27 2014 Nicolas Charvoz
-** Last update Mon May  5 17:38:07 2014 Nicolas Charvoz
+** Last update Mon May 19 16:24:05 2014 Nicolas Charvoz
 */
 
 #include "lexer.h"
 
-# define CHECK_LETTER "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_0123456789 -./$?*[]="
+# define CHECK_LETTER "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_0123456789 -./$?*[]=~"
 
 int     check_letter(char c)
 {
