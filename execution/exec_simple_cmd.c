@@ -6,7 +6,7 @@
 **
 ** Started on  Fri May  9 10:27:51 2014 garcia antoine
 <<<<<<< Updated upstream
-** Last update Mon May 19 18:54:23 2014 Nicolas Charvoz
+** Last update Mon May 19 21:20:23 2014 garcia antoine
 =======
 ** Last update Tue May 13 10:26:01 2014 garcia antoine
 >>>>>>> Stashed changes
@@ -31,15 +31,13 @@ int    check_cmd(t_cmd *cmd, t_42sh *shell)
 
 char	*real_path(t_cmd *cmd, t_42sh *shell)
 {
-  char	*path;
   int	i;
   char	*pass;
 
   i = 0;
   while (shell->path[i])
     {
-      path = strdup(shell->path[i]);
-      pass = strcat(path, cmd->args[0]);
+      pass = strcat(strdup(shell->path[i]), cmd->args[0]);
       if (access(pass, X_OK) == 0)
 	return (pass);
       i++;
@@ -73,7 +71,6 @@ int    exec_cmd(t_cmd *cmd, t_42sh *shell)
 int     exec_cmd_simple(t_cmd *cmd, t_42sh *shell)
 {
   int   pid;
-  char	*path;
   int	check;
 
   check = check_builtins(shell, cmd->args, shell->env);
