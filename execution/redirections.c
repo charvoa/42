@@ -6,7 +6,7 @@
 **
 ** Started on  Tue May  6 13:36:11 2014 garcia antoine
 <<<<<<< Updated upstream
-** Last update Mon May 19 13:29:01 2014 garcia antoine
+** Last update Mon May 19 23:52:04 2014 garcia antoine
 =======
 ** Last update Fri May  9 18:32:33 2014 garcia antoine
 >>>>>>> Stashed changes
@@ -40,27 +40,40 @@ static int	open_my_file(char *name)
   return (fd);
 }
 
+int	exec_double_left(t_cmd *cmd, t_cmd *cmd2)
+{
+  char	*buffer;
+  char	**final;
+  int	nb;
+  static int i = 0;
+
+  buffer = malloc(4096 * sizeof(char));
+  final = malloc(4096 * sizeof(char *));
+  nb = read(0, buffer, 4096);
+  buffer[nb - 1] = '\0';
+  if (!strcmp(buffer, "coucou"))
+    {
+      final[i] = strdup(buffer);
+    }
+  else
+    {
+      final[i] = strdup(buffer);
+      i++;
+      exec_double_left(cmd, cmd2);
+    }
+}
+
 int	double_redir_left(t_cmd *cmd, t_cmd  *cmd2)
 {
   int	pid;
   int	status;
-  char	*buffer;
-  int	bool;
-  char	*final;
 
-  bool = 0;
-  buffer = malloc(4096 * sizeof(char));
   pid = fork();
   if (pid == - 1)
     return (0);
   if (pid == 0)
     {
-      while (bool == 0)
-	{
-	  read(0, buffer, 4096);
-	  if (!strcmp(buffer, "coucou\n"))
-	    bool = 1;
-	}
+      exec_double_left(cmd, cmd2);
     }
   else
     wait(&status);

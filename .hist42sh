@@ -1,19 +1,2 @@
-ls
-cd
-cd -
-ls
-pwd
-echo $PWD
-cd
-ls
-echo $OLDPWD
-cd 42
-ls
-echo $PWD
-echo $OLPWD
-echo $OLDPWD
-cd -
-clear
-sl
-clear
-ls
+ls << toto
+ls << toto
