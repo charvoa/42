@@ -5,7 +5,7 @@
 ** Login   <audibe_l@epitech.net>
 **
 ** Started on  Tue May 20 14:26:40 2014 louis audibert
-** Last update Thu May 22 16:21:28 2014 Nicolas Charvoz
+** Last update Thu May 22 17:37:27 2014 Nicolas Charvoz
 */
 
 #include "builtins.h"
@@ -51,14 +51,16 @@ char    *check_name(char *name)
 char    *parse_name2(char *arg, char *path, int i)
 {
   char  *name;
+  char	*path2;
 
-  name = malloc((strlen(arg) + strlen(path) + 4) * sizeof(char));
-  memset(name, 0, (strlen(arg) + strlen(path) + 4));
+  name = calloc((strlen(arg) + strlen(path) + 4), sizeof(char));
+  path2 = calloc(((strlen(path) + 2) + strlen(arg) + 1), sizeof(char));
   arg = clean_arg(arg);
   if (arg[i - 1] != '/' && arg[i - 2] != '.' && arg[i - 3] != '.')
     {
-      name = my_strcat(strdup(path), "/");
-      name = my_strcat(name, arg);
+      strcpy(path2, path);
+      strcat(path2, "/");
+      name = strcat(path2, arg);
       name = check_name(name);
     }
   else

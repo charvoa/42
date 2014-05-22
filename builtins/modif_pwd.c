@@ -5,7 +5,7 @@
 ** Login   <audibe_l@epitech.net>
 **
 ** Started on  Mon May 19 22:43:20 2014 louis audibert
-** Last update Thu May 22 16:05:26 2014 Nicolas Charvoz
+** Last update Thu May 22 17:34:36 2014 Nicolas Charvoz
 */
 
 #include "builtins.h"
@@ -16,8 +16,7 @@ char	*clean_arg(char *arg)
   int	j;
   char	*clean_arg;
 
-  clean_arg = malloc(strlen(arg) * sizeof(char));
-  memset(clean_arg, 0, strlen(arg));
+  clean_arg = calloc((strlen(arg) + 1), sizeof(char));
   i = 0;
   j = 0;
   while (arg[i] == '.' && arg[i + 1] == '.' && arg[i + 2] == '/')
