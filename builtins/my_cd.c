@@ -5,7 +5,7 @@
 ** Login   <audibe_l@epitech.net>
 **
 ** Started on  Tue May  6 16:42:02 2014 louis audibert
-** Last update Thu May 22 16:12:49 2014 Nicolas Charvoz
+** Last update Thu May 22 17:51:08 2014 Nicolas Charvoz
 */
 
 #include "builtins.h"
@@ -41,8 +41,7 @@ char	*get_path_from_opt(char *arg)
 
   j = 0;
   i = 1;
-  path = malloc(strlen(arg) * sizeof(char));
-  memset(path, 0, strlen(arg));
+  path = calloc((strlen(arg) + 1), sizeof(char));
   while (arg[i])
     {
       path[j] = arg[i];
@@ -76,7 +75,8 @@ int    my_cd(t_42sh *shell, char **args, t_dlist *env)
       chdir(get_my_home(env));
       modif_pwd_home(get_my_home(env), env);
     }
-  else if (args[1][0] == '~')
+  else if (args[1][0] == '~' && !((args[1][1] >= 'a' && args[1][1] <= 'z')
+				  || (args[1][1] >= 'A' && args[1][1] <= 'Z')))
     {
       path = get_path_from_opt(args[1]);
       chdir(get_my_home(env));
