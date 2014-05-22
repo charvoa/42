@@ -5,7 +5,7 @@
 ** Login   <audibe_l@epitech.net>
 **
 ** Started on  Tue May  6 16:42:02 2014 louis audibert
-** Last update Thu May 22 17:51:08 2014 Nicolas Charvoz
+** Last update Thu May 22 18:17:54 2014 Nicolas Charvoz
 */
 
 #include "builtins.h"
@@ -75,8 +75,9 @@ int    my_cd(t_42sh *shell, char **args, t_dlist *env)
       chdir(get_my_home(env));
       modif_pwd_home(get_my_home(env), env);
     }
-  else if (args[1][0] == '~' && !((args[1][1] >= 'a' && args[1][1] <= 'z')
-				  || (args[1][1] >= 'A' && args[1][1] <= 'Z')))
+  else if (args[1][0] == '~' && args[1][1] != '~'
+	   && !((args[1][1] >= 'a' && args[1][1] <= 'z')
+		|| (args[1][1] >= 'A' && args[1][1] <= 'Z')))
     {
       path = get_path_from_opt(args[1]);
       chdir(get_my_home(env));

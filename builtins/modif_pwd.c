@@ -5,7 +5,7 @@
 ** Login   <audibe_l@epitech.net>
 **
 ** Started on  Mon May 19 22:43:20 2014 louis audibert
-** Last update Thu May 22 17:34:36 2014 Nicolas Charvoz
+** Last update Thu May 22 18:15:24 2014 Nicolas Charvoz
 */
 
 #include "builtins.h"
@@ -51,19 +51,20 @@ void		modif_pwd_from_home_to_path(char *name, t_dlist *env)
 {
   t_node        *tmp;
   char		*pwd;
+  char		*pwd2;
+  char		*home;
 
-  pwd = malloc(strlen(name) * sizeof(char));
-  memset(pwd, '\0', strlen(name));
-  printf("TEST\n");
+  pwd = calloc((strlen(name) + 1), sizeof(char));
+  home = get_my_home(env);
   pwd = get_pwd_from_home(pwd, name, env);
-  printf("TEST 2\n");
-  pwd = strcat(get_my_home(env), pwd);
-  printf("TEST 3\n");
+  pwd2 = calloc(((strlen(home) + 1) + strlen(pwd) + 1), sizeof(char));
+  home = realloc(home, strlen(home) + 1 + strlen(pwd) + 1);
+  pwd2 = strcat(home, pwd);
   tmp = env->start;
   while (tmp)
     {
       if (!strcmp(tmp->name, "PWD"))
-	tmp->value = strdup(pwd);
+	tmp->value = strdup(pwd2);
       tmp = tmp->next;
     }
 }
