@@ -6,7 +6,7 @@
 **
 ** Started on  Fri Apr  4 12:34:07 2014 garcia antoine
 <<<<<<< Updated upstream
-** Last update Mon May 19 21:41:08 2014 garcia antoine
+** Last update Thu May 22 14:35:44 2014 garcia antoine
 =======
 ** Last update Mon May  5 17:00:21 2014 garcia antoine
 >>>>>>> Stashed changes
@@ -34,6 +34,17 @@ t_dlist	*create_my_env(t_dlist *shell, char **environ)
   return (shell);
 }
 
+char    *path_in_cache()
+{
+  char  *path;
+
+  path = xmalloc(4096 * sizeof(char));
+  path = strcpy(path, "/bin/");
+  path = strcat(path, ":");
+  path = strcpy(path, "/usr/bin");
+  return (path);
+}
+
 int	init_my_shell(t_42sh *shell, char **env)
 {
   char	*path;
@@ -41,7 +52,7 @@ int	init_my_shell(t_42sh *shell, char **env)
   shell->env = create_my_env(shell->env, env);
   path  = get_env("PATH", shell->env);
   if (path == NULL)
-    return (0);
+    path = path_in_cache();
   shell->path = strtotab(path);
   shell->envtab = list_to_tab(shell->env);
   return (0);
