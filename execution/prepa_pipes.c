@@ -5,7 +5,7 @@
 ** Login   <heitzl_s@epitech.net>
 **
 ** Started on  Wed May 14 15:05:12 2014 heitzl_s
-** Last update Thu May 22 12:10:02 2014 heitzl_s
+** Last update Thu May 22 14:48:38 2014 heitzl_s
 */
 
 #include <unistd.h>
@@ -25,51 +25,21 @@ int		launch(t_cmd *cmd, t_42sh *shell, int i, int close_fd)
   pid = fork();
   if (pid == 0)
     {
+      if (check_pipe_cmd(&cmd[i], shell, i) == -1)
+	{
+	  fprintf(stderr, "Command not found : %s\n", cmd[i].args[0]);
+	  exit (-1);
+	}
       dup2(cmd[i].fdout, 1);
       dup2(cmd[i].fdin, 0);
-      if (close_fd == 0 && cmd[i].fdout != 1)
-	close(cmd[i + 1].fdin);
-      else if (close_fd == 1)
-	close(cmd[i - 1].fdout);
-      else if (close_fd == 2)
-	{
-	  close(cmd[i - 1].fdout);
-	  close(cmd[i + 1].fdin);
-	}
+      check_and_close_son(cmd, shell, i, close_fd);
       if (exec_cmd(&cmd[i], shell) == -1)
-	printf("Command not found : %s\n", cmd->args[0]);
-      exit(-1);
+	fprintf(stderr, "Command not found : %s\n", cmd->args[0]);
+      exit(pid);
     }
   return (pid);
 }
 
-int		check_and_launch(t_cmd *cmd, t_42sh *shell, int i, int close_fd)
-{
-  if (check_builtins(shell, cmd->args, shell->env) == 1)
-    ;
-  else
-    {
-      cmd[i].pid = launch(cmd, shell, i, close_fd);
-      if (close_fd == 1)
-	close(cmd[i - 1].fdout);
-      else if (close_fd == 2)
-	{
-	  close(cmd[i - 1].fdout);
-	  close(cmd[i].fdin);
-	}
-    }
-  return (0);
-}
-
-int		which_one_to_close(t_cmd *cmd, int i)
-{
-  if (cmd[i].fdin == 0)
-    return (0);
-  else if (cmd[i].fdout == 1)
-    return (1);
-  else
-    return (2);
-}
 
 int	waiting_process(t_cmd *cmd)
 {
@@ -114,7 +84,7 @@ int		execution(t_cmd *cmd, t_42sh *shell, int tok)
     {
       close_fd = which_one_to_close(cmd, i);
       if (cmd[i].type == 0)
-	check_and_launch(cmd, shell, i, close_fd);
+	check_and_close_father(cmd, shell, i, close_fd);
       tok--;
       i++;
     }
@@ -122,7 +92,8 @@ int		execution(t_cmd *cmd, t_42sh *shell, int tok)
   return (0);
 }
 
-// catr | ls --> exec ls
-// ls | catr --> command not found : ls
+// ls;pws; --> affiche pws command not found puis ls alors que devrait etre inversé
+
 // Bouclinf quand deux commandes séparées par ';' et comportant pipes
+
 // Surement changer la fonction waiting_process et l'adapter dans les cas de && et ||'
