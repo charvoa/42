@@ -5,7 +5,7 @@
 ** Login   <heitzl_s@epitech.net>
 **
 ** Started on  Wed May 14 15:05:12 2014 heitzl_s
-** Last update Thu May 22 15:10:23 2014 heitzl_s
+** Last update Thu May 22 16:48:15 2014 heitzl_s
 */
 
 #include <unistd.h>
@@ -39,7 +39,6 @@ int		launch(t_cmd *cmd, t_42sh *shell, int i, int close_fd)
     }
   return (pid);
 }
-
 
 int	waiting_process(t_cmd *cmd)
 {
@@ -82,15 +81,72 @@ int		execution(t_cmd *cmd, t_42sh *shell, int tok)
   i = 0;
   while (tok != 0)
     {
-      close_fd = which_one_to_close(cmd, i);
-      if (cmd[i].type == 0)
-	check_and_close_father(cmd, shell, i, close_fd);
-      tok--;
-      i++;
+      if (cmd[i].token != NULL && (strcmp(cmd[i].token, ";") != 0))
+	{
+	  while (cmd[i].token != NULL && (strcmp(cmd[i].token, ";") != 0))
+	    {
+	      close_fd = which_one_to_close(cmd, i);
+	      if (cmd[i].type == 0)
+		check_and_close_father(cmd, shell, i, close_fd);
+	      tok--;
+	      i++;
+	    }
+	  close_fd = which_one_to_close(cmd, i);
+	  waiting_process(cmd);
+	}
+      else
+	{
+	  close_fd = which_one_to_close(cmd, i);
+	  if (cmd[i].type == 0)
+	    check_and_close_father(cmd, shell, i, close_fd);
+	  tok--;
+	  i++;
+	}
+      waiting_process(cmd);
     }
-  waiting_process(cmd);
   return (0);
 }
+
+// FONCTIONNEL
+/* int		launch(t_cmd *cmd, t_42sh *shell, int i, int close_fd) */
+/* { */
+/*   pid_t	pid; */
+
+/*   pid = fork(); */
+/*   if (pid == 0) */
+/*     { */
+/*       if (check_pipe_cmd(&cmd[i], shell) == -1) */
+/* 	{ */
+/* 	  fprintf(stderr, "Command not found : %s\n", cmd[i].args[0]); */
+/* 	  exit (-1); */
+/* 	} */
+/*       dup2(cmd[i].fdout, 1); */
+/*       dup2(cmd[i].fdin, 0); */
+/*       check_and_close_son(cmd, i, close_fd); */
+/*       if (exec_cmd(&cmd[i], shell) == -1) */
+/* 	fprintf(stderr, "Command not found : %s\n", cmd->args[0]); */
+/*       exit(pid); */
+/*     } */
+/*   return (pid); */
+/* } */
+
+/* int		execution(t_cmd *cmd, t_42sh *shell, int tok) */
+/* { */
+/*   int	i; */
+/*   int	close_fd; */
+
+/*   i = 0; */
+/*   while (tok != 0) */
+/*     { */
+/*       close_fd = which_one_to_close(cmd, i); */
+/*       if (cmd[i].type == 0) */
+/* 	check_and_close_father(cmd, shell, i, close_fd); */
+/*       tok--; */
+/*       i++; */
+/*     } */
+/*   waiting_process(cmd); */
+/*   return (0); */
+/* } */
 
 // ls;pws; --> affiche pws command not found puis ls alors que devrait etre inversé
 
