@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Mon May 12 17:32:59 2014 Nicolas Charvoz
-** Last update Sat May 17 16:43:43 2014 heitzl_s
+** Last update Mon May 19 10:39:23 2014 heitzl_s
 */
 
 #ifndef PIPE_H_

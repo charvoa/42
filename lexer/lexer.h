@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Sat Apr  5 15:42:30 2014 Nicolas Charvoz
-** Last update Thu May  8 15:17:50 2014 Nicolas Charvoz
+** Last update Thu May 22 12:14:52 2014 heitzl_s
 */
 
 #ifndef _LEXER_H_
@@ -15,8 +15,8 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include "../../env/42sh.h"
-#include "../../env/listok.h"
+#include "../env/42sh.h"
+#include "../env/listok.h"
 
 typedef	enum	s_tok
   {

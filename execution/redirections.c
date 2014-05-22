@@ -6,7 +6,7 @@
 **
 ** Started on  Tue May  6 13:36:11 2014 garcia antoine
 <<<<<<< Updated upstream
-** Last update Mon May 19 23:52:04 2014 garcia antoine
+** Last update Thu May 22 11:46:48 2014 heitzl_s
 =======
 ** Last update Fri May  9 18:32:33 2014 garcia antoine
 >>>>>>> Stashed changes
@@ -78,88 +78,56 @@ int	double_redir_left(t_cmd *cmd, t_cmd  *cmd2)
   else
     wait(&status);
   return (0);
-} 
-
-int	redir_left(t_cmd *cmd, t_cmd *cmd2, t_42sh *shell)
-{
-  int	pid;
-  int	fd;
-
-  pid = fork();
-  if (pid == -1)
-    return (0);
-  if (pid == 0)
-    {
-      if (fd = open_my_file(cmd2->args[0]) == -1)
-	exit(-1);
-      dup2(fd, 0);
-      exec_cmd(cmd, shell);
-      exit(1);
-    }
-  else
-    wait(&cmd->status);
-  return (0);
 }
 
-int	double_redir_right(t_cmd *cmd, t_cmd *cmd2, t_42sh *shell)
+int	redir_left(t_cmd *cmd, t_cmd *cmd2)
 {
-  int	pid;
-  int	fd;
-
-  pid = fork();
-  if (pid == -1)
-    return (0);
-  if (pid == 0)
-    {
-      fd = open(cmd2->args[0], O_WRONLY | O_CREAT | O_APPEND, 0666);
-      dup2(fd, 1);
-      close(fd);
-      exec_cmd(cmd, shell);
-      exit(1);
-    }
-  else
-    wait(&cmd->status);
-  return (0);
+  cmd->fdout = 1;
+  cmd->fdin = open(cmd2->args[0], O_RDONLY);
+  cmd2->fdin = cmd->fdin;
+  cmd2->fdout = cmd->fdin;
 }
 
-int	redir_right(t_cmd *cmd, t_cmd *cmd2, t_42sh *shell)
+int	double_redir_right(t_cmd *cmd, t_cmd *cmd2)
 {
-  int	pid;
-  int	fd;
-
-  pid = fork();
-  if (pid == -1)
-    return (0);
-  if (pid == 0)
-    {
-      fd = creat(cmd2->args[0], 0644);
-      if (fd == -1)
-	exit(1);
-      if(cmd2->args[0] == NULL)
-	{
-	  printf("erreur\n");
-	  exit(1);
-	}
-      dup2(fd, 1);
-      close(fd);
-      exec_cmd(cmd, shell);
-      exit(1);
-    }
-  else
-    wait(&cmd->status);
-  return (0);
+  cmd->fdout = open(cmd2->args[0], O_WRONLY | O_CREAT | O_APPEND, 0666);
+  cmd2->fdin = cmd->fdout;
+  cmd2->fdout = cmd->fdout;
 }
 
-int	redirections(t_cmd *cmd, t_cmd *cmd2, t_42sh *shell)
+int	redir_right(t_cmd *cmd, t_cmd *cmd2)
+{
+  char  *buffer;
+  int   nb;
+  int   fd;
+
+  buffer = calloc(20, sizeof(*buffer));
+  if (cmd->type == 0)
+    {
+      cmd->fdout = creat(cmd2->args[0], 0644);
+      cmd2->fdin = cmd->fdout;
+      cmd2->fdout = 0;
+    }
+  if (cmd->type == 1)
+    {
+      cmd2->fdout = 0;
+      cmd2->fdin = creat(cmd2->args[0], 0644);
+      fd = open(cmd->args[0] , O_RDONLY);
+      while ((nb = read(fd, buffer, 19)) != 0)
+        {
+          write(cmd2->fdin, buffer, (strlen(buffer) +1));
+          memset(buffer, 0, 20);
+        }
+    }
+}
+
+int	redirections(t_cmd *cmd, t_cmd *cmd2)
 {
   cmd2->type = 1;
-  if (!strcmp(cmd->token, ">>"))
-    double_redir_right(cmd, cmd2, shell);
-  else if (!strcmp(cmd->token, ">"))
-    redir_right(cmd, cmd2, shell);
-  else if (!strcmp(cmd->token, "<<"))
-    double_redir_left(cmd, cmd2);
-  else if (!strcmp(cmd->token, "<"))
-    redir_left(cmd, cmd2, shell);
-  return (0);
+  if (!strncmp(cmd->token, ">>", 2))
+    double_redir_right(cmd, cmd2);
+  else if (!strncmp(cmd->token, ">", 1))
+    redir_right(cmd, cmd2);
+  else if (!strncmp(cmd->token, "<", 1))
+    redir_left(cmd, cmd2);
 }

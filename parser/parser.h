@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Mon Apr 28 10:43:54 2014 Nicolas Charvoz
-** Last update Sat May 17 17:32:17 2014 Nicolas Charvoz
+** Last update Thu May 22 12:18:09 2014 heitzl_s
 */
 
 #ifndef PARSER_H_
@@ -13,7 +13,7 @@
 
 # include "../env/list.h"
 # include "../env/listok.h"
-# include "../lexer/src/lexer.h"
+# include "../lexer/lexer.h"
 
 typedef	struct	s_pars	t_pars;
 struct	s_pars
@@ -29,6 +29,7 @@ typedef	struct	s_cmd
   int		status;
   int		fdin;
   int		fdout;
+  pid_t		pid;
 }		t_cmd;
 
 /* PARSER.C */

@@ -5,7 +5,7 @@
 ## Login   <charvo_a@epitech.net>
 ##
 ## Started on  Mon Apr 21 15:01:55 2014 Nicolas Charvoz
-## Last update Mon May 19 16:11:54 2014 garcia antoine
+## Last update Thu May 22 12:13:58 2014 heitzl_s
 ## Last update Mon May  5 16:59:08 2014 garcia antoine
 ##
 
@@ -15,11 +15,13 @@ RM	= 	rm -f
 
 TERM	=	./termcaps
 
-LEXER	=	./lexer/src
+LEXER	=	./lexer
 
 USELESS	=	-g3
 
 PARSER	=	./parser
+
+XLIB	=	./xlib
 
 PIPE	=	./pipe
 
@@ -59,8 +61,16 @@ SRCS	=	$(TERM)/termcaps.c		\
 		$(EXEC)/global_exec.c		\
 		$(EXEC)/exec_simple_cmd.c	\
 		$(EXEC)/redirections.c		\
+		$(EXEC)/prepa_pipes.c		\
 		$(EXEC)/signal.c		\
 		$(PIPE)/pipes.c			\
+		$(XLIB)/print_error.c		\
+		$(XLIB)/xclose.c		\
+		$(XLIB)/xdup2.c			\
+		$(XLIB)/xmalloc.c		\
+		$(XLIB)/xopen.c			\
+		$(XLIB)/xpipe.c			\
+		$(XLIB)/xread.c			\
 		$(BUILTINS)/check_builtins.c	\
 		$(BUILTINS)/my_cd.c		\
 		$(BUILTINS)/my_echo.c		\

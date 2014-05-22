@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Mon Apr  7 16:15:48 2014 garcia antoine
-** Last update Mon May 19 21:12:59 2014 Nicolas Charvoz
+** Last update Thu May 22 12:16:55 2014 heitzl_s
 */
 
 #include <sys/types.h>
@@ -18,7 +18,7 @@
 #include <curses.h>
 #include "42sh.h"
 #include "listok.h"
-#include "../lexer/src/lexer.h"
+#include "../lexer/lexer.h"
 
 t_42sh	shell;
 

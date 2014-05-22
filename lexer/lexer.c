@@ -5,11 +5,11 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Fri Apr  4 13:56:53 2014 Nicolas Charvoz
-** Last update Wed May 14 16:31:46 2014 Nicolas Charvoz
+** Last update Thu May 22 12:15:19 2014 heitzl_s
 */
 
 #include "lexer.h"
-#include "../../parser/parser.h"
+#include "../parser/parser.h"
 
 int	check_unk(char *str, int i, t_token **token)
 {
