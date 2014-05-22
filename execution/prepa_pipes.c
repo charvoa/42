@@ -5,7 +5,11 @@
 ** Login   <heitzl_s@epitech.net>
 **
 ** Started on  Wed May 14 15:05:12 2014 heitzl_s
-** Last update Thu May 22 16:48:15 2014 heitzl_s
+<<<<<<< Updated upstream
+** Last update Thu May 22 18:42:47 2014 Nicolas Charvoz
+=======
+** Last update Thu May 22 18:40:51 2014 Nicolas Charvoz
+>>>>>>> Stashed changes
 */
 
 #include <unistd.h>
@@ -25,6 +29,7 @@ int		launch(t_cmd *cmd, t_42sh *shell, int i, int close_fd)
   pid = fork();
   if (pid == 0)
     {
+      signal(SIGINT, get_sigint);
       if (check_pipe_cmd(&cmd[i], shell) == -1)
 	{
 	  fprintf(stderr, "Command not found : %s\n", cmd[i].args[0]);

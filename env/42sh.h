@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Fri Apr  4 12:16:42 2014 garcia antoine
-** Last update Thu May 22 12:53:24 2014 Nicolas Charvoz
+** Last update Thu May 22 15:52:55 2014 Nicolas Charvoz
 */
 
 #ifndef SHELL_H_
@@ -42,5 +42,7 @@ int	check_builtins(t_42sh *, char**, t_dlist *);
 int	my_cd(t_42sh *, char**, t_dlist *);
 int	my_env(t_42sh *, char**, t_dlist *);
 int	my_echo(t_42sh *, char**, t_dlist *);
+int	my_exit(t_42sh *, char**, t_dlist *);
+int	my_history(t_42sh *, char**, t_dlist *);
 
 #endif /*SHELL_H_ */

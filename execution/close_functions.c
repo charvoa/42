@@ -5,7 +5,7 @@
 ** Login   <heitzl_s@epitech.net>
 **
 ** Started on  Thu May 22 13:54:57 2014 heitzl_s
-** Last update Thu May 22 15:07:52 2014 heitzl_s
+** Last update Thu May 22 18:43:45 2014 Nicolas Charvoz
 */
 
 #include <unistd.h>
@@ -34,8 +34,7 @@ int             check_and_close_son(t_cmd *cmd, int i, int close_fd)
 
 int             check_and_close_father(t_cmd *cmd, t_42sh *shell, int i, int close_fd)
 {
-  if (check_builtins(shell, cmd->args, shell->env) == 1)
-    ;
+  if (check_builtins(shell, cmd->args, shell->env) == 1);
   else
     {
       cmd[i].pid = launch(cmd, shell, i, close_fd);

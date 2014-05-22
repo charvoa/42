@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Fri May  9 10:27:51 2014 garcia antoine
-** Last update Thu May 22 15:39:55 2014 Nicolas Charvoz
+** Last update Thu May 22 18:43:33 2014 Nicolas Charvoz
 */
 
 #include <sys/types.h>
@@ -79,6 +79,7 @@ int     exec_cmd_simple(t_cmd *cmd, t_42sh *shell)
     return (0);
   if (pid == 0 && check == 0)
     {
+      signal(SIGINT, get_sigint);
       if(exec_cmd(cmd, shell) == - 1)
 	fprintf(stderr, "%s Command not found\n", cmd->args[0]);
       exit(1);
