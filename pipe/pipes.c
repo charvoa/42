@@ -5,7 +5,7 @@
 ** Login   <heitzl_s@epitech.net>
 **
 ** Started on  Wed May 14 15:05:12 2014 heitzl_s
-** Last update Thu May 22 14:06:24 2014 heitzl_s
+** Last update Thu May 22 15:08:25 2014 heitzl_s
 */
 
 #include <unistd.h>
@@ -15,7 +15,7 @@
 #include "../env/42sh.h"
 #include "pipe.h"
 
-void            create_pipes(t_cmd *cmd, int i)
+void	create_pipes(t_cmd *cmd, int i)
 {
   int   fd[2];
 
@@ -24,7 +24,7 @@ void            create_pipes(t_cmd *cmd, int i)
   cmd[i + 1].fdin = fd[0];
 }
 
-int    check_pipe_cmd(t_cmd *cmd, t_42sh *shell, int i)
+int    check_pipe_cmd(t_cmd *cmd, t_42sh *shell)
 {
   char  *path;
 

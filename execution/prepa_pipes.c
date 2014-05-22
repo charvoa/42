@@ -5,7 +5,7 @@
 ** Login   <heitzl_s@epitech.net>
 **
 ** Started on  Wed May 14 15:05:12 2014 heitzl_s
-** Last update Thu May 22 14:48:38 2014 heitzl_s
+** Last update Thu May 22 15:10:23 2014 heitzl_s
 */
 
 #include <unistd.h>
@@ -25,14 +25,14 @@ int		launch(t_cmd *cmd, t_42sh *shell, int i, int close_fd)
   pid = fork();
   if (pid == 0)
     {
-      if (check_pipe_cmd(&cmd[i], shell, i) == -1)
+      if (check_pipe_cmd(&cmd[i], shell) == -1)
 	{
 	  fprintf(stderr, "Command not found : %s\n", cmd[i].args[0]);
 	  exit (-1);
 	}
       dup2(cmd[i].fdout, 1);
       dup2(cmd[i].fdin, 0);
-      check_and_close_son(cmd, shell, i, close_fd);
+      check_and_close_son(cmd, i, close_fd);
       if (exec_cmd(&cmd[i], shell) == -1)
 	fprintf(stderr, "Command not found : %s\n", cmd->args[0]);
       exit(pid);

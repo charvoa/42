@@ -5,7 +5,7 @@
 ** Login   <heitzl_s@epitech.net>
 **
 ** Started on  Thu May 22 13:54:57 2014 heitzl_s
-** Last update Thu May 22 13:56:13 2014 heitzl_s
+** Last update Thu May 22 15:07:52 2014 heitzl_s
 */
 
 #include <unistd.h>
@@ -18,7 +18,7 @@
 #include "../env/42sh.h"
 #include "../pipe/pipe.h"
 
-int             check_and_close_son(t_cmd *cmd, t_42sh *shell, int i, int close_fd)
+int             check_and_close_son(t_cmd *cmd, int i, int close_fd)
 {
   if (close_fd == 0 && cmd[i].fdout != 1)
     close(cmd[i + 1].fdin);
