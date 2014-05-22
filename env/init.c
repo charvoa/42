@@ -6,7 +6,7 @@
 **
 ** Started on  Fri Apr  4 12:34:07 2014 garcia antoine
 <<<<<<< Updated upstream
-** Last update Thu May 22 14:44:28 2014 Nicolas Charvoz
+** Last update Thu May 22 14:47:46 2014 Nicolas Charvoz
 =======
 ** Last update Mon May  5 17:00:21 2014 garcia antoine
 >>>>>>> Stashed changes
@@ -14,6 +14,7 @@
 
 #include <stdlib.h>
 #include "42sh.h"
+#include "../xlib/xlib.h"
 
 t_dlist	*create_my_env(t_dlist *shell, char **environ)
 {
