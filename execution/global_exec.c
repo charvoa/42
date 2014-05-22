@@ -5,22 +5,13 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Thu May  8 16:21:37 2014 garcia antoine
-** Last update Thu May 22 12:54:17 2014 Nicolas Charvoz
+** Last update Thu May 22 14:56:58 2014 heitzl_s
 
 */
 
 #include <unistd.h>
 #include "../parser/parser.h"
 #include "execution.h"
-
-void		create_pipes(t_cmd *cmd, int i)
-{
-  int	fd[2];
-
-  pipe(fd);
-  cmd[i].fdout = fd[1];
-  cmd[i + 1].fdin = fd[0];
-}
 
 int	global_prepa(t_cmd *cmd)
 {
