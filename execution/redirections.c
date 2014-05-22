@@ -5,11 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Tue May  6 13:36:11 2014 garcia antoine
-<<<<<<< Updated upstream
-** Last update Thu May 22 11:46:48 2014 heitzl_s
-=======
-** Last update Fri May  9 18:32:33 2014 garcia antoine
->>>>>>> Stashed changes
+** Last update Thu May 22 13:16:59 2014 Nicolas Charvoz
 */
 
 #include <stdlib.h>
@@ -22,7 +18,7 @@
 #include "../parser/parser.h"
 #include "execution.h"
 
-static int	open_my_file(char *name)
+int	open_my_file(char *name)
 {
   int	fd;
 
@@ -40,47 +36,7 @@ static int	open_my_file(char *name)
   return (fd);
 }
 
-int	exec_double_left(t_cmd *cmd, t_cmd *cmd2)
-{
-  char	*buffer;
-  char	**final;
-  int	nb;
-  static int i = 0;
-
-  buffer = malloc(4096 * sizeof(char));
-  final = malloc(4096 * sizeof(char *));
-  nb = read(0, buffer, 4096);
-  buffer[nb - 1] = '\0';
-  if (!strcmp(buffer, "coucou"))
-    {
-      final[i] = strdup(buffer);
-    }
-  else
-    {
-      final[i] = strdup(buffer);
-      i++;
-      exec_double_left(cmd, cmd2);
-    }
-}
-
-int	double_redir_left(t_cmd *cmd, t_cmd  *cmd2)
-{
-  int	pid;
-  int	status;
-
-  pid = fork();
-  if (pid == - 1)
-    return (0);
-  if (pid == 0)
-    {
-      exec_double_left(cmd, cmd2);
-    }
-  else
-    wait(&status);
-  return (0);
-}
-
-int	redir_left(t_cmd *cmd, t_cmd *cmd2)
+void	redir_left(t_cmd *cmd, t_cmd *cmd2)
 {
   cmd->fdout = 1;
   cmd->fdin = open(cmd2->args[0], O_RDONLY);
@@ -88,14 +44,14 @@ int	redir_left(t_cmd *cmd, t_cmd *cmd2)
   cmd2->fdout = cmd->fdin;
 }
 
-int	double_redir_right(t_cmd *cmd, t_cmd *cmd2)
+void	double_redir_right(t_cmd *cmd, t_cmd *cmd2)
 {
   cmd->fdout = open(cmd2->args[0], O_WRONLY | O_CREAT | O_APPEND, 0666);
   cmd2->fdin = cmd->fdout;
   cmd2->fdout = cmd->fdout;
 }
 
-int	redir_right(t_cmd *cmd, t_cmd *cmd2)
+void	redir_right(t_cmd *cmd, t_cmd *cmd2)
 {
   char  *buffer;
   int   nb;
@@ -121,13 +77,11 @@ int	redir_right(t_cmd *cmd, t_cmd *cmd2)
     }
 }
 
-int	redirections(t_cmd *cmd, t_cmd *cmd2)
+void	redirections(t_cmd *cmd, t_cmd *cmd2)
 {
   cmd2->type = 1;
   if (!strncmp(cmd->token, ">>", 2))
     double_redir_right(cmd, cmd2);
   else if (!strncmp(cmd->token, ">", 1))
     redir_right(cmd, cmd2);
-  else if (!strncmp(cmd->token, "<", 1))
-    redir_left(cmd, cmd2);
 }

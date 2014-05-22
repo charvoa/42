@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Wed May 21 14:15:07 2014 Nicolas Charvoz
-** Last update Wed May 21 14:29:56 2014 Nicolas Charvoz
+** Last update Thu May 22 13:01:44 2014 Nicolas Charvoz
 */
 
 #include "xlib.h"
@@ -16,7 +16,7 @@ ssize_t	xread(int fd, void *buf, size_t count)
 
   if ((nb = read(fd, buf, count)) == -1)
     {
-      print_error("Cannot Read file\n");
+      fprintf(stderr, "Cannot Read file\n");
       return (-1);
     }
   return (nb);

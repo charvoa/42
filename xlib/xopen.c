@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Wed May 21 14:08:01 2014 Nicolas Charvoz
-** Last update Thu May 22 11:56:57 2014 heitzl_s
+** Last update Thu May 22 13:07:45 2014 Nicolas Charvoz
 */
 
 #include "xlib.h"
@@ -16,9 +16,7 @@ int	xopenmode(const char *pathname, int flags, mode_t mode)
 
   if ((fd = open(pathname, flags, mode)) == -1)
     {
-      print_error("Cannot Open file :");
-      print_error(pathname);
-      print_error("\n");
+      fprintf(stderr, "Cannot Open file : %s\n", pathname);
       return (-1);
     }
   return (fd);
@@ -30,9 +28,7 @@ int	xopen(const char *pathname, int flags)
 
   if ((fd = open(pathname, flags)) == -1)
     {
-      print_error("Cannot Open file :");
-      print_error(pathname);
-      print_error("\n");
+      fprintf(stderr, "Cannot Open file : %s\n", pathname);
       return (-1);
     }
   return (fd);
@@ -44,9 +40,7 @@ int	xcreat(const char *pathname, mode_t mode)
 
   if ((fd = creat(pathname, mode)) == -1)
     {
-      print_error("Cannot create file :" );
-      print_error(pathname);
-      print_error("\n");
+      fprintf(stderr, "Cannot create file : %s\n", pathname);
       return (-1);
     }
   return (fd);

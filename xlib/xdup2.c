@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Wed May 21 14:19:21 2014 Nicolas Charvoz
-** Last update Wed May 21 14:29:43 2014 Nicolas Charvoz
+** Last update Thu May 22 13:06:57 2014 Nicolas Charvoz
 */
 
 #include "xlib.h"
@@ -16,7 +16,7 @@ int	xdup2(int oldfd, int newfd)
 
   if ((fd = dup2(oldfd, newfd)) == -1)
     {
-      print_error("Cannot duplicate fds\n");
+      fprintf(stderr, "Cannot duplicate fds\n");
       return (-1);
     }
   return (fd);

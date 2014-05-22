@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Wed May 21 14:30:17 2014 Nicolas Charvoz
-** Last update Wed May 21 14:35:58 2014 Nicolas Charvoz
+** Last update Thu May 22 13:06:43 2014 Nicolas Charvoz
 */
 
 #include "xlib.h"
@@ -16,7 +16,7 @@ void	*xmalloc(size_t size)
 
   if ((s = malloc(size)) == NULL)
     {
-      print_error("Cannot alloc\n");
+      fprintf(stderr, "Cannot alloc\n");
       return (NULL);
     }
   return (s);
@@ -28,7 +28,7 @@ void	*xcalloc(size_t nmemb, size_t size)
 
   if ((s = calloc(nmemb, size)) == NULL)
     {
-      print_error("Cannot calloc\n");
+      fprintf(stderr, "Cannot calloc\n");
       return (NULL);
     }
   return (s);

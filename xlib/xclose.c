@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Wed May 21 14:18:16 2014 Nicolas Charvoz
-** Last update Wed May 21 14:29:49 2014 Nicolas Charvoz
+** Last update Thu May 22 13:07:07 2014 Nicolas Charvoz
 */
 
 #include "xlib.h"
@@ -14,7 +14,7 @@ int	xclose(int fd)
 {
   if ((close(fd)) == -1)
     {
-      print_error("Cannot Close file\n");
+      fprintf(stderr, "Cannot Close file\n");
       return (-1);
     }
   return (0);

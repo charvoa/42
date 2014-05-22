@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Wed May 21 14:22:03 2014 Nicolas Charvoz
-** Last update Wed May 21 14:36:03 2014 Nicolas Charvoz
+** Last update Thu May 22 13:03:57 2014 Nicolas Charvoz
 */
 
 #ifndef XLIB_H_
@@ -17,7 +17,9 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <unistd.h>
-#include <string.h>
+# include <string.h>
+# include <stdio.h>
+# include <stdlib.h>
 
 /* XOPEN.C */
 int	xopen(const char *pathname, int flags);

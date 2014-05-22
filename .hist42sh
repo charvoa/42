@@ -1,11 +1,1 @@
-ls | cat
-ls
-ls | cat
-ls
-ls
-ls
-ls
-ls
-ls | cat
-ls | cat | wc
-ls | cat | wc | cat
+ls > toto | wc

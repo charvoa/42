@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Thu May  8 16:21:37 2014 garcia antoine
-** Last update Thu May 22 12:05:18 2014 heitzl_s
+** Last update Thu May 22 12:54:17 2014 Nicolas Charvoz
 
 */
 
@@ -35,6 +35,7 @@ int	global_prepa(t_cmd *cmd)
 	redirections(&cmd[i], &cmd[i + 1]);
       i++;
     }
+  return (0);
 }
 
 void	semi_col(t_cmd *cmd, t_cmd *cmd2)
@@ -56,6 +57,7 @@ int	prepa_semi_col(t_cmd *cmd)
 	cmd[i].fdout = 1;
       i++;
     }
+  return (0);
 }
 
 int	print(t_cmd *cmd)
@@ -75,4 +77,5 @@ int	global_exec(t_cmd *cmd, t_42sh *shell, int tok)
   prepa_semi_col(cmd);
   print(cmd);
   execution(cmd, shell, tok);
+  return (0);
 }

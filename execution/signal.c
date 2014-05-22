@@ -1,11 +1,11 @@
 /*
 ** signal.c for signal in /home/garcia_t/42/execution
-** 
+**
 ** Made by garcia antoine
 ** Login   <garcia_t@epitech.net>
-** 
+**
 ** Started on  Mon May 19 11:27:27 2014 garcia antoine
-** Last update Mon May 19 14:16:39 2014 garcia antoine
+** Last update Thu May 22 13:12:53 2014 Nicolas Charvoz
 */
 
 #include <stdlib.h>
