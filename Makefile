@@ -5,7 +5,7 @@
 ## Login   <charvo_a@epitech.net>
 ##
 ## Started on  Mon Apr 21 15:01:55 2014 Nicolas Charvoz
-## Last update Thu May 22 14:52:28 2014 heitzl_s
+## Last update Thu May 22 16:14:13 2014 Nicolas Charvoz
 ## Last update Mon May  5 16:59:08 2014 garcia antoine
 ##
 
@@ -42,39 +42,43 @@ LIBTERM	=	-lncurses
 
 NAME	=	42sh
 
-SRCS	=	$(TERM)/termcaps.c		\
-		$(LEXER)/lexer.c		\
-		$(LEXER)/check1.c		\
-		$(LEXER)/check2.c		\
-		$(LEXER)/epur_str.c		\
-		$(ENV)/dlist.c			\
-		$(ENV)/init.c			\
-		$(ENV)/list.c			\
-		$(ENV)/main.c			\
-		$(ENV)/prompt.c			\
-		$(ENV)/start_shell.c		\
-		$(ENV)/util_env.c		\
-		$(ENV)/strtotab.c		\
-		$(PARSER)/parser.c		\
-		$(PARSER)/struct_fill.c		\
-		$(PARSER)/pars.c		\
-		$(EXEC)/global_exec.c		\
-		$(EXEC)/exec_simple_cmd.c	\
-		$(EXEC)/redirections.c		\
-		$(EXEC)/prepa_pipes.c		\
-		$(EXEC)/signal.c		\
-		$(EXEC)/close_functions.c	\
-		$(PIPE)/pipes.c			\
-		$(XLIB)/xclose.c		\
-		$(XLIB)/xdup2.c			\
-		$(XLIB)/xmalloc.c		\
-		$(XLIB)/xopen.c			\
-		$(XLIB)/xpipe.c			\
-		$(XLIB)/xread.c			\
-		$(BUILTINS)/check_builtins.c	\
-		$(BUILTINS)/my_cd.c		\
-		$(BUILTINS)/my_echo.c		\
-		$(BUILTINS)/my_env.c
+SRCS	=	$(TERM)/termcaps.c			\
+		$(LEXER)/lexer.c			\
+		$(LEXER)/check1.c			\
+		$(LEXER)/check2.c			\
+		$(LEXER)/epur_str.c			\
+		$(ENV)/dlist.c				\
+		$(ENV)/init.c				\
+		$(ENV)/list.c				\
+		$(ENV)/main.c				\
+		$(ENV)/prompt.c				\
+		$(ENV)/start_shell.c			\
+		$(ENV)/util_env.c			\
+		$(ENV)/strtotab.c			\
+		$(PARSER)/parser.c			\
+		$(PARSER)/struct_fill.c			\
+		$(PARSER)/pars.c			\
+		$(EXEC)/global_exec.c			\
+		$(EXEC)/exec_simple_cmd.c		\
+		$(EXEC)/redirections.c			\
+		$(EXEC)/prepa_pipes.c			\
+		$(EXEC)/signal.c			\
+		$(EXEC)/close_functions.c		\
+		$(PIPE)/pipes.c				\
+		$(XLIB)/xclose.c			\
+		$(XLIB)/xdup2.c				\
+		$(XLIB)/xmalloc.c			\
+		$(XLIB)/xopen.c				\
+		$(XLIB)/xpipe.c				\
+		$(XLIB)/xread.c				\
+		$(BUILTINS)/check_builtins.c		\
+		$(BUILTINS)/my_cd.c			\
+		$(BUILTINS)/my_echo.c			\
+		$(BUILTINS)/my_history.c		\
+		$(BUILTINS)/disp_history_from_line.c	\
+		$(BUILTINS)/my_env.c			\
+		$(BUILTINS)/modif_pwd.c			\
+		$(BUILTINS)/modif_pwd2.c
 
 OBJS	= 	$(SRCS:.c=.o)
 

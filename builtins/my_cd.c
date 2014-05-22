@@ -1,19 +1,14 @@
 /*
 ** my_cd.c for 42sh in /home/audibe_l/rendu/42/builtins
-** 
+**
 ** Made by louis audibert
 ** Login   <audibe_l@epitech.net>
-** 
+**
 ** Started on  Tue May  6 16:42:02 2014 louis audibert
-** Last update Mon May 19 22:16:38 2014 garcia antoine
+** Last update Thu May 22 16:12:49 2014 Nicolas Charvoz
 */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <string.h>
-#include "../env/42sh.h"
-#include "../env/list.h"
+#include "builtins.h"
 
 char	*get_old_pwd(t_dlist *env)
 {
@@ -21,7 +16,10 @@ char	*get_old_pwd(t_dlist *env)
 
   old_pwd = get_env("OLDPWD", env);
   if (old_pwd == NULL)
-    printf("42sh: cd: OLDPWD not set\n");
+    {
+      printf("42sh: cd: OLDPWD not set\n");
+      return NULL;
+    }
   return (old_pwd);
 }
 
@@ -54,56 +52,43 @@ char	*get_path_from_opt(char *arg)
   return (path);
 }
 
-void	modify_pwd(char *name, t_dlist *env, int flag)
+int	check_chdir(char *path, t_dlist *env)
 {
-  t_node	*tmp;
+  int	check;
 
-  tmp = env->start;
-  if (flag == 0)
+  check = chdir(path);
+  if (check == -1)
     {
-      while (tmp)
-	{
-	  if (!strcmp(tmp->name, "PWD"))
-	    {
-	      tmp->value = strdup(name);
-	    }
-	  tmp = tmp->next;
-	}
+      printf("42sh: cd: No such file or directory\n");
+      return (-1);
     }
-  else if (flag == 1)
-    {
-      while (tmp)
-	{
-	  if (!strcmp(tmp->name, "OLDPWD"))
-	    {
-	      tmp->value = strdup(name);
-	    }
-	  tmp = tmp->next;
-	}
-    }
+  modif_simple_pwd(path, env);
+  return (0);
 }
 
 int    my_cd(t_42sh *shell, char **args, t_dlist *env)
 {
   char	*path;
 
+  (void)shell;
   if (args[1] == NULL)
     {
       chdir(get_my_home(env));
-      modify_pwd(get_my_home(env), env, 0);
+      modif_pwd_home(get_my_home(env), env);
     }
   else if (args[1][0] == '~')
     {
       path = get_path_from_opt(args[1]);
       chdir(get_my_home(env));
       chdir(path);
+      modif_pwd_from_home_to_path(args[1], env);
     }
   else if (args[1][0] == '-')
     {
       chdir(get_old_pwd(env));
-      modify_pwd(get_old_pwd(env), env, 0);
+      modif_oldpwd(get_old_pwd(env), env);
     }
-  else if (chdir(args[1]) == -1)
-    printf("42sh: cd: No such file or directory\n");
+  else
+    check_chdir(args[1], env);
   return (0);
 }
