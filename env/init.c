@@ -6,7 +6,7 @@
 **
 ** Started on  Fri Apr  4 12:34:07 2014 garcia antoine
 <<<<<<< Updated upstream
-** Last update Thu May 22 14:35:44 2014 garcia antoine
+** Last update Thu May 22 14:44:28 2014 Nicolas Charvoz
 =======
 ** Last update Mon May  5 17:00:21 2014 garcia antoine
 >>>>>>> Stashed changes
@@ -41,7 +41,8 @@ char    *path_in_cache()
   path = xmalloc(4096 * sizeof(char));
   path = strcpy(path, "/bin/");
   path = strcat(path, ":");
-  path = strcpy(path, "/usr/bin");
+  path = strcat(path, "/usr/bin");
+  path = strcat(path, "\0");
   return (path);
 }
 
