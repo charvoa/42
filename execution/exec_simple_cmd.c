@@ -5,11 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Fri May  9 10:27:51 2014 garcia antoine
-<<<<<<< Updated upstream
-** Last update Mon May 19 21:20:23 2014 garcia antoine
-=======
-** Last update Tue May 13 10:26:01 2014 garcia antoine
->>>>>>> Stashed changes
+** Last update Thu May 22 15:39:55 2014 Nicolas Charvoz
 */
 
 #include <sys/types.h>
@@ -32,12 +28,16 @@ int    check_cmd(t_cmd *cmd, t_42sh *shell)
 char	*real_path(t_cmd *cmd, t_42sh *shell)
 {
   int	i;
+  char	*path;
   char	*pass;
 
   i = 0;
   while (shell->path[i])
     {
-      pass = strcat(strdup(shell->path[i]), cmd->args[0]);
+      pass = calloc(strlen(shell->path[i]) + strlen(cmd->args[0]) + 2, sizeof(char));
+      path = calloc(strlen(shell->path[i]) + strlen(cmd->args[0]) + 2, sizeof(char));
+      strcpy(path,shell->path[i]);
+      pass = strcat(path, cmd->args[0]);
       if (access(pass, X_OK) == 0)
 	return (pass);
       i++;
