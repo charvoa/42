@@ -1,0 +1,49 @@
+/*
+** my_exit.c for 42sh in /home/girard_s/rendu/42bis/builtins
+**
+** Made by Nicolas Girardot
+** Login   <girard_s@epitech.net>
+**
+** Started on  Fri May 23 22:18:14 2014 Nicolas Girardot
+** Last update Fri May 23 23:47:08 2014 Nicolas Girardot
+*/
+
+#include "builtins.h"
+
+int	test_error_on_exit(char **args)
+{
+  int	i;
+
+  i = 0;
+  if (args[1] == NULL)
+    return (0);
+  while (args[1][i] != '\0')
+    {
+      if (args[1][i] < '0' || args[1][i] > '9')
+	{
+	  printf("42sh: exit: %s: numeric argument required\n", args[1]);
+	  return (-1);
+	}
+      else
+	i++;
+    }
+  return (atoi(args[1]));
+}
+
+int	my_exit(t_42sh *shell,char **args, t_dlist *env)
+{
+  int result;
+
+  result = test_error_on_exit(args);
+  if (result == 0)
+    {
+      shell->exit_value = 0;
+      return (-42);
+    }
+  else if (result == -1)
+    {
+      return (0);
+    }
+  shell->exit_value = result;
+  return (-42);
+}
