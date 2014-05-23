@@ -5,7 +5,7 @@
 ** Login   <heitzl_s@epitech.net>
 **
 ** Started on  Fri May 23 10:38:49 2014 heitzl_s
-** Last update Fri May 23 10:38:51 2014 heitzl_s
+** Last update Fri May 23 23:33:16 2014 garcia antoine
 */
 
 #include <stdlib.h>
@@ -26,6 +26,8 @@ t_dlist	*create_my_env(t_dlist *shell, char **environ)
       name = get_name_from_env(environ[i]);
       value = get_value_from_env(environ[i]);
       put_in_list(shell, name, value);
+      free(name);
+      free(value);
       i++;
     }
   return (shell);
