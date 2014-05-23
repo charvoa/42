@@ -1,15 +1,11 @@
 /*
-** main.c for  in /home/charvo_a/Work/42
+** lexer.c for 42sh in /home/heitzl_s/42
 **
-** Made by Nicolas Charvoz
-** Login   <charvo_a@epitech.net>
+** Made by heitzl_s
+** Login   <heitzl_s@epitech.net>
 **
-** Started on  Fri Apr  4 13:56:53 2014 Nicolas Charvoz
-<<<<<<< HEAD
-** Last update Sat May 24 00:53:34 2014 heitzl_s
-=======
-** Last update Sat May 24 00:15:36 2014 Nicolas Girardot
->>>>>>> 8d6d32c84ecfc1dc298afa0055d7d7c8abcbeb5e
+** Started on  Sat May 24 01:04:08 2014 heitzl_s
+** Last update Sat May 24 01:07:46 2014 heitzl_s
 */
 
 #include "lexer.h"
@@ -94,16 +90,10 @@ int	lexer(char *cmd, t_token **token, t_42sh *shell)
       printf("42sh : Syntax error near unexpected token `%s`\n", error);
       return (0);
     }
-  else
-    {
-<<<<<<< HEAD
-      token = alias(token, shell);
-      parser(token, shell);
-=======
-      if (parser(token, shell) == -42)
-	return (-42);
->>>>>>> 8d6d32c84ecfc1dc298afa0055d7d7c8abcbeb5e
-    }
+  token = alias(token, shell);
+  parser(token, shell);
+  if (parser(token, shell) == -42)
+    return (-42);
   free(lexi->cmd);
   free(lexi);
   return (0);
