@@ -1,9 +1,4 @@
 ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls;pwd
-ls;pwd
+ls | cd
+cd | ls
+ls | cd
