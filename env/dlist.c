@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Fri Apr  4 11:55:23 2014 garcia antoine
-** Last update Fri May 23 10:38:35 2014 heitzl_s
+** Last update Fri May 23 23:32:15 2014 garcia antoine
 */
 
 #include <stdlib.h>
@@ -70,8 +70,6 @@ void	put_in_list(t_dlist *list, char *name, char *value)
   node->name = strdup(name);
   node->value = strdup(value);
   add_node(list, node);
-  free(name);
-  free(value);
 }
 
 void	free_my_list(t_dlist *list)

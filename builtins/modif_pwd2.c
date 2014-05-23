@@ -5,7 +5,7 @@
 ** Login   <audibe_l@epitech.net>
 **
 ** Started on  Tue May 20 14:26:40 2014 louis audibert
-** Last update Fri May 23 15:06:09 2014 louis audibert
+** Last update Fri May 23 22:58:40 2014 louis audibert
 */
 
 #include "builtins.h"
@@ -49,14 +49,23 @@ char    *check_name(char *name)
   return (name);
 }
 
+char	*check_arg(char *arg)
+{
+  int	i;
+
+  i = strlen(arg);
+  if (arg[i - 1] == '/')
+    arg[i - 1] = '\0';
+  return (arg);
+}
+
 char    *parse_name2(char *arg, char *path, int i)
 {
   char  *name;
   char	*path2;
 
   name = xcalloc((strlen(arg) + strlen(path) + 4), sizeof(char));
-  path2 = xcalloc(((strlen(path) + 2) + strlen(arg) + 1), sizeof(char));
-  
+  path2 = xcalloc(((strlen(path) + 2) + strlen(arg) + 1), sizeof(char));  
   arg = clean_arg(arg);
   if (arg[i - 1] != '/' && arg[i - 2] != '.' && arg[i - 3] != '.' && arg[0])
     {
@@ -79,6 +88,7 @@ char    *parse_name(char *arg, char *path)
   printf("ARG = %s\n", arg);
   i = 0;
   j = strlen(path);
+  arg = check_arg(arg);
   while (arg[i])
     {
       if (arg[i] == '.' && arg[i + 1] == '.')

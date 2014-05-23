@@ -5,7 +5,7 @@
 ** Login   <audibe_l@epitech.net>
 ** 
 ** Started on  Fri May 23 21:29:41 2014 louis audibert
-** Last update Fri May 23 22:00:22 2014 louis audibert
+** Last update Fri May 23 22:42:06 2014 louis audibert
 */
 
 #include "builtins.h"
@@ -13,7 +13,7 @@
 
 int	cd_home(t_dlist *env)
 {
-  if (access(get_my_home(env), R_OK | W_OK | X_OK) == -1)
+  if (access(get_my_home(env), R_OK) == -1)
     {
       fprintf(stderr, "42sh: cd: Permission Denied.\n");
       return (-1);
@@ -29,13 +29,13 @@ int	cd_tild(char **args, t_dlist *env)
   char	*path;
 
   path = get_path_from_opt(args[1]);
-  if (access(get_my_home(env), R_OK | W_OK | X_OK) == -1)
+  if (access(get_my_home(env), R_OK) == -1)
     {
       fprintf(stderr, "42sh: cd: Permission Denied.\n");
       return (-1);
     }
   chdir(get_my_home(env));
-  if (access(path, R_OK | W_OK | X_OK) == -1)
+  if (access(path, R_OK) == -1)
     {
       fprintf(stderr, "42sh: cd: Permission Denied.\n");
       return (-1);
@@ -48,7 +48,7 @@ int	cd_tild(char **args, t_dlist *env)
 
 int	cd_dash(t_dlist *env)
 {
-  if (access(get_old_pwd(env), R_OK | W_OK | X_OK) == -1)
+  if (access(get_old_pwd(env), R_OK) == -1)
     {
       fprintf(stderr, "42sh: cd: Permission Denied.\n");
       return (-1);
