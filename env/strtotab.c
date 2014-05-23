@@ -5,12 +5,13 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Mon May  5 15:20:22 2014 Nicolas Charvoz
-** Last update Mon May  5 17:30:48 2014 Nicolas Charvoz
+** Last update Fri May 23 10:44:12 2014 heitzl_s
 */
 
 #include <string.h>
 #include <stdlib.h>
 #include "42sh.h"
+#include "../xlib/xlib.h"
 
 int	count_char(char *str)
 {
@@ -49,7 +50,7 @@ char	**strtotab(char *str)
   b = 0;
   i = 0;
   a = 0;
-  tab = malloc(sizeof(char*) * ((count_word(str) + 1)));
+  tab = xmalloc(sizeof(char*) * ((count_word(str) + 1)));
   while (str[i] != '\n' && str[i] != '\0')
     {
       if (str[i] == ':' || str[i] == '\n')
@@ -58,7 +59,7 @@ char	**strtotab(char *str)
           a = a + 1;
           b = 0;
         }
-      tab[a] = malloc(sizeof(char) * ((count_char(str + i) + 1)));
+      tab[a] = xmalloc(sizeof(char) * ((count_char(str + i) + 1)));
       while ((str[i] != ':')  && (str[i] != '\n') && (str[i] != '\0'))
         tab[a][b++] = str[i++];
       tab[a][b] = '\0';

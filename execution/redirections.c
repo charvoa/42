@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Tue May  6 13:36:11 2014 garcia antoine
-** Last update Thu May 22 13:16:59 2014 Nicolas Charvoz
+** Last update Fri May 23 11:08:55 2014 heitzl_s
 */
 
 #include <stdlib.h>
@@ -16,6 +16,7 @@
 #include <sys/wait.h>
 #include <fcntl.h>
 #include "../parser/parser.h"
+#include "../xlib/xlib.h"
 #include "execution.h"
 
 int	open_my_file(char *name)
@@ -27,10 +28,13 @@ int	open_my_file(char *name)
       if (access(name, F_OK) == -1)
 	fprintf(stderr, "42sh: %s: no such file or directory.\n", name);
       else
-	fprintf(stderr, "42sh: %s: don't have the permission to read the file.\n", name);
+	{
+	  fprintf(stderr, "42sh: %s: don't have the ", name);
+	  fprintf(stderr, "permission to read the file.\n");
+	}
       return (-1);
     }
-  fd = open(name, O_RDONLY);
+  fd = xopen(name, O_RDONLY);
   if (fd == - 1)
     printf("42sh : open error.\n");
   return (fd);
@@ -39,7 +43,7 @@ int	open_my_file(char *name)
 void	redir_left(t_cmd *cmd, t_cmd *cmd2)
 {
   cmd->fdout = 1;
-  cmd->fdin = open(cmd2->args[0], O_RDONLY);
+  cmd->fdin = xopen(cmd2->args[0], O_RDONLY);
   cmd2->fdin = cmd->fdin;
   cmd2->fdout = cmd->fdin;
 }
@@ -57,7 +61,7 @@ void	redir_right(t_cmd *cmd, t_cmd *cmd2)
   int   nb;
   int   fd;
 
-  buffer = calloc(20, sizeof(*buffer));
+  buffer = xcalloc(20, sizeof(*buffer));
   if (cmd->type == 0)
     {
       cmd->fdout = creat(cmd2->args[0], 0644);
@@ -71,7 +75,7 @@ void	redir_right(t_cmd *cmd, t_cmd *cmd2)
       fd = open(cmd->args[0] , O_RDONLY);
       while ((nb = read(fd, buffer, 19)) != 0)
         {
-          write(cmd2->fdin, buffer, (strlen(buffer) +1));
+          write(cmd2->fdin, buffer, (strlen(buffer) + 1));
           memset(buffer, 0, 20);
         }
     }

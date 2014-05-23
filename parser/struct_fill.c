@@ -5,11 +5,12 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Thu May  8 12:50:49 2014 Nicolas Charvoz
-** Last update Thu May 22 14:44:39 2014 heitzl_s
+** Last update Fri May 23 10:57:04 2014 heitzl_s
 */
 
 #include "parser.h"
 #include "../execution/execution.h"
+#include "../xlib/xlib.h"
 
 void	init_struct(t_cmd *cmd)
 {
@@ -35,7 +36,7 @@ int             nbr_of_token(t_token **token)
   t_token       *tok;
   int           i;
 
-  tok = malloc(sizeof(*tok));
+  tok = xmalloc(sizeof(*tok));
   i = 0;
   tok = *token;
   while (tok)
@@ -57,7 +58,7 @@ void		struct_fill(char **tab, t_token **token, t_42sh *shell)
   j = 0;
   i = 0;
   count = nbr_of_token(token);
-  cmd = calloc((count + 1), sizeof(*cmd));
+  cmd = xcalloc((count + 1), sizeof(*cmd));
   while (tab[i])
     {
       if (tab[i + 1] == NULL)

@@ -5,10 +5,11 @@
 ** Login   <heitzl_s@epitech.net>
 **
 ** Started on  Sat May 17 09:56:13 2014 heitzl_s
-** Last update Sat May 17 11:10:29 2014 heitzl_s
+** Last update Fri May 23 10:54:31 2014 heitzl_s
 */
 
 #include <stdlib.h>
+#include "../xlib/xlib.h"
 
 int	malloc_epured(char *str)
 {
@@ -42,7 +43,7 @@ char	*epur_str(char	*s)
 
   i = 0;
   x = 0;
-  new = malloc((malloc_epured(s) + 1) * sizeof(char));
+  new = xmalloc((malloc_epured(s) + 1) * sizeof(char));
   while (s[i] == ' ')
     i++;
   while (s[i] != '\0')

@@ -5,11 +5,7 @@
 ** Login   <heitzl_s@epitech.net>
 **
 ** Started on  Wed May 14 15:05:12 2014 heitzl_s
-<<<<<<< Updated upstream
-** Last update Thu May 22 18:42:47 2014 Nicolas Charvoz
-=======
-** Last update Thu May 22 18:40:51 2014 Nicolas Charvoz
->>>>>>> Stashed changes
+** Last update Fri May 23 10:50:04 2014 heitzl_s
 */
 
 #include <unistd.h>
@@ -21,6 +17,7 @@
 #include "../parser/parser.h"
 #include "../env/42sh.h"
 #include "../pipe/pipe.h"
+#include "../xlib/xlib.h"
 
 int		launch(t_cmd *cmd, t_42sh *shell, int i, int close_fd)
 {
@@ -29,14 +26,13 @@ int		launch(t_cmd *cmd, t_42sh *shell, int i, int close_fd)
   pid = fork();
   if (pid == 0)
     {
-      signal(SIGINT, get_sigint);
       if (check_pipe_cmd(&cmd[i], shell) == -1)
 	{
 	  fprintf(stderr, "Command not found : %s\n", cmd[i].args[0]);
 	  exit (-1);
 	}
-      dup2(cmd[i].fdout, 1);
-      dup2(cmd[i].fdin, 0);
+      xdup2(cmd[i].fdout, 1);
+      xdup2(cmd[i].fdin, 0);
       check_and_close_son(cmd, i, close_fd);
       if (exec_cmd(&cmd[i], shell) == -1)
 	fprintf(stderr, "Command not found : %s\n", cmd->args[0]);
@@ -53,28 +49,11 @@ int	waiting_process(t_cmd *cmd)
   while (cmd[i].token != NULL)
     {
       waitpid(cmd[i].pid, &cmd[i].status, 0);
+      printf("cmd[%d].status = %d\n", i, cmd[i].status);
       i++;
     }
   waitpid(cmd[i].pid, &cmd[i].status, 0);
-  return (0);
-}
-
-int             prepa_pipes(t_cmd *cmd)
-{
-  int   i;
-
-  i = 0;
-  while (cmd[i].token != NULL)
-    {
-      cmd[i].fdin = 0;
-      while (cmd[i].token != NULL )
-        {
-          if ((strcmp(cmd[i].token, "|") == 0))
-            create_pipes(cmd, i);
-          i++;
-        }
-    }
-  cmd[i].fdout = 1;
+  printf("cmd[%d].status = %d\n", i, cmd[i].status);
   return (0);
 }
 

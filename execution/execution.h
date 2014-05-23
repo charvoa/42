@@ -5,11 +5,14 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Fri May  9 11:18:26 2014 garcia antoine
-** Last update Thu May 22 18:46:07 2014 Nicolas Charvoz
+** Last update Fri May 23 11:14:06 2014 heitzl_s
 */
 
 #ifndef EXECUTION_H_
 # define EXECUTION_H_
+
+#include "../env/42sh.h"
+#include "../parser/parser.h"
 
 typedef struct s_signal
 {

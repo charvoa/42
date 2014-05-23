@@ -1,15 +1,11 @@
 /*
-** init.c for init in /home/garcia_t/rendu/42sh
+** init.c for 42sh in /home/heitzl_s/42/env
 **
-** Made by garcia antoine
-** Login   <garcia_t@epitech.net>
+** Made by heitzl_s
+** Login   <heitzl_s@epitech.net>
 **
-** Started on  Fri Apr  4 12:34:07 2014 garcia antoine
-<<<<<<< Updated upstream
-** Last update Thu May 22 14:47:46 2014 Nicolas Charvoz
-=======
-** Last update Mon May  5 17:00:21 2014 garcia antoine
->>>>>>> Stashed changes
+** Started on  Fri May 23 10:38:49 2014 heitzl_s
+** Last update Fri May 23 10:38:51 2014 heitzl_s
 */
 
 #include <stdlib.h>

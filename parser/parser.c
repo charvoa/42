@@ -5,10 +5,11 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Mon Apr 28 10:34:31 2014 Nicolas Charvoz
-** Last update Fri May 16 16:44:37 2014 Nicolas Charvoz
+** Last update Fri May 23 10:56:31 2014 heitzl_s
 */
 
 #include "parser.h"
+#include "../xlib/xlib.h"
 
 char		*check_token(t_token **token, t_lex *lexi)
 {
@@ -62,12 +63,12 @@ void		parser(t_token **token, t_42sh *shell)
 
   a = 0;
   tok = *token;
-  pars = malloc(sizeof(*pars));
-  pars->tab = malloc((size_of_list(token) + 2) * sizeof(char*));
+  pars = xmalloc(sizeof(*pars));
+  pars->tab = xmalloc((size_of_list(token) + 2) * sizeof(char*));
   pars->tab = memset(pars->tab, '\0', (size_of_list(token) + 2));
   while (tok->next != NULL)
     {
-      pars->tab[a] = malloc((strlen(tok->value) + 2) * sizeof(char));
+      pars->tab[a] = xmalloc((strlen(tok->value) + 2) * sizeof(char));
       pars->tab[a] = memset(pars->tab[a], '\0', (strlen(tok->value) + 2));
       pars->tab[a] = strdup(epur_str(tok->value));
       a++;
