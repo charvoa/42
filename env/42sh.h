@@ -5,7 +5,11 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Fri Apr  4 12:16:42 2014 garcia antoine
+<<<<<<< HEAD
 ** Last update Fri May 23 14:39:25 2014 heitzl_s
+=======
+** Last update Thu May 22 18:45:54 2014 Nicolas Charvoz
+>>>>>>> c40a3331e0f70987da71002b8a4680db772a89c4
 */
 
 #ifndef SHELL_H_
