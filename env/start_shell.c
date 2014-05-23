@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Mon Apr  7 16:15:48 2014 garcia antoine
-** Last update Fri May 23 10:43:41 2014 heitzl_s
+** Last update Sat May 24 00:17:13 2014 Nicolas Girardot
 */
 
 #include <sys/types.h>
@@ -77,7 +77,8 @@ int	start_shell(t_42sh *shell)
       signal(SIGINT, get_sigint);
       prompt(shell);
       shell->cmd = read_line(fd);
-      lexer(shell->cmd, &token, shell);
+      if (lexer(shell->cmd, &token, shell) == -42)
+	return (-42);
       free_my_tok(token);
     }
   return (0);

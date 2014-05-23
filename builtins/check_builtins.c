@@ -5,7 +5,7 @@
 ** Login   <audibe_l@epitech.net>
 **
 ** Started on  Mon May 12 12:59:09 2014 louis audibert
-** Last update Fri May 23 10:27:46 2014 heitzl_s
+** Last update Sat May 24 00:19:25 2014 Nicolas Girardot
 */
 
 #include "builtins.h"
@@ -17,12 +17,13 @@ int	find_cmd(char *cmd)
   int	i;
 
   i = 0;
-  find = xmalloc(5 * sizeof(char*));
+  find = xmalloc(6 * sizeof(char*));
   find[0] = "cd";
   find[1] = "env";
   find[2] = "echo";
   find[3] = "history";
-  find[4] = NULL;
+  find[4] = "exit";
+  find[5] = NULL;
   while (find[i] != NULL)
     {
       if (strcmp(cmd, find[i]) == 0)
@@ -38,20 +39,22 @@ void	fill_builtins(int (**builtins)(t_42sh *shell, char **args, t_dlist *env))
   builtins[1] = &my_env;
   builtins[2] = &my_echo;
   builtins[3] = &my_history;
+  builtins[4] = &my_exit;
 }
 
 int     check_builtins(t_42sh *shell, char **args, t_dlist *env)
 {
-  int   (*builtins[4])(t_42sh *shell, char **args, t_dlist *env);
+  int   (*builtins[5])(t_42sh *shell, char **args, t_dlist *env);
   int	i;
 
   fill_builtins(builtins);
   i = 0;
-  while (i < 4)
+  while (i < 5)
     {
       if (find_cmd(args[0]) == i)
 	{
-	  builtins[i](shell, args, env);
+	  if (builtins[i](shell, args, env) == -42)
+	    return (-42);
 	  return (1);
 	}
       i++;
