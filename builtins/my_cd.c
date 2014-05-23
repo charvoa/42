@@ -5,7 +5,7 @@
 ** Login   <audibe_l@epitech.net>
 **
 ** Started on  Tue May  6 16:42:02 2014 louis audibert
-** Last update Fri May 23 19:30:04 2014 louis audibert
+** Last update Fri May 23 21:34:16 2014 louis audibert
 */
 
 #include "builtins.h"
@@ -69,30 +69,15 @@ int	check_chdir(char *path, t_dlist *env)
 
 int    my_cd(t_42sh *shell, char **args, t_dlist *env)
 {
-  char	*path;
-
   (void)shell;
   if (args[1] == NULL)
-    {
-      chdir(get_my_home(env));
-      modif_oldpwd(get_env("PWD", env), env);
-      modif_pwd_home(get_my_home(env), env);
-    }
+    cd_home(env);
   else if (args[1][0] == '~' && args[1][1] != '~'
 	   && !((args[1][1] >= 'a' && args[1][1] <= 'z')
 		|| (args[1][1] >= 'A' && args[1][1] <= 'Z')))
-    {
-      path = get_path_from_opt(args[1]);
-      chdir(get_my_home(env));
-      chdir(path);
-      modif_oldpwd(get_env("PWD", env), env);
-      modif_pwd_from_home_to_path(args[1], env);
-    }
+    cd_tild(args, env);
   else if (args[1][0] == '-')
-    {
-      chdir(get_old_pwd(env));
-      modif_oldpwd(get_old_pwd(env), env);
-    }
+    cd_dash(env);
   else
     check_chdir(args[1], env);
   return (0);
