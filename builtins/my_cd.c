@@ -5,7 +5,7 @@
 ** Login   <audibe_l@epitech.net>
 **
 ** Started on  Tue May  6 16:42:02 2014 louis audibert
-** Last update Fri May 23 21:34:16 2014 louis audibert
+** Last update Fri May 23 22:08:30 2014 louis audibert
 */
 
 #include "builtins.h"
@@ -56,6 +56,11 @@ int	check_chdir(char *path, t_dlist *env)
 {
   int	check;
 
+  if (access(path, R_OK | W_OK | X_OK) == -1)
+    {
+      fprintf(stderr, "42sh: cd: Permission Denied.\n");
+      return (-1);
+    }
   check = chdir(path);
   if (check == -1)
     {
@@ -71,14 +76,28 @@ int    my_cd(t_42sh *shell, char **args, t_dlist *env)
 {
   (void)shell;
   if (args[1] == NULL)
-    cd_home(env);
+    {
+      if (cd_home(env) == -1)
+	return (-1);
+    }
   else if (args[1][0] == '~' && args[1][1] != '~'
 	   && !((args[1][1] >= 'a' && args[1][1] <= 'z')
 		|| (args[1][1] >= 'A' && args[1][1] <= 'Z')))
-    cd_tild(args, env);
+    {
+      if (cd_tild(args, env) == -1)
+	return (-1);
+    }
   else if (args[1][0] == '-')
-    cd_dash(env);
+    {
+      if (cd_dash(env) == -1)
+	return (-1);
+    }
   else
-    check_chdir(args[1], env);
+    {
+      if (args[1][0] == '.' && args[1][1] == '\0')
+	return (0);
+      if (check_chdir(args[1], env) == -1)
+	return (-1);
+    }
   return (0);
 }
