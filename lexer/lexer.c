@@ -5,7 +5,7 @@
 ** Login   <heitzl_s@epitech.net>
 **
 ** Started on  Sat May 24 01:04:08 2014 heitzl_s
-** Last update Sat May 24 01:07:46 2014 heitzl_s
+** Last update Sat May 24 01:12:55 2014 heitzl_s
 */
 
 #include "lexer.h"
@@ -90,10 +90,12 @@ int	lexer(char *cmd, t_token **token, t_42sh *shell)
       printf("42sh : Syntax error near unexpected token `%s`\n", error);
       return (0);
     }
-  token = alias(token, shell);
-  parser(token, shell);
-  if (parser(token, shell) == -42)
-    return (-42);
+  else
+    {
+      token = alias(token, shell);
+      if (parser(token, shell) == -42)
+	return (-42);
+    }
   free(lexi->cmd);
   free(lexi);
   return (0);
