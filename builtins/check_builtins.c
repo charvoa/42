@@ -5,7 +5,7 @@
 ** Login   <audibe_l@epitech.net>
 **
 ** Started on  Mon May 12 12:59:09 2014 louis audibert
-** Last update Sat May 24 00:52:46 2014 louis audibert
+** Last update Sat May 24 01:46:13 2014 heitzl_s
 */
 
 #include "builtins.h"
@@ -49,15 +49,18 @@ int     check_builtins(t_42sh *shell, t_cmd *cmd, t_dlist *env)
 
   fill_builtins(builtins);
   i = 0;
-  while (i < 5)
+  if (cmd->args)
     {
-      if (find_cmd(cmd->args[0]) == i)
+      while (i < 5)
 	{
-	  if (builtins[i](shell, cmd, env) == -42)
-	    return (-42);
-	  return (1);
+	  if ( find_cmd(cmd->args[0]) == i)
+	    {
+	      if (builtins[i](shell, cmd, env) == -42)
+		return (-42);
+	      return (1);
+	    }
+	  i++;
 	}
-      i++;
     }
   return (0);
 }

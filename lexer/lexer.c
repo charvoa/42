@@ -5,7 +5,7 @@
 ** Login   <heitzl_s@epitech.net>
 **
 ** Started on  Sat May 24 01:04:08 2014 heitzl_s
-** Last update Sat May 24 01:12:55 2014 heitzl_s
+** Last update Sat May 24 01:44:27 2014 heitzl_s
 */
 
 #include "lexer.h"
@@ -50,7 +50,10 @@ int	word_check(char *str, int i, t_token **token)
     }
   word[i] = '\0';
   if (word[0] != '\0')
-    *token = insert(*token, TOKEN_WORD, strdup(word), i);
+    {
+      word = epur_str(word);
+      *token = insert(*token, TOKEN_WORD, strdup(word), i);
+    }
   free(word);
   return (i);
 }
