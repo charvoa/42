@@ -5,7 +5,7 @@
 ## Login   <charvo_a@epitech.net>
 ##
 ## Started on  Mon Apr 21 15:01:55 2014 Nicolas Charvoz
-## Last update Fri May 23 14:07:56 2014 Nicolas Girardot
+## Last update Fri May 23 22:19:47 2014 heitzl_s
 ## Last update Fri May 23 10:57:46 2014 heitzl_s
 ## Last update Mon May  5 16:59:08 2014 garcia antoine
 ##
@@ -80,7 +80,8 @@ SRCS	=	$(TERM)/termcaps.c			\
 		$(BUILTINS)/disp_history_from_line.c	\
 		$(BUILTINS)/my_env.c			\
 		$(BUILTINS)/modif_pwd.c			\
-		$(BUILTINS)/modif_pwd2.c
+		$(BUILTINS)/modif_pwd2.c		\
+		$(BUILTINS)/func_my_cd.c
 
 OBJS	= 	$(SRCS:.c=.o)
 
