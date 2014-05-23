@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Fri Apr  4 11:40:28 2014 garcia antoine
-** Last update Wed Apr 30 14:22:40 2014 Nicolas Charvoz
+** Last update Wed May 21 17:15:45 2014 Nicolas Girardot
 */
 
 #ifndef LIST_H_
