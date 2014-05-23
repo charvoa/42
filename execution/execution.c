@@ -5,7 +5,7 @@
 ** Login   <heitzl_s@epitech.net>
 **
 ** Started on  Wed May 14 15:05:12 2014 heitzl_s
-** Last update Fri May 23 23:39:26 2014 heitzl_s
+** Last update Fri May 23 23:57:33 2014 Nicolas Girardot
 */
 
 #include <unistd.h>
@@ -101,7 +101,10 @@ int	execution(t_cmd *cmd, t_42sh *shell, int tok)
 	    {
 	      close_fd = which_one_to_close(cmd, i);
 	      if (cmd[i].type == 0)
-		check_and_close_father(cmd, shell, i, close_fd);
+		{
+		  if (check_and_close_father(cmd, shell, i, close_fd) == -42)
+		    return (-42);
+		}
 	      tok--;
 	      i++;
 	    }
