@@ -5,14 +5,14 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Fri Apr  4 11:55:23 2014 garcia antoine
-** Last update Tue Apr 29 18:25:24 2014 Nicolas Charvoz
+** Last update Fri May 23 10:38:35 2014 heitzl_s
 */
 
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 #include "list.h"
-
+#include "../xlib/xlib.h"
 
 void		show_list(t_dlist *list)
 {
@@ -30,7 +30,7 @@ t_dlist	      *create_list()
 {
   t_dlist	*list;
 
-  list = malloc(sizeof(*list));
+  list = xmalloc(sizeof(*list));
   if (list != NULL)
     {
       list->lenght = 0;
@@ -66,7 +66,7 @@ void	put_in_list(t_dlist *list, char *name, char *value)
 {
   t_node *node;
 
-  node = malloc(sizeof(*node));
+  node = xmalloc(sizeof(*node));
   node->name = strdup(name);
   node->value = strdup(value);
   add_node(list, node);

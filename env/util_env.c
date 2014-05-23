@@ -1,16 +1,17 @@
 /*
 ** util_env.c for util_env in /home/garcia_t/rendu/42sh
-** 
+**
 ** Made by garcia antoine
 ** Login   <garcia_t@epitech.net>
-** 
+**
 ** Started on  Fri Apr  4 12:46:55 2014 garcia antoine
-** Last update Mon May 19 21:27:10 2014 garcia antoine
+** Last update Fri May 23 10:44:50 2014 heitzl_s
 */
 
 #include <string.h>
 #include <stdlib.h>
 #include "42sh.h"
+#include "../xlib/xlib.h"
 
 int	isolate_name_and_value_from_env(char *env)
 {
@@ -70,12 +71,12 @@ char	**list_to_tab(t_dlist *env)
 
   i = 0;
   tmp = env->start;
-  tab = malloc((env->lenght + 1) * sizeof(char *));
+  tab = xmalloc((env->lenght + 1) * sizeof(char *));
   if (tab == NULL)
     return (NULL);
   while (tmp)
     {
-      tab[i] = malloc(strlen(tmp->name) + strlen(tmp->value) + 2 * sizeof(char));
+      tab[i] = xmalloc(strlen(tmp->name) + strlen(tmp->value) + 2 * sizeof(char));
       tab[i] = strcpy(tab[i], tmp->name);
       tab[i] = strcat(tab[i], "=");
       tab[i] = strcat(tab[i], tmp->value);

@@ -5,10 +5,11 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Tue May  6 15:05:52 2014 Nicolas Charvoz
-** Last update Thu May  8 16:54:15 2014 Nicolas Charvoz
+** Last update Fri May 23 10:55:46 2014 heitzl_s
 */
 
 #include "parser.h"
+#include "../xlib/xlib.h"
 
 int     countchar2(char *str)
 {
@@ -46,7 +47,7 @@ void    parser2(char *str, t_cmd *cmd)
   b = 0;
   i = 0;
   a = 0;
-  cmd->args = malloc((count_word2(str) + 1) * sizeof(char*));
+  cmd->args = xmalloc((count_word2(str) + 1) * sizeof(char*));
    while (str[i] != '\n' && str[i] != '\0')
     {
       if (str[i] == ' ' || str[i] == '\n')
@@ -54,7 +55,7 @@ void    parser2(char *str, t_cmd *cmd)
           i++;
       if (str[i] != '\0')
         {
-          cmd->args[a] = malloc(((countchar2(str + i) + 1)) * sizeof(char));
+          cmd->args[a] = xmalloc(((countchar2(str + i) + 1)) * sizeof(char));
 	  cmd->args[a] = memset(cmd->args[a], 0, ((countchar2(str + i) + 1)));
           while ((str[i] != ' ')  && (str[i] != '\n') && (str[i] != '\0'))
             cmd->args[a][b++] = str[i++];

@@ -5,7 +5,11 @@
 ## Login   <charvo_a@epitech.net>
 ##
 ## Started on  Mon Apr 21 15:01:55 2014 Nicolas Charvoz
+<<<<<<< HEAD
 ## Last update Fri May 23 14:05:10 2014 Nicolas Charvoz
+=======
+## Last update Fri May 23 10:57:46 2014 heitzl_s
+>>>>>>> 02e283a224acc3c3c3511eb1b6f7ff972fbd7975
 ## Last update Mon May  5 16:59:08 2014 garcia antoine
 ##
 
@@ -61,10 +65,11 @@ SRCS	=	$(TERM)/termcaps.c			\
 		$(EXEC)/global_exec.c			\
 		$(EXEC)/exec_simple_cmd.c		\
 		$(EXEC)/redirections.c			\
-		$(EXEC)/prepa_pipes.c			\
 		$(EXEC)/signal.c			\
 		$(EXEC)/close_functions.c		\
+		$(EXEC)/execution.c			\
 		$(PIPE)/pipes.c				\
+		$(PIPE)/prepa_pipes.c			\
 		$(XLIB)/xclose.c			\
 		$(XLIB)/xdup2.c				\
 		$(XLIB)/xmalloc.c			\

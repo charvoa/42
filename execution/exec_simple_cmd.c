@@ -5,13 +5,14 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Fri May  9 10:27:51 2014 garcia antoine
-** Last update Thu May 22 18:43:33 2014 Nicolas Charvoz
+** Last update Fri May 23 11:08:00 2014 heitzl_s
 */
 
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <unistd.h>
 #include "../parser/parser.h"
+#include "../xlib/xlib.h"
 
 int    check_cmd(t_cmd *cmd, t_42sh *shell)
 {
@@ -34,8 +35,8 @@ char	*real_path(t_cmd *cmd, t_42sh *shell)
   i = 0;
   while (shell->path[i])
     {
-      pass = calloc(strlen(shell->path[i]) + strlen(cmd->args[0]) + 2, sizeof(char));
-      path = calloc(strlen(shell->path[i]) + strlen(cmd->args[0]) + 2, sizeof(char));
+      pass = xcalloc(strlen(shell->path[i]) + strlen(cmd->args[0]) + 2, sizeof(char));
+      path = xcalloc(strlen(shell->path[i]) + strlen(cmd->args[0]) + 2, sizeof(char));
       strcpy(path,shell->path[i]);
       pass = strcat(path, cmd->args[0]);
       if (access(pass, X_OK) == 0)
@@ -79,8 +80,7 @@ int     exec_cmd_simple(t_cmd *cmd, t_42sh *shell)
     return (0);
   if (pid == 0 && check == 0)
     {
-      signal(SIGINT, get_sigint);
-      if(exec_cmd(cmd, shell) == - 1)
+      if (exec_cmd(cmd, shell) == - 1)
 	fprintf(stderr, "%s Command not found\n", cmd->args[0]);
       exit(1);
     }

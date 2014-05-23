@@ -5,10 +5,11 @@
 ** Login   <audibe_l@epitech.net>
 **
 ** Started on  Mon May 19 18:58:39 2014 louis audibert
-** Last update Thu May 22 16:16:47 2014 Nicolas Charvoz
+** Last update Fri May 23 10:53:24 2014 heitzl_s
 */
 
 #include "builtins.h"
+#include "../xlib/xlib.h"
 
 int	restricted_history(char *buffer, char *restricted)
 {
@@ -47,11 +48,11 @@ int	my_history(t_42sh *shell, char **args, t_dlist *env)
 
   (void)shell;
   (void)env;
-  buffer = malloc(4096 * sizeof(char));
-  final = malloc(4096 * sizeof(char));
+  buffer = xmalloc(4096 * sizeof(char));
+  final = xmalloc(4096 * sizeof(char));
   memset(final, 0, 4096);
   memset(buffer, 0, 4096);
-  fd = open(".hist42sh", O_CREAT | S_IRUSR | S_IRGRP | S_IROTH);
+  fd = xopen(".hist42sh", O_CREAT | S_IRUSR | S_IRGRP | S_IROTH);
   while ((nb = read(fd, buffer, 4096)) != 0)
     {
       final = realloc(final, 4096);

@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Mon Apr  7 16:15:48 2014 garcia antoine
-** Last update Thu May 22 12:16:55 2014 heitzl_s
+** Last update Fri May 23 10:43:41 2014 heitzl_s
 */
 
 #include <sys/types.h>
@@ -19,6 +19,7 @@
 #include "42sh.h"
 #include "listok.h"
 #include "../lexer/lexer.h"
+#include "../xlib/xlib.h"
 
 t_42sh	shell;
 
@@ -34,7 +35,7 @@ char	*cat_if_pipe(char *cmd)
   char	*buffer;
   int	ret;
 
-  buffer = calloc(4096, sizeof(char));
+  buffer = xcalloc(4096, sizeof(char));
   my_putstr("pipe >");
   ret = read(0, buffer, 4096);
   buffer[ret - 1] = '\0';
@@ -50,8 +51,8 @@ char	*read_line(int fd)
   char	*cmd;
   char	*buffer;
 
-  buffer = calloc(4096, sizeof(char));
-  nb = read(0, buffer, 4096);
+  buffer = xcalloc(4096, sizeof(char));
+  nb = xread(0, buffer, 4096);
   buffer[nb - 1] = '\0';
   cmd = strdup(buffer);
   free(buffer);

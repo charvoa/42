@@ -5,10 +5,11 @@
 ** Login   <audibe_l@epitech.net>
 **
 ** Started on  Thu May  8 11:33:49 2014 louis audibert
-** Last update Thu May 22 16:13:11 2014 Nicolas Charvoz
+** Last update Fri May 23 10:36:22 2014 heitzl_s
 */
 
 #include "builtins.h"
+#include "../xlib/xlib.h"
 
 int	echo_from_var_env(char *opt, t_dlist *env)
 {
@@ -18,7 +19,7 @@ int	echo_from_var_env(char *opt, t_dlist *env)
 
   i = 1;
   j = 0;
-  path = malloc(strlen(opt) * sizeof(char));
+  path = xmalloc(strlen(opt) * sizeof(char));
   memset(path, 0, strlen(opt));
   while (opt[i])
     {

@@ -5,10 +5,11 @@
 ** Login   <audibe_l@epitech.net>
 **
 ** Started on  Tue May  6 16:42:02 2014 louis audibert
-** Last update Thu May 22 18:17:54 2014 Nicolas Charvoz
+** Last update Fri May 23 10:35:32 2014 heitzl_s
 */
 
 #include "builtins.h"
+#include "../xlib/xlib.h"
 
 char	*get_old_pwd(t_dlist *env)
 {
@@ -41,7 +42,7 @@ char	*get_path_from_opt(char *arg)
 
   j = 0;
   i = 1;
-  path = calloc((strlen(arg) + 1), sizeof(char));
+  path = xcalloc((strlen(arg) + 1), sizeof(char));
   while (arg[i])
     {
       path[j] = arg[i];

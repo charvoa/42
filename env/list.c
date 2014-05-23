@@ -5,19 +5,20 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Sat Apr 19 16:12:18 2014 garcia antoine
-** Last update Sat May  3 14:58:12 2014 Nicolas Charvoz
+** Last update Fri May 23 10:40:08 2014 heitzl_s
 */
 
 #include <stdlib.h>
 #include <stdio.h>
 #include "listok.h"
+#include "../xlib/xlib.h"
 
 t_token	*insert(t_token *token, int type, char *value, int pos)
 {
   t_token	*tok;
   t_token	*tmp;
 
-  tok = malloc(sizeof(t_token));
+  tok = xmalloc(sizeof(t_token));
   tok->type = type;
   tok->value = value;
   tok->pos = pos;

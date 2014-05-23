@@ -5,10 +5,11 @@
 ** Login   <audibe_l@epitech.net>
 **
 ** Started on  Mon May 12 12:59:09 2014 louis audibert
-** Last update Thu May 22 16:15:39 2014 Nicolas Charvoz
+** Last update Fri May 23 10:27:46 2014 heitzl_s
 */
 
 #include "builtins.h"
+#include "../xlib/xlib.h"
 
 int	find_cmd(char *cmd)
 {
@@ -16,7 +17,7 @@ int	find_cmd(char *cmd)
   int	i;
 
   i = 0;
-  find = malloc(5 * sizeof(char*));
+  find = xmalloc(5 * sizeof(char*));
   find[0] = "cd";
   find[1] = "env";
   find[2] = "echo";

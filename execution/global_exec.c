@@ -1,12 +1,11 @@
 /*
-** global_exec.c for global_exec in /home/garcia_t/42/execution
-
-** Made by garcia antoine
-** Login   <garcia_t@epitech.net>
+** global_exec.c for 42sh in /home/heitzl_s/42/execution
 **
-** Started on  Thu May  8 16:21:37 2014 garcia antoine
-** Last update Thu May 22 14:56:58 2014 heitzl_s
-
+** Made by heitzl_s
+** Login   <heitzl_s@epitech.net>
+**
+** Started on  Fri May 23 11:05:26 2014 heitzl_s
+** Last update Fri May 23 11:05:28 2014 heitzl_s
 */
 
 #include <unistd.h>

@@ -5,11 +5,12 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Fri Apr  4 13:56:53 2014 Nicolas Charvoz
-** Last update Thu May 22 12:15:19 2014 heitzl_s
+** Last update Fri May 23 10:55:14 2014 heitzl_s
 */
 
 #include "lexer.h"
 #include "../parser/parser.h"
+#include "../xlib/xlib.h"
 
 int	check_unk(char *str, int i, t_token **token)
 {
@@ -17,7 +18,7 @@ int	check_unk(char *str, int i, t_token **token)
   int	j;
 
   j = 0;
-  unk = malloc((strlen(str) + 1) * sizeof(char*));
+  unk = xmalloc((strlen(str) + 1) * sizeof(char*));
   unk = memset(unk, 0, (strlen(str) + 1));
   while (((check_letter2(str[i]) == -1) && str[i] != '\t' ) && (str[i] != '\0'))
     {
@@ -38,7 +39,7 @@ int	word_check(char *str, int i, t_token **token)
   int	j;
 
   j = 0;
-  word = malloc((strlen(str) + 1) * sizeof(char*));
+  word = xmalloc((strlen(str) + 1) * sizeof(char*));
   word = memset(word, 0, (strlen(str) + 1));
   while (((check_letter(str[i]) != -1) || str[i] == '\t' ) && (str[i] != '\0'))
     {
@@ -77,7 +78,7 @@ int	lexer(char *cmd, t_token **token, t_42sh *shell)
   t_lex	*lexi;
 
   i = 0;
-  lexi = malloc(sizeof(*lexi));
+  lexi = xmalloc(sizeof(*lexi));
   lexi->cmd = strdup(cmd);
   lexi->cmd = epur_str(lexi->cmd);
   if (!(lexi->cmd[i]))

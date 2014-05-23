@@ -5,10 +5,11 @@
 ** Login   <audibe_l@epitech.net>
 **
 ** Started on  Mon May 19 22:43:20 2014 louis audibert
-** Last update Thu May 22 18:15:24 2014 Nicolas Charvoz
+** Last update Fri May 23 10:33:01 2014 heitzl_s
 */
 
 #include "builtins.h"
+#include "../xlib/xlib.h"
 
 char	*clean_arg(char *arg)
 {
@@ -16,7 +17,7 @@ char	*clean_arg(char *arg)
   int	j;
   char	*clean_arg;
 
-  clean_arg = calloc((strlen(arg) + 1), sizeof(char));
+  clean_arg = xcalloc((strlen(arg) + 1), sizeof(char));
   i = 0;
   j = 0;
   while (arg[i] == '.' && arg[i + 1] == '.' && arg[i + 2] == '/')
@@ -57,7 +58,7 @@ void		modif_pwd_from_home_to_path(char *name, t_dlist *env)
   pwd = calloc((strlen(name) + 1), sizeof(char));
   home = get_my_home(env);
   pwd = get_pwd_from_home(pwd, name, env);
-  pwd2 = calloc(((strlen(home) + 1) + strlen(pwd) + 1), sizeof(char));
+  pwd2 = xcalloc(((strlen(home) + 1) + strlen(pwd) + 1), sizeof(char));
   home = realloc(home, strlen(home) + 1 + strlen(pwd) + 1);
   pwd2 = strcat(home, pwd);
   tmp = env->start;
