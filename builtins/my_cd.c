@@ -5,7 +5,7 @@
 ** Login   <audibe_l@epitech.net>
 **
 ** Started on  Tue May  6 16:42:02 2014 louis audibert
-** Last update Fri May 23 23:57:09 2014 louis audibert
+** Last update Sat May 24 00:45:19 2014 louis audibert
 */
 
 #include "builtins.h"
@@ -81,29 +81,29 @@ int	check_chdir(char *path, t_dlist *env)
   return (0);
 }
 
-int    my_cd(t_42sh *shell, char **args, t_dlist *env)
+int    my_cd(t_42sh *shell, t_cmd *cmd, t_dlist *env)
 {
   (void)shell;
-  if (args[1] == NULL)
+  if (cmd->args[1] == NULL)
     {
       if (cd_home(env) == -1)
 	return (-1);
     }
-  else if (args[1][0] == '~' && args[1][1] != '~'
-	   && !((args[1][1] >= 'a' && args[1][1] <= 'z')
-		|| (args[1][1] >= 'A' && args[1][1] <= 'Z')))
+  else if (cmd->args[1][0] == '~' && cmd->args[1][1] != '~'
+	   && !((cmd->args[1][1] >= 'a' && cmd->args[1][1] <= 'z')
+		|| (cmd->args[1][1] >= 'A' && cmd->args[1][1] <= 'Z')))
     {
-      if (cd_tild(args, env) == -1)
+      if (cd_tild(cmd->args, env) == -1)
 	return (-1);
     }
-  else if (args[1][0] == '-')
+  else if (cmd->args[1][0] == '-')
     {
       if (cd_dash(env) == -1)
 	return (-1);
     }
-  else if (args[1][0] == '.' && args[1][1] == '\0')
+  else if (cmd->args[1][0] == '.' && cmd->args[1][1] == '\0')
     return (0);
-  else if (check_chdir(args[1], env) == -1)
+  else if (check_chdir(cmd->args[1], env) == -1)
     return (-1);
   return (0);
 }

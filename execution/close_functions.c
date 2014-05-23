@@ -5,7 +5,7 @@
 ** Login   <heitzl_s@epitech.net>
 **
 ** Started on  Thu May 22 13:54:57 2014 heitzl_s
-** Last update Sat May 24 00:10:56 2014 Nicolas Girardot
+** Last update Sat May 24 00:56:11 2014 louis audibert
 */
 
 #include <unistd.h>
@@ -37,7 +37,7 @@ int             check_and_close_father(t_cmd *cmd, t_42sh *shell, int i, int clo
 {
   int result;
 
-  if ((result = check_builtins(shell, cmd->args, shell->env)) == 1);
+  if ((result = check_builtins(shell, &cmd[i], shell->env)) == 1);
   else if (result == -42)
     return (-42);
   else

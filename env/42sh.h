@@ -6,7 +6,7 @@
 **
 ** Started on  Fri Apr  4 12:16:42 2014 garcia antoine
 <<<<<<< HEAD
-** Last update Sat May 24 00:07:03 2014 Nicolas Girardot
+** Last update Sat May 24 00:53:14 2014 louis audibert
 =======
 ** Last update Thu May 22 18:45:54 2014 Nicolas Charvoz
 >>>>>>> c40a3331e0f70987da71002b8a4680db772a89c4
@@ -43,12 +43,6 @@ char	**strtotab(char*);
 int	count_word(char*);
 int	count_char(char*);
 t_dlist *create_my_env(t_dlist *, char **);
-int	check_builtins(t_42sh *, char**, t_dlist *);
-int	my_cd(t_42sh *, char**, t_dlist *);
-int	my_env(t_42sh *, char**, t_dlist *);
-int	my_echo(t_42sh *, char**, t_dlist *);
-int	my_exit(t_42sh *, char**, t_dlist *);
-int	my_history(t_42sh *, char**, t_dlist *);
 void	get_sigint(int);
 
 #endif /*SHELL_H_ */
