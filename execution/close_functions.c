@@ -5,7 +5,7 @@
 ** Login   <heitzl_s@epitech.net>
 **
 ** Started on  Thu May 22 13:54:57 2014 heitzl_s
-** Last update Sat May 24 00:56:11 2014 louis audibert
+** Last update Sat May 24 01:24:33 2014 heitzl_s
 */
 
 #include <unistd.h>
@@ -18,6 +18,7 @@
 #include "../env/42sh.h"
 #include "../pipe/pipe.h"
 #include "../xlib/xlib.h"
+#include "../builtins/builtins.h"
 
 int             check_and_close_son(t_cmd *cmd, int i, int close_fd)
 {

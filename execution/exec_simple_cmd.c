@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Fri May  9 10:27:51 2014 garcia antoine
-** Last update Fri May 23 11:08:00 2014 heitzl_s
+** Last update Sat May 24 01:23:33 2014 heitzl_s
 */
 
 #include <sys/types.h>
@@ -13,6 +13,7 @@
 #include <unistd.h>
 #include "../parser/parser.h"
 #include "../xlib/xlib.h"
+#include "../builtins/builtins.h"
 
 int    check_cmd(t_cmd *cmd, t_42sh *shell)
 {
