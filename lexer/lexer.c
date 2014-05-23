@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Fri Apr  4 13:56:53 2014 Nicolas Charvoz
-** Last update Fri May 23 10:55:14 2014 heitzl_s
+** Last update Fri May 23 21:16:44 2014 heitzl_s
 */
 
 #include "lexer.h"
@@ -88,7 +88,7 @@ int	lexer(char *cmd, t_token **token, t_42sh *shell)
   lex(lexi->cmd, token);
   if ((error = check_token(token, lexi)) != NULL)
     {
-      printf("bash : Syntax error near unexpected token `%s`\n", error);
+      printf("42sh : Syntax error near unexpected token `%s`\n", error);
       return (0);
     }
   else
