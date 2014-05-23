@@ -5,7 +5,7 @@
 ** Login   <audibe_l@epitech.net>
 **
 ** Started on  Tue May  6 16:42:02 2014 louis audibert
-** Last update Fri May 23 23:23:20 2014 louis audibert
+** Last update Fri May 23 23:52:28 2014 louis audibert
 */
 
 #include "builtins.h"
@@ -56,6 +56,12 @@ int	check_chdir(char *path, t_dlist *env)
 {
   int	check;
 
+  if (strcmp(path, "/") == 0)
+    {
+      chdir("/");
+      modif_path_to_root(env);
+      return (0);
+    }
   if (access(path, F_OK) == -1 || access(path, R_OK) == -1)
     {
       if (access(path, F_OK) == -1)
@@ -95,12 +101,9 @@ int    my_cd(t_42sh *shell, char **args, t_dlist *env)
       if (cd_dash(env) == -1)
 	return (-1);
     }
-  else
-    {
-      if (args[1][0] == '.' && args[1][1] == '\0')
-	return (0);
-      if (check_chdir(args[1], env) == -1)
-	return (-1);
-    }
+  if (args[1][0] == '.' && args[1][1] == '\0')
+    return (0);
+  if (check_chdir(args[1], env) == -1)
+    return (-1);
   return (0);
 }

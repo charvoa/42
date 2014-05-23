@@ -5,13 +5,27 @@
 ** Login   <audibe_l@epitech.net>
 ** 
 ** Started on  Fri May 23 21:29:41 2014 louis audibert
-** Last update Fri May 23 23:20:56 2014 louis audibert
+** Last update Fri May 23 23:50:18 2014 louis audibert
 */
 
 #include "builtins.h"
 #include "../xlib/xlib.h"
 
-int	check_access(t_dlist *env)
+
+void		modif_path_to_root(t_dlist *env)
+{
+  t_node	*tmp;
+
+  tmp = env->start;
+  while (tmp)
+    {
+      if (!strcmp(tmp->name, "PWD"))
+	tmp->value = strcpy(tmp->value, "/");
+      tmp = tmp->next;
+    }
+}
+
+int		check_access(t_dlist *env)
 {
   if (access(get_my_home(env), F_OK) == -1 || access(get_my_home(env), R_OK) == -1)
     {
@@ -24,7 +38,7 @@ int	check_access(t_dlist *env)
   return (0);
 }
 
-int	cd_home(t_dlist *env)
+int		cd_home(t_dlist *env)
 {
   if (check_access(env) == -1)
     return (-1);
@@ -34,9 +48,9 @@ int	cd_home(t_dlist *env)
   return (0);
 }
 
-int	cd_tild(char **args, t_dlist *env)
+int		cd_tild(char **args, t_dlist *env)
 {
-  char	*path;
+  char		*path;
 
   path = get_path_from_opt(args[1]);
   if (check_access(env) == -1)
@@ -53,7 +67,7 @@ int	cd_tild(char **args, t_dlist *env)
   return (0);
 }
 
-int	cd_dash(t_dlist *env)
+int		cd_dash(t_dlist *env)
 {
   if (access(get_old_pwd(env), F_OK) == -1 || access(get_old_pwd(env), R_OK) == -1)
     {
