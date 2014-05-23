@@ -5,7 +5,7 @@
 ** Login   <heitzl_s@epitech.net>
 **
 ** Started on  Fri May 23 10:49:17 2014 heitzl_s
-** Last update Fri May 23 10:58:42 2014 heitzl_s
+** Last update Fri May 23 17:14:55 2014 heitzl_s
 */
 
 #include <unistd.h>
@@ -25,14 +25,18 @@ int             prepa_pipes(t_cmd *cmd)
   i = 0;
   while (cmd[i].token != NULL)
     {
-      cmd[i].fdin = 0;
       while (cmd[i].token != NULL )
 	{
           if ((strcmp(cmd[i].token, "|") == 0))
             create_pipes(cmd, i);
+	  else if ((strcmp(cmd[i].token, "||") == 0))
+	    cmd[i].fdout = 1;
+	  else if ((strcmp(cmd[i].token, "&&") == 0))
+	    cmd[i].fdout = 1;
           i++;
 	}
     }
-  cmd[i].fdout = 1;
+  if (cmd[i].type == 0)
+    cmd[i].fdout = 1;
   return (0);
 }
