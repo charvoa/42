@@ -5,7 +5,7 @@
 ** Login   <audibe_l@epitech.net>
 **
 ** Started on  Tue May  6 16:42:02 2014 louis audibert
-** Last update Fri May 23 22:08:30 2014 louis audibert
+** Last update Fri May 23 22:42:24 2014 louis audibert
 */
 
 #include "builtins.h"
@@ -56,7 +56,7 @@ int	check_chdir(char *path, t_dlist *env)
 {
   int	check;
 
-  if (access(path, R_OK | W_OK | X_OK) == -1)
+  if (access(path, R_OK) == -1)
     {
       fprintf(stderr, "42sh: cd: Permission Denied.\n");
       return (-1);
