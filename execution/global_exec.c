@@ -5,7 +5,7 @@
 ** Login   <heitzl_s@epitech.net>
 **
 ** Started on  Fri May 23 11:05:26 2014 heitzl_s
-** Last update Fri May 23 11:05:28 2014 heitzl_s
+** Last update Sat May 24 00:12:56 2014 Nicolas Girardot
 */
 
 #include <unistd.h>
@@ -66,6 +66,7 @@ int	global_exec(t_cmd *cmd, t_42sh *shell, int tok)
   prepa_pipes(cmd);
   prepa_semi_col(cmd);
   print(cmd);
-  execution(cmd, shell, tok);
+  if (execution(cmd, shell, tok) == -42)
+    return (-42);
   return (0);
 }
