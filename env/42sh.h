@@ -7,7 +7,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 ** Started on  Sat May 24 00:17:45 2014 heitzl_s
-** Last update Sat May 24 00:18:00 2014 heitzl_s
+** Last update Sat May 24 01:55:27 2014 garcia antoine
 =======
 ** Started on  Fri Apr  4 12:16:42 2014 garcia antoine
 <<<<<<< HEAD
@@ -41,6 +41,7 @@ typedef struct s_42sh
 
 extern	t_42sh	shell;
 
+void	free_tab(char **);
 int	isolate_name_and_value_from_env(char *env);
 char	*get_name_from_env(char *env);
 char	*get_value_from_env(char *env);
