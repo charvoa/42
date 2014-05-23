@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Fri Apr  4 12:46:55 2014 garcia antoine
-** Last update Fri May 23 10:44:50 2014 heitzl_s
+** Last update Fri May 23 23:47:15 2014 heitzl_s
 */
 
 #include <string.h>
@@ -57,7 +57,7 @@ char	*get_env(char *name, t_dlist *env)
   while (tmp)
     {
       if (strcmp(name, tmp->name) == 0)
-	return (tmp->value);
+	return (strdup(tmp->value));
       tmp = tmp->next;
     }
   return (NULL);
