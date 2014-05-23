@@ -5,7 +5,7 @@
 ** Login   <audibe_l@epitech.net>
 **
 ** Started on  Tue May  6 16:42:02 2014 louis audibert
-** Last update Fri May 23 10:35:32 2014 heitzl_s
+** Last update Fri May 23 19:54:51 2014 louis audibert
 */
 
 #include "builtins.h"
@@ -62,6 +62,7 @@ int	check_chdir(char *path, t_dlist *env)
       printf("42sh: cd: No such file or directory\n");
       return (-1);
     }
+  modif_oldpwd(get_env("PWD", env), env);
   modif_simple_pwd(path, env);
   return (0);
 }
@@ -74,6 +75,7 @@ int    my_cd(t_42sh *shell, char **args, t_dlist *env)
   if (args[1] == NULL)
     {
       chdir(get_my_home(env));
+      modif_oldpwd(get_env("PWD", env), env);
       modif_pwd_home(get_my_home(env), env);
     }
   else if (args[1][0] == '~' && args[1][1] != '~'
@@ -83,6 +85,7 @@ int    my_cd(t_42sh *shell, char **args, t_dlist *env)
       path = get_path_from_opt(args[1]);
       chdir(get_my_home(env));
       chdir(path);
+      modif_oldpwd(get_env("PWD", env), env);
       modif_pwd_from_home_to_path(args[1], env);
     }
   else if (args[1][0] == '-')

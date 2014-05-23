@@ -5,7 +5,7 @@
 ** Login   <audibe_l@epitech.net>
 **
 ** Started on  Tue May 20 14:26:40 2014 louis audibert
-** Last update Fri May 23 10:31:03 2014 heitzl_s
+** Last update Fri May 23 19:56:05 2014 louis audibert
 */
 
 #include "builtins.h"
@@ -57,7 +57,7 @@ char    *parse_name2(char *arg, char *path, int i)
   name = xcalloc((strlen(arg) + strlen(path) + 4), sizeof(char));
   path2 = xcalloc(((strlen(path) + 2) + strlen(arg) + 1), sizeof(char));
   arg = clean_arg(arg);
-  if (arg[i - 1] != '/' && arg[i - 2] != '.' && arg[i - 3] != '.')
+  if (arg[i - 1] != '/' && arg[i - 2] != '.' && arg[i - 3] != '.' && arg[0])
     {
       strcpy(path2, path);
       strcat(path2, "/");
