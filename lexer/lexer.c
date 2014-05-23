@@ -5,12 +5,13 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Fri Apr  4 13:56:53 2014 Nicolas Charvoz
-** Last update Fri May 23 21:16:44 2014 heitzl_s
+** Last update Sat May 24 00:53:34 2014 heitzl_s
 */
 
 #include "lexer.h"
 #include "../parser/parser.h"
 #include "../xlib/xlib.h"
+#include "../alias/alias.h"
 
 int	check_unk(char *str, int i, t_token **token)
 {
@@ -82,9 +83,7 @@ int	lexer(char *cmd, t_token **token, t_42sh *shell)
   lexi->cmd = strdup(cmd);
   lexi->cmd = epur_str(lexi->cmd);
   if (!(lexi->cmd[i]))
-    {
-      return (0);
-    }
+    return (0);
   lex(lexi->cmd, token);
   if ((error = check_token(token, lexi)) != NULL)
     {
@@ -92,7 +91,10 @@ int	lexer(char *cmd, t_token **token, t_42sh *shell)
       return (0);
     }
   else
-    parser(token, shell);
+    {
+      token = alias(token, shell);
+      parser(token, shell);
+    }
   free(lexi->cmd);
   free(lexi);
   return (0);
