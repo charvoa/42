@@ -1,11 +1,11 @@
 /*
-** fonc_my_cd.c for 42sh in /home/audibe_l/rendu/42sh/builtins
+** func_my_cd.c for 42sh in /home/audibe_l/rendu/42sh/builtins
 ** 
 ** Made by louis audibert
 ** Login   <audibe_l@epitech.net>
 ** 
 ** Started on  Fri May 23 21:29:41 2014 louis audibert
-** Last update Fri May 23 23:50:18 2014 louis audibert
+** Last update Sat May 24 00:26:32 2014 louis audibert
 */
 
 #include "builtins.h"

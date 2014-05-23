@@ -5,7 +5,7 @@
 ** Login   <girard_s@epitech.net>
 **
 ** Started on  Fri May 23 22:18:14 2014 Nicolas Girardot
-** Last update Sat May 24 00:55:06 2014 louis audibert
+** Last update Sat May 24 01:14:22 2014 louis audibert
 */
 
 #include "builtins.h"
@@ -38,7 +38,7 @@ int	my_exit(t_42sh *shell, t_cmd *cmd, t_dlist *env)
   result = test_error_on_exit(cmd->args);
   if (result == 0)
     {
-      shell->exit_value = 0;
+      shell->exit_value = cmd->status;
       return (-42);
     }
   else if (result == -1)
