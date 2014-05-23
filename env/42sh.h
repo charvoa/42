@@ -1,15 +1,20 @@
 /*
-** 42sh.h for 42sh in /home/garcia_t/rendu/42sh
+** 42sh.h for 42sh in /home/heitzl_s/42/env
 **
-** Made by garcia antoine
-** Login   <garcia_t@epitech.net>
+** Made by heitzl_s
+** Login   <heitzl_s@epitech.net>
 **
+<<<<<<< HEAD
+** Started on  Sat May 24 00:17:45 2014 heitzl_s
+** Last update Sat May 24 00:18:00 2014 heitzl_s
+=======
 ** Started on  Fri Apr  4 12:16:42 2014 garcia antoine
 <<<<<<< HEAD
 ** Last update Sat May 24 00:53:14 2014 louis audibert
 =======
 ** Last update Thu May 22 18:45:54 2014 Nicolas Charvoz
 >>>>>>> c40a3331e0f70987da71002b8a4680db772a89c4
+>>>>>>> 8d6d32c84ecfc1dc298afa0055d7d7c8abcbeb5e
 */
 
 #ifndef SHELL_H_
@@ -25,7 +30,11 @@ typedef struct s_42sh
   char		*cmd;
   char		**path;
   char		**envtab;
+<<<<<<< HEAD
+  char		*pwd_alias;
+=======
   int		exit_value;
+>>>>>>> 8d6d32c84ecfc1dc298afa0055d7d7c8abcbeb5e
 }		t_42sh;
 
 extern	t_42sh	shell;

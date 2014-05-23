@@ -1,0 +1,3 @@
+ls='ls --color=auto'
+ne='emacs -nw'
+ll='ls --color=auto -l'
