@@ -5,10 +5,21 @@
 ** Login   <heitzl_s@epitech.net>
 **
 ** Started on  Sat May 24 00:49:48 2014 heitzl_s
-** Last update Sat May 24 00:49:50 2014 heitzl_s
+** Last update Sat May 24 01:19:12 2014 heitzl_s
 */
 
 #include "alias.h"
+#include "../xlib/xlib.h"
+
+void	init_pwd_alias(t_42sh *shell)
+{
+  if (shell->pwd_alias == NULL
+      && (shell->pwd_alias = get_env("PWD", shell->env)) != NULL)
+    {
+      shell->pwd_alias = realloc(shell->pwd_alias, (strlen(shell->pwd_alias) + 13));
+      strcat(shell->pwd_alias, "/alias/alias");
+    }
+}
 
 t_token		**alias(t_token **token, t_42sh *shell)
 {
@@ -19,16 +30,11 @@ t_token		**alias(t_token **token, t_42sh *shell)
   char		**tab;
   t_alias	*list;
 
-  if (shell->pwd_alias == NULL
-      && (shell->pwd_alias = get_env("PWD", shell->env)) != NULL)
-    {
-      shell->pwd_alias = realloc(shell->pwd_alias, (strlen(shell->pwd_alias) + 13));
-      strcat(shell->pwd_alias, "/alias/alias");
-    }
+  init_pwd_alias(shell);
   list = NULL;
-  buffer = calloc(4096, sizeof(char));
-  final = calloc(4096, sizeof(char));
-  fd = open(shell->pwd_alias, O_RDONLY, O_APPEND);
+  buffer = xcalloc(4096, sizeof(char));
+  final = xcalloc(4096, sizeof(char));
+  fd = xopen(shell->pwd_alias, O_RDONLY | O_APPEND);
   while ((ret = read(fd, buffer, 4096)) > 0)
     {
       final = realloc(final, strlen(buffer) + 4097);
