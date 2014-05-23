@@ -5,7 +5,7 @@
 ** Login   <girard_s@epitech.net>
 **
 ** Started on  Fri May 23 22:18:14 2014 Nicolas Girardot
-** Last update Sat May 24 01:30:11 2014 heitzl_s
+** Last update Sat May 24 01:50:21 2014 garcia antoine
 */
 
 #include "builtins.h"
@@ -39,6 +39,9 @@ int	my_exit(t_42sh *shell, t_cmd *cmd, t_dlist *env)
   if (result == 0)
     {
       shell->exit_value = 0;
+      free_my_list(shell->env);
+      free_tab(shell->path);
+      free_tab(shell->envtab);
       return (-42);
     }
   else if (result == -1)
