@@ -5,7 +5,7 @@
 ## Login   <charvo_a@epitech.net>
 ##
 ## Started on  Mon Apr 21 15:01:55 2014 Nicolas Charvoz
-## Last update Thu May 22 18:25:50 2014 Nicolas Charvoz
+## Last update Fri May 23 14:05:10 2014 Nicolas Charvoz
 ## Last update Mon May  5 16:59:08 2014 garcia antoine
 ##
 
@@ -91,8 +91,7 @@ $(NAME):	$(OBJS)
 		@(cat txt/42sh.txt)
 
 clean:
-		$(RM) $(OBJS)
-
+		$(RM) $(OBJS) .hist42sh
 
 fclean:		clean
 		$(RM) $(NAME)
