@@ -5,7 +5,7 @@
 ** Login   <audibe_l@epitech.net>
 **
 ** Started on  Tue May  6 16:42:02 2014 louis audibert
-** Last update Fri May 23 23:52:28 2014 louis audibert
+** Last update Fri May 23 23:57:09 2014 louis audibert
 */
 
 #include "builtins.h"
@@ -101,9 +101,9 @@ int    my_cd(t_42sh *shell, char **args, t_dlist *env)
       if (cd_dash(env) == -1)
 	return (-1);
     }
-  if (args[1][0] == '.' && args[1][1] == '\0')
+  else if (args[1][0] == '.' && args[1][1] == '\0')
     return (0);
-  if (check_chdir(args[1], env) == -1)
+  else if (check_chdir(args[1], env) == -1)
     return (-1);
   return (0);
 }
