@@ -5,7 +5,7 @@
 ** Login   <heitzl_s@epitech.net>
 **
 ** Started on  Fri May 23 11:05:26 2014 heitzl_s
-** Last update Sat May 24 00:12:56 2014 Nicolas Girardot
+** Last update Sat May 24 12:27:53 2014 heitzl_s
 */
 
 #include <unistd.h>
@@ -22,7 +22,7 @@ int	global_prepa(t_cmd *cmd)
       cmd[0].fdin = 0;
       if (!strncmp(cmd[i].token, ">>", 2) || !strncmp(cmd[i].token, ">", 1)
 	  || !strncmp(cmd[i].token, "<<", 2) || !strncmp(cmd[i].token, "<", 1))
-	redirections(&cmd[i], &cmd[i + 1]);
+	redirections(&cmd[i], &cmd[i + 1], cmd, i);
       i++;
     }
   return (0);
