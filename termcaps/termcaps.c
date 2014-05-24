@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Wed Apr 30 14:23:38 2014 Nicolas Charvoz
-** Last update Sat May 24 12:57:47 2014 Nicolas Charvoz
+** Last update Sat May 24 12:58:43 2014 Nicolas Charvoz
 */
 
 #include "termcaps.h"
@@ -24,4 +24,5 @@ int    my_clear()
       return (-1);
     }
   tputs(tgetstr("cl", NULL), 1, my_int_putchar);
+  return (0);
 }
