@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Sat May 24 03:13:44 2014 Nicolas Charvoz
-** Last update Sat May 24 05:09:14 2014 Nicolas Charvoz
+** Last update Sat May 24 06:45:59 2014 Nicolas Charvoz
 */
 
 #include "alias.h"
@@ -28,27 +28,31 @@ char	**make_tab(char *str)
       j++;
       i++;
     }
-  tab[a] = '\0';
+  tab[a][j] = '\0';
   a++;
   tab[a] = xcalloc((strlen(str) + 1), sizeof(char));
   tab[a] = &str[i];
   return (tab);
 }
 
-char	*copy_cmd(char *cmd, char *alias)
+char	*copy_cmd(char *cmd, char *alias, char *check_cmd)
 {
   char	**tab;
   char	*cmd_final;
 
   tab = NULL;
   tab = make_tab(cmd);
-  tab[0] = NULL;
-  tab[0] = strdup(alias);
-  cmd_final = xcalloc((strlen(tab[0]) + strlen(tab[1]) + 2), sizeof(char));
-  tab[0] = realloc(tab[0], (strlen(tab[0]) + strlen(tab[1]) + 2));
-  cmd_final = strcat(tab[0], tab[1]);
-  free(tab);
-  return (cmd_final);
+  if (!(strcmp(tab[0], check_cmd)))
+    {
+      tab[0] = NULL;
+      tab[0] = strdup(alias);
+      cmd_final = xcalloc((strlen(tab[0]) + strlen(tab[1]) + 2), sizeof(char));
+      tab[0] = realloc(tab[0], (strlen(tab[0]) + strlen(tab[1]) + 2));
+      cmd_final = strcat(tab[0], tab[1]);
+      free(tab);
+      return (cmd_final);
+    }
+  return (cmd);
 }
 
 t_token		**check_list(t_alias **alias, t_token **token)
@@ -63,7 +67,7 @@ t_token		**check_list(t_alias **alias, t_token **token)
       while (a)
 	{
 	  if (!(strncmp(a->ali[0], tok->value, strlen(a->ali[0]))))
-	    tok->value = copy_cmd(tok->value, a->ali[1]);
+	    tok->value = copy_cmd(tok->value, a->ali[1], a->ali[0]);
 	  a = a->next;
 	}
       tok = tok->next;
