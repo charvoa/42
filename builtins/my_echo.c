@@ -5,7 +5,7 @@
 ** Login   <audibe_l@epitech.net>
 **
 ** Started on  Thu May  8 11:33:49 2014 louis audibert
-** Last update Sat May 24 00:46:02 2014 louis audibert
+** Last update Sat May 24 02:19:49 2014 heitzl_s
 */
 
 #include "builtins.h"
@@ -34,23 +34,23 @@ int	echo_from_var_env(char *opt, t_dlist *env)
   return (0);
 }
 
-int	my_echo(t_42sh *shell, t_cmd *cmd, t_dlist *env)
+int	my_echo(t_42sh *shell, t_cmd *cmd, t_dlist *env, int i)
 {
-  int	i;
+  int	x;
 
   (void)shell;
-  i = 1;
-  while (cmd->args[i])
+  x = 1;
+  while (cmd[i].args[x])
     {
-      if (cmd->args[i][0] == '$')
-	echo_from_var_env(cmd->args[i], env);
+      if (cmd[i].args[x][0] == '$')
+	echo_from_var_env(cmd[i].args[x], env);
       else
 	{
-	  my_putstr(cmd->args[i]);
-	  if (cmd->args[i + 1] != NULL)
+	  my_putstr(cmd->args[x]);
+	  if (cmd[i].args[x + 1] != NULL)
 	    my_putchar(' ');
 	}
-      i++;
+      x++;
     }
   printf("\n");
   return (0);

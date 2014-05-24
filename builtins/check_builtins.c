@@ -5,10 +5,11 @@
 ** Login   <audibe_l@epitech.net>
 **
 ** Started on  Mon May 12 12:59:09 2014 louis audibert
-** Last update Sat May 24 01:46:13 2014 heitzl_s
+** Last update Sat May 24 02:50:26 2014 heitzl_s
 */
 
 #include "builtins.h"
+#include "../execution/execution.h"
 #include "../xlib/xlib.h"
 
 int	find_cmd(char *cmd)
@@ -33,7 +34,7 @@ int	find_cmd(char *cmd)
   return (-1);
 }
 
-void	fill_builtins(int (**builtins)(t_42sh *shell, t_cmd *cmd, t_dlist *env))
+void	fill_builtins(int (**builtins)(t_42sh *shell, t_cmd *cmd, t_dlist *env, int i))
 {
   builtins[0] = &my_cd;
   builtins[1] = &my_env;
@@ -42,24 +43,24 @@ void	fill_builtins(int (**builtins)(t_42sh *shell, t_cmd *cmd, t_dlist *env))
   builtins[4] = &my_exit;
 }
 
-int     check_builtins(t_42sh *shell, t_cmd *cmd, t_dlist *env)
+int     check_builtins(t_42sh *shell, t_cmd *cmd, t_dlist *env, int i)
 {
-  int   (*builtins[5])(t_42sh *shell, t_cmd *cmd, t_dlist *env);
-  int	i;
+  int   (*builtins[5])(t_42sh *shell, t_cmd *cmd, t_dlist *env, int i);
+  int	x;
 
   fill_builtins(builtins);
-  i = 0;
-  if (cmd->args)
+  x = 0;
+  if (cmd[i].args && (check_or_and(cmd, i) == 0))
     {
-      while (i < 5)
+      while (x < 5)
 	{
-	  if ( find_cmd(cmd->args[0]) == i)
+	  if (find_cmd(cmd[i].args[0]) == x)
 	    {
-	      if (builtins[i](shell, cmd, env) == -42)
+	      if (builtins[x](shell, cmd, env, i) == -42)
 		return (-42);
 	      return (1);
 	    }
-	  i++;
+	  x++;
 	}
     }
   return (0);

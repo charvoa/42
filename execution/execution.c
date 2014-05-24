@@ -5,7 +5,7 @@
 ** Login   <heitzl_s@epitech.net>
 **
 ** Started on  Wed May 14 15:05:12 2014 heitzl_s
-** Last update Sat May 24 00:25:57 2014 Nicolas Girardot
+** Last update Sat May 24 02:47:14 2014 heitzl_s
 */
 
 #include <unistd.h>
@@ -18,6 +18,7 @@
 #include "../env/42sh.h"
 #include "../pipe/pipe.h"
 #include "../xlib/xlib.h"
+#include "../builtins/builtins.h"
 
 int	check_or_and(t_cmd *cmd, int i)
 {
@@ -54,6 +55,8 @@ int	launch(t_cmd *cmd, t_42sh *shell, int i, int close_fd)
   pid = fork();
   if (pid == 0)
     {
+      if (find_cmd(cmd[i].args[0]) != -1)
+	exit (-1);
       if (check_pipe_cmd(&cmd[i], shell) == -1)
 	{
 	  fprintf(stderr, "Command not found : %s\n", cmd[i].args[0]);

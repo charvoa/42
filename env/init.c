@@ -5,7 +5,7 @@
 ** Login   <heitzl_s@epitech.net>
 **
 ** Started on  Fri May 23 10:38:49 2014 heitzl_s
-** Last update Sat May 24 01:52:26 2014 garcia antoine
+** Last update Fri May 23 23:33:16 2014 garcia antoine
 */
 
 #include <stdlib.h>
@@ -55,6 +55,5 @@ int	init_my_shell(t_42sh *shell, char **env)
     path = path_in_cache();
   shell->path = strtotab(path);
   shell->envtab = list_to_tab(shell->env);
-  free(path);
   return (0);
 }

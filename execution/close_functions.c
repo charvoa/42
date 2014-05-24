@@ -5,7 +5,7 @@
 ** Login   <heitzl_s@epitech.net>
 **
 ** Started on  Thu May 22 13:54:57 2014 heitzl_s
-** Last update Sat May 24 01:24:33 2014 heitzl_s
+** Last update Sat May 24 02:47:55 2014 heitzl_s
 */
 
 #include <unistd.h>
@@ -19,8 +19,9 @@
 #include "../pipe/pipe.h"
 #include "../xlib/xlib.h"
 #include "../builtins/builtins.h"
+#include "execution.h"
 
-int             check_and_close_son(t_cmd *cmd, int i, int close_fd)
+int     check_and_close_son(t_cmd *cmd, int i, int close_fd)
 {
   if (close_fd == 0 && cmd[i].fdout != 1)
     xclose(cmd[i + 1].fdin);
@@ -34,11 +35,11 @@ int             check_and_close_son(t_cmd *cmd, int i, int close_fd)
   return (0);
 }
 
-int             check_and_close_father(t_cmd *cmd, t_42sh *shell, int i, int close_fd)
+int	check_and_close_father(t_cmd *cmd, t_42sh *shell, int i, int close_fd)
 {
-  int result;
+  int	result;
 
-  if ((result = check_builtins(shell, &cmd[i], shell->env)) == 1);
+  if ((result = check_builtins(shell, cmd, shell->env, i)) == 1);
   else if (result == -42)
     return (-42);
   else
@@ -55,7 +56,7 @@ int             check_and_close_father(t_cmd *cmd, t_42sh *shell, int i, int clo
   return (0);
 }
 
-int             which_one_to_close(t_cmd *cmd, int i)
+int	which_one_to_close(t_cmd *cmd, int i)
 {
   if (cmd[i].fdin == 0)
     return (0);

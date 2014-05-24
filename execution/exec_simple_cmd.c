@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Fri May  9 10:27:51 2014 garcia antoine
-** Last update Sat May 24 01:27:56 2014 heitzl_s
+** Last update Sat May 24 02:26:52 2014 heitzl_s
 */
 
 #include <sys/types.h>
@@ -75,7 +75,7 @@ int     exec_cmd_simple(t_cmd *cmd, t_42sh *shell)
   int   pid;
   int	check;
 
-  check = check_builtins(shell, cmd, shell->env);
+  check = check_builtins(shell, cmd, shell->env, 0);
   pid = fork();
   if (pid == -1)
     return (0);

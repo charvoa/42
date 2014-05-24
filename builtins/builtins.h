@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Thu May 22 15:55:51 2014 Nicolas Charvoz
-** Last update Sat May 24 00:54:07 2014 louis audibert
+** Last update Sat May 24 02:27:39 2014 heitzl_s
 */
 
 #ifndef BUILTINS_H_
@@ -24,25 +24,25 @@
 
 /* MY_HISTORY.C */
 int	restricted_history(char*, char*);
-int	my_history(t_42sh*, t_cmd *, t_dlist*);
+int	my_history(t_42sh*, t_cmd*, t_dlist*, int);
 
 /* MY_ENV.C */
-int	my_env(t_42sh*, t_cmd *, t_dlist*);
+int	my_env(t_42sh*, t_cmd*, t_dlist*, int);
 
 /* MY_ECHO.C */
 int	echo_from_var_env(char*, t_dlist*);
-int	my_echo(t_42sh*, t_cmd *, t_dlist*);
+int	my_echo(t_42sh*, t_cmd*, t_dlist*, int);
 
 /* MY_CD.C */
 char	*get_old_pwd(t_dlist*);
 char	*get_my_home(t_dlist*);
 char	*get_path_from_opt(char*);
 int	check_chdir(char*, t_dlist*);
-int	my_cd(t_42sh*, t_cmd *, t_dlist*);
+int	my_cd(t_42sh*, t_cmd *, t_dlist*, int);
 
 /* MY_EXIT.C */
-int     test_error_on_exit(char **args);
-int	my_exit(t_42sh*, t_cmd *, t_dlist*);
+int     test_error_on_exit(char**);
+int	my_exit(t_42sh*, t_cmd*, t_dlist*, int);
 
 /* MODIF_PWD.C */
 char	*clean_arg(char*);
@@ -66,8 +66,8 @@ int	disp_history_from_line(char *buffer, int line);
 
 /* CHECK_BUILTINS.C */
 int	find_cmd(char*);
-void	fill_builtins(int (**builtins)(t_42sh *shell, t_cmd *cmd, t_dlist *env));
-int	check_builtins(t_42sh*, t_cmd *, t_dlist*);
+void	fill_builtins(int (**builtins)(t_42sh *shell, t_cmd *cmd, t_dlist *env, int));
+int	check_builtins(t_42sh*, t_cmd *, t_dlist*, int);
 
 /* FONC_MY_CD.C */
 int	cd_home(t_dlist *env);
