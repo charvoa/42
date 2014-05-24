@@ -5,7 +5,7 @@
 ** Login   <heitzl_s@epitech.net>
 **
 ** Started on  Sat May 24 01:04:08 2014 heitzl_s
-** Last update Sat May 24 01:44:27 2014 heitzl_s
+** Last update Sat May 24 06:07:33 2014 Nicolas Charvoz
 */
 
 #include "lexer.h"
@@ -21,7 +21,7 @@ int	check_unk(char *str, int i, t_token **token)
   j = 0;
   unk = xmalloc((strlen(str) + 1) * sizeof(char*));
   unk = memset(unk, 0, (strlen(str) + 1));
-  while (((check_letter2(str[i]) == -1) && str[i] != '\t' ) && (str[i] != '\0'))
+  while (((check_letter2(str[i]) == -1) && str[i] != '\t' ) && str[i] != '\0')
     {
       unk[j] = str[i];
       j++;
