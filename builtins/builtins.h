@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Thu May 22 15:55:51 2014 Nicolas Charvoz
-** Last update Sat May 24 06:13:53 2014 louis audibert
+** Last update Sat May 24 06:25:46 2014 Nicolas Charvoz
 */
 
 #ifndef BUILTINS_H_
@@ -66,7 +66,8 @@ int	disp_history_from_line(char *buffer, int line);
 
 /* CHECK_BUILTINS.C */
 int	find_cmd(char*);
-void	fill_builtins(int (**builtins)(t_42sh *shell, t_cmd *cmd, t_dlist *env, int));
+void	fill_builtins(int (**builtins)(t_42sh *shell, t_cmd *cmd,
+				       t_dlist *env, int));
 int	check_builtins(t_42sh*, t_cmd *, t_dlist*, int);
 
 /* FONC_MY_CD.C */
