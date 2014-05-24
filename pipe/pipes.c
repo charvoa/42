@@ -5,7 +5,7 @@
 ** Login   <heitzl_s@epitech.net>
 **
 ** Started on  Wed May 14 15:05:12 2014 heitzl_s
-** Last update Thu May 22 15:08:25 2014 heitzl_s
+** Last update Sat May 24 12:40:22 2014 Nicolas Charvoz
 */
 
 #include <unistd.h>
@@ -24,9 +24,9 @@ void	create_pipes(t_cmd *cmd, int i)
   cmd[i + 1].fdin = fd[0];
 }
 
-int    check_pipe_cmd(t_cmd *cmd, t_42sh *shell)
+int	check_pipe_cmd(t_cmd *cmd, t_42sh *shell)
 {
-  char  *path;
+  char	*path;
 
   if (access(cmd->args[0], X_OK) == - 1)
     {

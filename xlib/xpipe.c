@@ -1,11 +1,11 @@
 /*
-** xpipe.c for  in /home/charvo_a/42/xlib
+** xpipe.c for xpipe.c in /home/charvo_a/42
 **
 ** Made by Nicolas Charvoz
 ** Login   <charvo_a@epitech.net>
 **
-** Started on  Wed May 21 14:20:51 2014 Nicolas Charvoz
-** Last update Thu May 22 13:04:19 2014 Nicolas Charvoz
+** Started on  Sat May 24 12:36:53 2014 Nicolas Charvoz
+** Last update Sat May 24 12:37:01 2014 Nicolas Charvoz
 */
 
 #include "xlib.h"

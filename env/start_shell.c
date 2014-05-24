@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Mon Apr  7 16:15:48 2014 garcia antoine
-** Last update Sat May 24 11:06:23 2014 heitzl_s
+** Last update Sat May 24 12:47:28 2014 Nicolas Charvoz
 */
 
 #include <sys/types.h>
@@ -75,13 +75,14 @@ char	*read_line(int fd)
   return (cmd);
 }
 
-int	start_shell(t_42sh *shell)
+int		start_shell(t_42sh *shell)
 {
   t_token	*token;
   int		fd;
 
   fd = creat(".hist42sh", 0644);
-  my_clear();
+  if ((my_clear() == -1))
+    return (-42);
   while (1)
     {
       token = NULL;

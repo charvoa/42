@@ -5,7 +5,7 @@
 ** Login   <heitzl_s@epitech.net>
 **
 ** Started on  Fri May 23 10:49:17 2014 heitzl_s
-** Last update Fri May 23 17:14:55 2014 heitzl_s
+** Last update Sat May 24 12:40:01 2014 Nicolas Charvoz
 */
 
 #include <unistd.h>
@@ -18,7 +18,7 @@
 #include "../parser/parser.h"
 #include "../env/42sh.h"
 
-int             prepa_pipes(t_cmd *cmd)
+int	prepa_pipes(t_cmd *cmd)
 {
   int   i;
 

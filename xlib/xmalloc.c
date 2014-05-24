@@ -1,11 +1,11 @@
 /*
-** xmalloc.c for  in /home/charvo_a/42/xlib
+** xmalloc.c for xmalloc.c in /home/charvo_a/42
 **
 ** Made by Nicolas Charvoz
 ** Login   <charvo_a@epitech.net>
 **
-** Started on  Wed May 21 14:30:17 2014 Nicolas Charvoz
-** Last update Thu May 22 13:06:43 2014 Nicolas Charvoz
+** Started on  Sat May 24 12:37:36 2014 Nicolas Charvoz
+** Last update Sat May 24 12:37:38 2014 Nicolas Charvoz
 */
 
 #include "xlib.h"

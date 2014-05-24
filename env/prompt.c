@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Fri Apr  4 15:59:36 2014 garcia antoine
-** Last update Sat May 24 02:10:33 2014 garcia antoine
+** Last update Sat May 24 12:46:45 2014 Nicolas Charvoz
 */
 
 #include <stdlib.h>
@@ -35,11 +35,11 @@ static char    *get_host_from_env(t_dlist *env)
   return (get_env("HOSTNAME", env));
 }
 
-void	prompt(t_42sh *shell)
+void			prompt(t_42sh *shell)
 {
-  char	*pwd;
-  char	*host;
-  char	*user;
+  char			*pwd;
+  char			*host;
+  char			*user;
   static	int	i = 1;
 
   pwd = get_pwd_from_env(shell->env);

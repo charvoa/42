@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Fri Apr  4 11:55:23 2014 garcia antoine
-** Last update Fri May 23 23:32:15 2014 garcia antoine
+** Last update Sat May 24 12:49:03 2014 Nicolas Charvoz
 */
 
 #include <stdlib.h>
@@ -14,19 +14,7 @@
 #include "list.h"
 #include "../xlib/xlib.h"
 
-void		show_list(t_dlist *list)
-{
-  t_node	*tmp;
-
-  tmp = list->start;
-  while (tmp)
-    {
-      printf("%s=%s\n", tmp->name, tmp->value);
-      tmp = tmp->next;
-    }
-}
-
-t_dlist	      *create_list()
+t_dlist		*create_list()
 {
   t_dlist	*list;
 
@@ -62,9 +50,9 @@ void	add_node(t_dlist *list, t_node *node)
     }
 }
 
-void	put_in_list(t_dlist *list, char *name, char *value)
+void		put_in_list(t_dlist *list, char *name, char *value)
 {
-  t_node *node;
+  t_node	*node;
 
   node = xmalloc(sizeof(*node));
   node->name = strdup(name);

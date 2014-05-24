@@ -5,7 +5,7 @@
 ** Login   <girard_s@epitech.net>
 **
 ** Started on  Fri May 23 22:18:14 2014 Nicolas Girardot
-** Last update Sat May 24 02:22:50 2014 heitzl_s
+** Last update Sat May 24 12:49:37 2014 Nicolas Charvoz
 */
 
 #include "builtins.h"
@@ -32,7 +32,7 @@ int	test_error_on_exit(char **args)
 
 int	my_exit(t_42sh *shell, t_cmd *cmd, t_dlist *env, int i)
 {
-  int result;
+  int	result;
 
   (void)env;
   result = test_error_on_exit(cmd[i].args);

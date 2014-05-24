@@ -5,7 +5,7 @@
 ** Login   <heitzl_s@epitech.net>
 **
 ** Started on  Sat May 24 00:49:48 2014 heitzl_s
-** Last update Sat May 24 05:09:42 2014 Nicolas Charvoz
+** Last update Sat May 24 12:55:03 2014 Nicolas Charvoz
 */
 
 #include "alias.h"
@@ -36,7 +36,7 @@ t_token		**alias(t_token **token, t_42sh *shell)
   buffer = xcalloc(4096, sizeof(char));
   final = xcalloc(4096, sizeof(char));
   fd = xopen_alias(shell->pwd_alias, O_RDONLY | O_APPEND);
-  while ((ret = read(fd, buffer, 4096)) > 0)
+  while ((ret = read(fd, buffer, 4096)) != 0)
     {
       final = realloc(final, strlen(buffer) + 4097);
       strcat(final, buffer);

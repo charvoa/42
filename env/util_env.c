@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Fri Apr  4 12:46:55 2014 garcia antoine
-** Last update Sat May 24 06:09:01 2014 Nicolas Charvoz
+** Last update Sat May 24 12:44:07 2014 Nicolas Charvoz
 */
 
 #include <string.h>
@@ -49,7 +49,7 @@ char	*get_value_from_env(char *env)
   return (value);
 }
 
-char	*get_env(char *name, t_dlist *env)
+char		*get_env(char *name, t_dlist *env)
 {
   t_node	*tmp;
 

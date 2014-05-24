@@ -1,11 +1,11 @@
 /*
-** xread.c for  in /home/charvo_a/42/xlib
+** xread.c for xread in /home/charvo_a/42
 **
 ** Made by Nicolas Charvoz
 ** Login   <charvo_a@epitech.net>
 **
-** Started on  Wed May 21 14:15:07 2014 Nicolas Charvoz
-** Last update Thu May 22 13:01:44 2014 Nicolas Charvoz
+** Started on  Sat May 24 12:35:39 2014 Nicolas Charvoz
+** Last update Sat May 24 12:55:15 2014 Nicolas Charvoz
 */
 
 #include "xlib.h"

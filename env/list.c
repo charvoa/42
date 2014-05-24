@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Sat Apr 19 16:12:18 2014 garcia antoine
-** Last update Sat May 24 06:08:31 2014 Nicolas Charvoz
+** Last update Sat May 24 12:51:02 2014 Nicolas Charvoz
 */
 
 #include <stdlib.h>
@@ -13,7 +13,19 @@
 #include "listok.h"
 #include "../xlib/xlib.h"
 
-t_token	*insert(t_token *token, int type, char *value, int pos)
+void		show_list(t_dlist *list)
+{
+  t_node	*tmp;
+
+  tmp = list->start;
+  while (tmp)
+    {
+      printf("%s=%s\n", tmp->name, tmp->value);
+      tmp = tmp->next;
+    }
+}
+
+t_token		*insert(t_token *token, int type, char *value, int pos)
 {
   t_token	*tok;
   t_token	*tmp;
@@ -37,7 +49,7 @@ t_token	*insert(t_token *token, int type, char *value, int pos)
     }
 }
 
-t_token	*free_my_tok(t_token *token)
+t_token		*free_my_tok(t_token *token)
 {
   t_token	*tmp;
   t_token	*tok;
@@ -49,21 +61,5 @@ t_token	*free_my_tok(t_token *token)
       free(tmp);
       tmp = tok;
     }
-  return NULL;
-}
-
-int	show_token(t_token *token)
-{
-  t_token	*tok;
-
-  if (token == NULL)
-    exit(EXIT_FAILURE);
-  tok = token;
-  while (tok != NULL)
-    {
-      printf("value : %s type: %d position : %d\n",
-	     tok->value, tok->type, tok->pos);
-      tok = tok->next;
-    }
-  return (0);
+  return (NULL);
 }
