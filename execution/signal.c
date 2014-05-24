@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Mon May 19 11:27:27 2014 garcia antoine
-** Last update Thu May 22 14:01:47 2014 garcia antoine
+** Last update Sat May 24 06:20:40 2014 Nicolas Charvoz
 */
 
 #include <stdlib.h>
@@ -14,7 +14,7 @@
 #include "../parser/parser.h"
 #include "execution.h"
 
-t_signal	l_signal[] =
+t_signal	g_signal[] =
   {
     {SIGSEGV, "Segmentation fault"},
     {SIGBUS, "Bus error"},
@@ -39,8 +39,8 @@ int	check_signal(int status)
     return (0);
   while (l_signal[i].nb)
     {
-      if (status == l_signal[i].nb)
-	fprintf(stderr, "%s\n", l_signal[i].msg);
+      if (status == g_signal[i].nb)
+	fprintf(stderr, "%s\n", g_signal[i].msg);
       i++;
     }
   return (-1);
