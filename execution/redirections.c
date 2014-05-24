@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Tue May  6 13:36:11 2014 garcia antoine
-** Last update Sat May 24 09:24:45 2014 heitzl_s
+** Last update Sat May 24 09:38:25 2014 heitzl_s
 */
 
 #include <stdlib.h>
@@ -41,9 +41,8 @@ void	redir_left(t_cmd *cmd, t_cmd *cmd2)
 {
   if (cmd->type == 0)
     {
-      cmd2->fdin = creat(cmd2->args[0], 0644);
       cmd->fdin = open_my_file(cmd2->args[0]);
-      cmd2->fdout = 1;
+      cmd->fdout = 1;
     }
   else if (cmd->type == 1)
     {
