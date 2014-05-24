@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Thu May 22 15:55:51 2014 Nicolas Charvoz
-** Last update Sat May 24 11:35:16 2014 louis audibert
+** Last update Sat May 24 12:32:01 2014 louis audibert
 */
 
 #ifndef BUILTINS_H_
@@ -21,10 +21,6 @@
 # include "../env/42sh.h"
 # include "../env/list.h"
 # include "../parser/parser.h"
-
-/* MY_HISTORY.C */
-int	restricted_history(char*, char*);
-int	my_history(t_42sh*, t_cmd*, t_dlist*, int);
 
 /* MY_ENV.C */
 int	my_env(t_42sh*, t_cmd*, t_dlist*, int);
