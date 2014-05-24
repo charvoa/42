@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Fri May  9 11:18:26 2014 garcia antoine
-** Last update Sat May 24 08:43:32 2014 heitzl_s
+** Last update Sat May 24 13:28:47 2014 heitzl_s
 */
 
 #ifndef EXECUTION_H_
@@ -25,7 +25,7 @@ int		open_my_file(char*);
 void		redir_left(t_cmd*, t_cmd*);
 void		double_redir_right(t_cmd*, t_cmd*);
 void		redir_right(t_cmd*, t_cmd*);
-void		redirections(t_cmd*, t_cmd*);
+void		redirections(t_cmd*, t_cmd*, t_cmd*, int);
 
 /* global_exec.c */
 int		global_exec(t_cmd*, t_42sh*, int);
@@ -57,5 +57,8 @@ int		prepa_pipes(t_cmd*);
 
 /* signal.c */
 int		check_signal(int);
+
+/* double_refir_left */
+void		double_redir_left(t_cmd*, t_cmd*, t_cmd*, int);
 
 #endif

@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Tue May  6 13:36:11 2014 garcia antoine
-** Last update Sat May 24 10:32:57 2014 heitzl_s
+** Last update Sat May 24 12:26:37 2014 heitzl_s
 */
 
 #include <stdlib.h>
@@ -96,13 +96,15 @@ void	redir_right(t_cmd *cmd, t_cmd *cmd2)
     }
 }
 
-void	redirections(t_cmd *cmd, t_cmd *cmd2)
+void	redirections(t_cmd *cmd, t_cmd *cmd2, t_cmd *command, int i)
 {
   cmd2->type = 1;
   if (!strncmp(cmd->token, ">>", 2))
     double_redir_right(cmd, cmd2);
   else if (!strncmp(cmd->token, ">", 1))
     redir_right(cmd, cmd2);
+  else if (!strncmp(cmd->token, "<<", 2))
+    double_redir_left(cmd, cmd2, command, i);
   else if (!strncmp(cmd->token, "<", 1))
     redir_left(cmd, cmd2);
 }
