@@ -5,7 +5,7 @@
 ** Login   <audibe_l@epitech.net>
 **
 ** Started on  Tue May  6 16:42:02 2014 louis audibert
-** Last update Sat May 24 06:07:35 2014 louis audibert
+** Last update Sat May 24 06:09:37 2014 louis audibert
 */
 
 #include "builtins.h"
@@ -56,7 +56,6 @@ int	check_chdir(char *path, t_dlist *env)
 {
   int	check;
 
-  printf("path = %s\n", path);
   if (strcmp(path, "/") == 0)
     {
       chdir("/");
