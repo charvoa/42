@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Fri May  9 10:27:51 2014 garcia antoine
-** Last update Sat May 24 06:03:32 2014 Nicolas Charvoz
+** Last update Sat May 24 06:05:55 2014 Nicolas Charvoz
 */
 
 #include <sys/types.h>
@@ -36,8 +36,10 @@ char	*real_path(t_cmd *cmd, t_42sh *shell)
   i = 0;
   while (shell->path[i])
     {
-      pass = xcalloc(strlen(shell->path[i]) + strlen(cmd->args[0]) + 2, sizeof(char));
-      path = xcalloc(strlen(shell->path[i]) + strlen(cmd->args[0]) + 2, sizeof(char));
+      pass = xcalloc(strlen(shell->path[i]) + strlen(cmd->args[0]) + 2,
+		     sizeof(char));
+      path = xcalloc(strlen(shell->path[i]) + strlen(cmd->args[0]) + 2,
+		     sizeof(char));
       strcpy(path, shell->path[i]);
       pass = strcat(path, cmd->args[0]);
       if (access(pass, X_OK) == 0)
