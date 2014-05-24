@@ -5,7 +5,7 @@
 ** Login   <heitzl_s@epitech.net>
 **
 ** Started on  Sat May 24 02:52:12 2014 heitzl_s
-** Last update Sat May 24 02:52:24 2014 heitzl_s
+** Last update Sat May 24 13:02:20 2014 Nicolas Charvoz
 */
 
 #ifndef SHELL_H_
@@ -35,7 +35,6 @@ char	**list_to_tab(t_dlist *env);
 void    prompt(t_42sh*);
 int	start_shell(t_42sh *shell);
 int	init_my_shell(t_42sh *shell, char **env);
-void	my_clear();
 char	**strtotab(char*);
 int	count_word(char*);
 int	count_char(char*);

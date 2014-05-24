@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Sat Apr 19 16:12:18 2014 garcia antoine
-** Last update Sat May 24 12:51:02 2014 Nicolas Charvoz
+** Last update Sat May 24 13:00:03 2014 Nicolas Charvoz
 */
 
 #include <stdlib.h>
@@ -13,19 +13,7 @@
 #include "listok.h"
 #include "../xlib/xlib.h"
 
-void		show_list(t_dlist *list)
-{
-  t_node	*tmp;
-
-  tmp = list->start;
-  while (tmp)
-    {
-      printf("%s=%s\n", tmp->name, tmp->value);
-      tmp = tmp->next;
-    }
-}
-
-t_token		*insert(t_token *token, int type, char *value, int pos)
+t_token	        *insert(t_token *token, int type, char *value, int pos)
 {
   t_token	*tok;
   t_token	*tmp;

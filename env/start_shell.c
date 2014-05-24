@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Mon Apr  7 16:15:48 2014 garcia antoine
-** Last update Sat May 24 12:47:28 2014 Nicolas Charvoz
+** Last update Sat May 24 13:02:33 2014 Nicolas Charvoz
 */
 
 #include <sys/types.h>
@@ -21,6 +21,7 @@
 #include "listok.h"
 #include "../lexer/lexer.h"
 #include "../xlib/xlib.h"
+#include "../termcaps/termcaps.h"
 
 t_42sh	shell;
 

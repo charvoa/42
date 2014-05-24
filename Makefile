@@ -5,7 +5,7 @@
 ## Login   <heitzl_s@epitech.net>
 ##
 ## Started on  Sat May 24 01:02:56 2014 heitzl_s
-## Last update Sat May 24 08:15:43 2014 heitzl_s
+## Last update Sat May 24 13:02:48 2014 Nicolas Charvoz
 ##
 
 CC	= 	gcc
@@ -81,8 +81,6 @@ SRCS	=	$(TERM)/termcaps.c			\
 		$(BUILTINS)/check_builtins.c		\
 		$(BUILTINS)/my_cd.c			\
 		$(BUILTINS)/my_echo.c			\
-		$(BUILTINS)/my_history.c		\
-		$(BUILTINS)/disp_history_from_line.c	\
 		$(BUILTINS)/my_env.c			\
 		$(BUILTINS)/modif_pwd.c			\
 		$(BUILTINS)/modif_pwd2.c		\
