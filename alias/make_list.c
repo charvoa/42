@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Fri May 23 16:31:46 2014 Nicolas Charvoz
-** Last update Fri May 23 23:08:00 2014 Nicolas Charvoz
+** Last update Sat May 24 05:08:13 2014 Nicolas Charvoz
 */
 
 #include "alias.h"
@@ -32,23 +32,19 @@ t_alias			*insert_alias(t_alias *alias, char *cmd, char *args)
   int			i;
 
   i = 0;
-  a = malloc(sizeof(*a));
-  a->ali = malloc(3 * sizeof(char*));
+  a = xmalloc(sizeof(*a));
+  a->ali = xmalloc(3 * sizeof(char*));
   a->ali[i] = strdup(cmd);
   i++;
   a->ali[i] = strdup(args);
   a->next = NULL;
   if (alias == NULL)
-    {
-      return (a);
-    }
+    return (a);
   else
     {
       tmp = alias;
       while (tmp->next != NULL)
-	{
-	  tmp = tmp->next;
-	}
+	tmp = tmp->next;
       tmp->next = a;
       return (alias);
     }
@@ -63,7 +59,7 @@ char	*clean_alias(char *args)
   i = 0;
   j = 0;
   j = 1;
-  str = calloc((strlen(args) + 1), sizeof(char));
+  str = xcalloc((strlen(args) + 1), sizeof(char));
   while (args[i] != '\0')
     {
       str[i] = args[j];
@@ -87,11 +83,13 @@ void	make_list(char **tab, t_alias **list)
     {
       b = 0;
       a = 0;
-      cmd = calloc(char_count(tab[i]) + 1, sizeof(char));
+      cmd = xcalloc(char_count(tab[i]) + 1, sizeof(char));
       while (tab[i][b] != '=' && tab[i][b] != '\n')
 	{
-	  cmd[a] = tab[i][b];
-	  a++;
+	  if ((check_letter(tab[i][b])) == 0 || tab[i][b] == '\'')
+	      cmd[a++] = tab[i][b];
+	  else
+	    fprintf(stderr, "Unexpected token in alias list\n");
 	  b++;
 	}
       args= calloc(4096, sizeof(char));

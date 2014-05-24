@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Wed May 21 14:42:34 2014 Nicolas Charvoz
-** Last update Fri May 23 22:26:06 2014 Nicolas Charvoz
+** Last update Sat May 24 05:07:04 2014 Nicolas Charvoz
 */
 
 #include "alias.h"
@@ -44,7 +44,7 @@ char    **str_to_word_tab(char *str, char delim)
   b = 0;
   i = 0;
   a = 0;
-  tab = malloc(sizeof(char*) * ((count_word3(str, delim) + 4)));
+  tab = xmalloc(sizeof(char*) * ((count_word3(str, delim) + 4)));
   while (str[i] != '\0')
     {
       if (str[i] == delim)
@@ -54,7 +54,7 @@ char    **str_to_word_tab(char *str, char delim)
           a = a + 1;
           b = 0;
 	}
-      tab[a] = calloc(((count_char3(str, i, delim) + 1)), sizeof(char));
+      tab[a] = xcalloc(((count_char3(str, i, delim) + 1)), sizeof(char));
       while ((str[i] != delim)  && (str[i] != '\0'))
 	tab[a][b++] = str[i++];
       tab[a][b] = '\0';

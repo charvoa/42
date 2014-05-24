@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Fri May 23 16:24:54 2014 Nicolas Charvoz
-** Last update Fri May 23 23:20:19 2014 Nicolas Charvoz
+** Last update Sat May 24 05:10:25 2014 Nicolas Charvoz
 */
 
 #ifndef ALIAS_H_
@@ -19,6 +19,7 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # include "../lexer/lexer.h"
+# include "../xlib/xlib.h"
 
 typedef	struct		s_alias
 {
