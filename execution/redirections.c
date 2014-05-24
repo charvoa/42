@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Tue May  6 13:36:11 2014 garcia antoine
-** Last update Sat May 24 05:23:06 2014 garcia antoine
+** Last update Sat May 24 05:38:25 2014 garcia antoine
 */
 
 #include <stdlib.h>
@@ -43,7 +43,7 @@ int	open_my_file(char *name)
 void	redir_left(t_cmd *cmd, t_cmd *cmd2)
 {
   cmd->fdout = 1;
-  cmd->fdin = xopen(cmd2->args[0], O_RDONLY);
+  cmd->fdin = open_my_file(cmd2->args[0]);
 }
 
 void	double_redir_right(t_cmd *cmd, t_cmd *cmd2)
