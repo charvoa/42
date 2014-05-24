@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Thu May 22 15:55:51 2014 Nicolas Charvoz
-** Last update Sat May 24 04:28:08 2014 heitzl_s
+** Last update Sat May 24 05:02:39 2014 louis audibert
 */
 
 #ifndef BUILTINS_H_
@@ -74,5 +74,8 @@ int	cd_home(t_dlist *env);
 int	cd_tild(char **args, t_dlist *env);
 int	cd_dash(t_dlist *env);
 void	modif_path_to_root(t_dlist *env);
+
+/* SET_ENV.c */
+int	set_env(t_42sh*, t_cmd*, t_dlist*, int);
 
 #endif
