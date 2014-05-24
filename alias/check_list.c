@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Sat May 24 03:13:44 2014 Nicolas Charvoz
-** Last update Sat May 24 03:15:37 2014 Nicolas Charvoz
+** Last update Sat May 24 03:17:56 2014 Nicolas Charvoz
 */
 
 #include "alias.h"
@@ -30,7 +30,7 @@ char	**make_tab(char *str)
     }
   tab[a] = '\0';
   a++;
-  tab[a] = calloc(4096, sizeof(char));
+  tab[a] = calloc((strlen(str) + 1), sizeof(char));
   tab[a] = &str[i];
   return (tab);
 }
