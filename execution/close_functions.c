@@ -5,7 +5,7 @@
 ** Login   <heitzl_s@epitech.net>
 **
 ** Started on  Thu May 22 13:54:57 2014 heitzl_s
-** Last update Sat May 24 02:47:55 2014 heitzl_s
+** Last update Sat May 24 05:21:49 2014 garcia antoine
 */
 
 #include <unistd.h>
@@ -58,7 +58,7 @@ int	check_and_close_father(t_cmd *cmd, t_42sh *shell, int i, int close_fd)
 
 int	which_one_to_close(t_cmd *cmd, int i)
 {
-  if (cmd[i].fdin == 0)
+  if (cmd[i].fdin == 0 || i == 0)
     return (0);
   else if (cmd[i].fdout == 1)
     return (1);

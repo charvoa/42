@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Tue May  6 13:36:11 2014 garcia antoine
-** Last update Fri May 23 11:08:55 2014 heitzl_s
+** Last update Sat May 24 05:23:06 2014 garcia antoine
 */
 
 #include <stdlib.h>
@@ -44,8 +44,6 @@ void	redir_left(t_cmd *cmd, t_cmd *cmd2)
 {
   cmd->fdout = 1;
   cmd->fdin = xopen(cmd2->args[0], O_RDONLY);
-  cmd2->fdin = cmd->fdin;
-  cmd2->fdout = cmd->fdin;
 }
 
 void	double_redir_right(t_cmd *cmd, t_cmd *cmd2)
@@ -58,26 +56,22 @@ void	double_redir_right(t_cmd *cmd, t_cmd *cmd2)
 void	redir_right(t_cmd *cmd, t_cmd *cmd2)
 {
   char  *buffer;
-  int   nb;
   int   fd;
 
-  buffer = xcalloc(20, sizeof(*buffer));
+  buffer = xcalloc(4096, sizeof(*buffer));
   if (cmd->type == 0)
     {
       cmd->fdout = creat(cmd2->args[0], 0644);
       cmd2->fdin = cmd->fdout;
       cmd2->fdout = 0;
     }
-  if (cmd->type == 1)
+  else if (cmd->type == 1)
     {
-      cmd2->fdout = 0;
       cmd2->fdin = creat(cmd2->args[0], 0644);
-      fd = open(cmd->args[0] , O_RDONLY);
-      while ((nb = read(fd, buffer, 19)) != 0)
-        {
-          write(cmd2->fdin, buffer, (strlen(buffer) + 1));
-          memset(buffer, 0, 20);
-        }
+      fd = open(cmd->args[0], O_RDONLY | O_CREAT, S_IRWXU | S_IRWXG | S_IRWXO);
+      //nb = read(fd, buffer, 4095);
+      write(cmd2->fdin, buffer, (strlen(buffer) + 1));
+      close(fd);
     }
 }
 
@@ -88,4 +82,6 @@ void	redirections(t_cmd *cmd, t_cmd *cmd2)
     double_redir_right(cmd, cmd2);
   else if (!strncmp(cmd->token, ">", 1))
     redir_right(cmd, cmd2);
+  else if (!strncmp(cmd->token, "<", 1))
+    redir_left(cmd, cmd2);
 }
