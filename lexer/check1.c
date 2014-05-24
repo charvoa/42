@@ -5,19 +5,17 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Mon Apr 21 14:55:27 2014 Nicolas Charvoz
-** Last update Mon May 19 16:25:06 2014 Nicolas Charvoz
+** Last update Sat May 24 11:02:30 2014 Nicolas Charvoz
 */
 
 #include "lexer.h"
-
-# define CHECK_LETTER "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_0123456789 -./$?*[]=~"
 
 int     check_letter(char c)
 {
   int   i;
   char  *str;
 
-  str = CHECK_LETTER;
+  str = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_0123456789 -./$?*[]=~";
   i = 0;
   while (str[i])
     {
