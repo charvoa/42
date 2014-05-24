@@ -5,7 +5,7 @@
 ** Login   <audibe_l@epitech.net>
 **
 ** Started on  Thu May  8 11:33:49 2014 louis audibert
-** Last update Sat May 24 04:46:20 2014 heitzl_s
+** Last update Sat May 24 04:47:42 2014 heitzl_s
 */
 
 #include "builtins.h"
@@ -31,7 +31,6 @@ int	echo_from_var_env(char *opt, t_dlist *env, t_cmd *cmd, int i)
   if (path == NULL)
     return (-1);
   write(cmd[i].fdout, path, (strlen(path)));
-  write(cmd[i].fdout, "\n", strlen("\n"));
   return (0);
 }
 
