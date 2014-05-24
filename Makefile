@@ -5,7 +5,7 @@
 ## Login   <heitzl_s@epitech.net>
 ##
 ## Started on  Sat May 24 01:02:56 2014 heitzl_s
-## Last update Sat May 24 05:15:28 2014 Nicolas Charvoz
+## Last update Sat May 24 06:12:10 2014 louis audibert
 ##
 
 CC	= 	gcc
@@ -87,7 +87,8 @@ SRCS	=	$(TERM)/termcaps.c			\
 		$(BUILTINS)/modif_pwd2.c		\
 		$(BUILTINS)/func_my_cd.c		\
 		$(BUILTINS)/my_exit.c			\
-		$(BUILTINS)/set_env.c
+		$(BUILTINS)/set_env.c			\
+		$(BUILTINS)/check_access.c
 
 OBJS	= 	$(SRCS:.c=.o)
 

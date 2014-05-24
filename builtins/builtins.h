@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Thu May 22 15:55:51 2014 Nicolas Charvoz
-** Last update Sat May 24 05:02:39 2014 louis audibert
+** Last update Sat May 24 06:13:53 2014 louis audibert
 */
 
 #ifndef BUILTINS_H_
@@ -77,5 +77,8 @@ void	modif_path_to_root(t_dlist *env);
 
 /* SET_ENV.c */
 int	set_env(t_42sh*, t_cmd*, t_dlist*, int);
+
+/* CHECK_ACCESS.C */
+int	check_access(t_dlist *env);
 
 #endif

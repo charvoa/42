@@ -5,7 +5,7 @@
 ** Login   <audibe_l@epitech.net>
 ** 
 ** Started on  Fri May 23 21:29:41 2014 louis audibert
-** Last update Sat May 24 04:31:33 2014 louis audibert
+** Last update Sat May 24 06:14:18 2014 louis audibert
 */
 
 #include "builtins.h"
@@ -23,19 +23,6 @@ void		modif_path_to_root(t_dlist *env)
 	tmp->value = strcpy(tmp->value, "/");
       tmp = tmp->next;
     }
-}
-
-int		check_access(t_dlist *env)
-{
-  if (access(get_my_home(env), F_OK) == -1 || access(get_my_home(env), R_OK) == -1)
-    {
-      if (access(get_my_home(env), F_OK) == -1)
-        fprintf(stderr, "42sh: cd: No such file or directory.\n");
-      else
-	fprintf(stderr, "42sh: cd: Permission Denied\n");
-      return (-1);
-    }
-  return (0);
 }
 
 int		cd_home(t_dlist *env)
