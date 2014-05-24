@@ -5,7 +5,7 @@
 ** Login   <girard_s@epitech.net>
 **
 ** Started on  Wed May 21 13:42:33 2014 Nicolas Girardot
-** Last update Fri May 23 10:28:40 2014 heitzl_s
+** Last update Sat May 24 10:07:02 2014 louis audibert
 */
 
 #include "builtins.h"
@@ -19,7 +19,7 @@ int	gest_error_hist_disp_from_line(char *buffer, int line, int nbr_of_line)
     }
   if (line == 0)
     return (0);
-  return (0);
+  return (1);
 }
 
 void	display_history_from_pos(char *buffer, int pos)
