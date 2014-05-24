@@ -1,5 +1,0 @@
-cat toto
-ls > toto
-cat toto
-cat < toto
-clear
