@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Tue May  6 13:36:11 2014 garcia antoine
-** Last update Sat May 24 09:38:25 2014 heitzl_s
+** Last update Sat May 24 10:32:57 2014 heitzl_s
 */
 
 #include <stdlib.h>
@@ -55,14 +55,21 @@ void	double_redir_right(t_cmd *cmd, t_cmd *cmd2)
 {
   if (cmd->type == 0)
     {
-      cmd->fdout = open(cmd2->args[0], O_WRONLY | O_CREAT | O_APPEND, 0666);
+      cmd->fdout = open(cmd2->args[0], O_RDWR | O_CREAT | O_APPEND, 0666);
       cmd2->fdin = cmd->fdout;
-      cmd2->fdout = cmd->fdout;
     }
   else if (cmd->type == 1)
     {
-      cmd2->fdin = creat(cmd2->args[0], 0644);
-      cmd->fdout = open(cmd->args[0], O_RDONLY | O_CREAT, S_IRWXU | S_IRWXG | S_IRWXO);
+      if (strcmp(cmd->args[0], cmd2->args[0]) == 0)
+	{
+	  cmd->fdout = open(cmd->args[0], O_RDWR | O_APPEND, S_IRWXU | S_IRWXG | S_IRWXO);;
+	  cmd2->fdin = cmd->fdout;
+	}
+      else
+	{
+	  cmd2->fdin = creat(cmd2->args[0], 0644);
+	  cmd->fdout = open(cmd->args[0], O_RDWR | O_CREAT | O_APPEND, S_IRWXU | S_IRWXG | S_IRWXO);
+	}
     }
 }
 
@@ -76,8 +83,16 @@ void	redir_right(t_cmd *cmd, t_cmd *cmd2)
     }
   else if (cmd->type == 1)
     {
-      cmd2->fdin = creat(cmd2->args[0], 0644);
-      cmd->fdout = open(cmd->args[0], O_RDONLY | O_CREAT, S_IRWXU | S_IRWXG | S_IRWXO);
+      if (strcmp(cmd->args[0], cmd2->args[0]) == 0)
+	{
+	  cmd->fdout = cmd->fdin;
+	  cmd2->fdin = cmd->fdout;
+	}
+      else
+	{
+	  cmd2->fdin = creat(cmd2->args[0], 0644);
+	  cmd->fdout = open(cmd->args[0], O_RDONLY | O_CREAT, S_IRWXU | S_IRWXG | S_IRWXO);
+	}
     }
 }
 
