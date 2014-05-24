@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Thu May  8 12:50:49 2014 Nicolas Charvoz
-** Last update Sat May 24 00:14:09 2014 Nicolas Girardot
+** Last update Sat May 24 06:00:15 2014 Nicolas Charvoz
 */
 
 #include "parser.h"
@@ -68,11 +68,8 @@ int		struct_fill(char **tab, t_token **token, t_42sh *shell)
 	     return (-42);
 	   return (0);
 	 }
-       else
-	 {
-	   fill_it(&cmd[j++], tab[i], tab[i + 1]);
-	   i += 2;
-	 }
+      fill_it(&cmd[j++], tab[i], tab[i + 1]);
+      i += 2;
     }
   if (global_exec(cmd, shell, count + 1) == -42)
     return (-42);
