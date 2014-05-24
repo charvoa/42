@@ -5,10 +5,11 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Mon Apr  7 16:15:48 2014 garcia antoine
-** Last update Sat May 24 04:11:33 2014 Nicolas Girardot
+** Last update Sat May 24 11:06:23 2014 heitzl_s
 */
 
 #include <sys/types.h>
+#include <errno.h>
 #include <unistd.h>
 #include <stdlib.h>
 #include <signal.h>
