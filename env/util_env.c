@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Fri Apr  4 12:46:55 2014 garcia antoine
-** Last update Fri May 23 23:47:15 2014 heitzl_s
+** Last update Sat May 24 06:09:01 2014 Nicolas Charvoz
 */
 
 #include <string.h>
@@ -76,7 +76,8 @@ char	**list_to_tab(t_dlist *env)
     return (NULL);
   while (tmp)
     {
-      tab[i] = xmalloc(strlen(tmp->name) + strlen(tmp->value) + 2 * sizeof(char));
+      tab[i] = xmalloc(strlen(tmp->name) + strlen(tmp->value) + 2
+		       * sizeof(char));
       tab[i] = strcpy(tab[i], tmp->name);
       tab[i] = strcat(tab[i], "=");
       tab[i] = strcat(tab[i], tmp->value);
