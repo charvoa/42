@@ -5,7 +5,7 @@
 ** Login   <audibe_l@epitech.net>
 **
 ** Started on  Thu May  8 11:33:49 2014 louis audibert
-** Last update Sat May 24 04:34:30 2014 heitzl_s
+** Last update Sat May 24 04:46:20 2014 heitzl_s
 */
 
 #include "builtins.h"
@@ -31,6 +31,7 @@ int	echo_from_var_env(char *opt, t_dlist *env, t_cmd *cmd, int i)
   if (path == NULL)
     return (-1);
   write(cmd[i].fdout, path, (strlen(path)));
+  write(cmd[i].fdout, "\n", strlen("\n"));
   return (0);
 }
 
@@ -48,10 +49,10 @@ int	my_echo(t_42sh *shell, t_cmd *cmd, t_dlist *env, int i)
 	{
 	  write(cmd[i].fdout, cmd[i].args[x], (strlen(cmd[i].args[x])));
 	  if (cmd[i].args[x + 1] != NULL)
-	    write(cmd[i].fdout, " ", 2);
+	    write(cmd[i].fdout, " ", strlen(" "));
 	}
       x++;
     }
-  printf("\n");
+  write(cmd[i].fdout, "\n", strlen("\n"));
   return (0);
 }
