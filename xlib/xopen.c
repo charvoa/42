@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Wed May 21 14:08:01 2014 Nicolas Charvoz
-** Last update Thu May 22 13:07:45 2014 Nicolas Charvoz
+** Last update Sat May 24 05:00:57 2014 Nicolas Girardot
 */
 
 #include "xlib.h"
@@ -19,6 +19,15 @@ int	xopenmode(const char *pathname, int flags, mode_t mode)
       fprintf(stderr, "Cannot Open file : %s\n", pathname);
       return (-1);
     }
+  return (fd);
+}
+
+int	xopen_alias(const	char *pathname, int flags)
+{
+  int	fd;
+
+  if ((fd = open(pathname, flags)) == -1)
+    return (-1);
   return (fd);
 }
 

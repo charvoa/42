@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Wed May 21 14:22:03 2014 Nicolas Charvoz
-** Last update Thu May 22 13:03:57 2014 Nicolas Charvoz
+** Last update Sat May 24 05:01:36 2014 Nicolas Girardot
 */
 
 #ifndef XLIB_H_
@@ -25,6 +25,7 @@
 int	xopen(const char *pathname, int flags);
 int	xopenmode(const char *pathname, int flags, mode_t mode);
 int	xcreat(const char *pathname, mode_t mode);
+int	xopen_alias(const char *pathname, int flags);
 
 /* XREAD.C */
 ssize_t	xread(int fd, void *buf, size_t count);
