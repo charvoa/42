@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Mon May 19 11:27:27 2014 garcia antoine
-** Last update Sat May 24 06:20:40 2014 Nicolas Charvoz
+** Last update Sat May 24 06:23:18 2014 Nicolas Charvoz
 */
 
 #include <stdlib.h>
@@ -37,7 +37,7 @@ int	check_signal(int status)
   i = 0;
   if (status == 0)
     return (0);
-  while (l_signal[i].nb)
+  while (g_signal[i].nb)
     {
       if (status == g_signal[i].nb)
 	fprintf(stderr, "%s\n", g_signal[i].msg);
