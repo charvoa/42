@@ -5,7 +5,7 @@
 ** Login   <audibe_l@epitech.net>
 **
 ** Started on  Tue May 20 14:26:40 2014 louis audibert
-** Last update Sat May 24 00:14:36 2014 louis audibert
+** Last update Sat May 24 04:30:19 2014 louis audibert
 */
 
 #include "builtins.h"
@@ -99,7 +99,6 @@ char    *parse_name(char *arg, char *path)
   int   j;
   char  *name;
 
-  printf("ARG = %s\n", arg);
   i = 0;
   j = strlen(path);
   arg = check_arg(arg);
@@ -109,18 +108,15 @@ char    *parse_name(char *arg, char *path)
         {
           while (path[j] != '/' && j != 0)
             {
-              printf("path = %s\n", path);
               path[j] = '\0';
               j--;
             }
           path[j] = '\0';
-          printf("path = %s\n", path);
           i++;
         }
       i++;
     }
   name = parse_name2(arg, path, i);
-  printf("name = %s\n", name);
   return (name);
 }
 

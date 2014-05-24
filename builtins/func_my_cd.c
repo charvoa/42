@@ -5,7 +5,7 @@
 ** Login   <audibe_l@epitech.net>
 ** 
 ** Started on  Fri May 23 21:29:41 2014 louis audibert
-** Last update Sat May 24 04:15:37 2014 louis audibert
+** Last update Sat May 24 04:31:33 2014 louis audibert
 */
 
 #include "builtins.h"
@@ -32,7 +32,7 @@ int		check_access(t_dlist *env)
       if (access(get_my_home(env), F_OK) == -1)
         fprintf(stderr, "42sh: cd: No such file or directory.\n");
       else
-	fprintf(stderr, "42sh: cd: Permission Denied");
+	fprintf(stderr, "42sh: cd: Permission Denied\n");
       return (-1);
     }
   return (0);
@@ -52,7 +52,6 @@ char		*realloc_path(char *path, t_dlist *env)
 {
   path = realloc(path, (strlen(path) + strlen(get_my_home(env)) + 2));
   path = strcat(get_my_home(env), path); 
-  printf("PATH = %s\n", path);
   return (path);
 }
 
@@ -92,7 +91,7 @@ int		cd_dash(t_dlist *env)
       if (access(get_old_pwd(env), F_OK) == -1)
         fprintf(stderr, "42sh: cd: No such file or directory.\n");
       else
-	fprintf(stderr, "42sh: cd: Permission Denied");
+	fprintf(stderr, "42sh: cd: Permission Denied\n");
       return (-1);
     }
   chdir(get_old_pwd(env));
