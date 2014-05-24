@@ -5,7 +5,7 @@
 ** Login   <audibe_l@epitech.net>
 **
 ** Started on  Tue May  6 16:42:02 2014 louis audibert
-** Last update Sat May 24 03:36:13 2014 louis audibert
+** Last update Sat May 24 06:07:35 2014 louis audibert
 */
 
 #include "builtins.h"
@@ -56,6 +56,7 @@ int	check_chdir(char *path, t_dlist *env)
 {
   int	check;
 
+  printf("path = %s\n", path);
   if (strcmp(path, "/") == 0)
     {
       chdir("/");
@@ -67,7 +68,7 @@ int	check_chdir(char *path, t_dlist *env)
       if (access(path, F_OK) == -1)
         fprintf(stderr, "42sh: cd: No such file or directory.\n");
       else
-	fprintf(stderr, "42sh: cd: Permission Denied");
+	fprintf(stderr, "42sh: cd: Permission Denied\n");
       return (-1);
     }
   check = chdir(path);
