@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Mon Apr  7 16:15:48 2014 garcia antoine
-** Last update Sat May 24 00:17:13 2014 Nicolas Girardot
+** Last update Sat May 24 03:21:30 2014 Nicolas Girardot
 */
 
 #include <sys/types.h>
@@ -53,6 +53,11 @@ char	*read_line(int fd)
 
   buffer = xcalloc(4096, sizeof(char));
   nb = xread(0, buffer, 4096);
+  if (nb == 0)
+    {
+      my_putchar('\n');
+      return ("exit");
+    }
   buffer[nb - 1] = '\0';
   cmd = strdup(buffer);
   free(buffer);
