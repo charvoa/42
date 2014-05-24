@@ -5,7 +5,7 @@
 ** Login   <audibe_l@epitech.net>
 **
 ** Started on  Fri May 23 21:29:41 2014 louis audibert
-** Last update Sat May 24 06:17:39 2014 Nicolas Charvoz
+** Last update Sat May 24 11:34:51 2014 louis audibert
 */
 
 #include "builtins.h"
@@ -24,9 +24,9 @@ void		modif_path_to_root(t_dlist *env)
     }
 }
 
-int		cd_home(t_dlist *env)
+int		cd_home(t_dlist *env, t_cmd *cmd, int i)
 {
-  if (check_access(env) == -1)
+  if (check_access(env, cmd, i) == -1)
     return (-1);
   chdir(get_my_home(env));
   modif_oldpwd(get_env("PWD", env), env);
@@ -41,12 +41,12 @@ char		*realloc_path(char *path, t_dlist *env)
   return (path);
 }
 
-int		cd_tild(char **args, t_dlist *env)
+int		cd_tild(char **args, t_dlist *env, t_cmd *cmd, int i)
 {
   char		*path;
 
   path = get_path_from_opt(args[1]);
-  if (check_access(env) == -1)
+  if (check_access(env, cmd, i) == -1)
     return (-1);
   chdir(get_my_home(env));
   if (strcmp(path, "\0") == 0)
@@ -61,7 +61,7 @@ int		cd_tild(char **args, t_dlist *env)
       if (access(path, F_OK) == -1)
 	fprintf(stderr, "42sh: cd: No such file or directory\n");
       else
-	fprintf(stderr, "42sh: cd: Permission Denied\n");
+	print_permission_denied(cmd, i);
       return (-1);
     }
   chdir(path);
@@ -70,7 +70,7 @@ int		cd_tild(char **args, t_dlist *env)
   return (0);
 }
 
-int		cd_dash(t_dlist *env)
+int		cd_dash(t_dlist *env, t_cmd *cmd, int i)
 {
   if (access(get_old_pwd(env), F_OK) == -1
       || access(get_old_pwd(env), R_OK) == -1)
@@ -78,7 +78,7 @@ int		cd_dash(t_dlist *env)
       if (access(get_old_pwd(env), F_OK) == -1)
         fprintf(stderr, "42sh: cd: No such file or directory.\n");
       else
-	fprintf(stderr, "42sh: cd: Permission Denied\n");
+	print_permission_denied(cmd, i);
       return (-1);
     }
   chdir(get_old_pwd(env));

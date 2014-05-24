@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Thu May 22 15:55:51 2014 Nicolas Charvoz
-** Last update Sat May 24 06:25:46 2014 Nicolas Charvoz
+** Last update Sat May 24 11:35:16 2014 louis audibert
 */
 
 #ifndef BUILTINS_H_
@@ -37,7 +37,7 @@ int	my_echo(t_42sh*, t_cmd*, t_dlist*, int);
 char	*get_old_pwd(t_dlist*);
 char	*get_my_home(t_dlist*);
 char	*get_path_from_opt(char*);
-int	check_chdir(char*, t_dlist*);
+int	check_chdir(char*, t_dlist*, t_cmd*, int);
 int	my_cd(t_42sh*, t_cmd *, t_dlist*, int);
 
 /* MY_EXIT.C */
@@ -71,15 +71,16 @@ void	fill_builtins(int (**builtins)(t_42sh *shell, t_cmd *cmd,
 int	check_builtins(t_42sh*, t_cmd *, t_dlist*, int);
 
 /* FONC_MY_CD.C */
-int	cd_home(t_dlist *env);
-int	cd_tild(char **args, t_dlist *env);
-int	cd_dash(t_dlist *env);
+int	cd_home(t_dlist *env, t_cmd *cmd, int i);
+int	cd_tild(char **args, t_dlist *env, t_cmd *cmd, int i);
+int	cd_dash(t_dlist *env, t_cmd *cmd, int i);
 void	modif_path_to_root(t_dlist *env);
 
 /* SET_ENV.c */
 int	set_env(t_42sh*, t_cmd*, t_dlist*, int);
 
 /* CHECK_ACCESS.C */
-int	check_access(t_dlist *env);
+int	check_access(t_dlist *env, t_cmd *cmd, int i);
+void    print_permission_denied(t_cmd *cmd, int i);
 
 #endif

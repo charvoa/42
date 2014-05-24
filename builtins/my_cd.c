@@ -5,7 +5,7 @@
 ** Login   <audibe_l@epitech.net>
 **
 ** Started on  Tue May  6 16:42:02 2014 louis audibert
-** Last update Sat May 24 06:09:37 2014 louis audibert
+** Last update Sat May 24 11:35:59 2014 louis audibert
 */
 
 #include "builtins.h"
@@ -52,7 +52,7 @@ char	*get_path_from_opt(char *arg)
   return (path);
 }
 
-int	check_chdir(char *path, t_dlist *env)
+int	check_chdir(char *path, t_dlist *env, t_cmd *cmd, int i)
 {
   int	check;
 
@@ -67,7 +67,7 @@ int	check_chdir(char *path, t_dlist *env)
       if (access(path, F_OK) == -1)
         fprintf(stderr, "42sh: cd: No such file or directory.\n");
       else
-	fprintf(stderr, "42sh: cd: Permission Denied\n");
+	print_permission_denied(cmd, i);
       return (-1);
     }
   check = chdir(path);
@@ -86,24 +86,24 @@ int    my_cd(t_42sh *shell, t_cmd *cmd, t_dlist *env, int i)
   (void)shell;
   if (cmd[i].args[1] == NULL)
     {
-      if (cd_home(env) == -1)
+      if (cd_home(env, cmd, i) == -1)
 	return (-1);
     }
   else if (cmd[i].args[1][0] == '~' && cmd[i].args[1][1] != '~'
 	   && !((cmd[i].args[1][1] >= 'a' && cmd[i].args[1][1] <= 'z')
 		|| (cmd[i].args[1][1] >= 'A' && cmd[i].args[1][1] <= 'Z')))
     {
-      if (cd_tild(cmd[i].args, env) == -1)
+      if (cd_tild(cmd[i].args, env, cmd, i) == -1)
 	return (-1);
     }
   else if (cmd[i].args[1][0] == '-')
     {
-      if (cd_dash(env) == -1)
+      if (cd_dash(env, cmd, i) == -1)
 	return (-1);
     }
   else if (cmd[i].args[1][0] == '.' && cmd[i].args[1][1] == '\0')
     return (0);
-  else if (check_chdir(cmd[i].args[1], env) == -1)
+  else if (check_chdir(cmd[i].args[1], env, cmd, i) == -1)
     return (-1);
   return (0);
 }

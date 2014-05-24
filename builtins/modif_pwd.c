@@ -5,7 +5,7 @@
 ** Login   <audibe_l@epitech.net>
 **
 ** Started on  Mon May 19 22:43:20 2014 louis audibert
-** Last update Sat May 24 04:21:37 2014 louis audibert
+** Last update Sat May 24 04:29:55 2014 louis audibert
 */
 
 #include "builtins.h"
@@ -31,7 +31,6 @@ char		*clean_arg(char *arg)
       i++;
     }
   clean_arg[j] = '\0';
-  printf("clean_arg = %s\n", clean_arg);
   return (clean_arg);
 }
 
