@@ -5,7 +5,7 @@
 ** Login   <heitzl_s@epitech.net>
 **
 ** Started on  Wed May 14 15:05:12 2014 heitzl_s
-** Last update Sat May 24 04:35:18 2014 heitzl_s
+** Last update Sat May 24 07:02:08 2014 heitzl_s
 */
 
 #include <unistd.h>
@@ -20,8 +20,9 @@
 #include "../xlib/xlib.h"
 #include "../builtins/builtins.h"
 
-int	check_or_and(t_cmd *cmd, int i)
+int	check_or_and(t_cmd *cmd, int i, t_42sh *shell)
 {
+  (void)shell;
   if (i > 0)
     {
       if (strcmp(cmd[i - 1].token, "||") == 0)
@@ -29,20 +30,20 @@ int	check_or_and(t_cmd *cmd, int i)
 	  i--;
 	  while (cmd[i].type != 0)
 	    i--;
-	  if (cmd[i].status == 0)
-	    return (1);
-	  else
+	  if (cmd[i].status != 0)
 	    return (0);
+	  else
+	    return (1);
 	}
       else if (strcmp(cmd[i - 1].token, "&&") == 0)
 	{
 	  i--;
 	  while (cmd[i].type != 0)
 	    i--;
-	  if (cmd[i].status == 0)
-	    return (0);
-	  else
+	  if (cmd[i].status != 0)
 	    return (1);
+	  else
+	    return (0);
 	}
     }
   return (0);
@@ -56,13 +57,13 @@ int	launch(t_cmd *cmd, t_42sh *shell, int i, int close_fd)
   if (pid == 0)
     {
       if (find_cmd(cmd[i].args[0]) != -1)
-      	exit (0);
+      	exit (42);
       if (check_pipe_cmd(&cmd[i], shell) == -1)
 	{
 	  fprintf(stderr, "Command not found : %s\n", cmd[i].args[0]);
 	  exit (-1);
 	}
-      if (check_or_and(cmd, i) == 1)
+      if (check_or_and(cmd, i, shell) == 1)
 	exit(-1);
       xdup2(cmd[i].fdout, 1);
       xdup2(cmd[i].fdin, 0);
@@ -113,6 +114,8 @@ int	execution(t_cmd *cmd, t_42sh *shell, int tok)
 		  if (check_and_close_father(cmd, shell, i, close_fd) == -42)
 		    return (-42);
 		}
+	      waitpid(cmd[i].pid, &cmd[i].status, 0);
+	      printf("H cmd[%d].status = %d\n\n\n", i , cmd[i].status);
 	      tok--;
 	      i++;
 	    }
@@ -132,6 +135,8 @@ int	execution(t_cmd *cmd, t_42sh *shell, int tok)
 	    }
 	  tok--;
 	  i++;
+	  waitpid(cmd[i].pid, &cmd[i].status, 0);
+	  printf("H cmd[%d].status = %d\n\n\n", i , cmd[i].status);
 	}
       waiting_process(cmd);
     }
