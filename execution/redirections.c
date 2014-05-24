@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Tue May  6 13:36:11 2014 garcia antoine
-** Last update Sat May 24 05:38:25 2014 garcia antoine
+** Last update Sat May 24 09:24:45 2014 heitzl_s
 */
 
 #include <stdlib.h>
@@ -28,10 +28,7 @@ int	open_my_file(char *name)
       if (access(name, F_OK) == -1)
 	fprintf(stderr, "42sh: %s: no such file or directory.\n", name);
       else
-	{
-	  fprintf(stderr, "42sh: %s: don't have the ", name);
-	  fprintf(stderr, "permission to read the file.\n");
-	}
+	fprintf(stderr, "42sh: %s: Permission denied.\n", name);
       return (-1);
     }
   fd = xopen(name, O_RDONLY);
@@ -42,23 +39,36 @@ int	open_my_file(char *name)
 
 void	redir_left(t_cmd *cmd, t_cmd *cmd2)
 {
-  cmd->fdout = 1;
-  cmd->fdin = open_my_file(cmd2->args[0]);
+  if (cmd->type == 0)
+    {
+      cmd2->fdin = creat(cmd2->args[0], 0644);
+      cmd->fdin = open_my_file(cmd2->args[0]);
+      cmd2->fdout = 1;
+    }
+  else if (cmd->type == 1)
+    {
+      cmd2->fdin = creat(cmd2->args[0], 0644);
+      cmd->fdout = open(cmd->args[0], O_RDONLY | O_CREAT, S_IRWXU | S_IRWXG | S_IRWXO);
+    }
 }
 
 void	double_redir_right(t_cmd *cmd, t_cmd *cmd2)
 {
-  cmd->fdout = open(cmd2->args[0], O_WRONLY | O_CREAT | O_APPEND, 0666);
-  cmd2->fdin = cmd->fdout;
-  cmd2->fdout = cmd->fdout;
+  if (cmd->type == 0)
+    {
+      cmd->fdout = open(cmd2->args[0], O_WRONLY | O_CREAT | O_APPEND, 0666);
+      cmd2->fdin = cmd->fdout;
+      cmd2->fdout = cmd->fdout;
+    }
+  else if (cmd->type == 1)
+    {
+      cmd2->fdin = creat(cmd2->args[0], 0644);
+      cmd->fdout = open(cmd->args[0], O_RDONLY | O_CREAT, S_IRWXU | S_IRWXG | S_IRWXO);
+    }
 }
 
 void	redir_right(t_cmd *cmd, t_cmd *cmd2)
 {
-  char  *buffer;
-  int   fd;
-
-  buffer = xcalloc(4096, sizeof(*buffer));
   if (cmd->type == 0)
     {
       cmd->fdout = creat(cmd2->args[0], 0644);
@@ -68,10 +78,7 @@ void	redir_right(t_cmd *cmd, t_cmd *cmd2)
   else if (cmd->type == 1)
     {
       cmd2->fdin = creat(cmd2->args[0], 0644);
-      fd = open(cmd->args[0], O_RDONLY | O_CREAT, S_IRWXU | S_IRWXG | S_IRWXO);
-      //nb = read(fd, buffer, 4095);
-      write(cmd2->fdin, buffer, (strlen(buffer) + 1));
-      close(fd);
+      cmd->fdout = open(cmd->args[0], O_RDONLY | O_CREAT, S_IRWXU | S_IRWXG | S_IRWXO);
     }
 }
 

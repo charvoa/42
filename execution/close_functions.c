@@ -5,7 +5,7 @@
 ** Login   <heitzl_s@epitech.net>
 **
 ** Started on  Thu May 22 13:54:57 2014 heitzl_s
-** Last update Sat May 24 05:21:49 2014 garcia antoine
+** Last update Sat May 24 08:51:59 2014 heitzl_s
 */
 
 #include <unistd.h>
@@ -21,13 +21,13 @@
 #include "../builtins/builtins.h"
 #include "execution.h"
 
-int     check_and_close_son(t_cmd *cmd, int i, int close_fd)
+int     check_and_close_son(t_cmd *cmd, int i)
 {
-  if (close_fd == 0 && cmd[i].fdout != 1)
+  if (cmd[i].close_fd == 0 && cmd[i].fdout != 1)
     xclose(cmd[i + 1].fdin);
-  else if (close_fd == 1)
+  else if (cmd[i].close_fd == 1)
     xclose(cmd[i - 1].fdout);
-  else if (close_fd == 2)
+  else if (cmd[i].close_fd == 2)
     {
       xclose(cmd[i - 1].fdout);
       xclose(cmd[i + 1].fdin);
@@ -35,7 +35,7 @@ int     check_and_close_son(t_cmd *cmd, int i, int close_fd)
   return (0);
 }
 
-int	check_and_close_father(t_cmd *cmd, t_42sh *shell, int i, int close_fd)
+int	check_and_close_father(t_cmd *cmd, t_42sh *shell, int i)
 {
   int	result;
 
@@ -44,10 +44,10 @@ int	check_and_close_father(t_cmd *cmd, t_42sh *shell, int i, int close_fd)
     return (-42);
   else
     {
-      cmd[i].pid = launch(cmd, shell, i, close_fd);
-      if (close_fd == 1)
+      cmd[i].pid = launch(cmd, shell, i);
+      if (cmd[i].close_fd == 1)
         xclose(cmd[i - 1].fdout);
-      else if (close_fd == 2)
+      else if (cmd[i].close_fd == 2)
         {
           xclose(cmd[i - 1].fdout);
           xclose(cmd[i].fdin);

@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Mon Apr 28 10:43:54 2014 Nicolas Charvoz
-** Last update Sat May 24 00:15:00 2014 Nicolas Girardot
+** Last update Sat May 24 08:25:12 2014 heitzl_s
 */
 
 #ifndef PARSER_H_
@@ -29,6 +29,7 @@ typedef	struct	s_cmd
   int		status;
   int		fdin;
   int		fdout;
+  int		close_fd;
   pid_t		pid;
 }		t_cmd;
 

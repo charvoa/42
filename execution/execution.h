@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Fri May  9 11:18:26 2014 garcia antoine
-** Last update Sat May 24 05:56:57 2014 heitzl_s
+** Last update Sat May 24 08:43:32 2014 heitzl_s
 */
 
 #ifndef EXECUTION_H_
@@ -38,15 +38,19 @@ char		*real_path(t_cmd*, t_42sh*);
 
 /* close_functions.c */
 int		which_one_to_close(t_cmd*, int);
-int		check_and_close_son(t_cmd*, int, int);
-int		check_and_close_father(t_cmd*, t_42sh*, int, int);
+int		check_and_close_son(t_cmd*, int);
+int		check_and_close_father(t_cmd*, t_42sh*, int);
 
 /* execution.c */
 int		check_or_and(t_cmd*, int, t_42sh*);
-int		launch(t_cmd*, t_42sh*, int, int);
+int		launch(t_cmd*, t_42sh*, int);
 int		check_and_launch(t_cmd*, t_42sh*, int, int);
 int		wainting_process(t_cmd*);
 int		execution(t_cmd*, t_42sh*, int);
+
+/* execution_next.c */
+int		exec_redir(t_cmd*, int);
+int		start_execution(t_cmd*, t_42sh*, int);
 
 /* prepa_pipes.c */
 int		prepa_pipes(t_cmd*);
