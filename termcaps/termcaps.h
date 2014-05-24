@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Wed Apr 30 14:24:51 2014 Nicolas Charvoz
-** Last update Wed Apr 30 14:34:34 2014 Nicolas Charvoz
+** Last update Sat May 24 12:57:54 2014 Nicolas Charvoz
 */
 
 #ifndef TERMCAPS_H_
@@ -19,7 +19,7 @@
 # include <stdio.h>
 # include "../env/libsources/my.h"
 
-void	my_clear();
+int	my_clear();
 int	my_int_putchar(int);
 
 #endif
