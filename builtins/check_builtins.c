@@ -5,7 +5,7 @@
 ** Login   <audibe_l@epitech.net>
 **
 ** Started on  Mon May 12 12:59:09 2014 louis audibert
-** Last update Sat May 24 05:01:54 2014 louis audibert
+** Last update Sat May 24 06:18:27 2014 Nicolas Charvoz
 */
 
 #include "builtins.h"
@@ -35,7 +35,8 @@ int	find_cmd(char *cmd)
   return (-1);
 }
 
-void	fill_builtins(int (**builtins)(t_42sh *shell, t_cmd *cmd, t_dlist *env, int i))
+void	fill_builtins(int (**builtins)(t_42sh *shell, t_cmd *cmd,
+				       t_dlist *env, int i))
 {
   builtins[0] = &my_cd;
   builtins[1] = &my_env;
