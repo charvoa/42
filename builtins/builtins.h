@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Thu May 22 15:55:51 2014 Nicolas Charvoz
-** Last update Sat May 24 02:27:39 2014 heitzl_s
+** Last update Sat May 24 04:28:08 2014 heitzl_s
 */
 
 #ifndef BUILTINS_H_
@@ -30,7 +30,7 @@ int	my_history(t_42sh*, t_cmd*, t_dlist*, int);
 int	my_env(t_42sh*, t_cmd*, t_dlist*, int);
 
 /* MY_ECHO.C */
-int	echo_from_var_env(char*, t_dlist*);
+int	echo_from_var_env(char*, t_dlist*, t_cmd*, int);
 int	my_echo(t_42sh*, t_cmd*, t_dlist*, int);
 
 /* MY_CD.C */

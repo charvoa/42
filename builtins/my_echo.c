@@ -5,32 +5,32 @@
 ** Login   <audibe_l@epitech.net>
 **
 ** Started on  Thu May  8 11:33:49 2014 louis audibert
-** Last update Sat May 24 02:19:49 2014 heitzl_s
+** Last update Sat May 24 04:34:30 2014 heitzl_s
 */
 
 #include "builtins.h"
 #include "../xlib/xlib.h"
 
-int	echo_from_var_env(char *opt, t_dlist *env)
+int	echo_from_var_env(char *opt, t_dlist *env, t_cmd *cmd, int i)
 {
   char	*path;
-  int	i;
+  int	x;
   int	j;
 
-  i = 1;
+  x = 1;
   j = 0;
   path = xmalloc(strlen(opt) * sizeof(char));
   memset(path, 0, strlen(opt));
-  while (opt[i])
+  while (opt[x])
     {
-      path[j] = opt[i];
+      path[j] = opt[x];
       j++;
-      i++;
+      x++;
     }
   path = get_env(path, env);
   if (path == NULL)
     return (-1);
-  my_putstr(path);
+  write(cmd[i].fdout, path, (strlen(path)));
   return (0);
 }
 
@@ -43,12 +43,12 @@ int	my_echo(t_42sh *shell, t_cmd *cmd, t_dlist *env, int i)
   while (cmd[i].args[x])
     {
       if (cmd[i].args[x][0] == '$')
-	echo_from_var_env(cmd[i].args[x], env);
+	echo_from_var_env(cmd[i].args[x], env, cmd, i);
       else
 	{
-	  my_putstr(cmd->args[x]);
+	  write(cmd[i].fdout, cmd[i].args[x], (strlen(cmd[i].args[x])));
 	  if (cmd[i].args[x + 1] != NULL)
-	    my_putchar(' ');
+	    write(cmd[i].fdout, " ", 2);
 	}
       x++;
     }

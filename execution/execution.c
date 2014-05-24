@@ -5,7 +5,7 @@
 ** Login   <heitzl_s@epitech.net>
 **
 ** Started on  Wed May 14 15:05:12 2014 heitzl_s
-** Last update Sat May 24 02:47:14 2014 heitzl_s
+** Last update Sat May 24 04:35:18 2014 heitzl_s
 */
 
 #include <unistd.h>
@@ -56,7 +56,7 @@ int	launch(t_cmd *cmd, t_42sh *shell, int i, int close_fd)
   if (pid == 0)
     {
       if (find_cmd(cmd[i].args[0]) != -1)
-	exit (-1);
+      	exit (0);
       if (check_pipe_cmd(&cmd[i], shell) == -1)
 	{
 	  fprintf(stderr, "Command not found : %s\n", cmd[i].args[0]);
@@ -102,6 +102,11 @@ int	execution(t_cmd *cmd, t_42sh *shell, int tok)
 	{
 	  while (cmd[i].token != NULL && (strcmp(cmd[i].token, ";") != 0))
 	    {
+	      printf("__________CMD_%d__________\n", i);
+	      printf("cmd[%d].type = %d\n", i , cmd[i].type);
+	      printf("cmd[%d].fdin = %d\n", i , cmd[i].fdin);
+	      printf("cmd[%d].fdout = %d\n", i , cmd[i].fdout);
+	      printf("cmd[%d].status = %d\n\n\n", i , cmd[i].status);
 	      close_fd = which_one_to_close(cmd, i);
 	      if (cmd[i].type == 0)
 		{
@@ -114,6 +119,11 @@ int	execution(t_cmd *cmd, t_42sh *shell, int tok)
 	}
       else
 	{
+	  printf("__________CMD_%d__________\n", i);
+	  printf("cmd[%d].type = %d\n", i , cmd[i].type);
+	  printf("cmd[%d].fdin = %d\n", i , cmd[i].fdin);
+	  printf("cmd[%d].fdout = %d\n", i , cmd[i].fdout);
+	  printf("cmd[%d].status = %d\n\n\n", i , cmd[i].status);
 	  close_fd = which_one_to_close(cmd, i);
 	  if (cmd[i].type == 0)
 	    {
