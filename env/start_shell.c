@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Mon Apr  7 16:15:48 2014 garcia antoine
-** Last update Sat May 24 03:21:30 2014 Nicolas Girardot
+** Last update Sat May 24 04:11:33 2014 Nicolas Girardot
 */
 
 #include <sys/types.h>
@@ -36,11 +36,16 @@ char	*cat_if_pipe(char *cmd)
   int	ret;
 
   buffer = xcalloc(4096, sizeof(char));
-  my_putstr("pipe >");
+  my_putstr(">");
   ret = read(0, buffer, 4096);
+  if (ret == 0)
+    {
+      putchar('\n');
+      return ("exit");
+    }
   buffer[ret - 1] = '\0';
   cmd = strcat(cmd, buffer);
-  if (cmd[strlen(cmd) - 1] == '|')
+  if (cmd[strlen(cmd) - 1] == '|' || cmd[strlen(cmd) - 1] == '>')
     cmd = cat_if_pipe(cmd);
   return (cmd);
 }
@@ -55,14 +60,14 @@ char	*read_line(int fd)
   nb = xread(0, buffer, 4096);
   if (nb == 0)
     {
-      my_putchar('\n');
+      puts("exit");
       return ("exit");
     }
   buffer[nb - 1] = '\0';
   cmd = strdup(buffer);
   free(buffer);
   cmd = epur_str(cmd);
-  if (cmd[nb - 2] == '|')
+  if (cmd[nb - 2] == '|' || cmd[nb - 2] == '>')
     cmd = cat_if_pipe(cmd);
   write(fd, cmd, strlen(cmd));
   write(fd, "\n", 1);
