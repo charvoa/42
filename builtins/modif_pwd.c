@@ -5,23 +5,25 @@
 ** Login   <audibe_l@epitech.net>
 **
 ** Started on  Mon May 19 22:43:20 2014 louis audibert
-** Last update Fri May 23 10:33:01 2014 heitzl_s
+** Last update Sat May 24 04:21:37 2014 louis audibert
 */
 
 #include "builtins.h"
 #include "../xlib/xlib.h"
 
-char	*clean_arg(char *arg)
+char		*clean_arg(char *arg)
 {
-  int	i;
-  int	j;
-  char	*clean_arg;
+  int		i;
+  int		j;
+  char		*clean_arg;
 
   clean_arg = xcalloc((strlen(arg) + 1), sizeof(char));
   i = 0;
   j = 0;
   while (arg[i] == '.' && arg[i + 1] == '.' && arg[i + 2] == '/')
     i += 3;
+  if (arg[i] == '.' && arg[i + 1] == '.')
+    i += 2;
   while (arg[i])
     {
       clean_arg[j] = arg[i];

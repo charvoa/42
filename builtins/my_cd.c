@@ -5,7 +5,7 @@
 ** Login   <audibe_l@epitech.net>
 **
 ** Started on  Tue May  6 16:42:02 2014 louis audibert
-** Last update Sat May 24 02:18:34 2014 heitzl_s
+** Last update Sat May 24 03:36:13 2014 louis audibert
 */
 
 #include "builtins.h"
@@ -93,7 +93,7 @@ int    my_cd(t_42sh *shell, t_cmd *cmd, t_dlist *env, int i)
 	   && !((cmd[i].args[1][1] >= 'a' && cmd[i].args[1][1] <= 'z')
 		|| (cmd[i].args[1][1] >= 'A' && cmd[i].args[1][1] <= 'Z')))
     {
-      if (cd_tild(cmd[i].args, env) == -1)//
+      if (cd_tild(cmd[i].args, env) == -1)
 	return (-1);
     }
   else if (cmd[i].args[1][0] == '-')
