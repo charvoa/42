@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Fri Apr  4 15:59:36 2014 garcia antoine
-** Last update Mon May 19 21:36:22 2014 garcia antoine
+** Last update Sat May 24 02:09:18 2014 garcia antoine
 */
 
 #include <stdlib.h>
@@ -47,4 +47,7 @@ void	prompt(t_42sh *shell)
   host = get_host_from_env(shell->env);
   my_printf("\033[36m%s\033[0m@\033[35m%s\033[0m: %s %d)", user, host, pwd, i);
   i++;
+  free(pwd);
+  free(user);
+  free(host);
 }
