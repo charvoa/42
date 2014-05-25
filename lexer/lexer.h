@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Sat Apr  5 15:42:30 2014 Nicolas Charvoz
-** Last update Thu May 22 12:14:52 2014 heitzl_s
+** Last update Sun May 25 21:27:32 2014 Nicolas Charvoz
 */
 
 #ifndef _LEXER_H_
@@ -42,7 +42,7 @@ typedef	struct s_lex
 /* LEXER.C */
 int	unk_check(char*, int, t_token**);
 int	word_check(char*, int, t_token**);
-void	lex(char*, t_token**);
+int	lex(char*, t_token**);
 int	lexer(char*, t_token**, t_42sh*);
 /* USELESS.C */
 void	lexer_test(char*);
