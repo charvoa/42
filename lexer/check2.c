@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Mon Apr 21 15:35:44 2014 Nicolas Charvoz
-** Last update Sun May 25 12:42:30 2014 Nicolas Charvoz
+** Last update Sun May 25 13:11:35 2014 Nicolas Charvoz
 */
 
 #include "lexer.h"
@@ -31,11 +31,12 @@ int	check_error_none(t_token **token)
 	      tok = tok->next;
 	      if (tok->type > TOKEN_WORD)
 		{
-		  printf("bite\n");
+		  fprintf(stderr, "NULL is not a command");
 		  return (-1);
 		}
 	    }
 	}
+      tok = tok->next;
     }
   return (0);
 }
