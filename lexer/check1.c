@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Mon Apr 21 14:55:27 2014 Nicolas Charvoz
-** Last update Sun May 25 22:26:57 2014 Nicolas Charvoz
+** Last update Sun May 25 12:34:55 2014 Nicolas Charvoz
 */
 
 #include "lexer.h"
@@ -15,7 +15,7 @@ int     check_letter(char c)
   int   i;
   char  *str;
 
-  str = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_0123456789 -./$?=~";
+  str = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_0123456789-./$?=~";
   i = 0;
   while (str[i])
     {

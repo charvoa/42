@@ -5,13 +5,24 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Sat May 24 01:01:18 2014 Nicolas Charvoz
-** Last update Mon May 26 18:21:53 2014 Nicolas Charvoz
+** Last update Sun May 25 12:36:04 2014 Nicolas Charvoz
 */
 
 #include "lexer.h"
 #include "../parser/parser.h"
 #include "../xlib/xlib.h"
-#include "../alias/alias.h"
+
+void	sho_token(t_token **token)
+{
+  t_token *tok;
+
+  tok = *token;
+  while (tok != NULL)
+    {
+      printf("tok value = %s\n", tok->value);
+      tok = tok->next;
+    }
+}
 
 int	check_unk(char *str, int i, t_token **token)
 {
@@ -88,7 +99,11 @@ int	lex(char *str, t_token **token)
       i = check_and(str, i, token);
       i = word_check(str, i, token);
       i = check_unk(str, i, token);
+      i = check_none(str, i, token);
     }
+  if ((check_error_none(token)) == -1)
+    return (-1);
+  sho_token(token);
   return (0);
 }
 
@@ -102,16 +117,14 @@ int	lexer(char *cmd, t_token **token, t_42sh *shell)
   lexi->cmd = epur_str(strdup(cmd));
   if (!(lexi->cmd[0]))
     return (0);
-  lex(lexi->cmd, token);
+  if ((lex(lexi->cmd, token)) == -1)
+    return (-42);
   if ((error = check_token(token, lexi)) != NULL)
     {
       printf("42sh : Syntax error near unexpected token `%s`\n", error);
       return (0);
     }
   else
-    {
-      token = alias(token, shell);
-      return (parser(token, shell));
-    }
+    return (parser(token, shell));
   return (0);
 }
