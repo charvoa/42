@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Wed May 21 14:22:03 2014 Nicolas Charvoz
-** Last update Sat May 24 05:01:36 2014 Nicolas Girardot
+** Last update Sun May 25 21:05:12 2014 Nicolas Charvoz
 */
 
 #ifndef XLIB_H_
@@ -20,6 +20,7 @@
 # include <string.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include "../env/42sh.h"
 
 /* XOPEN.C */
 int	xopen(const char *pathname, int flags);
