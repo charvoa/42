@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Fri May 23 16:24:54 2014 Nicolas Charvoz
-** Last update Sat May 24 05:10:25 2014 Nicolas Charvoz
+** Last update Sun May 25 19:09:12 2014 Nicolas Charvoz
 */
 
 #ifndef ALIAS_H_
@@ -40,7 +40,6 @@ void	make_list(char**, t_alias**);
 t_token **check_list(t_alias**, t_token**);
 
 /* MAIN.C */
-void	printtab(char**);
 t_token	**alias(t_token**, t_42sh*);
 
 #endif

@@ -5,21 +5,26 @@
 ** Login   <heitzl_s@epitech.net>
 **
 ** Started on  Sat May 24 00:49:48 2014 heitzl_s
-** Last update Sat May 24 12:55:03 2014 Nicolas Charvoz
+** Last update Sun May 25 19:10:33 2014 Nicolas Charvoz
 */
 
 #include "alias.h"
 #include "../xlib/xlib.h"
 
-void	init_pwd_alias(t_42sh *shell)
+int	init_pwd_alias(t_42sh *shell)
 {
   if (shell->pwd_alias == NULL
       && (shell->pwd_alias = get_env("PWD", shell->env)) != NULL)
     {
       shell->pwd_alias = realloc(shell->pwd_alias,
 				 (strlen(shell->pwd_alias) + 13));
-      strcat(shell->pwd_alias, "/alias/alias");
+      if (shell->pwd_alias != NULL)
+	{
+	  strcat(shell->pwd_alias, "/alias/alias");
+	  return (-1);
+	}
     }
+  return (0);
 }
 
 t_token		**alias(t_token **token, t_42sh *shell)
@@ -31,19 +36,23 @@ t_token		**alias(t_token **token, t_42sh *shell)
   char		**tab;
   t_alias	*list;
 
-  init_pwd_alias(shell);
-  list = NULL;
-  buffer = xcalloc(4096, sizeof(char));
-  final = xcalloc(4096, sizeof(char));
-  fd = xopen_alias(shell->pwd_alias, O_RDONLY | O_APPEND);
-  while ((ret = read(fd, buffer, 4096)) != 0)
+  if ((init_pwd_alias(shell)) == -1)
     {
-      final = realloc(final, strlen(buffer) + 4097);
-      strcat(final, buffer);
+      printf("lol\n");
+      list = NULL;
+      buffer = xcalloc(4096, sizeof(char));
+      final = xcalloc(4096, sizeof(char));
+      fd = xopen_alias(shell->pwd_alias, O_RDONLY | O_APPEND);
+      while ((ret = read(fd, buffer, 4096)) != 0)
+	{
+	  final = realloc(final, strlen(buffer) + 4097);
+	  strcat(final, buffer);
       memset(buffer, 0, 4096);
+	}
+      tab = str_to_word_tab(final, '\n');
+      make_list(tab, &list);
+      token = check_list(&list, token);
+      return (token);
     }
-  tab = str_to_word_tab(final, '\n');
-  make_list(tab, &list);
-  token = check_list(&list, token);
   return (token);
 }
