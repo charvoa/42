@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Mon Apr  7 16:15:48 2014 garcia antoine
-** Last update Sun May 25 12:13:31 2014 Nicolas Charvoz
+** Last update Sun May 25 13:23:25 2014 Nicolas Charvoz
 */
 
 #include <sys/types.h>
@@ -24,6 +24,17 @@
 #include "../termcaps/termcaps.h"
 
 t_42sh	shell;
+
+int	check_none_cmd(char *str)
+{
+  int	i;
+
+  i = 0;
+  while (str[i])
+    {
+      if (str[i] == '|'
+    }
+}
 
 void	get_sigint(int sig)
 {
@@ -49,6 +60,7 @@ char	*read_line()
   cmd = strdup(buffer);
   free(buffer);
   cmd = epur_str(cmd);
+  check_none_cmd(cmd)
   return (cmd);
 }
 

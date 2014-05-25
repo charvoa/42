@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Sat May 24 01:01:18 2014 Nicolas Charvoz
-** Last update Sun May 25 12:36:04 2014 Nicolas Charvoz
+** Last update Sun May 25 13:15:03 2014 Nicolas Charvoz
 */
 
 #include "lexer.h"
@@ -99,10 +99,7 @@ int	lex(char *str, t_token **token)
       i = check_and(str, i, token);
       i = word_check(str, i, token);
       i = check_unk(str, i, token);
-      i = check_none(str, i, token);
     }
-  if ((check_error_none(token)) == -1)
-    return (-1);
   sho_token(token);
   return (0);
 }
@@ -117,8 +114,7 @@ int	lexer(char *cmd, t_token **token, t_42sh *shell)
   lexi->cmd = epur_str(strdup(cmd));
   if (!(lexi->cmd[0]))
     return (0);
-  if ((lex(lexi->cmd, token)) == -1)
-    return (-42);
+  lex(lexi->cmd, token);
   if ((error = check_token(token, lexi)) != NULL)
     {
       printf("42sh : Syntax error near unexpected token `%s`\n", error);
