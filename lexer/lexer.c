@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Sat May 24 01:01:18 2014 Nicolas Charvoz
-** Last update Sun May 25 13:15:03 2014 Nicolas Charvoz
+** Last update Sun May 25 13:25:51 2014 Nicolas Charvoz
 */
 
 #include "lexer.h"
@@ -77,7 +77,7 @@ char	*check_carac(char *str)
   i = i - 1;
   if ((!((str[i] >= 'a' && str[i] <= 'z') || (str[i] >= 'A' && str[i] <= 'Z')))
       && str[i] != '.' && str[i] != '/' && !(str[i] >= '0' && str[i] <= '9')
-      && str[i] != '~')
+      && str[i] != '~' && str[i] != '-')
     {
       str[i] = '\0';
       return (str);
