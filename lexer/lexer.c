@@ -5,7 +5,7 @@
 ** Login   <heitzl_s@epitech.net>
 **
 ** Started on  Sat May 24 01:04:08 2014 heitzl_s
-** Last update Sun May 25 12:21:06 2014 heitzl_s
+** Last update Sun May 25 22:04:54 2014 Nicolas Charvoz
 */
 
 #include "lexer.h"
@@ -58,7 +58,7 @@ int	word_check(char *str, int i, t_token **token)
   return (i);
 }
 
-void	lex(char *str, t_token **token)
+int	lex(char *str, t_token **token)
 {
   int	i;
 
@@ -73,19 +73,17 @@ void	lex(char *str, t_token **token)
       i = word_check(str, i, token);
       i = check_unk(str, i, token);
     }
+  return (0);
 }
 
 int	lexer(char *cmd, t_token **token, t_42sh *shell)
 {
-  int	i;
   char	*error;
   t_lex	*lexi;
 
-  i = 0;
   lexi = xmalloc(sizeof(*lexi));
-  lexi->cmd = strdup(cmd);
-  lexi->cmd = epur_str(lexi->cmd);
-  if (!(lexi->cmd[i]))
+  lexi->cmd = epur_str(strdup(cmd));
+  if (!(lexi->cmd[0]))
     return (0);
   lex(lexi->cmd, token);
   if ((error = check_token(token, lexi)) != NULL)
@@ -96,10 +94,7 @@ int	lexer(char *cmd, t_token **token, t_42sh *shell)
   else
     {
       token = alias(token, shell);
-      if (parser(token, shell) == -42)
-	return (-42);
+      return (parser(token, shell));
     }
-  free(lexi->cmd);
-  free(lexi);
   return (0);
 }

@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Sat May 24 12:37:07 2014 Nicolas Charvoz
-** Last update Sat May 24 12:37:30 2014 Nicolas Charvoz
+** Last update Sun May 25 21:05:49 2014 Nicolas Charvoz
 */
 
 #include "xlib.h"
@@ -27,7 +27,10 @@ int	xopen_alias(const char *pathname, int flags)
   int	fd;
 
   if ((fd = open(pathname, flags)) == -1)
-    return (-1);
+    {
+      fprintf(stderr, "Cannot open Alias file\n");
+      return (-1);
+    }
   return (fd);
 }
 
