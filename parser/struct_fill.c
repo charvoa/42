@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Thu May  8 12:50:49 2014 Nicolas Charvoz
-** Last update Sun May 25 12:08:35 2014 heitzl_s
+** Last update Sun May 25 22:00:43 2014 heitzl_s
 */
 
 #include "parser.h"
@@ -31,13 +31,30 @@ void	fill_it(t_cmd *cmd, char *str, char *sep)
      free(sep);
 }
 
+int		last_token(t_token **token)
+{
+  t_token       *tok;
+  int           type;
+
+  tok = xmalloc(sizeof(*tok));
+  tok = *token;
+  type = 0;
+  while (tok)
+    {
+      type = tok->type;
+      tok = tok->next;
+    }
+  return (type);
+}
+
 int             nbr_of_token(t_token **token)
 {
   t_token       *tok;
   int           i;
 
   tok = xmalloc(sizeof(*tok));
-  i = 0;
+  if (last_token(token) == 2)
+    i = 0;
   tok = *token;
   while (tok)
     {
@@ -71,7 +88,7 @@ int		struct_fill(char **tab, t_token **token, t_42sh *shell)
       fill_it(&cmd[j++], tab[i], tab[i + 1]);
       i += 2;
     }
-  if (global_exec(cmd, shell, count + 1) == -42)
+  if (global_exec(cmd, shell, count) == -42)
     return (-42);
   return (0);
 }
