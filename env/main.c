@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Fri Apr  4 12:20:14 2014 garcia antoine
-** Last update Sat May 24 12:47:06 2014 Nicolas Charvoz
+** Last update Sun May 25 19:31:08 2014 Nicolas Girardot
 */
 
 #include <stdlib.h>
@@ -39,7 +39,8 @@ int	main(int ac, char **av, char **env)
 {
   (void)ac;
   (void)av;
-  init_my_shell(&shell, env);
+  if (init_my_shell(&shell, env) == -1)
+    return (-1);
   if (start_shell(&shell) == -42)
     return (shell.exit_value);
   free_struct_shell(&shell);

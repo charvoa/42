@@ -5,7 +5,7 @@
 ** Login   <heitzl_s@epitech.net>
 **
 ** Started on  Fri May 23 10:38:49 2014 heitzl_s
-** Last update Sat May 24 04:41:17 2014 garcia antoine
+** Last update Sun May 25 20:04:09 2014 Nicolas Girardot
 */
 
 #include <stdlib.h>
@@ -14,9 +14,9 @@
 
 t_dlist	*create_my_env(t_dlist *shell, char **environ)
 {
-  int	i;
-  char	*name;
-  char	*value;
+  int		i;
+  char		*name;
+  char		*value;
 
   i = 0;
   if ((shell = create_list()) == NULL)
@@ -50,6 +50,8 @@ int	init_my_shell(t_42sh *shell, char **env)
   char	*path;
 
   shell->env = create_my_env(shell->env, env);
+  if (shell->env == NULL)
+    return (-1);
   path  = get_env("PATH", shell->env);
   if (path == NULL)
     path = path_in_cache();
