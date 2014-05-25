@@ -5,7 +5,7 @@
 ** Login   <heitzl_s@epitech.net>
 **
 ** Started on  Sat May 24 08:07:16 2014 heitzl_s
-** Last update Sun May 25 11:34:33 2014 heitzl_s
+** Last update Sun May 25 15:33:46 2014 heitzl_s
 */
 
 #include <unistd.h>
@@ -33,10 +33,9 @@ int     exec_redir(t_cmd *cmd, int i)
       if ((strcmp(cmd[i - 1].token, ">") == 0)
 	  || (strcmp(cmd[i - 1].token, ">>") == 0))
 	{
-	  read(cmd[i - 1].fdout, buffer, 4095);
+	  xread(cmd[i - 1].fdout, buffer, 4095);
 	  write(cmd[i].fdin, buffer, (strlen(buffer) + 1));
-	  close(cmd[i - 1].fdout);
-	  close(cmd[i].fdin);
+	  xclose(cmd[i - 1].fdout);
 	  return (1);
 	}
     }
