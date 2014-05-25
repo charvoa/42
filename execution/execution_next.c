@@ -5,7 +5,7 @@
 ** Login   <heitzl_s@epitech.net>
 **
 ** Started on  Sat May 24 08:07:16 2014 heitzl_s
-** Last update Sat May 24 15:47:39 2014 Nicolas Charvoz
+** Last update Sun May 25 11:34:33 2014 heitzl_s
 */
 
 #include <unistd.h>
@@ -26,7 +26,9 @@ int     exec_redir(t_cmd *cmd, int i)
   char  *buffer;
 
   buffer = xcalloc(4096, sizeof(*buffer));
-  if (cmd[i].type == 1 && cmd[i - 1].type == 1)
+  if (strcmp(cmd[i - 1].token, "<<") == 0)
+    remove(cmd[i].args[0]);
+  else if (cmd[i].type == 1 && cmd[i - 1].type == 1)
     {
       if ((strcmp(cmd[i - 1].token, ">") == 0)
 	  || (strcmp(cmd[i - 1].token, ">>") == 0))
@@ -44,12 +46,6 @@ int     exec_redir(t_cmd *cmd, int i)
 int	start_execution(t_cmd *cmd, t_42sh *shell, int i)
 {
   cmd[i].close_fd = which_one_to_close(cmd, i);
-  /* printf("__________CMD_%d__________\n", i); */
-  /* printf("cmd[%d].type = %d\n", i , cmd[i].type); */
-  /* printf("cmd[%d].fdin = %d\n", i , cmd[i].fdin); */
-  /* printf("cmd[%d].fdout = %d\n", i , cmd[i].fdout); */
-  /* printf("cmd[%d].status = %d\n\n\n", i , cmd[i].status); */
-  /* printf("cmd[%d].close_fd = %d\n\n\n", i , cmd[i].close_fd); */
   if (cmd[i].type == 0)
     {
       if (check_and_close_father(cmd, shell, i) == -42)
@@ -57,6 +53,7 @@ int	start_execution(t_cmd *cmd, t_42sh *shell, int i)
     }
   else
     exec_redir(cmd, i);
-  waitpid(cmd[i].pid, &cmd[i].status, 0);
+  waitpid(cmd[i].pid , &cmd[i].status, 0);
+  check_signal(cmd[i].status);
   return (0);
 }

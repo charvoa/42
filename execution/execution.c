@@ -5,7 +5,7 @@
 ** Login   <heitzl_s@epitech.net>
 **
 ** Started on  Wed May 14 15:05:12 2014 heitzl_s
-** Last update Sat May 24 09:08:23 2014 heitzl_s
+** Last update Sun May 25 11:51:55 2014 heitzl_s
 */
 
 #include <unistd.h>
@@ -68,6 +68,7 @@ int	launch(t_cmd *cmd, t_42sh *shell, int i)
 	}
       if (check_or_and(cmd, i, shell) == 1)
 	exit(-1);
+      printf("EXEC in SON READY\n");
       xdup2(cmd[i].fdout, 1);
       xdup2(cmd[i].fdin, 0);
       check_and_close_son(cmd, i);
@@ -120,14 +121,3 @@ int	execution(t_cmd *cmd, t_42sh *shell, int tok)
     }
   return (0);
 }
-
-/*
-   printf("__________CMD_%d__________\n", i);
-   printf("cmd[%d].type = %d\n", i , cmd[i].type);
-   printf("cmd[%d].fdin = %d\n", i , cmd[i].fdin);
-   printf("cmd[%d].fdout = %d\n", i , cmd[i].fdout);
-   printf("cmd[%d].status = %d\n\n\n", i , cmd[i].status);
-
-*/
-
-// Sort du shell au bout d'un certain nombre de pipes

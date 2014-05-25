@@ -5,7 +5,7 @@
 ** Login   <heitzl_s@epitech.net>
 **
 ** Started on  Sat May 24 11:37:51 2014 heitzl_s
-** Last update Sat May 24 15:34:42 2014 heitzl_s
+** Last update Sun May 25 10:55:09 2014 heitzl_s
 */
 
 #include <stdlib.h>
@@ -19,61 +19,50 @@
 #include "../xlib/xlib.h"
 #include "execution.h"
 
-
-
-int	exec_double_left(t_cmd *cmd, int i, int save)
+int	exec_double_left(t_cmd *cmd, int last, int first)
 {
   char  *buffer;
+  int	pos_cmd;
 
-  while (save < i)
+  pos_cmd = first - 1;
+  buffer = xcalloc(4096, sizeof(char));
+  while (first < last)
     {
       buffer = xcalloc(4096, sizeof(char));
-      my_putstr(">");
       read(0, buffer, 4096);
-      if (strncmp(buffer, cmd[save].args[0], strlen(cmd[save].args[0])) != 0)
+      if (strncmp(buffer, cmd[first].args[0], strlen(cmd[first].args[0])) != 0)
 	;
       else
-	save++;
+	first++;
     }
-  printf("MY save = %d\n", save);
-  while (strncmp(buffer, cmd[save].args[0], strlen(cmd[save].args[0])) != 0)
+  while (strncmp(buffer, cmd[last].args[0], strlen(cmd[last].args[0])) != 0)
     {
       buffer = xcalloc(4096, sizeof(char));
-      my_putstr("-->");
       read(0, buffer, 4096);
-      printf("buffer = %s\n", buffer);
-      printf("cmd[%d].save = %s\n", save, cmd[save].args[0]);
-      if (strncmp(buffer, cmd[save].args[0], strlen(cmd[save].args[0])) != 0)
-	{
-	  write(cmd[0].fdin, buffer, strlen(cmd[0].args[0])); // EN DUR
-	  write(cmd[0].fdin, "\n", strlen("\n"));
-	}
+      if (strncmp(buffer, cmd[last].args[0], strlen(cmd[last].args[0])) != 0)
+	write(cmd[pos_cmd].fdin, buffer, strlen(buffer));
     }
+  close(cmd[pos_cmd].fdin);
+  cmd[pos_cmd].fdin = xopenmode(cmd[last].args[0], O_RDONLY | O_APPEND,
+			  S_IRWXU | S_IRWXG | S_IRWXO);
   return (0);
 }
 
 void	double_redir_left(t_cmd *cmd, t_cmd *cmd2, t_cmd *cmdg, int i)
 {
-  int	save;
-  int	save2;
+  int	pos_cmd;
 
+  (void)cmd2;
   if (cmd[i].type == 0)
     {
-      save = i;
-      save2 = i;
-      cmd->fdout = 1;
-      cmd2->fdin = cmd->fdout;
-      cmd2->fdout = cmd->fdout;
+      pos_cmd = i;
+      cmd->fdin = 1;
+      while ((cmdg[i].token && strcmp(cmdg[i].token, "<<") == 0))
+	i++;
+      if (cmd[pos_cmd].type == 0)
+	cmdg[pos_cmd].fdin = xopenmode(cmdg[i].args[0], O_RDWR | O_CREAT | O_APPEND,
+				       S_IRWXU | S_IRWXG | S_IRWXO);
+      cmdg[pos_cmd].fdout = 1;
+      exec_double_left(cmd, i, pos_cmd + 1);
     }
-  while ((cmdg[i].token && strcmp(cmdg[i].token, "<<") == 0))
-    i++;
-  printf("Avant qdqsdqsdqs | save = %d\n", save);
-  if (cmd[save].type == 0)
-    cmdg[save].fdin = xopenmode(cmdg[i].args[0], O_RDWR | O_CREAT | O_APPEND,
-				S_IRWXU | S_IRWXG | S_IRWXO);
-  while (save <= i)
-    cmdg[save++].fdout = 1;
-  printf("Avant fonction | save = %d\n", save2 + 1);
-  printf("Avant fonction | i = %d\n", i);
-  exec_double_left(cmd, i, save2 + 1);
 }

@@ -5,7 +5,7 @@
 ** Login   <heitzl_s@epitech.net>
 **
 ** Started on  Wed May 14 15:05:12 2014 heitzl_s
-** Last update Sat May 24 12:40:22 2014 Nicolas Charvoz
+** Last update Sun May 25 09:58:28 2014 heitzl_s
 */
 
 #include <unistd.h>
@@ -20,8 +20,14 @@ void	create_pipes(t_cmd *cmd, int i)
   int   fd[2];
 
   pipe(fd);
-  cmd[i].fdout = fd[1];
   cmd[i + 1].fdin = fd[0];
+  while (cmd[i].type != 0)
+    {
+      cmd[i].fdin = fd[1];
+      cmd[i].fdout = fd[1];
+      i--;
+    }
+  cmd[i].fdout = fd[1];
 }
 
 int	check_pipe_cmd(t_cmd *cmd, t_42sh *shell)

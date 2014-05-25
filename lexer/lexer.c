@@ -5,7 +5,7 @@
 ** Login   <heitzl_s@epitech.net>
 **
 ** Started on  Sat May 24 01:04:08 2014 heitzl_s
-** Last update Sat May 24 06:07:33 2014 Nicolas Charvoz
+** Last update Sun May 25 12:21:06 2014 heitzl_s
 */
 
 #include "lexer.h"
