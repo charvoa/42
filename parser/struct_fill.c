@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Thu May  8 12:50:49 2014 Nicolas Charvoz
-** Last update Sun May 25 12:08:35 2014 heitzl_s
+** Last update Sun May 25 22:15:55 2014 Nicolas Charvoz
 */
 
 #include "parser.h"
@@ -37,7 +37,7 @@ int             nbr_of_token(t_token **token)
   int           i;
 
   tok = xmalloc(sizeof(*tok));
-  i = 0;
+    i = 0;
   tok = *token;
   while (tok)
     {

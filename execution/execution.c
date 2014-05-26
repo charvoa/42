@@ -5,7 +5,7 @@
 ** Login   <heitzl_s@epitech.net>
 **
 ** Started on  Wed May 14 15:05:12 2014 heitzl_s
-** Last update Sun May 25 11:51:55 2014 heitzl_s
+** Last update Sun May 25 23:25:21 2014 Nicolas Charvoz
 */
 
 #include <unistd.h>
@@ -58,17 +58,16 @@ int	launch(t_cmd *cmd, t_42sh *shell, int i)
   if (pid == 0)
     {
       if (cmd[i].fdin == -1)
-	exit (-1);
+	exit(-1);
       else if (find_cmd(cmd[i].args[0]) != -1)
-      	exit (42);
+      	exit(42);
       else if (check_pipe_cmd(&cmd[i], shell) == -1)
 	{
 	  fprintf(stderr, "Command not found : %s\n", cmd[i].args[0]);
-	  exit (-1);
+	  exit(-1);
 	}
       if (check_or_and(cmd, i, shell) == 1)
 	exit(-1);
-      printf("EXEC in SON READY\n");
       xdup2(cmd[i].fdout, 1);
       xdup2(cmd[i].fdin, 0);
       check_and_close_son(cmd, i);

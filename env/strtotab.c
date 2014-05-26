@@ -3,9 +3,9 @@
 **
 ** Made by Nicolas Charvoz
 ** Login   <charvo_a@epitech.net>
-**
+x**
 ** Started on  Mon May  5 15:20:22 2014 Nicolas Charvoz
-** Last update Fri May 23 10:44:12 2014 heitzl_s
+** Last update Sun May 25 23:25:50 2014 Nicolas Charvoz
 */
 
 #include <string.h>

@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Fri Apr  4 12:46:55 2014 garcia antoine
-** Last update Sat May 24 12:44:07 2014 Nicolas Charvoz
+** Last update Sun May 25 23:26:14 2014 Nicolas Charvoz
 */
 
 #include <string.h>

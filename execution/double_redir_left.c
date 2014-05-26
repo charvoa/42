@@ -5,7 +5,7 @@
 ** Login   <heitzl_s@epitech.net>
 **
 ** Started on  Sat May 24 11:37:51 2014 heitzl_s
-** Last update Sun May 25 10:55:09 2014 heitzl_s
+** Last update Sun May 25 22:59:21 2014 Nicolas Charvoz
 */
 
 #include <stdlib.h>
@@ -30,8 +30,7 @@ int	exec_double_left(t_cmd *cmd, int last, int first)
     {
       buffer = xcalloc(4096, sizeof(char));
       read(0, buffer, 4096);
-      if (strncmp(buffer, cmd[first].args[0], strlen(cmd[first].args[0])) != 0)
-	;
+      if (strncmp(buffer, cmd[first].args[0], strlen(cmd[first].args[0])) != 0);
       else
 	first++;
     }
@@ -42,7 +41,7 @@ int	exec_double_left(t_cmd *cmd, int last, int first)
       if (strncmp(buffer, cmd[last].args[0], strlen(cmd[last].args[0])) != 0)
 	write(cmd[pos_cmd].fdin, buffer, strlen(buffer));
     }
-  close(cmd[pos_cmd].fdin);
+  xclose(cmd[pos_cmd].fdin);
   cmd[pos_cmd].fdin = xopenmode(cmd[last].args[0], O_RDONLY | O_APPEND,
 			  S_IRWXU | S_IRWXG | S_IRWXO);
   return (0);

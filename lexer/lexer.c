@@ -1,11 +1,11 @@
 /*
-** lexer.c for 42sh in /home/heitzl_s/42
+** lexer.c for  in /media/5c1be222-3ce0-4181-925b-c458f62a0f76/charvo_a/rendu/PSU_2013_42sh/lexer
 **
-** Made by heitzl_s
-** Login   <heitzl_s@epitech.net>
+** Made by Nicolas Charvoz
+** Login   <charvo_a@epitech.net>
 **
-** Started on  Sat May 24 01:04:08 2014 heitzl_s
-** Last update Sun May 25 22:04:54 2014 Nicolas Charvoz
+** Started on  Sat May 24 01:01:18 2014 Nicolas Charvoz
+** Last update Sat May 24 01:01:29 2014 Nicolas Charvoz
 */
 
 #include "lexer.h"
@@ -58,6 +58,21 @@ int	word_check(char *str, int i, t_token **token)
   return (i);
 }
 
+char	*check_carac(char *str)
+{
+  int	i;
+
+  i = strlen(str);
+  i = i - 1;
+  if ((!((str[i] >= 'a' && str[i] <= 'z') || (str[i] >= 'A' && str[i] <= 'Z'))) && str[i] != '.'
+      && str[i] != '/' && !(str[i] >= '0' && str[i] <= '9'))
+    {
+      str[i] = '\0';
+      return (str);
+    }
+  return (str);
+}
+
 int	lex(char *str, t_token **token)
 {
   int	i;
@@ -82,6 +97,7 @@ int	lexer(char *cmd, t_token **token, t_42sh *shell)
   t_lex	*lexi;
 
   lexi = xmalloc(sizeof(*lexi));
+  cmd = check_carac(cmd);
   lexi->cmd = epur_str(strdup(cmd));
   if (!(lexi->cmd[0]))
     return (0);

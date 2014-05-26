@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Fri Apr  4 12:20:14 2014 garcia antoine
-** Last update Sun May 25 20:58:37 2014 Nicolas Charvoz
+** Last update Sun May 25 23:33:50 2014 Nicolas Charvoz
 */
 
 #include <stdlib.h>
@@ -39,6 +39,8 @@ int	main(int ac, char **av, char **env)
 {
   (void)ac;
   (void)av;
+  if ((check_pre()) == -1)
+    return (-1);
   if (init_my_shell(&shell, env) == -1)
     return (-1);
   if (start_shell(&shell) == -42)

@@ -5,7 +5,7 @@
 ** Login   <heitzl_s@epitech.net>
 **
 ** Started on  Sat May 24 02:52:12 2014 heitzl_s
-** Last update Sun May 25 20:57:52 2014 Nicolas Charvoz
+** Last update Sun May 25 23:33:15 2014 Nicolas Charvoz
 */
 
 #ifndef SHELL_H_
@@ -41,5 +41,6 @@ int	count_char(char*);
 t_dlist *create_my_env(t_dlist *, char **);
 void	get_sigint(int);
 void	free_tab(char**);
+int	check_pre();
 
 #endif /*SHELL_H_ */
