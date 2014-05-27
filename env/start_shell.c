@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Mon Apr  7 16:15:48 2014 garcia antoine
-** Last update Tue May 27 22:40:00 2014 Nicolas Charvoz
+** Last update Wed May 28 01:21:12 2014 Nicolas Charvoz
 */
 
 #include <sys/types.h>
@@ -32,9 +32,11 @@ int	check_none_cmd(char *str)
   i = 0;
   while (str[i])
     {
-      if ((str[i] == '|' || str[i] == '<' || str[i] == '>' || str[i] == ';')
+      if ((str[i] == '|' || str[i] == '<' || str[i] == '>'
+	   || str[i] == ';' || str[i] == '&')
 	  && str[i + 1] == ' ' && (str[i + 2] == '|' || str[i + 2] == '<'
-				|| str[i + 2] == '>' || str[i + 2] == ';'))
+				|| str[i + 2] == '>' || str[i + 2] == ';'
+				   || str[i + 2] == '&'))
 	{
 	  str[i + 1] = str[i];
 	  fprintf(stderr, "NULL is not a command\n");
