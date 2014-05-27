@@ -6,7 +6,7 @@
 **
 ** Started on  Fri Apr  4 15:59:36 2014 garcia antoine
 <<<<<<< HEAD
-** Last update Sun May 25 20:28:14 2014 heitzl_s
+** Last update Tue May 27 15:34:34 2014 Nicolas Charvoz
 =======
 ** Last update Sun May 25 12:14:47 2014 Nicolas Charvoz
 >>>>>>> d530b8d8769d35fa5736db56f45e95b7dc48c284
@@ -21,4 +21,5 @@
 void			prompt(t_42sh *shell)
 {
   (void)shell;
+  my_printf(">>");
 }

@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Mon Apr  7 16:15:48 2014 garcia antoine
-** Last update Sun May 25 13:24:44 2014 Nicolas Charvoz
+** Last update Tue May 27 15:34:07 2014 Nicolas Charvoz
 */
 
 #include <sys/types.h>
@@ -60,7 +60,8 @@ char	*read_line()
   cmd = strdup(buffer);
   free(buffer);
   cmd = epur_str(cmd);
-  //  check_none_cmd(cmd)
+  //check_none_cmd(cmd);
+  printf("%s\n", cmd);
   return (cmd);
 }
 
