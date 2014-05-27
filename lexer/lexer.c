@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Sat May 24 01:01:18 2014 Nicolas Charvoz
-** Last update Sun May 25 13:25:51 2014 Nicolas Charvoz
+** Last update Tue May 27 15:36:36 2014 Nicolas Charvoz
 */
 
 #include "lexer.h"
@@ -82,6 +82,7 @@ char	*check_carac(char *str)
       str[i] = '\0';
       return (str);
     }
+  printf("bite\n");
   return (str);
 }
 
@@ -100,7 +101,7 @@ int	lex(char *str, t_token **token)
       i = word_check(str, i, token);
       i = check_unk(str, i, token);
     }
-  sho_token(token);
+  //sho_token(token);
   return (0);
 }
 
