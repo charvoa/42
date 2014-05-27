@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Mon Apr  7 16:15:48 2014 garcia antoine
-** Last update Tue May 27 15:34:07 2014 Nicolas Charvoz
+** Last update Tue May 27 22:40:00 2014 Nicolas Charvoz
 */
 
 #include <sys/types.h>
@@ -25,16 +25,25 @@
 
 t_42sh	shell;
 
-/* int	check_none_cmd(char *str) */
-/* { */
-/*   int	i; */
+int	check_none_cmd(char *str)
+{
+  int	i;
 
-/*   i = 0; */
-/*   while (str[i]) */
-/*     { */
-/*       if (str[i] == '|' */
-/*     } */
-/* } */
+  i = 0;
+  while (str[i])
+    {
+      if ((str[i] == '|' || str[i] == '<' || str[i] == '>' || str[i] == ';')
+	  && str[i + 1] == ' ' && (str[i + 2] == '|' || str[i + 2] == '<'
+				|| str[i + 2] == '>' || str[i + 2] == ';'))
+	{
+	  str[i + 1] = str[i];
+	  fprintf(stderr, "NULL is not a command\n");
+	  return (-1);
+	}
+      i++;
+    }
+  return (0);
+}
 
 void	get_sigint(int sig)
 {
@@ -60,9 +69,10 @@ char	*read_line()
   cmd = strdup(buffer);
   free(buffer);
   cmd = epur_str(cmd);
-  //check_none_cmd(cmd);
-  printf("%s\n", cmd);
-  return (cmd);
+  if ((check_none_cmd(cmd)) == -1)
+    return (cmd);
+  else
+    return (cmd);
 }
 
 int		start_shell(t_42sh *shell)

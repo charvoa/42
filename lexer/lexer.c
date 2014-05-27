@@ -5,24 +5,12 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Sat May 24 01:01:18 2014 Nicolas Charvoz
-** Last update Tue May 27 15:36:36 2014 Nicolas Charvoz
+** Last update Tue May 27 22:40:39 2014 Nicolas Charvoz
 */
 
 #include "lexer.h"
 #include "../parser/parser.h"
 #include "../xlib/xlib.h"
-
-void	sho_token(t_token **token)
-{
-  t_token *tok;
-
-  tok = *token;
-  while (tok != NULL)
-    {
-      printf("tok value = %s\n", tok->value);
-      tok = tok->next;
-    }
-}
 
 int	check_unk(char *str, int i, t_token **token)
 {
@@ -82,7 +70,6 @@ char	*check_carac(char *str)
       str[i] = '\0';
       return (str);
     }
-  printf("bite\n");
   return (str);
 }
 
@@ -101,7 +88,6 @@ int	lex(char *str, t_token **token)
       i = word_check(str, i, token);
       i = check_unk(str, i, token);
     }
-  //sho_token(token);
   return (0);
 }
 
