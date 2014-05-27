@@ -5,7 +5,11 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Thu May  8 12:50:49 2014 Nicolas Charvoz
+<<<<<<< HEAD
 ** Last update Sun May 25 22:00:43 2014 heitzl_s
+=======
+** Last update Sun May 25 22:15:55 2014 Nicolas Charvoz
+>>>>>>> 33359e35c43182ab9488d183151a05579d4540ba
 */
 
 #include "parser.h"
@@ -53,7 +57,10 @@ int             nbr_of_token(t_token **token)
   int           i;
 
   tok = xmalloc(sizeof(*tok));
+<<<<<<< HEAD
   if (last_token(token) == 2)
+=======
+>>>>>>> 33359e35c43182ab9488d183151a05579d4540ba
     i = 0;
   tok = *token;
   while (tok)

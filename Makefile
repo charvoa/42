@@ -5,7 +5,7 @@
 ## Login   <heitzl_s@epitech.net>
 ##
 ## Started on  Sat May 24 01:02:56 2014 heitzl_s
-## Last update Sun May 25 20:58:22 2014 Nicolas Charvoz
+## Last update Sun May 25 23:32:17 2014 Nicolas Charvoz
 ##
 
 CC	= 	gcc
@@ -17,8 +17,6 @@ ALIAS	=	./alias
 TERM	=	./termcaps
 
 LEXER	=	./lexer
-
-USELESS	=	-g3
 
 PARSER	=	./parser
 
@@ -34,7 +32,7 @@ PIPE	=	./pipe
 
 BUILTINS=	./builtins
 
-CFLAGS  += 	-Wextra -Wall -W -g3 -Werror
+CFLAGS  += 	-Wextra -Wall -W -Werror
 CFLAGS	+=	-Wbad-function-cast -Wcast-align
 
 LMY	=	-L $(ENV)/libsources/ -lmy
@@ -54,6 +52,7 @@ SRCS	=	$(TERM)/termcaps.c			\
 		$(ALIAS)/str_to_word_tab.c		\
 		$(ENV)/dlist.c				\
 		$(ENV)/init.c				\
+		$(ENV)/check.c				\
 		$(ENV)/list.c				\
 		$(ENV)/main.c				\
 		$(ENV)/prompt.c				\
