@@ -5,7 +5,7 @@
 ** Login   <heitzl_s@epitech.net>
 **
 ** Started on  Wed May 14 15:05:12 2014 heitzl_s
-** Last update Sun May 25 23:25:21 2014 Nicolas Charvoz
+** Last update Tue May 27 15:19:07 2014 heitzl_s
 */
 
 #include <unistd.h>
@@ -116,7 +116,7 @@ int	execution(t_cmd *cmd, t_42sh *shell, int tok)
 	  tok--;
 	  i++;
 	}
-      waiting_process(cmd);
     }
+  waiting_process(cmd);
   return (0);
 }
