@@ -5,14 +5,12 @@
 ## Login   <heitzl_s@epitech.net>
 ##
 ## Started on  Sat May 24 01:02:56 2014 heitzl_s
-## Last update Sun May 25 23:32:17 2014 Nicolas Charvoz
+## Last update Sun May 25 12:21:05 2014 Nicolas Charvoz
 ##
 
 CC	= 	gcc
 
 RM	= 	rm -f
-
-ALIAS	=	./alias
 
 TERM	=	./termcaps
 
@@ -46,10 +44,6 @@ SRCS	=	$(TERM)/termcaps.c			\
 		$(LEXER)/check1.c			\
 		$(LEXER)/check2.c			\
 		$(LEXER)/epur_str.c			\
-		$(ALIAS)/alias.c			\
-		$(ALIAS)/check_list.c			\
-		$(ALIAS)/make_list.c			\
-		$(ALIAS)/str_to_word_tab.c		\
 		$(ENV)/dlist.c				\
 		$(ENV)/init.c				\
 		$(ENV)/check.c				\

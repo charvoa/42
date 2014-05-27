@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Mon Apr 21 15:35:44 2014 Nicolas Charvoz
-** Last update Sat May 24 11:03:32 2014 Nicolas Charvoz
+** Last update Sun May 25 13:13:01 2014 Nicolas Charvoz
 */
 
 #include "lexer.h"

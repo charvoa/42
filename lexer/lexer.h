@@ -5,7 +5,7 @@
 ** Login   <charvo_a@epitech.net>
 **
 ** Started on  Sat Apr  5 15:42:30 2014 Nicolas Charvoz
-** Last update Sun May 25 21:27:32 2014 Nicolas Charvoz
+** Last update Sun May 25 12:31:16 2014 Nicolas Charvoz
 */
 
 #ifndef _LEXER_H_
@@ -55,6 +55,8 @@ int	pipe_check(char*, int, t_token**);
 /*  CHECK2.C */
 int	check_and(char*, int, t_token**);
 int	check_letter2(char);
+int	check_error_none(t_token**);
+int	check_none(char*, int, t_token**);
 /* EPUR_STR.C */
 char	*epur_str(char*);
 char	*epur_str2(char*, char*, int, int);
