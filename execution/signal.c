@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Mon May 19 11:27:27 2014 garcia antoine
-** Last update Sun May 25 11:55:04 2014 heitzl_s
+** Last update Wed May 28 11:02:40 2014 garcia antoine
 */
 
 #include <stdlib.h>
@@ -23,6 +23,7 @@ t_signal	g_signal[] =
     {SIGILL, "Illegal instruction"},
     {SIGKILL, "Killed"},
     {SIGPIPE, "Broken pipe"},
+    {SIGTRAP, "Signal SIGTRAP"},
     {SIGCHLD, "Child stop"},
     {SIGXCPU, "CPU limit reached"},
     {SIGTERM, "Terminated"},
@@ -40,7 +41,7 @@ int	check_signal(int status)
   while (g_signal[i].nb)
     {
       if (status == g_signal[i].nb)
-	fprintf(stderr, "%s\n", g_signal[i].msg);
+	printf("%s\n", g_signal[i].msg);
       i++;
     }
   return (-1);
