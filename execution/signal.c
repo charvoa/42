@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Mon May 19 11:27:27 2014 garcia antoine
-** Last update Wed May 28 11:02:40 2014 garcia antoine
+** Last update Wed May 28 11:29:21 2014 garcia antoine
 */
 
 #include <stdlib.h>
@@ -17,13 +17,19 @@
 t_signal	g_signal[] =
   {
     {SIGSEGV, "Segmentation fault"},
+    {SIGALRM, "Clock Alarm"};
+    {SIGIOT, "IOT Trap"},
+    {SIGSTKFLT, "Stack Fault"},
+    {SIGPROF, "Profiling alarm Clock"},
+    {SIGPWR, "Power failure restart"},
+    {SIGTSTP, "Suspend by keyboard"},
     {SIGBUS, "Bus error"},
     {SIGABRT, "Abort"},
     {SIGFPE, "Floating point exception"},
     {SIGILL, "Illegal instruction"},
     {SIGKILL, "Killed"},
     {SIGPIPE, "Broken pipe"},
-    {SIGTRAP, "Signal SIGTRAP"},
+    {SIGTRAP, "Trace trap"},
     {SIGCHLD, "Child stop"},
     {SIGXCPU, "CPU limit reached"},
     {SIGTERM, "Terminated"},
