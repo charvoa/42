@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Fri May  9 11:18:26 2014 garcia antoine
-** Last update Sat May 24 13:28:47 2014 heitzl_s
+** Last update Wed May 28 12:01:55 2014 garcia antoine
 */
 
 #ifndef EXECUTION_H_
@@ -26,7 +26,7 @@ void		redir_left(t_cmd*, t_cmd*);
 void		double_redir_right(t_cmd*, t_cmd*);
 void		redir_right(t_cmd*, t_cmd*);
 void		redirections(t_cmd*, t_cmd*, t_cmd*, int);
-
+int		open_for_redir_right(char*);
 /* global_exec.c */
 int		global_exec(t_cmd*, t_42sh*, int);
 
