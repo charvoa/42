@@ -5,7 +5,7 @@
 ** Login   <heitzl_s@epitech.net>
 **
 ** Started on  Sat May 24 08:07:16 2014 heitzl_s
-** Last update Tue May 27 15:14:44 2014 heitzl_s
+** Last update Wed May 28 14:36:03 2014 garcia antoine
 */
 
 #include <unistd.h>
@@ -26,17 +26,20 @@ int     exec_redir(t_cmd *cmd, int i)
   char  *buffer;
 
   buffer = xcalloc(4096, sizeof(*buffer));
-  if (strcmp(cmd[i - 1].token, "<<") == 0)
-    remove(cmd[i].args[0]);
-  else if (cmd[i].type == 1 && cmd[i - 1].type == 1)
+  if (cmd[i].type == 1)
     {
-      if ((strcmp(cmd[i - 1].token, ">") == 0)
-	  || (strcmp(cmd[i - 1].token, ">>") == 0))
+      if (strcmp(cmd[i - 1].token, "<<") == 0)
+	remove(cmd[i].args[0]);
+      else if (cmd[i].type == 1 && cmd[i - 1].type == 1)
 	{
-	  xread(cmd[i - 1].fdout, buffer, 4095);
-	  write(cmd[i].fdin, buffer, (strlen(buffer) + 1));
-	  xclose(cmd[i - 1].fdout);
-	  return (1);
+	  if ((strcmp(cmd[i - 1].token, ">") == 0)
+	      || (strcmp(cmd[i - 1].token, ">>") == 0))
+	    {
+	      xread(cmd[i - 1].fdout, buffer, 4095);
+	      write(cmd[i].fdin, buffer, (strlen(buffer) + 1));
+	      xclose(cmd[i - 1].fdout);
+	      return (1);
+	    }
 	}
     }
   return (0);
