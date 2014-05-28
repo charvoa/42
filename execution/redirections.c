@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Tue May  6 13:36:11 2014 garcia antoine
-** Last update Wed May 28 14:36:17 2014 garcia antoine
+** Last update Wed May 28 15:29:57 2014 garcia antoine
 */
 
 #include <stdlib.h>
@@ -58,7 +58,9 @@ void	double_redir_right(t_cmd *cmd, t_cmd *cmd2)
   cmd2->type = 1;
   if (cmd->type == 0)
     {
-      cmd->fdout = open(cmd2->args[0], O_RDWR | O_CREAT | O_APPEND, 0666);
+      cmd->fdout = open_for_dredir_right(cmd2->args[0]);
+      if (cmd->fdout == -1)
+	cmd->type = 2;
       cmd2->fdin = cmd->fdout;
     }
   else if (cmd->type == 1)
