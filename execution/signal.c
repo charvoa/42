@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Mon May 19 11:27:27 2014 garcia antoine
-** Last update Sun May 25 11:55:04 2014 heitzl_s
+** Last update Wed May 28 11:32:42 2014 garcia antoine
 */
 
 #include <stdlib.h>
@@ -17,12 +17,19 @@
 t_signal	g_signal[] =
   {
     {SIGSEGV, "Segmentation fault"},
+    {SIGALRM, "Clock Alarm"},
+    {SIGIOT, "IOT Trap"},
+    {SIGSTKFLT, "Stack Fault"},
+    {SIGPROF, "Profiling alarm Clock"},
+    {SIGPWR, "Power failure restart"},
+    {SIGTSTP, "Suspend by keyboard"},
     {SIGBUS, "Bus error"},
     {SIGABRT, "Abort"},
     {SIGFPE, "Floating point exception"},
     {SIGILL, "Illegal instruction"},
     {SIGKILL, "Killed"},
     {SIGPIPE, "Broken pipe"},
+    {SIGTRAP, "Trace trap"},
     {SIGCHLD, "Child stop"},
     {SIGXCPU, "CPU limit reached"},
     {SIGTERM, "Terminated"},
@@ -40,7 +47,7 @@ int	check_signal(int status)
   while (g_signal[i].nb)
     {
       if (status == g_signal[i].nb)
-	fprintf(stderr, "%s\n", g_signal[i].msg);
+	printf("%s\n", g_signal[i].msg);
       i++;
     }
   return (-1);
