@@ -5,7 +5,7 @@
 ## Login   <heitzl_s@epitech.net>
 ##
 ## Started on  Sat May 24 01:02:56 2014 heitzl_s
-## Last update Sun May 25 12:21:05 2014 Nicolas Charvoz
+## Last update Wed May 28 12:02:31 2014 garcia antoine
 ##
 
 CC	= 	gcc
@@ -64,6 +64,7 @@ SRCS	=	$(TERM)/termcaps.c			\
 		$(EXEC)/execution.c			\
 		$(EXEC)/execution_next.c		\
 		$(EXEC)/double_redir_left.c		\
+		$(EXEC)/open_for_redir.c		\
 		$(PIPE)/pipes.c				\
 		$(PIPE)/prepa_pipes.c			\
 		$(XLIB)/xclose.c			\
