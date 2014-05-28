@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Tue May  6 13:36:11 2014 garcia antoine
-** Last update Sun May 25 23:20:56 2014 Nicolas Charvoz
+** Last update Wed May 28 11:30:04 2014 heitzl_s
 */
 
 #include <stdlib.h>
@@ -39,6 +39,7 @@ int	open_my_file(char *name)
 
 void	redir_left(t_cmd *cmd, t_cmd *cmd2)
 {
+  cmd2->type = 1;
   if (cmd->type == 0)
     {
       cmd->fdin = open_my_file(cmd2->args[0]);
@@ -54,6 +55,7 @@ void	redir_left(t_cmd *cmd, t_cmd *cmd2)
 
 void	double_redir_right(t_cmd *cmd, t_cmd *cmd2)
 {
+  cmd2->type = 1;
   if (cmd->type == 0)
     {
       cmd->fdout = open(cmd2->args[0], O_RDWR | O_CREAT | O_APPEND, 0666);
@@ -78,6 +80,7 @@ void	double_redir_right(t_cmd *cmd, t_cmd *cmd2)
 
 void	redir_right(t_cmd *cmd, t_cmd *cmd2)
 {
+  cmd2->type = 1;
   if (cmd->type == 0)
     {
       cmd->fdout = creat(cmd2->args[0], 0644);
@@ -102,7 +105,6 @@ void	redir_right(t_cmd *cmd, t_cmd *cmd2)
 
 void	redirections(t_cmd *cmd, t_cmd *cmd2, t_cmd *command, int i)
 {
-  cmd2->type = 1;
   if (!strncmp(cmd->token, ">>", 2))
     double_redir_right(cmd, cmd2);
   else if (!strncmp(cmd->token, ">", 1))

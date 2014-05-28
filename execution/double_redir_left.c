@@ -5,7 +5,7 @@
 ** Login   <heitzl_s@epitech.net>
 **
 ** Started on  Sat May 24 11:37:51 2014 heitzl_s
-** Last update Sun May 25 22:59:21 2014 Nicolas Charvoz
+** Last update Wed May 28 11:29:59 2014 heitzl_s
 */
 
 #include <stdlib.h>
@@ -34,6 +34,7 @@ int	exec_double_left(t_cmd *cmd, int last, int first)
       else
 	first++;
     }
+  puts(cmd[last].args[0]);
   while (strncmp(buffer, cmd[last].args[0], strlen(cmd[last].args[0])) != 0)
     {
       buffer = xcalloc(4096, sizeof(char));
@@ -54,14 +55,15 @@ void	double_redir_left(t_cmd *cmd, t_cmd *cmd2, t_cmd *cmdg, int i)
   (void)cmd2;
   if (cmd[i].type == 0)
     {
+      cmd2->type = 1;
       pos_cmd = i;
-      cmd->fdin = 1;
+      cmd->fdout = 1;
       while ((cmdg[i].token && strcmp(cmdg[i].token, "<<") == 0))
 	i++;
-      if (cmd[pos_cmd].type == 0)
+      if (cmdg[pos_cmd].type == 0)
 	cmdg[pos_cmd].fdin = xopenmode(cmdg[i].args[0], O_RDWR | O_CREAT | O_APPEND,
 				       S_IRWXU | S_IRWXG | S_IRWXO);
       cmdg[pos_cmd].fdout = 1;
-      exec_double_left(cmd, i, pos_cmd + 1);
+      exec_double_left(cmdg, i, pos_cmd + 1);
     }
 }
