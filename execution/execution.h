@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Fri May  9 11:18:26 2014 garcia antoine
-** Last update Wed May 28 12:01:55 2014 garcia antoine
+** Last update Wed May 28 14:04:44 2014 Nicolas Girardot
 */
 
 #ifndef EXECUTION_H_
@@ -46,14 +46,14 @@ int		check_or_and(t_cmd*, int, t_42sh*);
 int		launch(t_cmd*, t_42sh*, int);
 int		check_and_launch(t_cmd*, t_42sh*, int, int);
 int		wainting_process(t_cmd*);
-int		execution(t_cmd*, t_42sh*, int);
+int		execution(t_cmd*, t_42sh*, int, int);
 
 /* execution_next.c */
 int		exec_redir(t_cmd*, int);
 int		start_execution(t_cmd*, t_42sh*, int);
 
 /* prepa_pipes.c */
-int		prepa_pipes(t_cmd*);
+int		prepa_pipes(t_cmd*, int);
 
 /* signal.c */
 int		check_signal(int);
