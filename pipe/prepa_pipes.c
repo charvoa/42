@@ -5,7 +5,7 @@
 ** Login   <heitzl_s@epitech.net>
 **
 ** Started on  Fri May 23 10:49:17 2014 heitzl_s
-** Last update Sun May 25 09:39:25 2014 heitzl_s
+** Last update Wed May 28 12:02:30 2014 Nicolas Girardot
 */
 
 #include <unistd.h>
@@ -18,23 +18,17 @@
 #include "../parser/parser.h"
 #include "../env/42sh.h"
 
-int	prepa_pipes(t_cmd *cmd)
+int	prepa_pipes(t_cmd *cmd, int i)
 {
-  int   i;
-
-  i = 0;
-  while (cmd[i].token != NULL)
+ while (cmd[i].token != NULL && cmd[i].token[0] != ';')
     {
-      while (cmd[i].token != NULL )
-	{
-          if ((strcmp(cmd[i].token, "|") == 0))
-            create_pipes(cmd, i);
-	  else if ((strcmp(cmd[i].token, "||") == 0))
-	    cmd[i].fdout = 1;
-	  else if ((strcmp(cmd[i].token, "&&") == 0))
-	    cmd[i].fdout = 1;
-          i++;
-	}
+      if ((strcmp(cmd[i].token, "|") == 0))
+	create_pipes(cmd, i);
+      else if ((strcmp(cmd[i].token, "||") == 0))
+	cmd[i].fdout = 1;
+      else if ((strcmp(cmd[i].token, "&&") == 0))
+	cmd[i].fdout = 1;
+      i++;
     }
   if (cmd[i].type == 0)
     cmd[i].fdout = 1;

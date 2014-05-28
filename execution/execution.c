@@ -5,7 +5,7 @@
 ** Login   <heitzl_s@epitech.net>
 **
 ** Started on  Wed May 14 15:05:12 2014 heitzl_s
-** Last update Tue May 27 15:19:07 2014 heitzl_s
+** Last update Wed May 28 13:01:15 2014 Nicolas Girardot
 */
 
 #include <unistd.h>
@@ -70,6 +70,7 @@ int	launch(t_cmd *cmd, t_42sh *shell, int i)
 	exit(-1);
       xdup2(cmd[i].fdout, 1);
       xdup2(cmd[i].fdin, 0);
+      printf("%s\n", cmd[i].args[0]);
       check_and_close_son(cmd, i);
       if (exec_cmd(&cmd[i], shell) == -1)
 	fprintf(stderr, "Command not found : %s\n", cmd->args[0]);
@@ -92,30 +93,36 @@ int	waiting_process(t_cmd *cmd)
   return (0);
 }
 
-int	execution(t_cmd *cmd, t_42sh *shell, int tok)
+int	execution(t_cmd *cmd, t_42sh *shell, int tok, int i)
 {
-  int	i;
+  int	mabool;
 
-  i = 0;
-  while (tok != 0)
+  mabool = 0;
+  (void)tok;
+  if (cmd[i].token != NULL && (strcmp(cmd[i].token, ";") != 0))
     {
-      if (cmd[i].token != NULL && (strcmp(cmd[i].token, ";") != 0))
-	{
-	  while (cmd[i].token != NULL && (strcmp(cmd[i].token, ";") != 0))
-	    {
-	      if (start_execution(cmd, shell, i) == -42)
-		return (-42);
-	      tok--;
-	      i++;
-	    }
-	}
-      else
+      while (cmd[i].token != NULL && (strcmp(cmd[i].token, ";") != 0))
 	{
 	  if (start_execution(cmd, shell, i) == -42)
 	    return (-42);
-	  tok--;
+	  mabool = 1;
+	  shell->tok--;
 	  i++;
 	}
+    }
+  if (mabool == 1)
+    {
+      if (start_execution(cmd, shell, i) == -42)
+	return (-42);
+      shell->tok--;
+      i++;
+    }
+  else
+    {
+      if (start_execution(cmd, shell, i) == -42)
+	return (-42);
+      shell->tok--;
+      i++;
     }
   waiting_process(cmd);
   return (0);
