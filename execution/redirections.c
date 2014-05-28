@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Tue May  6 13:36:11 2014 garcia antoine
-** Last update Wed May 28 11:30:04 2014 heitzl_s
+** Last update Wed May 28 12:08:24 2014 garcia antoine
 */
 
 #include <stdlib.h>
@@ -83,7 +83,7 @@ void	redir_right(t_cmd *cmd, t_cmd *cmd2)
   cmd2->type = 1;
   if (cmd->type == 0)
     {
-      cmd->fdout = creat(cmd2->args[0], 0644);
+      cmd->fdout = open_for_redir_right(cmd2->args[0]);
       cmd2->fdin = cmd->fdout;
       cmd2->fdout = 0;
     }
