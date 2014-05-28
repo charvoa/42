@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Mon May 19 11:27:27 2014 garcia antoine
-** Last update Wed May 28 11:29:21 2014 garcia antoine
+** Last update Wed May 28 11:32:42 2014 garcia antoine
 */
 
 #include <stdlib.h>
@@ -17,7 +17,7 @@
 t_signal	g_signal[] =
   {
     {SIGSEGV, "Segmentation fault"},
-    {SIGALRM, "Clock Alarm"};
+    {SIGALRM, "Clock Alarm"},
     {SIGIOT, "IOT Trap"},
     {SIGSTKFLT, "Stack Fault"},
     {SIGPROF, "Profiling alarm Clock"},
