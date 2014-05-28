@@ -5,7 +5,7 @@
 ** Login   <heitzl_s@epitech.net>
 **
 ** Started on  Sat May 24 08:07:16 2014 heitzl_s
-** Last update Wed May 28 14:36:03 2014 garcia antoine
+** Last update Wed May 28 15:13:26 2014 heitzl_s
 */
 
 #include <unistd.h>
@@ -55,8 +55,11 @@ int	start_execution(t_cmd *cmd, t_42sh *shell, int i)
     }
   else
     exec_redir(cmd, i);
-  if (i > 0 && (strcmp(cmd[i - 1].token, "|") != 0))
-      waitpid(cmd[i].pid , &cmd[i].status, 0);
+  if (cmd[i].token != NULL && (strcmp(cmd[i].token, "||") == 0
+			       || strcmp(cmd[i].token, "&&") == 0))
+    waitpid(cmd[i].pid, &cmd[i].status, 0);
+  else if (i > 0 && (strcmp(cmd[i - 1].token, "|") != 0))
+    waitpid(cmd[i].pid, &cmd[i].status, 0);
   check_signal(cmd[i].status);
   return (0);
 }

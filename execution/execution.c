@@ -5,7 +5,7 @@
 ** Login   <heitzl_s@epitech.net>
 **
 ** Started on  Wed May 14 15:05:12 2014 heitzl_s
-** Last update Wed May 28 14:09:37 2014 Nicolas Girardot
+** Last update Wed May 28 15:13:24 2014 heitzl_s
 */
 
 #include <unistd.h>
@@ -62,10 +62,10 @@ int	launch(t_cmd *cmd, t_42sh *shell, int i)
       else if (find_cmd(cmd[i].args[0]) != -1)
       	exit(42);
       else if (check_pipe_cmd(&cmd[i], shell) == -1)
-	{
-	  fprintf(stderr, "Command not found : %s\n", cmd[i].args[0]);
-	  exit(-1);
-	}
+      	{
+      	  fprintf(stderr, "Command not found : %s\n", cmd[i].args[0]);
+      	  exit(-1);
+      	}
       if (check_or_and(cmd, i, shell) == 1)
 	exit(-1);
       xdup2(cmd[i].fdout, 1);
