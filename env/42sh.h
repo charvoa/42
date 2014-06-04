@@ -5,7 +5,7 @@
 ** Login   <heitzl_s@epitech.net>
 **
 ** Started on  Sat May 24 02:52:12 2014 heitzl_s
-** Last update Wed May 28 12:03:42 2014 Nicolas Girardot
+** Last update Sun May 25 23:33:15 2014 Nicolas Charvoz
 */
 
 #ifndef SHELL_H_
@@ -23,7 +23,6 @@ typedef struct s_42sh
   char		**envtab;
   char		*pwd_alias;
   int		exit_value;
-  int		tok;
 }		t_42sh;
 
 extern	t_42sh	shell;

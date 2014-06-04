@@ -5,7 +5,7 @@
 ** Login   <garcia_t@epitech.net>
 **
 ** Started on  Mon Apr  7 16:15:48 2014 garcia antoine
-** Last update Wed May 28 01:21:12 2014 Nicolas Charvoz
+** Last update Sun May 25 23:14:35 2014 Nicolas Charvoz
 */
 
 #include <sys/types.h>
@@ -25,28 +25,6 @@
 
 t_42sh	shell;
 
-int	check_none_cmd(char *str)
-{
-  int	i;
-
-  i = 0;
-  while (str[i])
-    {
-      if ((str[i] == '|' || str[i] == '<' || str[i] == '>'
-	   || str[i] == ';' || str[i] == '&')
-	  && str[i + 1] == ' ' && (str[i + 2] == '|' || str[i + 2] == '<'
-				|| str[i + 2] == '>' || str[i + 2] == ';'
-				   || str[i + 2] == '&'))
-	{
-	  str[i + 1] = str[i];
-	  fprintf(stderr, "NULL is not a command\n");
-	  return (-1);
-	}
-      i++;
-    }
-  return (0);
-}
-
 void	get_sigint(int sig)
 {
   sig = sig;
@@ -54,7 +32,27 @@ void	get_sigint(int sig)
   prompt(&shell);
 }
 
-char	*read_line()
+char	*cat_if_pipe(char *cmd)
+{
+  char	*buffer;
+  int	ret;
+
+  buffer = xcalloc(4096, sizeof(char));
+  my_putstr(">");
+  ret = read(0, buffer, 4096);
+  if (ret == 0)
+    {
+      putchar('\n');
+      return ("exit");
+    }
+  buffer[ret - 1] = '\0';
+  cmd = strcat(cmd, buffer);
+  if (cmd[strlen(cmd) - 1] == '|' || cmd[strlen(cmd) - 1] == '>')
+    cmd = cat_if_pipe(cmd);
+  return (cmd);
+}
+
+char	*read_line(int fd)
 {
   int	nb;
   char	*cmd;
@@ -71,22 +69,27 @@ char	*read_line()
   cmd = strdup(buffer);
   free(buffer);
   cmd = epur_str(cmd);
-  if ((check_none_cmd(cmd)) == -1)
-    return (cmd);
-  else
-    return (cmd);
+  if (cmd[nb - 2] == '|' || cmd[nb - 2] == '>')
+    cmd = cat_if_pipe(cmd);
+  write(fd, cmd, strlen(cmd));
+  write(fd, "\n", 1);
+  return (cmd);
 }
 
 int		start_shell(t_42sh *shell)
 {
   t_token	*token;
+  int		fd;
 
+  fd = creat(".hist42sh", 0644);
+  if ((my_clear() == -1))
+    return (-42);
   while (1)
     {
       token = NULL;
       signal(SIGINT, get_sigint);
       prompt(shell);
-      shell->cmd = read_line();
+      shell->cmd = read_line(fd);
       if (lexer(shell->cmd, &token, shell) == -42)
 	return (-42);
       free_my_tok(token);
